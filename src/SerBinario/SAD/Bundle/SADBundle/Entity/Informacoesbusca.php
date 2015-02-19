@@ -8,7 +8,7 @@ use \Doctrine\Common\Collections\ArrayCollection;
 /**
  * Informacoesbusca
  *
- * @ORM\Table(name="informacoesBusca", indexes={@ORM\Index(name="fk_informacoesBusca_tipoHorario1_idx", columns={"tipoHorario_idTipoHorario"}), @ORM\Index(name="fk_informacoesBusca_tipoNivelHerarquico1_idx", columns={"tipoNivelHerarquico_idTipoNivelHerarquico"}), @ORM\Index(name="fk_informacoesBusca_curriculo1_idx", columns={"curriculo_idCurriculo"})})
+ * @ORM\Table(name="informacoesBusca")
  * @ORM\Entity
  */
 class Informacoesbusca
@@ -23,12 +23,10 @@ class Informacoesbusca
     private $idinformacoesbusca;
 
     /**
-     * @var \Tipohorario
      *
-     * @ORM\ManyToOne(targetEntity="Tipohorario")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tipoHorario_idTipoHorario", referencedColumnName="idTipoHorario")
-     * })
+     * @var type 
+     * 
+     * @ORM\OneToMany(targetEntity="Tipohorario", mappedBy="Tipohorario")
      */
     private $tipohorariotipohorario;
 
@@ -78,13 +76,16 @@ class Informacoesbusca
     }
 
     /**
-     * Set tipohorariotipohorario
-     *
-     * @param \SerBinario\SAD\Bundle\SADBundle\Entity\Tipohorario $tipohorariotipohorario
-     * @return Informacoesbusca
+     * 
+     * @param type $tipohorariotipohorario
+     * @return \SerBinario\SAD\Bundle\SADBundle\Entity\Informacoesbusca
      */
-    public function setTipohorariotipohorario(\SerBinario\SAD\Bundle\SADBundle\Entity\Tipohorario $tipohorariotipohorario = null)
+    public function setTipohorariotipohorario($tipohorariotipohorario)
     {
+        foreach ($tipohorariotipohorario as $tipoH) {
+            $tipoH->setInformacaoBusca($this);                    
+        }
+        
         $this->tipohorariotipohorario = $tipohorariotipohorario;
 
         return $this;
@@ -181,5 +182,5 @@ class Informacoesbusca
         return $this;
     }
 
-
+    
 }

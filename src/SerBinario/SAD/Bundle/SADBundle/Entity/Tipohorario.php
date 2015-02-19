@@ -29,10 +29,11 @@ class Tipohorario
     private $tipohorario;
     
     /**
+     * @var Informacoesbusca
      *
-     * @ORM\ManyToOne(targetEntity="Informacoesbusca")
+     * @ORM\ManyToOne(targetEntity="Informacoesbusca", inversedBy="tipohorariotipohorario")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tipoNivelHerarquico_idTipoNivelHerarquico", referencedColumnName="idTipoNivelHerarquico")
+     *   @ORM\JoinColumn(name="informacaoBusca", referencedColumnName="idInformacoesBusca")
      * })
      */
     private $informacaoBusca;
@@ -78,4 +79,24 @@ class Tipohorario
     {
         return $this->getTipohorario();
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getInformacaoBusca() 
+    {
+        return $this->informacaoBusca;
+    }
+
+    /**
+     * 
+     * @param type $informacaoBusca
+     */
+    public function setInformacaoBusca($informacaoBusca) 
+    {
+        $this->informacaoBusca = $informacaoBusca;
+    }
+
+
 }
