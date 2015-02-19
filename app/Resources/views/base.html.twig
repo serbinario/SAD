@@ -6,16 +6,197 @@
         {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}        
         {% block stylesheets %}
             <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
+            <link href="{{ asset('css/bootstrap.min.lumen.css') }}" rel="stylesheet" media="screen">
+            <style type="text/css" rel="stylesheet">
+                .marginBottom-0 {margin-bottom:0;}
+
+                .dropdown-submenu{position:relative;}
+                .dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:-1px;-webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;}
+                .dropdown-submenu>a:after{display:block;content:" ";float:right;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 0 5px 5px;border-left-color:#cccccc;margin-top:5px;margin-right:-10px;}
+                .dropdown-submenu:hover>a:after{border-left-color:#555;}
+                .dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}
+            </style>
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">SAD-AD</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-main">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Emprego <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastro</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{path('save')}}">Novo</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Abrir</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Imprimir</a></li>
+                                    </ul>                                   
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Capacitação</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="">Novo</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Abrir</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Demanda</a></li>
+                                    </ul>                                   
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Vagas</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="">Disponível</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Preenchidas</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Demanda</a></li>
+                                    </ul>                                   
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatório</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="">Abrir</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Demanda</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Imprimir</a></li>
+                                    </ul>                                   
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Empresas</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="">Abrir</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Demanda</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Imprimir</a></li>
+                                    </ul>                                   
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Empreendedor <b class="caret"></b></a>
+
+                            <ul class="dropdown-menu">
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastro</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="">Novo</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Abrir</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Imprimir</a></li>
+                                    </ul>                                   
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Capacitação</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="">Novo</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Abrir</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Demanda</a></li>
+                                    </ul>                                   
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultoria</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="">Novo</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Abrir</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Demanda</a></li>
+                                    </ul>                                   
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatório</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="">Novo</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Abrir</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Demanda</a></li>
+                                    </ul>                                   
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Autônomo <b class="caret"></b></a>
+                            <ul class="dropdown-menu">                                                               
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastro</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="">Novo</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Abrir</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Imprimir</a></li>
+                                    </ul>                                   
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Capacitação</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="">Novo</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Abrir</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Imprimir</a></li>
+                                    </ul>                                   
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatório</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="">Novo</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Abrir</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="">Imprimir</a></li>
+                                    </ul>                                   
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="">Sair</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </nav> <br /><br /><br />
+        {% endblock %}
         
         {% block javascripts %}            
         <script src="{{ asset('js/jquery.js') }}"></script>
         <!-- Include all JavaScripts, compiled by Assetic -->
         <script src="{{ asset('js/bootstrap.js') }}"></script>
+        <script type="text/javascript">
+                (function ($) {
+                    $(document).ready(function () {
+                        $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function (event) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            $(this).parent().siblings().removeClass('open');
+                            $(this).parent().toggleClass('open');
+                        });
+                    });
+                })(jQuery);
+            </script>
         {% endblock %}
     </body>
 </html>
