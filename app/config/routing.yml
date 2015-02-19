@@ -1,0 +1,6 @@
+sad:
+    resource: "@SADBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+

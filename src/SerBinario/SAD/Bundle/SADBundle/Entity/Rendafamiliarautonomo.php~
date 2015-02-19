@@ -1,0 +1,56 @@
+<?php
+
+namespace SerBinario\SAD\Bundle\SADBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Rendafamiliarautonomo
+ *
+ * @ORM\Table(name="rendaFamiliarAutonomo", indexes={@ORM\Index(name="fk_rendaFamiliarAutonomo_autonomo1_idx", columns={"autonomo_idAutonomo"})})
+ * @ORM\Entity
+ */
+class Rendafamiliarautonomo
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idRendaFamiliarAutonomo", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idrendafamiliarautonomo;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="negociosAutonomo", type="boolean", nullable=true)
+     */
+    private $negociosautonomo;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="esposaAutonomo", type="boolean", nullable=true)
+     */
+    private $esposaautonomo;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="filhosAutonomo", type="boolean", nullable=true)
+     */
+    private $filhosautonomo;
+
+    /**
+     * @var \Autonomo
+     *
+     * @ORM\ManyToOne(targetEntity="Autonomo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="autonomo_idAutonomo", referencedColumnName="idAutonomo")
+     * })
+     */
+    private $autonomoautonomo;
+
+
+}

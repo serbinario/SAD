@@ -1,0 +1,39 @@
+<?php
+
+namespace SerBinario\SAD\Bundle\SADBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Sexo
+ *
+ * @ORM\Table(name="sexo")
+ * @ORM\Entity
+ */
+class Sexo
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idSexo", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idsexo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sexo", type="string", length=1, nullable=true)
+     */
+    private $sexo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descricao", type="string", length=15, nullable=true)
+     */
+    private $descricao;
+
+
+}

@@ -1,0 +1,74 @@
+<?php
+
+namespace SerBinario\SAD\Bundle\SADBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Autonomo
+ *
+ * @ORM\Table(name="autonomo")
+ * @ORM\Entity
+ */
+class Autonomo
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idAutonomo", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idautonomo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomeAutonomo", type="string", length=50, nullable=true)
+     */
+    private $nomeautonomo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="enderecoAutonomo", type="string", length=50, nullable=true)
+     */
+    private $enderecoautonomo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idadeAutonomo", type="integer", nullable=true)
+     */
+    private $idadeautonomo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="expeProfissionalAutonomo", type="string", length=50, nullable=true)
+     */
+    private $expeprofissionalautonomo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tempoExpeProfissionalAutonomo", type="string", length=45, nullable=true)
+     */
+    private $tempoexpeprofissionalautonomo;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="outraRendaAutonomo", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $outrarendaautonomo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="interesseCursoProfAutonomo", type="string", length=50, nullable=true)
+     */
+    private $interessecursoprofautonomo;
+
+
+}

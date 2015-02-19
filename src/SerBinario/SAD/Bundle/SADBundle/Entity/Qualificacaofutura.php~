@@ -1,0 +1,52 @@
+<?php
+
+namespace SerBinario\SAD\Bundle\SADBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Qualificacaofutura
+ *
+ * @ORM\Table(name="qualificacaoFutura", indexes={@ORM\Index(name="fk_qualificacaoFutura_tipoQualificacaoFutura1_idx", columns={"tipoQualificacaoFutura_idTipoQualificacaoFutura"}), @ORM\Index(name="fk_qualificacaoFutura_curriculo1_idx", columns={"curriculo_idCurriculo"})})
+ * @ORM\Entity
+ */
+class Qualificacaofutura
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idQualificacaoFutura", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idqualificacaofutura;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descricaoQualificacaoFutura", type="string", length=50, nullable=true)
+     */
+    private $descricaoqualificacaofutura;
+
+    /**
+     * @var \Tipoqualificacaofutura
+     *
+     * @ORM\ManyToOne(targetEntity="Tipoqualificacaofutura")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tipoQualificacaoFutura_idTipoQualificacaoFutura", referencedColumnName="idTipoQualificacaoFutura")
+     * })
+     */
+    private $tipoqualificacaofuturatipoqualificacaofutura;
+
+    /**
+     * @var \Curriculo
+     *
+     * @ORM\ManyToOne(targetEntity="Curriculo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="curriculo_idCurriculo", referencedColumnName="idCurriculo")
+     * })
+     */
+    private $curriculocurriculo;
+
+
+}

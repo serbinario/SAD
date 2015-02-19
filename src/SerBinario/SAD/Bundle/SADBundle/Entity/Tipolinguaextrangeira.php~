@@ -1,0 +1,32 @@
+<?php
+
+namespace SerBinario\SAD\Bundle\SADBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tipolinguaextrangeira
+ *
+ * @ORM\Table(name="tipoLinguaExtrangeira")
+ * @ORM\Entity
+ */
+class Tipolinguaextrangeira
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idLinguaExtrangeira", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idlinguaextrangeira;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipoLinguaExtrangeira", type="string", length=45, nullable=true)
+     */
+    private $tipolinguaextrangeira;
+
+
+}

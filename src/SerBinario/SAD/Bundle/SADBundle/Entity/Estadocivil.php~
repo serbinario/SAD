@@ -1,0 +1,32 @@
+<?php
+
+namespace SerBinario\SAD\Bundle\SADBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Estadocivil
+ *
+ * @ORM\Table(name="estadoCivil")
+ * @ORM\Entity
+ */
+class Estadocivil
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idEstadoCivil", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idestadocivil;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="estadoCivil", type="string", length=45, nullable=true)
+     */
+    private $estadocivil;
+
+
+}

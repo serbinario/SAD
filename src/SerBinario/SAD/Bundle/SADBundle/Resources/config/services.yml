@@ -1,0 +1,13 @@
+parameters:
+    dao.class.candidato:  SerBinario\SAD\Bundle\SADBundle\DAO\CandidatoDAO
+    rn.class.candidato:   SerBinario\SAD\Bundle\SADBundle\RN\CandidatoRN
+
+services:
+    candidato_dao:
+        class:  %dao.class.candidato%
+        arguments:  [ @doctrine.orm.entity_manager ]
+        public: false
+    candidato_rn:
+        class:  %rn.class.candidato%
+        arguments:  [ @candidato_dao ]
+        

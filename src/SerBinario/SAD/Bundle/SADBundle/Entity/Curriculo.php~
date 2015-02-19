@@ -1,0 +1,56 @@
+<?php
+
+namespace SerBinario\SAD\Bundle\SADBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Curriculo
+ *
+ * @ORM\Table(name="curriculo", indexes={@ORM\Index(name="fk_curriculo_candidato1_idx", columns={"candidato_idCandidato"})})
+ * @ORM\Entity
+ */
+class Curriculo
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idCurriculo", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idcurriculo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="resumoCurriculo", type="text", nullable=true)
+     */
+    private $resumocurriculo;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="prentencaoSalarialCurriculo", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $prentencaosalarialcurriculo;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="atualmenteEmpregadoCurriculo", type="boolean", nullable=true)
+     */
+    private $atualmenteempregadocurriculo;
+
+    /**
+     * @var \Candidato
+     *
+     * @ORM\ManyToOne(targetEntity="Candidato")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="candidato_idCandidato", referencedColumnName="idCandidato")
+     * })
+     */
+    private $candidatocandidato;
+
+
+}

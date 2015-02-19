@@ -1,0 +1,32 @@
+<?php
+
+namespace SerBinario\SAD\Bundle\SADBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Formalizacao
+ *
+ * @ORM\Table(name="formalizacao")
+ * @ORM\Entity
+ */
+class Formalizacao
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idFormalizacao", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idformalizacao;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipoFormalizacao", type="string", length=45, nullable=true)
+     */
+    private $tipoformalizacao;
+
+
+}

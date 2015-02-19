@@ -1,0 +1,55 @@
+<?php
+
+namespace SerBinario\SAD\Bundle\SADBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Informacoesbusca
+ *
+ * @ORM\Table(name="informacoesBusca", indexes={@ORM\Index(name="fk_informacoesBusca_tipoHorario1_idx", columns={"tipoHorario_idTipoHorario"}), @ORM\Index(name="fk_informacoesBusca_tipoNivelHerarquico1_idx", columns={"tipoNivelHerarquico_idTipoNivelHerarquico"}), @ORM\Index(name="fk_informacoesBusca_curriculo1_idx", columns={"curriculo_idCurriculo"})})
+ * @ORM\Entity
+ */
+class Informacoesbusca
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idInformacoesBusca", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idinformacoesbusca;
+
+    /**
+     * @var \Tipohorario
+     *
+     * @ORM\ManyToOne(targetEntity="Tipohorario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tipoHorario_idTipoHorario", referencedColumnName="idTipoHorario")
+     * })
+     */
+    private $tipohorariotipohorario;
+
+    /**
+     * @var \Tiponivelherarquico
+     *
+     * @ORM\ManyToOne(targetEntity="Tiponivelherarquico")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tipoNivelHerarquico_idTipoNivelHerarquico", referencedColumnName="idTipoNivelHerarquico")
+     * })
+     */
+    private $tiponivelherarquicotiponivelherarquico;
+
+    /**
+     * @var \Curriculo
+     *
+     * @ORM\ManyToOne(targetEntity="Curriculo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="curriculo_idCurriculo", referencedColumnName="idCurriculo")
+     * })
+     */
+    private $curriculocurriculo;
+
+
+}

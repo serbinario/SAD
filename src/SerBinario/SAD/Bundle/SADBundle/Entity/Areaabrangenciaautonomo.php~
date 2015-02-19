@@ -1,0 +1,32 @@
+<?php
+
+namespace SerBinario\SAD\Bundle\SADBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Areaabrangenciaautonomo
+ *
+ * @ORM\Table(name="areaAbrangenciaAutonomo")
+ * @ORM\Entity
+ */
+class Areaabrangenciaautonomo
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idAreaAbrangenciaAutonomo", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idareaabrangenciaautonomo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="areaAbrangenciaAutonomo", type="string", length=45, nullable=true)
+     */
+    private $areaabrangenciaautonomo;
+
+
+}

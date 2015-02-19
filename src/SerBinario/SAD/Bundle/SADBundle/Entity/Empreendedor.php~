@@ -1,0 +1,74 @@
+<?php
+
+namespace SerBinario\SAD\Bundle\SADBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Empreendedor
+ *
+ * @ORM\Table(name="empreendedor")
+ * @ORM\Entity
+ */
+class Empreendedor
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idEmpreendedor", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idempreendedor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomeEmpreendedor", type="string", length=50, nullable=true)
+     */
+    private $nomeempreendedor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="enderecoResidencial", type="string", length=50, nullable=true)
+     */
+    private $enderecoresidencial;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idadeEmpreendedor", type="integer", nullable=true)
+     */
+    private $idadeempreendedor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="expeProfissionalEmpreendedor", type="string", length=50, nullable=true)
+     */
+    private $expeprofissionalempreendedor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tempoExpeProfissionalEmpreendedor", type="string", length=45, nullable=true)
+     */
+    private $tempoexpeprofissionalempreendedor;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="outraRendaEmpreendedor", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $outrarendaempreendedor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="interesseCursoProfEmpreendedor", type="string", length=50, nullable=true)
+     */
+    private $interessecursoprofempreendedor;
+
+
+}

@@ -1,0 +1,83 @@
+<?php
+
+namespace SerBinario\SAD\Bundle\SADBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Identificacaoatividadeempreendedor
+ *
+ * @ORM\Table(name="identificacaoAtividadeEmpreendedor", indexes={@ORM\Index(name="fk_identificacaoAtividade_empreendedor1_idx", columns={"empreendedor_idEmpreendedor"}), @ORM\Index(name="fk_identificacaoAtividadeEmpreendedor_ramoNegocioEmpreended_idx", columns={"ramoNegocioEmpreendedor_idRamoNegocioEmpreendedor"}), @ORM\Index(name="fk_identificacaoAtividadeEmpreendedor_tipoAtividadeEmpreend_idx", columns={"tipoAtividadeEmpreendedor_idTipoAtividadeEmpreendedor"}), @ORM\Index(name="fk_identificacaoAtividadeEmpreendedor_qtdPessoasEnvolvidasE_idx", columns={"qtdPeEnvEmpreendedor_idQtdPessoasEnvolvidasEmpreendedor"})})
+ * @ORM\Entity
+ */
+class Identificacaoatividadeempreendedor
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idIdentificacaoAtividadeEmpreendedor", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $ididentificacaoatividadeempreendedor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="equipamentoUltilizadoEmpreendedor", type="string", length=45, nullable=true)
+     */
+    private $equipamentoultilizadoempreendedor;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="tempoAtividadeEmpreendedor", type="integer", nullable=true)
+     */
+    private $tempoatividadeempreendedor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="observacoesEmpreendedor", type="text", nullable=true)
+     */
+    private $observacoesempreendedor;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="qtdPeEnvEmpreendedor_idQtdPessoasEnvolvidasEmpreendedor", type="integer", nullable=false)
+     */
+    private $qtdpeenvempreendedorIdqtdpessoasenvolvidasempreendedor;
+
+    /**
+     * @var \Ramonegocioempreendedor
+     *
+     * @ORM\ManyToOne(targetEntity="Ramonegocioempreendedor")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ramoNegocioEmpreendedor_idRamoNegocioEmpreendedor", referencedColumnName="idRamoNegocioEmpreendedor")
+     * })
+     */
+    private $ramonegocioempreendedorramonegocioempreendedor;
+
+    /**
+     * @var \Tipoatividadeempreendedor
+     *
+     * @ORM\ManyToOne(targetEntity="Tipoatividadeempreendedor")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tipoAtividadeEmpreendedor_idTipoAtividadeEmpreendedor", referencedColumnName="idTipoAtividadeEmpreendedor")
+     * })
+     */
+    private $tipoatividadeempreendedortipoatividadeempreendedor;
+
+    /**
+     * @var \Empreendedor
+     *
+     * @ORM\ManyToOne(targetEntity="Empreendedor")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="empreendedor_idEmpreendedor", referencedColumnName="idEmpreendedor")
+     * })
+     */
+    private $empreendedorempreendedor;
+
+
+}

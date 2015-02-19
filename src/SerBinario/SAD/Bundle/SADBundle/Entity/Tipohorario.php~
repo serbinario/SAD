@@ -1,0 +1,32 @@
+<?php
+
+namespace SerBinario\SAD\Bundle\SADBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tipohorario
+ *
+ * @ORM\Table(name="tipoHorario")
+ * @ORM\Entity
+ */
+class Tipohorario
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idTipoHorario", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idtipohorario;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipoHorario", type="string", length=45, nullable=true)
+     */
+    private $tipohorario;
+
+
+}

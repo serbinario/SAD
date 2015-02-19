@@ -1,0 +1,49 @@
+<?php
+
+namespace SerBinario\SAD\Bundle\SADBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Referenciaprofissionalautonomo
+ *
+ * @ORM\Table(name="referenciaProfissionalAutonomo", indexes={@ORM\Index(name="fk_referenciaProfissionalAutonomo_identificacaoAtividadeAut_idx", columns={"identificacaoAtividadeAutonomo_idIdentificacaoAtividadeAutonomo"})})
+ * @ORM\Entity
+ */
+class Referenciaprofissionalautonomo
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idReferenciaProfissionalAutonomo", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idreferenciaprofissionalautonomo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomeReferenciaProfissionalAutonomo", type="string", length=45, nullable=true)
+     */
+    private $nomereferenciaprofissionalautonomo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefoneReferenciaProfissionalAutonomo", type="string", length=15, nullable=true)
+     */
+    private $telefonereferenciaprofissionalautonomo;
+
+    /**
+     * @var \Identificacaoatividadeautonomo
+     *
+     * @ORM\ManyToOne(targetEntity="Identificacaoatividadeautonomo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="identificacaoAtividadeAutonomo_idIdentificacaoAtividadeAutonomo", referencedColumnName="idIdentificacaoAtividadeAutonomo")
+     * })
+     */
+    private $identificacaoatividadeautonomoidentificacaoatividadeautonomo;
+
+
+}

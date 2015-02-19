@@ -1,0 +1,41 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="col-lg-9">
+        {{ form_start(form, { 'style': 'horizontal' }) }}
+            {{ form_row(form.nomecandidato) }}
+            {{ form_row(form.cpfcandidato) }}
+            {{ form_row(form.rgcandidato) }}
+            {{ form_row(form.enderecocadidato) }}
+            {{ form_row(form.bairrocandidato) }}
+            {{ form_row(form.cepcandidato) }}
+            {{ form_row(form.cidadecandidato) }}
+            {{ form_row(form.ufcandidato) }}
+            {{ form_row(form.emailcandidato) }}
+            {{ form_row(form.nascimentocandidato) }}
+            {{ form_row(form.cnhcandidato) }}
+            {{ form_row(form.objCnh.validadecnh) }}
+            {{ form_row(form.objCnh.categoriacnh) }}
+            {{ form_row(form.outrasinformacoescandidato) }}
+            {{ form_row(form.sexosexo) }}
+            {{ form_row(form.estadocivilestadocivil) }}
+            {{ form_row(form.telefones) }}
+            {{ form_row(form.curriculo.resumocurriculo) }}
+            {{ form_row(form.curriculo.prentencaosalarialcurriculo) }}
+            {{ form_row(form.curriculo.atualmenteempregadocurriculo) }}
+            {{ form_row(form.curriculo.formacoes) }}
+            {{ form_row(form.curriculo.experienciasProfissionais) }}
+            {{ form_row(form.curriculo.informatica) }}
+            {{ form_row(form.curriculo.linguasExtrangeiras) }}
+            {{ form_row(form.curriculo.qualificacoesFuturas) }}
+            {{ form_row(form.curriculo.informacaoBusca.tipohorariotipohorario) }}
+            {{ form_row(form.curriculo.informacaoBusca.tiponivelherarquicotiponivelherarquico) }}
+            {{ form_row(form.curriculo.informacaoBusca.opcoesdesejadas) }}
+            {{ form_row(form.actions) }}            
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+
+
+

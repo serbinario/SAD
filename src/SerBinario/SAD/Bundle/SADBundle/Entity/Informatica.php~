@@ -1,0 +1,66 @@
+<?php
+
+namespace SerBinario\SAD\Bundle\SADBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Informatica
+ *
+ * @ORM\Table(name="informatica", indexes={@ORM\Index(name="fk_informatica_tiposInformatica1_idx", columns={"tiposInformatica_idTiposInformatica"}), @ORM\Index(name="fk_informatica_curriculo1_idx", columns={"curriculo_idCurriculo"})})
+ * @ORM\Entity
+ */
+class Informatica
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idInformatica", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idinformatica;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="basicoInformatica", type="boolean", nullable=true)
+     */
+    private $basicoinformatica;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="intermediarioInformatica", type="boolean", nullable=true)
+     */
+    private $intermediarioinformatica;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="avancadoInformatica", type="boolean", nullable=true)
+     */
+    private $avancadoinformatica;
+
+    /**
+     * @var \Tiposinformatica
+     *
+     * @ORM\ManyToOne(targetEntity="Tiposinformatica")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tiposInformatica_idTiposInformatica", referencedColumnName="idTiposInformatica")
+     * })
+     */
+    private $tiposinformaticatiposinformatica;
+
+    /**
+     * @var \Curriculo
+     *
+     * @ORM\ManyToOne(targetEntity="Curriculo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="curriculo_idCurriculo", referencedColumnName="idCurriculo")
+     * })
+     */
+    private $curriculocurriculo;
+
+
+}

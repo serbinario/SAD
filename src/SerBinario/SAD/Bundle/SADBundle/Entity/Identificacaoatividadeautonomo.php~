@@ -1,0 +1,79 @@
+<?php
+
+namespace SerBinario\SAD\Bundle\SADBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Identificacaoatividadeautonomo
+ *
+ * @ORM\Table(name="identificacaoAtividadeAutonomo", indexes={@ORM\Index(name="fk_identificacaoAtividadeAutonomo_autonomo1_idx", columns={"autonomo_idAutonomo"}), @ORM\Index(name="fk_identificacaoAtividadeAutonomo_tipoAtividadeAutonomo1_idx", columns={"tipoAtividadeAutonomo_idTipoAtividadeAutonomo"}), @ORM\Index(name="fk_identificacaoAtividadeAutonomo_areaAbrangenciaAutonomo1_idx", columns={"areaAbrangenciaAutonomo_idAreaAbrangenciaAutonomo"}), @ORM\Index(name="fk_identificacaoAtividadeAutonomo_qtdPessoasEnvolvidasAuton_idx", columns={"qtdPessoasEnvolvidasAutonomo_idQtdPessoasEnvolvidasAutonomo"})})
+ * @ORM\Entity
+ */
+class Identificacaoatividadeautonomo
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idIdentificacaoAtividadeAutonomo", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $ididentificacaoatividadeautonomo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="tempoAtividadeAutonomo", type="integer", nullable=true)
+     */
+    private $tempoatividadeautonomo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="observacoesIdentificacaoAtividadeAutonomo", type="text", nullable=true)
+     */
+    private $observacoesidentificacaoatividadeautonomo;
+
+    /**
+     * @var \Autonomo
+     *
+     * @ORM\ManyToOne(targetEntity="Autonomo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="autonomo_idAutonomo", referencedColumnName="idAutonomo")
+     * })
+     */
+    private $autonomoautonomo;
+
+    /**
+     * @var \Tipoatividadeautonomo
+     *
+     * @ORM\ManyToOne(targetEntity="Tipoatividadeautonomo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tipoAtividadeAutonomo_idTipoAtividadeAutonomo", referencedColumnName="idTipoAtividadeAutonomo")
+     * })
+     */
+    private $tipoatividadeautonomotipoatividadeautonomo;
+
+    /**
+     * @var \Areaabrangenciaautonomo
+     *
+     * @ORM\ManyToOne(targetEntity="Areaabrangenciaautonomo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="areaAbrangenciaAutonomo_idAreaAbrangenciaAutonomo", referencedColumnName="idAreaAbrangenciaAutonomo")
+     * })
+     */
+    private $areaabrangenciaautonomoareaabrangenciaautonomo;
+
+    /**
+     * @var \Qtdpessoasenvolvidasautonomo
+     *
+     * @ORM\ManyToOne(targetEntity="Qtdpessoasenvolvidasautonomo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="qtdPessoasEnvolvidasAutonomo_idQtdPessoasEnvolvidasAutonomo", referencedColumnName="idQtdPessoasEnvolvidasAutonomo")
+     * })
+     */
+    private $qtdpessoasenvolvidasautonomoqtdpessoasenvolvidasautonomo;
+
+
+}

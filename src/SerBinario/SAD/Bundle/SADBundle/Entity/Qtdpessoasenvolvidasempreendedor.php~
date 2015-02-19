@@ -1,0 +1,32 @@
+<?php
+
+namespace SerBinario\SAD\Bundle\SADBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Qtdpessoasenvolvidasempreendedor
+ *
+ * @ORM\Table(name="qtdPessoasEnvolvidasEmpreendedor")
+ * @ORM\Entity
+ */
+class Qtdpessoasenvolvidasempreendedor
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idQtdPessoasEnvolvidasEmpreendedor", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idqtdpessoasenvolvidasempreendedor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="qtdPessoasEnvolvidasEmpreendedor", type="string", length=45, nullable=true)
+     */
+    private $qtdpessoasenvolvidasempreendedor;
+
+
+}

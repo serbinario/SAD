@@ -1,0 +1,49 @@
+<?php
+
+namespace SerBinario\SAD\Bundle\SADBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Opcoesareadesejada
+ *
+ * @ORM\Table(name="opcoesAreaDesejada", indexes={@ORM\Index(name="fk_opcoesAreaDesejada_informacoesBusca1_idx", columns={"informacoesBusca_idInformacoesBusca"})})
+ * @ORM\Entity
+ */
+class Opcoesareadesejada
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idOpcoesAreaDesejada", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idopcoesareadesejada;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="opcaoAreaDesejada", type="string", length=45, nullable=true)
+     */
+    private $opcaoareadesejada;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cagoOpcaoAreaDesejada", type="string", length=45, nullable=true)
+     */
+    private $cagoopcaoareadesejada;
+
+    /**
+     * @var \Informacoesbusca
+     *
+     * @ORM\ManyToOne(targetEntity="Informacoesbusca")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="informacoesBusca_idInformacoesBusca", referencedColumnName="idInformacoesBusca")
+     * })
+     */
+    private $informacoesbuscainformacoesbusca;
+
+
+}
