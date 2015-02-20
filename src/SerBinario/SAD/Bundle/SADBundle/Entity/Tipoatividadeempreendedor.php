@@ -62,4 +62,13 @@ class Tipoatividadeempreendedor
     {
         return $this->tipoatividadeempreendedor;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function __toString() 
+    {
+        return $this->getTipoatividadeempreendedor();
+    }
 }

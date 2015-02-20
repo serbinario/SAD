@@ -140,7 +140,7 @@ class Candidato
     
     /**
      *
-     * @ORM\OneToMany(targetEntity="Telefonescandidato", mappedBy="candidatocandidato", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Telefonescandidato", mappedBy="candidatocandidato", cascade={"all"})
      */
     private $telefones;
     
@@ -535,7 +535,7 @@ class Candidato
      * 
      * @param \Doctrine\Common\Collections\ArrayCollection $telefones
      */
-    public function setTelefones(\Doctrine\Common\Collections\ArrayCollection $telefones) 
+    public function setTelefones($telefones) 
     {
         foreach ($telefones as $telefone) {
             $telefone->setCandidatocandidato($this);

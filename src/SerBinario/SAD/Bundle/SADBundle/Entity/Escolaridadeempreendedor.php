@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Escolaridadeempreendedor
  *
- * @ORM\Table(name="escolaridadeEmpreendedor", indexes={@ORM\Index(name="fk_escolaridade_empreendedor1_idx", columns={"empreendedor_idEmpreendedor"})})
+ * @ORM\Table(name="escolaridadeEmpreendedor")
  * @ORM\Entity
  */
 class Escolaridadeempreendedor
@@ -27,17 +27,6 @@ class Escolaridadeempreendedor
      * @ORM\Column(name="escolaridadeEmpreendedor", type="string", length=45, nullable=true)
      */
     private $escolaridadeempreendedor;
-
-    /**
-     * @var \Empreendedor
-     *
-     * @ORM\ManyToOne(targetEntity="Empreendedor")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="empreendedor_idEmpreendedor", referencedColumnName="idEmpreendedor")
-     * })
-     */
-    private $empreendedorempreendedor;
-
 
 
     /**
@@ -72,27 +61,13 @@ class Escolaridadeempreendedor
     {
         return $this->escolaridadeempreendedor;
     }
-
+    
     /**
-     * Set empreendedorempreendedor
-     *
-     * @param \SerBinario\SAD\Bundle\SADBundle\Entity\Empreendedor $empreendedorempreendedor
-     * @return Escolaridadeempreendedor
+     * 
+     * @return type
      */
-    public function setEmpreendedorempreendedor(\SerBinario\SAD\Bundle\SADBundle\Entity\Empreendedor $empreendedorempreendedor = null)
+    public function __toString() 
     {
-        $this->empreendedorempreendedor = $empreendedorempreendedor;
-
-        return $this;
-    }
-
-    /**
-     * Get empreendedorempreendedor
-     *
-     * @return \SerBinario\SAD\Bundle\SADBundle\Entity\Empreendedor 
-     */
-    public function getEmpreendedorempreendedor()
-    {
-        return $this->empreendedorempreendedor;
+        return $this->getEscolaridadeempreendedor();
     }
 }

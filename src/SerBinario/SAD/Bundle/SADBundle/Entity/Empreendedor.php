@@ -69,7 +69,50 @@ class Empreendedor
      * @ORM\Column(name="interesseCursoProfEmpreendedor", type="string", length=50, nullable=true)
      */
     private $interessecursoprofempreendedor;
-
+    
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Telefonesempreendedor", mappedBy="empreendedorempreendedor", cascade = {"persist"})
+     */
+    private $telefones;
+    
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Escolaridadeempreendedor")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="escolaridade", referencedColumnName="idEscolaridadeEmpreendedor")
+     * })
+     */
+    private $escolaridade;
+    
+    /**
+     * @var \Rendafamiliarempreendedor
+     *
+     * @ORM\ManyToOne(targetEntity="Rendafamiliarempreendedor")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="rendaFamiliar", referencedColumnName="idRendaFamiliarEmpreendedor")
+     * })
+     */
+    private $rendafamiliar;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="Identificacaoatividadeempreendedor", mappedBy="empreendedorempreendedor", cascade = {"persist"})
+     */
+    private $identificacaoAtividade;
+    
+    /**
+     *
+     * @ORM\OneToOne(targetEntity="Identificacaonecessidade", mappedBy="empreendedorempreendedor", cascade = {"persist"})
+     */
+    private $indentificacaoNecessidade;
+    
+    /**
+     * Método construtor
+     */
+    public function __construct() 
+    {
+        $this->telefones     = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
@@ -242,4 +285,106 @@ class Empreendedor
     {
         return $this->interessecursoprofempreendedor;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getTelefones() 
+    {
+        return $this->telefones;
+    }
+
+    /**
+     * 
+     * @param type $telefones
+     */
+    public function setTelefones($telefones) 
+    {
+        foreach($telefones as $telefone) {
+            $telefone->setEmpreendedorempreendedor($this);
+        }
+        
+        $this->telefones = $telefones;
+    }
+
+    /**
+     * 
+     * @return type
+     */
+    public function getEscolaridade() 
+    {
+        return $this->escolaridade;
+    }
+
+    /**
+     * 
+     * @param type $escolaridade
+     */
+    public function setEscolaridade($escolaridade) 
+    {
+        $this->escolaridade = $escolaridade;
+    }
+
+    /**
+     * 
+     * @return type
+     */
+    public function getRendafamiliar() 
+    {
+        return $this->rendafamiliar;
+    }
+
+    /**
+     * 
+     * @param type $rendafamiliar
+     */
+    public function setRendafamiliar($rendafamiliar) 
+    {   
+        $this->rendafamiliar = $rendafamiliar;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getIdentificacaoAtividade() 
+    {
+        return $this->identificacaoAtividade;
+    }
+
+    /**
+     * 
+     * @param type $identificacaoAtividade
+     */
+    public function setIdentificacaoAtividade($identificacaoAtividade) 
+    {
+        $identificacaoAtividade->setEmpreendedorempreendedor($this);
+        
+        $this->identificacaoAtividade = $identificacaoAtividade;
+    }
+
+    /**
+     * 
+     * @return type
+     */
+    public function getIndentificacaoNecessidade() 
+    {
+        return $this->indentificacaoNecessidade;
+    }
+
+    /**
+     * 
+     * @param type $indentificacaoNecessidade
+     */
+    public function setIndentificacaoNecessidade($indentificacaoNecessidade)
+    {
+        $indentificacaoNecessidade->setEmpreendedorempreendedor($this);
+        
+        $this->indentificacaoNecessidade = $indentificacaoNecessidade;
+    }
+
+
+
+   
 }

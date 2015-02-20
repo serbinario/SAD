@@ -62,4 +62,13 @@ class Tipoqualificacao
     {
         return $this->tipoqualificacao;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function __toString() 
+    {
+        return $this->getTipoqualificacao();
+    }
 }

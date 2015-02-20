@@ -72,7 +72,7 @@ class Identificacaoatividadeempreendedor
     /**
      * @var \Empreendedor
      *
-     * @ORM\ManyToOne(targetEntity="Empreendedor")
+     * @ORM\OneToOne(targetEntity="Empreendedor", inversedBy="identificacaoAtividade")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="empreendedor_idEmpreendedor", referencedColumnName="idEmpreendedor")
      * })

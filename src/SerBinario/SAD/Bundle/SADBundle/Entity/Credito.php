@@ -62,4 +62,13 @@ class Credito
     {
         return $this->tipocredito;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function __toString() 
+    {
+        return $this->getTipocredito();
+    }
 }

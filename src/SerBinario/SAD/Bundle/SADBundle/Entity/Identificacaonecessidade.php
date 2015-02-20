@@ -58,7 +58,7 @@ class Identificacaonecessidade
     /**
      * @var \Empreendedor
      *
-     * @ORM\ManyToOne(targetEntity="Empreendedor")
+     * @ORM\OneToOne(targetEntity="Empreendedor", inversedBy="indentificacaoNecessidade")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="empreendedor_idEmpreendedor", referencedColumnName="idEmpreendedor")
      * })

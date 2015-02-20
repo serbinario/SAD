@@ -31,7 +31,7 @@ class Telefonesempreendedor
     /**
      * @var \Empreendedor
      *
-     * @ORM\ManyToOne(targetEntity="Empreendedor")
+     * @ORM\ManyToOne(targetEntity="Empreendedor", inversedBy="telefones")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="empreendedor_idEmpreendedor", referencedColumnName="idEmpreendedor")
      * })

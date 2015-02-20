@@ -62,4 +62,13 @@ class Formalizacao
     {
         return $this->tipoformalizacao;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function __toString() 
+    {
+        return $this->getTipoformalizacao();
+    }
 }

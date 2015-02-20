@@ -1,5 +1,4 @@
 <?php
-
 namespace SerBinario\SAD\Bundle\SADBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -61,5 +60,14 @@ class Ramonegocioempreendedor
     public function getRamonegocioempreendedor()
     {
         return $this->ramonegocioempreendedor;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function __toString() 
+    {
+        return $this->getRamonegocioempreendedor();
     }
 }

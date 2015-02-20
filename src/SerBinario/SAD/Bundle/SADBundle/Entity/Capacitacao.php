@@ -62,4 +62,13 @@ class Capacitacao
     {
         return $this->tipocapacitacao;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function __toString() 
+    {
+       return $this->getTipocapacitacao();
+    }
 }
