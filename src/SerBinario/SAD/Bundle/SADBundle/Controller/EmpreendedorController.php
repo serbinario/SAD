@@ -150,11 +150,11 @@ class EmpreendedorController extends Controller
         $form = $this->createForm(new EmpreendedorType());
         
         if($id) {
-            #Recupera o candidato selecionado
+            #Recupera o empreendedor selecionado
             $empreendedorRecuperado = $empreendedorRN->findById($id);
         }
                
-        #Preenche o formulário com os dados do candidato
+        #Preenche o formulário com os dados do empreendedor
         $form->setData($empreendedorRecuperado);
         
         #Verficando se é uma submissão
