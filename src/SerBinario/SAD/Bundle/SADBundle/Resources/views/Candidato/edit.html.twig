@@ -1,0 +1,108 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {{parent()}}
+    <div class="container">
+        <div class="row clearfix">
+            <br />
+            <legend>Cadastro de Emprego</legend>
+            <div class="col-md-13 column">
+                {{ form_start(form, { 'style': 'horizontal' }) }}
+                <ul class="nav nav-tabs">
+                    <li role="presentation"class="active">
+                        <a href="#dadosPessoais"aria-controls="dadosPessoais"role="tab"data-toggle="tab">
+                            Dados Pessoais</a >
+                    </li >
+                    <li role="presentation">
+                        <a href="#dadosCurriculo"aria-controls="dadosCurriculo"role="tab"data-toggle="tab">
+                            Dados do Currículo</a >
+                    </li >
+                    <li role="presentation">
+                        <a href="#formacaoEscolaridade"aria-controls="formacaoEscolaridade"role="tab"data-toggle="tab">
+                            Formação/Escolaridade</a >
+                    </li >
+                    <li role="presentation">
+                        <a href="#experienciaProfi"aria-controls="experienciaProfi"role="tab"data-toggle="tab">
+                            Experiência Profissional</a >
+                    </li >
+                    <li role="presentation">
+                        <a href="#cursos"aria-controls="cursos"role="tab"data-toggle="tab">
+                            Cursos</a >
+                    </li >
+                    <li role="presentation">
+                        <a href="#informatica"aria-controls="informatica"role="tab"data-toggle="tab">
+                            Informática</a >
+                    </li >
+                    <li role="presentation">
+                        <a href="#qualificacaoFutura"aria-controls="qualificacaoFutura"role="tab"data-toggle="tab">
+                            Qualificação Furtura</a >
+                    </li >
+                    <li role="presentation">
+                        <a href="#84"aria-controls="84"role="tab"data-toggle="tab">
+                            Aviso de Vagas</a >
+                    </li >
+                </ul >
+                <div class="tab-content">
+                    <div class="tab-pane active"id="dadosPessoais">
+                        <br />
+                        {{ form_row(form.nomecandidato) }}
+                        {{ form_row(form.cpfcandidato) }}
+                        {{ form_row(form.rgcandidato) }}
+                        {{ form_row(form.enderecocadidato) }}
+                        {{ form_row(form.bairrocandidato) }}
+                        {{ form_row(form.cepcandidato) }}
+                        {{ form_row(form.cidadecandidato) }}
+                        {{ form_row(form.ufcandidato) }}
+                        {{ form_row(form.emailcandidato) }}
+                        {{ form_row(form.nascimentocandidato) }}
+                        {{ form_row(form.cnhcandidato) }}
+                        {{ form_row(form.objCnh.validadecnh) }}
+                        {{ form_row(form.objCnh.categoriacnh) }}
+                        {{ form_row(form.outrasinformacoescandidato) }}
+                        {{ form_row(form.sexosexo) }}
+                        {{ form_row(form.estadocivilestadocivil) }}
+                        {{ form_row(form.telefones) }}                                                                                       
+                    </div>
+                    <div class="tab-pane"id="dadosCurriculo">
+                        <br />
+                        {{ form_row(form.curriculo.resumocurriculo) }}
+                        {{ form_row(form.curriculo.prentencaosalarialcurriculo) }}
+                        {{ form_row(form.curriculo.atualmenteempregadocurriculo) }}
+                    </div>
+                    <div class="tab-pane"id="formacaoEscolaridade">
+                        <br />
+                        {{ form_row(form.curriculo.formacoes) }}
+                    </div>
+                    <div class="tab-pane"id="experienciaProfi">
+                        <br />
+                        {{ form_row(form.curriculo.experienciasProfissionais) }}
+                    </div>
+                    <div class="tab-pane"id="cursos">
+                        <br />
+                         {{ form_row(form.curriculo.linguasExtrangeiras) }}
+                    </div>
+                    <div class="tab-pane"id="informatica">
+                        <br />
+                        {{ form_row(form.curriculo.informatica) }}
+                    </div>
+                    <div class="tab-pane"id="qualificacaoFutura">
+                        <br />
+                        {{ form_row(form.curriculo.qualificacoesFuturas) }}
+                    </div>
+                    <div class="tab-pane"id="84">
+                        <br />
+                        {{ form_row(form.curriculo.informacaoBusca.tipohorariotipohorario) }}
+                        {{ form_row(form.curriculo.informacaoBusca.tiponivelherarquicotiponivelherarquico) }}
+                        {{ form_row(form.curriculo.informacaoBusca.opcoesdesejadas) }}                      
+                    </div>
+                </div>
+                    {{ form_row(form.actions) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+

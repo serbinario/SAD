@@ -35,4 +35,26 @@ class CandidatoRN
         
         return $result;
     }
+    
+    /**
+     * 
+     * @param Candidato $candidato
+     */
+    public function edit(Candidato $candidato)
+    {
+        $result = $this->candidatoDAO->update($candidato);
+        
+        return $result;
+    }
+    
+    /**
+     * 
+     * @param type $id
+     */
+    public function findById($id)
+    {
+        $result = $this->candidatoDAO->findById($id);
+        
+        return $result;
+    }
 }
