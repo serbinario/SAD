@@ -533,7 +533,7 @@ class Candidato
     
     /**
      * 
-     * @param \Doctrine\Common\Collections\ArrayCollection $telefones
+     * @param type $telefones
      */
     public function setTelefones($telefones) 
     {
