@@ -19,7 +19,7 @@ class CandidatoController extends Controller
 {
     
     /**
-     * @Route("/save", name="save")
+     * @Route("/saveCandidato", name="saveCandidato")
      * @Template()
      */
     public function saveAction(Request $request)
@@ -137,7 +137,7 @@ class CandidatoController extends Controller
     }
     
     /**
-     * @Route("/edit/id/{id}", name="edit")
+     * @Route("/editCandidato/id/{id}", name="editCandidato")
      * @Template()
      */
     public function editAction(Request $request, $id)
