@@ -38,7 +38,7 @@ class LinguaextrangeiraType extends AbstractType
                 ))
             ->add('traducaolinguaextrangeira', 'choice', array( 
                 'label' => 'Tradução',
-                'multiple' => false,
+                'multiple' => true,
                 'expanded' => true,         
                 'choices' => array(1 => "Ativar") ,
                 'attr'    => array('inline' => true)

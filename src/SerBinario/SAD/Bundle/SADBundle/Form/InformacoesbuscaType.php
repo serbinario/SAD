@@ -19,7 +19,7 @@ class InformacoesbuscaType extends AbstractType
             ->add('tipohorariotipohorario','entity', array(
                 'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Tipohorario',
                 'label' => 'Tipo Horário',  
-                'multiple' => false,
+                'multiple' => true,
                 'expanded' => true,
                 'choices' => function (EntityManager $em) {
                     return $em->getRepository("SerBinario\SAD\Bundle\SADBundle\Entity\Tiponivelherarquico")->findAll();
