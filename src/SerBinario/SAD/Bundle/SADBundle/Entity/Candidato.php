@@ -537,11 +537,11 @@ class Candidato
      */
     public function setTelefones($telefones) 
     {
-        foreach ($telefones as $telefone) {
+        foreach ($telefones as $telefone) {            
             $telefone->setCandidatocandidato($this);
         }
         
-        $this->telefones = $telefone;
+        $this->telefones = $telefones;
     }
 
     

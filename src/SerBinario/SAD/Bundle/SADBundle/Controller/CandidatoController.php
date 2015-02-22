@@ -19,7 +19,7 @@ class CandidatoController extends Controller
 {
     
     /**
-     * @Route("/save", name="save")
+     * @Route("/save", name="saveCandidato")
      * @Template()
      */
     public function saveAction(Request $request)
@@ -39,7 +39,7 @@ class CandidatoController extends Controller
             if($form->isValid()) {
                 #Recuperando os dados
                 $candidato = $form->getData();
-                
+                //var_dump($candidato);exit;
                 #Resultado da operação
                 $result =  $candidatoRN->save($candidato);
                 
@@ -68,8 +68,7 @@ class CandidatoController extends Controller
     }
     
     /**
-     * @Route("/gridCandidato", name="gridCandidato")
-     * @Method({"POST"})
+     * @Route("/gridCandidato", name="gridCandidato")     * 
      * @Template("SADBundle:Candidato:gridCandidato.html.twig")
      */
     public function gridCandidatoAction(Request $request) {

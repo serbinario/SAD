@@ -15,7 +15,11 @@ class TelefonescandidatoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('telefone')
+            ->add('telefone', 'text', array( 
+                'label' => false,
+                'attr' => array(
+                    'widget_col'=> '10',
+                )))
         ;
     }
     

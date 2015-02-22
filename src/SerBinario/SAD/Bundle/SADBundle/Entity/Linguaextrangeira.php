@@ -22,32 +22,15 @@ class Linguaextrangeira
     private $idlinguaextrangeira;
 
     /**
-     * @var boolean
+     * @var \TipoQualifLingExtrangeira
      *
-     * @ORM\Column(name="nocaoLinguaExtrangeira", type="boolean", nullable=true)
+     * @ORM\ManyToOne(targetEntity="TipoQualifLingExtrangeira")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tipoQualifLingExtrangeira", referencedColumnName="idTipoQualifLingExtrangeira")
+     * })
      */
-    private $nocaolinguaextrangeira;
+    private $tipoQualifLingExtrangeira;
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="fluenciaLinguaExtrangeira", type="boolean", nullable=true)
-     */
-    private $fluencialinguaextrangeira;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="redacaoLinguaExtrangeira", type="boolean", nullable=true)
-     */
-    private $redacaolinguaextrangeira;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="traducaoLinguaExtrangeira", type="boolean", nullable=true)
-     */
-    private $traducaolinguaextrangeira;
 
     /**
      * @var \Curriculo
@@ -69,110 +52,43 @@ class Linguaextrangeira
      */
     private $tipolinguaextrangeiralinguaextrangeira;
 
-
-
     /**
-     * Get idlinguaextrangeira
-     *
-     * @return integer 
+     * 
+     * @return type
      */
-    public function getIdlinguaextrangeira()
+    public function getIdlinguaextrangeira() 
     {
         return $this->idlinguaextrangeira;
     }
 
     /**
-     * Set nocaolinguaextrangeira
-     *
-     * @param boolean $nocaolinguaextrangeira
-     * @return Linguaextrangeira
+     * 
+     * @return type
      */
-    public function setNocaolinguaextrangeira($nocaolinguaextrangeira)
+    public function getTipoQualifLingExtrangeira() 
     {
-        $this->nocaolinguaextrangeira = $nocaolinguaextrangeira;
-
-        return $this;
+        return $this->tipoQualifLingExtrangeira;
     }
 
     /**
-     * Get nocaolinguaextrangeira
-     *
-     * @return boolean 
+     * 
+     * @param type $idlinguaextrangeira
      */
-    public function getNocaolinguaextrangeira()
+    public function setIdlinguaextrangeira($idlinguaextrangeira) 
     {
-        return $this->nocaolinguaextrangeira;
+        $this->idlinguaextrangeira = $idlinguaextrangeira;
     }
 
     /**
-     * Set fluencialinguaextrangeira
-     *
-     * @param boolean $fluencialinguaextrangeira
-     * @return Linguaextrangeira
+     * 
+     * @param  $tipoQualifLingExtrangeira
      */
-    public function setFluencialinguaextrangeira($fluencialinguaextrangeira)
+    public function setTipoQualifLingExtrangeira($tipoQualifLingExtrangeira) 
     {
-        $this->fluencialinguaextrangeira = $fluencialinguaextrangeira;
-
-        return $this;
+        $this->tipoQualifLingExtrangeira = $tipoQualifLingExtrangeira;
     }
 
-    /**
-     * Get fluencialinguaextrangeira
-     *
-     * @return boolean 
-     */
-    public function getFluencialinguaextrangeira()
-    {
-        return $this->fluencialinguaextrangeira;
-    }
-
-    /**
-     * Set redacaolinguaextrangeira
-     *
-     * @param boolean $redacaolinguaextrangeira
-     * @return Linguaextrangeira
-     */
-    public function setRedacaolinguaextrangeira($redacaolinguaextrangeira)
-    {
-        $this->redacaolinguaextrangeira = $redacaolinguaextrangeira;
-
-        return $this;
-    }
-
-    /**
-     * Get redacaolinguaextrangeira
-     *
-     * @return boolean 
-     */
-    public function getRedacaolinguaextrangeira()
-    {
-        return $this->redacaolinguaextrangeira;
-    }
-
-    /**
-     * Set traducaolinguaextrangeira
-     *
-     * @param boolean $traducaolinguaextrangeira
-     * @return Linguaextrangeira
-     */
-    public function setTraducaolinguaextrangeira($traducaolinguaextrangeira)
-    {
-        $this->traducaolinguaextrangeira = $traducaolinguaextrangeira;
-
-        return $this;
-    }
-
-    /**
-     * Get traducaolinguaextrangeira
-     *
-     * @return boolean 
-     */
-    public function getTraducaolinguaextrangeira()
-    {
-        return $this->traducaolinguaextrangeira;
-    }
-
+    
     /**
      * Set curriculocurriculo
      *

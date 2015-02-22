@@ -109,16 +109,15 @@ class CandidatoType extends AbstractType
                      'widget_col'=> '3',
                     )
                 ))
-            ->add('telefones', 'bootstrap_collection', array(
-                        'allow_add'          => true,
-                        'allow_delete'       => true,
-                        'add_button_text'    => 'Adicionar',
-                        'delete_button_text' => 'Remover',
-                        'sub_widget_col'     => 4,
-                        'button_col'         => 3,
-                        'type'  => new TelefonescandidatoType() 
-                    )
-                )            
+            ->add('telefones', 'bootstrap_collection', array(   
+                'type'               => new TelefonescandidatoType() ,
+                'allow_add'          => true,
+                'allow_delete'       => true,
+                'add_button_text'    => 'Adicionar',
+                'delete_button_text' => 'Remover',
+                'sub_widget_col'     => 3,
+                'button_col'         => 3           
+                ))           
             ->add('curriculo', new CurriculoType())
             ->add('actions', 'form_actions', [
                 'buttons' => [

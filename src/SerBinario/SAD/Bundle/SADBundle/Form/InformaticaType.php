@@ -16,34 +16,23 @@ class InformaticaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('basicoinformatica', 'choice', array( 
-                'label' => 'Básico',
-                'multiple' => true,
-                'expanded' => true,         
-                'choices' => array(1 => "Ativar") ,
-                'attr'    => array('inline' => true)
-                ))
-            ->add('intermediarioinformatica', 'choice', array( 
-                'label' => 'Intermediário',
-                'multiple' => true,
-                'expanded' => true,         
-                'choices' => array(1 => "Ativar") ,
-                'attr'    => array('inline' => true)
-                ))
-            ->add('avancadoinformatica', 'choice', array( 
-                'label' => 'Avançado',
-                'multiple' => true,
-                'expanded' => true,         
-                'choices' => array(1 => "Ativar") ,
-                'attr'    => array('inline' => true)
-                ))
-            ->add('tiposinformaticatiposinformatica','entity', array(
+             ->add('tiposinformaticatiposinformatica','entity', array(
                 'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Tiposinformatica',
-                'label' => 'Cursos Informática',                
+                'label' => false,                
                 'attr' => array(
                      'widget_col'=> '3',
                     )
                 ))
+            ->add('tipoNivelInformatica','entity', array(
+                'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\TipoNivelInformatica',
+                'label' => false,
+                'multiple' => false,
+                'expanded' => true,  
+                'attr' => array(
+                     'widget_col'=> '3',
+                    )
+                ))
+           
         ;
     }
     

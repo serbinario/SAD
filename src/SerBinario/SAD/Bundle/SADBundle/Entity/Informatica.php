@@ -19,28 +19,17 @@ class Informatica
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idinformatica;
-
+    
     /**
-     * @var boolean
+     * @var \TipoNivelInformatica
      *
-     * @ORM\Column(name="basicoInformatica", type="boolean", nullable=true)
+     * @ORM\ManyToOne(targetEntity="TipoNivelInformatica")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tipoNivelInformatica", referencedColumnName="idTipoNivelInformatica")
+     * })
      */
-    private $basicoinformatica;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="intermediarioInformatica", type="boolean", nullable=true)
-     */
-    private $intermediarioinformatica;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="avancadoInformatica", type="boolean", nullable=true)
-     */
-    private $avancadoinformatica;
-
+    private $tipoNivelInformatica;
+    
     /**
      * @var \Tiposinformatica
      *
@@ -70,75 +59,6 @@ class Informatica
     public function getIdinformatica()
     {
         return $this->idinformatica;
-    }
-
-    /**
-     * Set basicoinformatica
-     *
-     * @param boolean $basicoinformatica
-     * @return Informatica
-     */
-    public function setBasicoinformatica($basicoinformatica)
-    {
-        $this->basicoinformatica = $basicoinformatica;
-
-        return $this;
-    }
-
-    /**
-     * Get basicoinformatica
-     *
-     * @return boolean 
-     */
-    public function getBasicoinformatica()
-    {
-        return $this->basicoinformatica;
-    }
-
-    /**
-     * Set intermediarioinformatica
-     *
-     * @param boolean $intermediarioinformatica
-     * @return Informatica
-     */
-    public function setIntermediarioinformatica($intermediarioinformatica)
-    {
-        $this->intermediarioinformatica = $intermediarioinformatica;
-
-        return $this;
-    }
-
-    /**
-     * Get intermediarioinformatica
-     *
-     * @return boolean 
-     */
-    public function getIntermediarioinformatica()
-    {
-        return $this->intermediarioinformatica;
-    }
-
-    /**
-     * Set avancadoinformatica
-     *
-     * @param boolean $avancadoinformatica
-     * @return Informatica
-     */
-    public function setAvancadoinformatica($avancadoinformatica)
-    {
-        $this->avancadoinformatica = $avancadoinformatica;
-
-        return $this;
-    }
-
-    /**
-     * Get avancadoinformatica
-     *
-     * @return boolean 
-     */
-    public function getAvancadoinformatica()
-    {
-        return $this->avancadoinformatica;
     }
 
     /**
@@ -186,4 +106,24 @@ class Informatica
     {
         return $this->curriculocurriculo;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getTipoNivelInformatica() 
+    {
+        return $this->tipoNivelInformatica;
+    }
+
+    /**
+     * 
+     * @param type $tipoNivelInformatica
+     */
+    public function setTipoNivelInformatica($tipoNivelInformatica) 
+    {
+        $this->tipoNivelInformatica = $tipoNivelInformatica;
+    }
+
+
 }

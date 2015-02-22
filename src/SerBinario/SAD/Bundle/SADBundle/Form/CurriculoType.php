@@ -67,7 +67,7 @@ class CurriculoType extends AbstractType
                         'add_button_text'    => 'Adicionar',
                         'delete_button_text' => 'Remover',
                         'sub_widget_col'     => 10,
-                        'button_col'         => 3,                        
+                        'button_col'         => 3,                                   
                         'type'  => new InformaticaType()                        
                     )
                 )  
