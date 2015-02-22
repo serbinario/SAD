@@ -19,7 +19,7 @@ class CandidatoController extends Controller
 {
     
     /**
-     * @Route("/save", name="saveCandidato")
+     * @Route("/saveCandidato", name="saveCandidato")
      * @Template()
      */
     public function saveAction(Request $request)
@@ -136,7 +136,7 @@ class CandidatoController extends Controller
     }
     
     /**
-     * @Route("/edit/id/{id}", name="edit")
+     * @Route("/editCandidato/id/{id}", name="editCandidato")
      * @Template()
      */
     public function editAction(Request $request, $id)
@@ -166,7 +166,7 @@ class CandidatoController extends Controller
             if($form->isValid()) {
                 #Recuperando os dados
                 $candidato = $form->getData();               
-                var_dump($candidato);exit();
+                
                 #Resultado da operação
                 $result =  $candidatoRN->edit($candidato);
                                       

@@ -134,7 +134,7 @@ class Candidato
     private $curriculo;
     
     /**
-     * @ORM\OneToOne(targetEntity="Cnh", mappedBy="candidatocandidato", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="Cnh", mappedBy="candidatocandidato", cascade={"all"})
      **/
     private $objCnh;
     
@@ -519,6 +519,8 @@ class Candidato
      */
     public function setObjCnh(Cnh $objCnh) 
     {
+        $objCnh->setCandidatocandidato($this);
+        
         $this->objCnh = $objCnh;
     }
     

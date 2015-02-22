@@ -41,4 +41,37 @@ class EmpreendedorDAO
            return false;
        }
    }
+   
+   /**
+    * 
+    * @param Empreendedor $empreendedor
+    * @return boolean
+    */
+   public function edit(Empreendedor $empreendedor)
+   {
+       try {
+           $this->maneger->merge($empreendedor);
+           $this->maneger->flush();
+           
+           return $empreendedor;
+       } catch (Exception $ex) {
+           return false;
+       }
+   }
+   
+   /**
+    * 
+    * @param type $id
+    * @return type
+    */
+   public function findById($id)
+   {
+       try {
+           $obj = $this->maneger->getRepository("SerBinario\SAD\Bundle\SADBundle\Entity\Empreendedor")->find($id);
+           
+           return $obj;
+       } catch (Exception $ex) {
+           return null;
+       }
+   }
 }

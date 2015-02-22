@@ -65,9 +65,9 @@
                                 <tr>
                                     <th>Detalhe</th>
                                     <th>Nome</th>
-                                    <th>CPF</th>
-                                    <th>RG</th>
-                                    <th>E-mail</th>                                    
+                                    <th>Idade</th>
+                                    <th>Exp. Profissional</th>
+                                    <th>Tempo de Experiência</th>                                    
                                     <th>Acão</th>
                                 </tr>
                             </thead>
@@ -76,9 +76,9 @@
                                 <tr>
                                     <th>Detalhe</th>
                                     <th>Nome</th>
-                                    <th>CPF</th>
-                                    <th>RG</th>
-                                    <th>E-mail</th>                                    
+                                    <th>Idade</th>
+                                    <th>Exp. Profissional</th>
+                                    <th>Tempo de Experiência</th>                                    
                                     <th>Acão</th>
                                 </tr>
                             </tfoot>
@@ -98,7 +98,7 @@
     <script type="text/javascript" src="{{asset('js/javax_faces.js')}}"></script>
     <script type="text/javascript" language="javascript" class="init">
         function format(d) {
-            return  '<b>Sexo: </b>' + d.sexo + ' <br>';
+            return  '<b>Outra Renda: </b>' + d.outraRenda + ' <br>';
         }
 
         $(document).ready(function ()
@@ -108,7 +108,7 @@
                 "serverSide": true,
                 "bFilter": true, //Ativa o Search global
                 "ajax": {
-                    "url": "{{ path('gridCandidato') }}",
+                    "url": "{{ path('gridEmpreendedor') }}",
                     "type": "POST"
                 },
                 "columns": [
@@ -118,16 +118,16 @@
                         "data": null,
                         "defaultContent": ""
                     },
-                    {"data": "nomeCandidato"},
-                    {"data": "cpfCandidato"},
-                    {"data": "rgCandidato"},
-                    {"data": "emailCandidato"},
+                    {"data": "nomeEmpreendedor"},
+                    {"data": "idadeEmpreendedor"},
+                    {"data": "expProfissional"},
+                    {"data": "tempoExp"},
                     {
                         "class": "bt",
                         "orderable": false,
                         "data": null,
                         "render": function (data, type, row, full, meta) {
-                            return '<a href="editCandidato/id/'+data.id +'" class="editar" title="Editar">'
+                            return '<a href="editEmpreendedor/id/'+data.id +'" class="editar" title="Editar">'
                         }
                     },
                 ],
