@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Rendafamiliarautonomo
  *
- * @ORM\Table(name="rendaFamiliarAutonomo", indexes={@ORM\Index(name="fk_rendaFamiliarAutonomo_autonomo1_idx", columns={"autonomo_idAutonomo"})})
+ * @ORM\Table(name="rendaFamiliarAutonomo")
  * @ORM\Entity
  */
 class Rendafamiliarautonomo
@@ -20,39 +20,12 @@ class Rendafamiliarautonomo
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idrendafamiliarautonomo;
-
+    
     /**
-     * @var boolean
      *
-     * @ORM\Column(name="negociosAutonomo", type="boolean", nullable=true)
+     * @ORM\Column(name="tipoRendaFamiliar", type="string", nullable=true)
      */
-    private $negociosautonomo;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="esposaAutonomo", type="boolean", nullable=true)
-     */
-    private $esposaautonomo;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="filhosAutonomo", type="boolean", nullable=true)
-     */
-    private $filhosautonomo;
-
-    /**
-     * @var \Autonomo
-     *
-     * @ORM\ManyToOne(targetEntity="Autonomo")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="autonomo_idAutonomo", referencedColumnName="idAutonomo")
-     * })
-     */
-    private $autonomoautonomo;
-
-
+    private $tipoRendaFamiliar;
 
     /**
      * Get idrendafamiliarautonomo
@@ -63,96 +36,30 @@ class Rendafamiliarautonomo
     {
         return $this->idrendafamiliarautonomo;
     }
-
+    
     /**
-     * Set negociosautonomo
-     *
-     * @param boolean $negociosautonomo
-     * @return Rendafamiliarautonomo
+     * 
+     * @return type
      */
-    public function setNegociosautonomo($negociosautonomo)
+    public function getTipoRendaFamiliar()
     {
-        $this->negociosautonomo = $negociosautonomo;
-
-        return $this;
+        return $this->tipoRendaFamiliar;
     }
 
     /**
-     * Get negociosautonomo
-     *
-     * @return boolean 
+     * 
+     * @param type $tipoRendaFamiliar
      */
-    public function getNegociosautonomo()
+    public function setTipoRendaFamiliar($tipoRendaFamiliar) 
     {
-        return $this->negociosautonomo;
+        $this->tipoRendaFamiliar = $tipoRendaFamiliar;
     }
-
+    
     /**
-     * Set esposaautonomo
-     *
-     * @param boolean $esposaautonomo
-     * @return Rendafamiliarautonomo
+     * 
      */
-    public function setEsposaautonomo($esposaautonomo)
+    public function __toString() 
     {
-        $this->esposaautonomo = $esposaautonomo;
-
-        return $this;
-    }
-
-    /**
-     * Get esposaautonomo
-     *
-     * @return boolean 
-     */
-    public function getEsposaautonomo()
-    {
-        return $this->esposaautonomo;
-    }
-
-    /**
-     * Set filhosautonomo
-     *
-     * @param boolean $filhosautonomo
-     * @return Rendafamiliarautonomo
-     */
-    public function setFilhosautonomo($filhosautonomo)
-    {
-        $this->filhosautonomo = $filhosautonomo;
-
-        return $this;
-    }
-
-    /**
-     * Get filhosautonomo
-     *
-     * @return boolean 
-     */
-    public function getFilhosautonomo()
-    {
-        return $this->filhosautonomo;
-    }
-
-    /**
-     * Set autonomoautonomo
-     *
-     * @param \SerBinario\SAD\Bundle\SADBundle\Entity\Autonomo $autonomoautonomo
-     * @return Rendafamiliarautonomo
-     */
-    public function setAutonomoautonomo(\SerBinario\SAD\Bundle\SADBundle\Entity\Autonomo $autonomoautonomo = null)
-    {
-        $this->autonomoautonomo = $autonomoautonomo;
-
-        return $this;
-    }
-
-    /**
-     * Get autonomoautonomo
-     *
-     * @return \SerBinario\SAD\Bundle\SADBundle\Entity\Autonomo 
-     */
-    public function getAutonomoautonomo()
-    {
-        return $this->autonomoautonomo;
+        return $this->getTipoRendaFamiliar();
     }
 }

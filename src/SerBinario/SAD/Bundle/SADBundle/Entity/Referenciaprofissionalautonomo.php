@@ -38,7 +38,7 @@ class Referenciaprofissionalautonomo
     /**
      * @var \Identificacaoatividadeautonomo
      *
-     * @ORM\ManyToOne(targetEntity="Identificacaoatividadeautonomo")
+     * @ORM\ManyToOne(targetEntity="Identificacaoatividadeautonomo", inversedBy="referenciasProfissionais")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="identificacaoAtividadeAutonomo_idIdentificacaoAtividadeAutonomo", referencedColumnName="idIdentificacaoAtividadeAutonomo")
      * })

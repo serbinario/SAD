@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Escolaridadeautonomo
  *
- * @ORM\Table(name="escolaridadeAutonomo", indexes={@ORM\Index(name="fk_escolaridadeAutonomo_autonomo1_idx", columns={"autonomo_idAutonomo"})})
+ * @ORM\Table(name="escolaridadeAutonomo")
  * @ORM\Entity
  */
 class Escolaridadeautonomo
@@ -27,18 +27,6 @@ class Escolaridadeautonomo
      * @ORM\Column(name="escolaridadeAutonomo", type="string", length=45, nullable=true)
      */
     private $escolaridadeautonomo;
-
-    /**
-     * @var \Autonomo
-     *
-     * @ORM\ManyToOne(targetEntity="Autonomo")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="autonomo_idAutonomo", referencedColumnName="idAutonomo")
-     * })
-     */
-    private $autonomoautonomo;
-
-
 
     /**
      * Get idescolaridadeautonomo
@@ -74,25 +62,11 @@ class Escolaridadeautonomo
     }
 
     /**
-     * Set autonomoautonomo
-     *
-     * @param \SerBinario\SAD\Bundle\SADBundle\Entity\Autonomo $autonomoautonomo
-     * @return Escolaridadeautonomo
+     * 
+     * @return type
      */
-    public function setAutonomoautonomo(\SerBinario\SAD\Bundle\SADBundle\Entity\Autonomo $autonomoautonomo = null)
+    public function __toString() 
     {
-        $this->autonomoautonomo = $autonomoautonomo;
-
-        return $this;
-    }
-
-    /**
-     * Get autonomoautonomo
-     *
-     * @return \SerBinario\SAD\Bundle\SADBundle\Entity\Autonomo 
-     */
-    public function getAutonomoautonomo()
-    {
-        return $this->autonomoautonomo;
+        return $this->getEscolaridadeautonomo();
     }
 }

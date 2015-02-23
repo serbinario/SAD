@@ -140,8 +140,7 @@ class CandidatoController extends Controller
      * @Template()
      */
     public function editAction(Request $request, $id)
-    {   
-        
+    {     
         #Recuperando o serviço do modelo
         $candidatoRN = $this->get("candidato_rn");
         

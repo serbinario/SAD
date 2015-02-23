@@ -1,5 +1,4 @@
 <?php
-
 namespace SerBinario\SAD\Bundle\SADBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -31,7 +30,7 @@ class Telefonesautonomo
     /**
      * @var \Autonomo
      *
-     * @ORM\ManyToOne(targetEntity="Autonomo")
+     * @ORM\ManyToOne(targetEntity="Autonomo", inversedBy="telefones")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="autonomo_idAutonomo", referencedColumnName="idAutonomo")
      * })

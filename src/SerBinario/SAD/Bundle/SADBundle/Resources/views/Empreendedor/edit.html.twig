@@ -16,8 +16,51 @@
             <legend>Cadastro de Emprego</legend>
             <div class="col-md-13 column">
                 {{ form_start(form, { 'style': 'horizontal' }) }}
-                    {{ form_widget(form) }}
-                {{ form_end(form) }}            
+                    <ul class="nav nav-tabs">
+                        <li role="presentation"class="active">
+                            <a href="#identificacaoPessoais"aria-controls="identificacaoPessoais"role="tab"data-toggle="tab">
+                                Indentificação Pessoal</a >
+                        </li >
+                        <li role="presentation">
+                            <a href="#identificacaoAtividade"aria-controls="identificacaoAtividade"role="tab"data-toggle="tab">
+                                Identificação de Atividade</a >
+                        </li >
+                        <li role="presentation">
+                            <a href="#identificacaoNecessidade"aria-controls="identificacaoNecessidade"role="tab"data-toggle="tab">
+                                Identificação Necessidade</a >
+                        </li >
+                    </ul >
+                    <div class="tab-content">
+                        <div class="tab-pane active"id="identificacaoPessoais">
+                            {{ form_row(form.nomeempreendedor) }}
+                            {{ form_row(form.enderecoresidencial) }}
+                            {{ form_row(form.idadeempreendedor) }}
+                            {{ form_row(form.expeprofissionalempreendedor) }}
+                            {{ form_row(form.tempoexpeprofissionalempreendedor) }}
+                            {{ form_row(form.outrarendaempreendedor) }}
+                            {{ form_row(form.interessecursoprofempreendedor) }}
+                            {{ form_row(form.telefones) }}
+                            {{ form_row(form.escolaridade) }}
+                            {{ form_row(form.rendafamiliar) }}
+                        </div>
+                        <div class="tab-pane active"id="identificacaoAtividade">
+                            {{ form_row(form.tipoatividadeempreendedortipoatividadeempreendedor) }}
+                            {{ form_row(form.ramonegocioempreendedorramonegocioempreendedor) }}
+                            {{ form_row(form.tempoatividadeempreendedor) }}
+                            {{ form_row(form.qtdPessoasEnvolvidas) }}
+                            {{ form_row(form.observacoesempreendedor) }}
+                        </div>
+                        <div class="tab-pane active"id="identificacaoNecessidade">
+                            {{ form_row(form.creditocredito) }}
+                            {{ form_row(form.consultoria) }}
+                            {{ form_row(form.capacitacaocapacitacao) }}
+                            {{ form_row(form.formalizacaoformalizacao) }}
+                            {{ form_row(form.tipoqualificacaotipoqualificacao) }}
+                            {{ form_row(form.historico) }}
+                        </div>
+                    </div>
+                    {{ form_row(form.actions) }}
+                {{ form_end(form) }}      
             </div>
         </div>
     </div>
