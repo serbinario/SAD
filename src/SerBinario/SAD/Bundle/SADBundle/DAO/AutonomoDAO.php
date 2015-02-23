@@ -37,9 +37,42 @@ class AutonomoDAO
            $this->maneger->persist($autonomo);
            $this->maneger->flush();
            
-           return $candidato;
+           return $autonomo;
        } catch (Exception $ex) {
            return false;
+       }
+   }
+   
+   /**
+    * 
+    * @param Autonomo $autonomo
+    * @return boolean|Candidato
+    */
+   public function update(Autonomo $autonomo)
+   {
+       try {
+           $this->maneger->merge($autonomo);
+           $this->maneger->flush();
+           
+           return $autonomo;
+       } catch (Exception $ex) {
+           return false;
+       }
+   }
+   
+   /**
+    * 
+    * @param type $id
+    * @return type
+    */
+   public function findById($id)
+   {
+       try {
+           $obj = $this->maneger->getRepository("SerBinario\SAD\Bundle\SADBundle\Entity\Autonomo")->find($id);
+           
+           return $obj;
+       } catch (Exception $ex) {
+           return null;
        }
    }
 }

@@ -6,8 +6,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use SerBinario\SAD\Bundle\SADBundle\Util\GridClass;
 use SerBinario\SAD\Bundle\SADBundle\Form\AutonomoType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use SerBinario\SAD\Bundle\SADBundle\Util\GridClass;
 
 /**
  * Autonomo controller.
@@ -42,7 +43,7 @@ class AutonomoController extends Controller
                 $result =  $autonomoRN->save($autonomo);
                 
                 #Messagem de retorno
-                $this->get('session')->getFlashBag()->add('sucess', 'Autonomo realizado com sucesso');
+                $this->get('session')->getFlashBag()->add('success', 'Autonomo realizado com sucesso');
                 
                 #Criando o formulário
                 $form = $this->createForm(new AutonomoType());
@@ -131,6 +132,52 @@ class AutonomoController extends Controller
         }else{            
             return array();            
         }
+    }
+    
+    /**
+     * @Route("/editAutonomo/id/{id}", name="editAutonomo")
+     * @Template()
+     */
+    public function editAction(Request $request, $id)
+    {   
         
+        #Recuperando o serviço do modelo
+        $autonomoRN = $this->get("autonomo_rn");
+        
+        #Criando o formulário
+        $form = $this->createForm(new AutonomoType());
+        
+        if($id) {
+            #Recupera o autonomo selecionado
+            $autonomoRecuperado = $autonomoRN->findById($id);
+        }
+               
+        #Preenche o formulário com os dados do autonomo
+        $form->setData($autonomoRecuperado);
+        
+        #Verficando se é uma submissão
+        if($request->getMethod() === "POST") {
+                      
+            #Repasando a requisição
+            $form->handleRequest($request);
+            
+            #Verifica se os dados são válidos
+            if($form->isValid()) {
+                #Recuperando os dados
+                $autonomo = $form->getData();               
+                
+                #Resultado da operação
+                $result =  $autonomoRN->edit($autonomo);
+                                      
+                #Messagem de retorno
+                $this->get('session')->getFlashBag()->add('success', 'Autonomo atualizado com sucesso');              
+               
+                #Retorno
+                return array("form" => $form->createView());
+            }
+        }
+        
+        #Retorno
+        return array("form" => $form->createView());
     }
 }
