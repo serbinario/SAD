@@ -55,12 +55,6 @@ class FormacaoType extends AbstractType
                     'placeholder' => 'Ano Cursando',
                     'widget_col'=> '4',
                 ))) 
-            ->add('ultimaformacao', 'text', array(
-                'label' => 'Ultima Formação',           
-                'attr' => array(
-                    'placeholder' => 'Ultima Formação',
-                    'widget_col'=> '4',
-                ))) 
         ;
     }
     
