@@ -69,6 +69,46 @@ class Autonomo
      * @ORM\Column(name="interesseCursoProfAutonomo", type="string", length=50, nullable=true)
      */
     private $interessecursoprofautonomo;
+    
+    /**
+     *
+     * @ORM\OneToOne(targetEntity="Identificacaoatividadeautonomo", mappedBy="autonomoautonomo", cascade={"all"})
+     */
+    private $identificacaoAtividade;
+    
+    /**
+     * @var \Escolaridadeautonomo
+     *
+     * @ORM\ManyToOne(targetEntity="Escolaridadeautonomo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="escolaridade", referencedColumnName="idEscolaridadeAutonomo")
+     * })
+     */
+    private $escolaridade;
+    
+    /**
+     * @var \Rendafamiliarautonomo
+     *
+     * @ORM\ManyToOne(targetEntity="Rendafamiliarautonomo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="rendaFamiliar", referencedColumnName="idRendaFamiliarAutonomo")
+     * })
+     */
+    private $rendaFamiliar;
+    
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Telefonesautonomo", mappedBy="autonomoautonomo", cascade={"all"})
+     */
+    private $telefones;
+    
+    /**
+     * 
+     */
+    public function __construct() 
+    {
+       $this->telefones = new \Doctrine\Common\Collections\ArrayCollection(); 
+    }
 
 
 
@@ -242,4 +282,84 @@ class Autonomo
     {
         return $this->interessecursoprofautonomo;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getEscolaridade() 
+    {
+        return $this->escolaridade;
+    }
+
+    /**
+     * 
+     * @param type $escolaridade
+     */
+    public function setEscolaridade($escolaridade) 
+    {
+        $this->escolaridade = $escolaridade;
+    }
+
+    /**
+     * 
+     * @return type
+     */
+    public function getTelefones()
+    {
+        return $this->telefones;
+    }
+
+    /**
+     * 
+     * @param type $telefones
+     */
+    public function setTelefones($telefones) 
+    {
+        foreach ($telefones as $telefone) {
+            $telefone->setAutonomoautonomo($this);
+        }
+        
+        $this->telefones = $telefones;
+    }
+
+    /**
+     * 
+     * @return type
+     */
+    public function getRendaFamiliar() 
+    {
+        return $this->rendaFamiliar;
+    }
+
+    /**
+     * 
+     * @param type $rendaFamiliar
+     */
+    public function setRendaFamiliar($rendaFamiliar) 
+    {
+        $this->rendaFamiliar = $rendaFamiliar;
+    }
+
+    /**
+     * 
+     * @return type
+     */
+    public function getIdentificacaoAtividade() 
+    {
+        return $this->identificacaoAtividade;
+    }
+
+    /**
+     * 
+     * @param type $identificacaoAtividade
+     */
+    public function setIdentificacaoAtividade($identificacaoAtividade) 
+    {
+        $identificacaoAtividade->setAutonomoautonomo($this);
+        
+        $this->identificacaoAtividade = $identificacaoAtividade;
+    }
+
+
 }

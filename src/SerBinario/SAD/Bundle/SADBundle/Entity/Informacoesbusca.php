@@ -23,10 +23,12 @@ class Informacoesbusca
     private $idinformacoesbusca;
 
     /**
+     * @var \Tipohorario
      *
-     * @var type 
-     * 
-     * @ORM\OneToMany(targetEntity="Tipohorario", mappedBy="Tipohorario")
+     * @ORM\ManyToOne(targetEntity="Tipohorario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tipoHorario", referencedColumnName="idTipoHorario")
+     * })
      */
     private $tipohorariotipohorario;
 
@@ -73,32 +75,6 @@ class Informacoesbusca
     public function getIdinformacoesbusca()
     {
         return $this->idinformacoesbusca;
-    }
-
-    /**
-     * 
-     * @param type $tipohorariotipohorario
-     * @return \SerBinario\SAD\Bundle\SADBundle\Entity\Informacoesbusca
-     */
-    public function setTipohorariotipohorario($tipohorariotipohorario)
-    {
-        foreach ($tipohorariotipohorario as $tipoH) {
-            $tipoH->setInformacaoBusca($this);                    
-        }
-        
-        $this->tipohorariotipohorario = $tipohorariotipohorario;
-
-        return $this;
-    }
-
-    /**
-     * Get tipohorariotipohorario
-     *
-     * @return \SerBinario\SAD\Bundle\SADBundle\Entity\Tipohorario 
-     */
-    public function getTipohorariotipohorario()
-    {
-        return $this->tipohorariotipohorario;
     }
 
     /**
@@ -181,6 +157,26 @@ class Informacoesbusca
         
         return $this;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getTipohorariotipohorario() 
+    {
+        return $this->tipohorariotipohorario;
+    }
+
+    /**
+     * 
+     * @param type $tipohorariotipohorario
+     */
+    public function setTipohorariotipohorario($tipohorariotipohorario) 
+    {
+        $this->tipohorariotipohorario = $tipohorariotipohorario;
+    }
+
+
 
     
 }

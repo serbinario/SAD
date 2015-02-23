@@ -1,5 +1,4 @@
 <?php
-
 namespace SerBinario\SAD\Bundle\SADBundle\Form;
 
 use Symfony\Component\Form\AbstractType;

@@ -15,41 +15,23 @@ class LinguaextrangeiraType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nocaolinguaextrangeira', 'choice', array( 
-                'label' => 'Noção',
-                'multiple' => true,
-                'expanded' => true,         
-                'choices' => array(1 => "Ativar") ,
-                'attr'    => array('inline' => true)
-                ))
-            ->add('fluencialinguaextrangeira', 'choice', array( 
-                'label' => 'Fluência',
-                'multiple' => true,
-                'expanded' => true,         
-                'choices' => array(1 => "Ativar") ,
-                'attr'    => array('inline' => true)
-                ))
-            ->add('redacaolinguaextrangeira', 'choice', array( 
-                'label' => 'Redação',
-                'multiple' => true,
-                'expanded' => true,         
-                'choices' => array(1 => "Ativar") ,
-                'attr'    => array('inline' => true)
-                ))
-            ->add('traducaolinguaextrangeira', 'choice', array( 
-                'label' => 'Tradução',
-                'multiple' => true,
-                'expanded' => true,         
-                'choices' => array(1 => "Ativar") ,
-                'attr'    => array('inline' => true)
-                ))           
-            ->add('tipolinguaextrangeiralinguaextrangeira','entity', array(
+             ->add('tipolinguaextrangeiralinguaextrangeira','entity', array(
                 'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Tipolinguaextrangeira',                  
-                'label' => 'Cursos Linguas',                
+                'label' => false,                
                 'attr' => array(
                      'widget_col'=> '3',
                     )
                 ))
+            ->add('tipoQualifLingExtrangeira','entity', array(
+                'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\TipoQualifLingExtrangeira',                  
+                'label' => false,
+                'multiple' => false,
+                'expanded' => true,  
+                'attr' => array(
+                     'widget_col'=> '3',
+                    )
+                ))
+           
         ;
     }
     

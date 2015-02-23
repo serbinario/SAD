@@ -39,12 +39,12 @@ class CandidatoController extends Controller
             if($form->isValid()) {
                 #Recuperando os dados
                 $candidato = $form->getData();
-                
+                //var_dump($candidato);exit;
                 #Resultado da operação
                 $result =  $candidatoRN->save($candidato);
                 
                 #Messagem de retorno
-                $this->get('session')->getFlashBag()->add('sucess', 'Candidato realizado com sucesso');
+                $this->get('session')->getFlashBag()->add('success', 'Candidato realizado com sucesso');
                 
                 #Criando o formulário
                 $form = $this->createForm(new CandidatoType());
@@ -68,8 +68,7 @@ class CandidatoController extends Controller
     }
     
     /**
-     * @Route("/gridCandidato", name="gridCandidato")
-     * @Method({"POST"})
+     * @Route("/gridCandidato", name="gridCandidato")     * 
      * @Template("SADBundle:Candidato:gridCandidato.html.twig")
      */
     public function gridCandidatoAction(Request $request) {
@@ -141,8 +140,7 @@ class CandidatoController extends Controller
      * @Template()
      */
     public function editAction(Request $request, $id)
-    {   
-        
+    {     
         #Recuperando o serviço do modelo
         $candidatoRN = $this->get("candidato_rn");
         
@@ -167,12 +165,12 @@ class CandidatoController extends Controller
             if($form->isValid()) {
                 #Recuperando os dados
                 $candidato = $form->getData();               
-                var_dump($candidato);exit();
+                
                 #Resultado da operação
                 $result =  $candidatoRN->edit($candidato);
                                       
                 #Messagem de retorno
-                $this->get('session')->getFlashBag()->add('sucess', 'Candidato realizado com sucesso');              
+                $this->get('session')->getFlashBag()->add('success', 'Candidato realizado com sucesso');              
                
                 #Retorno
                 return array("form" => $form->createView());

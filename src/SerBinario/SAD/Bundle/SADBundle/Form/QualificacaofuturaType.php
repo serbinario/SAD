@@ -25,7 +25,7 @@ class QualificacaofuturaType extends AbstractType
                 ))
             ->add('tipoqualificacaofuturatipoqualificacaofutura','entity', array(
                 'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Tipoqualificacaofutura',
-                'label' => 'Cursos Linguas',                
+                'label' => 'Tipo qualificação',                
                 'attr' => array(
                      'widget_col'=> '3',
                     )

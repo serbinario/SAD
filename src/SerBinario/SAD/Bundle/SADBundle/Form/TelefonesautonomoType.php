@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class TelefonescandidatoType extends AbstractType
+class TelefonesautonomoType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,11 +15,12 @@ class TelefonescandidatoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('telefone', 'text', array( 
+            ->add('telefoneautonomo', 'text', array( 
                 'label' => false,
                 'attr' => array(
                     'widget_col'=> '10',
                 )))
+            
         ;
     }
     
@@ -29,7 +30,7 @@ class TelefonescandidatoType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Telefonescandidato'
+            'data_class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Telefonesautonomo'
         ));
     }
 
@@ -38,6 +39,6 @@ class TelefonescandidatoType extends AbstractType
      */
     public function getName()
     {
-        return 'serbinario_sad_bundle_sadbundle_telefonescandidato';
+        return 'serbinario_sad_bundle_sadbundle_telefonesautonomo';
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace SerBinario\SAD\Bundle\SADBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -27,17 +26,6 @@ class Tipohorario
      * @ORM\Column(name="tipoHorario", type="string", length=45, nullable=true)
      */
     private $tipohorario;
-    
-    /**
-     * @var Informacoesbusca
-     *
-     * @ORM\ManyToOne(targetEntity="Informacoesbusca", inversedBy="tipohorariotipohorario")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="informacaoBusca", referencedColumnName="idInformacoesBusca")
-     * })
-     */
-    private $informacaoBusca;
-
 
     /**
      * Get idtipohorario
@@ -98,5 +86,5 @@ class Tipohorario
         $this->informacaoBusca = $informacaoBusca;
     }
 
-
+    
 }

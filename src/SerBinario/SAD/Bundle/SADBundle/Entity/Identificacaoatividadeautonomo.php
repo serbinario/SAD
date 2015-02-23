@@ -1,5 +1,4 @@
 <?php
-
 namespace SerBinario\SAD\Bundle\SADBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -7,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Identificacaoatividadeautonomo
  *
- * @ORM\Table(name="identificacaoAtividadeAutonomo", indexes={@ORM\Index(name="fk_identificacaoAtividadeAutonomo_autonomo1_idx", columns={"autonomo_idAutonomo"}), @ORM\Index(name="fk_identificacaoAtividadeAutonomo_tipoAtividadeAutonomo1_idx", columns={"tipoAtividadeAutonomo_idTipoAtividadeAutonomo"}), @ORM\Index(name="fk_identificacaoAtividadeAutonomo_areaAbrangenciaAutonomo1_idx", columns={"areaAbrangenciaAutonomo_idAreaAbrangenciaAutonomo"}), @ORM\Index(name="fk_identificacaoAtividadeAutonomo_qtdPessoasEnvolvidasAuton_idx", columns={"qtdPessoasEnvolvidasAutonomo_idQtdPessoasEnvolvidasAutonomo"})})
+ * @ORM\Table(name="identificacaoAtividadeAutonomo")
  * @ORM\Entity
  */
 class Identificacaoatividadeautonomo
@@ -27,6 +26,13 @@ class Identificacaoatividadeautonomo
      * @ORM\Column(name="tempoAtividadeAutonomo", type="integer", nullable=true)
      */
     private $tempoatividadeautonomo;
+    
+     /**
+     * @var integer
+     *
+     * @ORM\Column(name="qtdpessoasenvolvidasautonomo", type="integer", nullable=true)
+     */
+    private $qtdPessoasEnvolvidasAutonomo;
 
     /**
      * @var string
@@ -38,7 +44,7 @@ class Identificacaoatividadeautonomo
     /**
      * @var \Autonomo
      *
-     * @ORM\ManyToOne(targetEntity="Autonomo")
+     * @ORM\OneToOne(targetEntity="Autonomo", inversedBy="identificacaoAtividade")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="autonomo_idAutonomo", referencedColumnName="idAutonomo")
      * })
@@ -64,17 +70,22 @@ class Identificacaoatividadeautonomo
      * })
      */
     private $areaabrangenciaautonomoareaabrangenciaautonomo;
-
+    
     /**
-     * @var \Qtdpessoasenvolvidasautonomo
+     * @var \Ramoatividadeautonomo
      *
-     * @ORM\ManyToOne(targetEntity="Qtdpessoasenvolvidasautonomo")
+     * @ORM\ManyToOne(targetEntity="Ramoatividadeautonomo")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="qtdPessoasEnvolvidasAutonomo_idQtdPessoasEnvolvidasAutonomo", referencedColumnName="idQtdPessoasEnvolvidasAutonomo")
+     *   @ORM\JoinColumn(name="ramoAtividade", referencedColumnName="idRamoAtividadeAutonomo")
      * })
      */
-    private $qtdpessoasenvolvidasautonomoqtdpessoasenvolvidasautonomo;
-
+    private $ramoAtividade;
+    
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Referenciaprofissionalautonomo", mappedBy="identificacaoatividadeautonomoidentificacaoatividadeautonomo", cascade={"all"})
+     */
+    private $referenciasProfissionais;
 
 
     /**
@@ -201,27 +212,66 @@ class Identificacaoatividadeautonomo
     {
         return $this->areaabrangenciaautonomoareaabrangenciaautonomo;
     }
-
+    
     /**
-     * Set qtdpessoasenvolvidasautonomoqtdpessoasenvolvidasautonomo
-     *
-     * @param \SerBinario\SAD\Bundle\SADBundle\Entity\Qtdpessoasenvolvidasautonomo $qtdpessoasenvolvidasautonomoqtdpessoasenvolvidasautonomo
-     * @return Identificacaoatividadeautonomo
+     * 
+     * @return type
      */
-    public function setQtdpessoasenvolvidasautonomoqtdpessoasenvolvidasautonomo(\SerBinario\SAD\Bundle\SADBundle\Entity\Qtdpessoasenvolvidasautonomo $qtdpessoasenvolvidasautonomoqtdpessoasenvolvidasautonomo = null)
+    public function getQtdPessoasEnvolvidasAutonomo()
     {
-        $this->qtdpessoasenvolvidasautonomoqtdpessoasenvolvidasautonomo = $qtdpessoasenvolvidasautonomoqtdpessoasenvolvidasautonomo;
-
-        return $this;
+        return $this->qtdPessoasEnvolvidasAutonomo;
     }
 
     /**
-     * Get qtdpessoasenvolvidasautonomoqtdpessoasenvolvidasautonomo
-     *
-     * @return \SerBinario\SAD\Bundle\SADBundle\Entity\Qtdpessoasenvolvidasautonomo 
+     * 
+     * @param type $qtdPessoasEnvolvidasAutonomo
      */
-    public function getQtdpessoasenvolvidasautonomoqtdpessoasenvolvidasautonomo()
+    public function setQtdPessoasEnvolvidasAutonomo($qtdPessoasEnvolvidasAutonomo) 
     {
-        return $this->qtdpessoasenvolvidasautonomoqtdpessoasenvolvidasautonomo;
+        $this->qtdPessoasEnvolvidasAutonomo = $qtdPessoasEnvolvidasAutonomo;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getRamoAtividade() 
+    {
+        return $this->ramoAtividade;
+    }
+
+    /**
+     * 
+     * @param type $ramoAtividade
+     */
+    public function setRamoAtividade($ramoAtividade) 
+    {
+        $this->ramoAtividade = $ramoAtividade;
+    }
+
+    /**
+     * 
+     * @return type
+     */
+    public function getReferenciasProfissionais()
+    {
+        return $this->referenciasProfissionais;
+    }
+
+    /**
+     * 
+     * @param type $referenciasProfissionais
+     */
+    public function setReferenciasProfissionais($referenciasProfissionais)
+    {
+        foreach ($referenciasProfissionais as $referenciaProfissional) {
+            $referenciaProfissional->setIdentificacaoatividadeautonomoidentificacaoatividadeautonomo($this);
+        }
+        
+        $this->referenciasProfissionais = $referenciasProfissionais;
+    }
+
+
+
+
 }
