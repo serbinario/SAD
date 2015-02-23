@@ -55,4 +55,82 @@ class AutonomoController extends Controller
         #Retorno
         return array("form" => $form->createView());
     }
+    
+    /**
+     * @Route("/viewListAutonomo", name="viewListAutonomo")
+     * @Template("SADBundle:Autonomo:gridAutonomo.html.twig")
+     */
+    public function viewListAutonomoAction()
+    {      
+        return array();
+    }
+    
+    /**
+     * @Route("/gridAutonomo", name="gridAutonomo")
+     * @Method({"POST"})
+     * @Template("SADBundle:Autonomo:gridAutonomo.html.twig")
+     */
+    public function gridAutonomoAction(Request $request) {
+        
+        if(GridClass::isAjax()) {
+            
+            $columns = array("a.nomeautonomo",
+                "a.idadeautonomo",
+                "a.expeprofissionalautonomo",
+                "a.outrarendaautonomo",
+                "a.tempoexpeprofissionalautonomo",
+                );
+
+            $entityJOIN = array();             
+            $eventosArray         = array();
+            $parametros           = $request->request->all();
+            $count                = 0;
+            $countNot             = 0;
+            $statusLigacao        = false;
+            
+            $entity               = "SerBinario\SAD\Bundle\SADBundle\Entity\Autonomo"; 
+            $columnWhereMain      = "";
+            $whereValueMain       = "";
+            
+            $gridClass = new GridClass($this->getDoctrine()->getManager(), 
+                    $parametros,
+                    $columns,
+                    $entity,
+                    $entityJOIN,           
+                    $columnWhereMain,
+                    $whereValueMain);
+
+            $resultCliente  = $gridClass->builderQuery();    
+            $countTotal     = $gridClass->getCount();
+            $countEventos   = count($resultCliente);
+
+            for($i=0;$i < $countEventos; $i++)
+            {
+                $eventosArray[$i]['DT_RowId']                   =  "row_".$resultCliente[$i]->getIdautonomo();
+                $eventosArray[$i]['id']                         =  $resultCliente[$i]->getIdautonomo();
+                $eventosArray[$i]['nomeAutonomo']               =  $resultCliente[$i]->getNomeautonomo();
+                $eventosArray[$i]['idadeAutonomo']              =  $resultCliente[$i]->getIdadeautonomo();
+                $eventosArray[$i]['expProfissional']            =  $resultCliente[$i]->getExpeprofissionalautonomo();
+                $eventosArray[$i]['tempoExp']                   =  $resultCliente[$i]->getTempoexpeprofissionalautonomo();
+                $eventosArray[$i]['outraRenda']                 =  $resultCliente[$i]->getOutrarendaautonomo();
+            }
+
+            //Se a variável $sqlFilter estiver vazio
+            if(!$gridClass->isFilter()){
+                $countEventos = $countTotal;
+            }
+
+            $columns = array(               
+                'draw'              => $parametros['draw'],
+                'recordsTotal'      => "{$countTotal}",
+                'recordsFiltered'   => "{$countEventos}",
+                'data'              => $eventosArray               
+            );
+
+            return new JsonResponse($columns);
+        }else{            
+            return array();            
+        }
+        
+    }
 }

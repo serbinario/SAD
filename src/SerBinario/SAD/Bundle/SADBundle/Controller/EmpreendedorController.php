@@ -44,7 +44,7 @@ class EmpreendedorController extends Controller
                 $result = $empreendedorRN->save($empreendedor);
                 
                 #Messagem de retorno
-                $this->get('session')->getFlashBag()->add('sucess', 'Candidato realizado com sucesso');
+                $this->get('session')->getFlashBag()->add('success', 'Candidato realizado com sucesso');
                 
                 #Criando o formulário
                 $form = $this->createForm(new EmpreendedorType());
@@ -172,7 +172,7 @@ class EmpreendedorController extends Controller
                 $result =  $empreendedorRN->edit($empreendedor);
                                       
                 #Messagem de retorno
-                $this->get('session')->getFlashBag()->add('sucess', 'Empreendedor atualizado com sucesso');              
+                $this->get('session')->getFlashBag()->add('success', 'Empreendedor atualizado com sucesso');              
                
                 #Retorno
                 return array("form" => $form->createView());

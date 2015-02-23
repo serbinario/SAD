@@ -35,20 +35,21 @@
                             {{ form_row(form.escolaridade) }}
                             {{ form_row(form.rendafamiliar) }}
                         </div>
-                        <div class="tab-pane active"id="identificacaoAtividade">
-                            {{ form_row(form.tipoatividadeempreendedortipoatividadeempreendedor) }}
-                            {{ form_row(form.ramonegocioempreendedorramonegocioempreendedor) }}
-                            {{ form_row(form.tempoatividadeempreendedor) }}
-                            {{ form_row(form.qtdPessoasEnvolvidas) }}
-                            {{ form_row(form.observacoesempreendedor) }}
+                        <div class="tab-pane"id="identificacaoAtividade">
+                            {{ form_row(form.identificacaoAtividade.tipoatividadeempreendedortipoatividadeempreendedor) }}
+                            {{ form_row(form.identificacaoAtividade.ramonegocioempreendedorramonegocioempreendedor) }}
+                            {{ form_row(form.identificacaoAtividade.tempoatividadeempreendedor) }}
+                            {{ form_row(form.identificacaoAtividade.equipamentoultilizadoempreendedor) }}
+                            {{ form_row(form.identificacaoAtividade.qtdPessoasEnvolvidas) }}
+                            {{ form_row(form.identificacaoAtividade.observacoesempreendedor) }}
                         </div>
-                        <div class="tab-pane active"id="identificacaoNecessidade">
-                            {{ form_row(form.creditocredito) }}
-                            {{ form_row(form.consultoria) }}
-                            {{ form_row(form.capacitacaocapacitacao) }}
-                            {{ form_row(form.formalizacaoformalizacao) }}
-                            {{ form_row(form.tipoqualificacaotipoqualificacao) }}
-                            {{ form_row(form.historico) }}
+                        <div class="tab-pane "id="identificacaoNecessidade">
+                            {{ form_row(form.indentificacaoNecessidade.creditocredito) }}
+                            {{ form_row(form.indentificacaoNecessidade.consultoria) }}
+                            {{ form_row(form.indentificacaoNecessidade.capacitacaocapacitacao) }}
+                            {{ form_row(form.indentificacaoNecessidade.formalizacaoformalizacao) }}
+                            {{ form_row(form.indentificacaoNecessidade.tipoqualificacaotipoqualificacao) }}
+                            {{ form_row(form.indentificacaoNecessidade.historico) }}
                         </div>
                     </div>
                     {{ form_row(form.actions) }}

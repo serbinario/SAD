@@ -44,7 +44,7 @@ class CandidatoController extends Controller
                 $result =  $candidatoRN->save($candidato);
                 
                 #Messagem de retorno
-                $this->get('session')->getFlashBag()->add('sucess', 'Candidato realizado com sucesso');
+                $this->get('session')->getFlashBag()->add('success', 'Candidato realizado com sucesso');
                 
                 #Criando o formulário
                 $form = $this->createForm(new CandidatoType());
@@ -170,7 +170,7 @@ class CandidatoController extends Controller
                 $result =  $candidatoRN->edit($candidato);
                                       
                 #Messagem de retorno
-                $this->get('session')->getFlashBag()->add('sucess', 'Candidato realizado com sucesso');              
+                $this->get('session')->getFlashBag()->add('success', 'Candidato realizado com sucesso');              
                
                 #Retorno
                 return array("form" => $form->createView());
