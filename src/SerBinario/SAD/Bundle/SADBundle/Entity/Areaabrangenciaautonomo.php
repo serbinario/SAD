@@ -62,4 +62,13 @@ class Areaabrangenciaautonomo
     {
         return $this->areaabrangenciaautonomo;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function __toString() 
+    {
+        return $this->getAreaabrangenciaautonomo();
+    }
 }

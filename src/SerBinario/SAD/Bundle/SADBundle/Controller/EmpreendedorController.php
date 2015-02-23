@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use SerBinario\SAD\Bundle\SADBundle\Util\GridClass;
 
 /**
- * Candidato controller.
+ * Empreendedor controller.
  *
  * @Route("/empreendedor")
  */

@@ -27,7 +27,7 @@ class IdentificacaoatividadeautonomoType extends AbstractType
                     )
                 ))
             ->add('areaabrangenciaautonomoareaabrangenciaautonomo', 'entity', array(
-                'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Areaabrabgenciaautonomo',
+                'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Areaabrangenciaautonomo',
                 'label' => 'Área Abrangência', 
                 'multiple' => false,
                 'expanded' => true,          

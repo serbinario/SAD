@@ -1,6 +1,8 @@
 parameters:
     dao.class.candidato:  SerBinario\SAD\Bundle\SADBundle\DAO\CandidatoDAO
+    dao.class.autonomo:  SerBinario\SAD\Bundle\SADBundle\DAO\AutonomoDAO
     dao.class.empreendedor: SerBinario\SAD\Bundle\SADBundle\DAO\EmpreendedorDAO
+    rn.class.autonomo:   SerBinario\SAD\Bundle\SADBundle\RN\AutonomoRN
     rn.class.candidato:   SerBinario\SAD\Bundle\SADBundle\RN\CandidatoRN
     rn.class.empreendedor: SerBinario\SAD\Bundle\SADBundle\RN\EmpreendedorRN
 
@@ -20,5 +22,12 @@ services:
     candidato_rn:
         class:  %rn.class.candidato%
         arguments:  [ @candidato_dao ]
-    
+        
+    autonomo_dao:
+        class:  %dao.class.autonomo%
+        arguments:  [ @doctrine.orm.entity_manager ]
+        public: false 
+    autonomo_rn:
+        class:  %rn.class.autonomo%
+        arguments:  [ @autonomo_dao ]
         
