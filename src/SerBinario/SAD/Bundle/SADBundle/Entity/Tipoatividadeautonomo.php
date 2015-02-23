@@ -62,4 +62,13 @@ class Tipoatividadeautonomo
     {
         return $this->tipoatividadeautonomo;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function __toString() 
+    {
+        return $this->getTipoatividadeautonomo();
+    }
 }

@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {{parent()}}
+    <div class="container">
+        <div class="row clearfix">
+            <br />
+            <legend>Edição de Autônomo</legend>
+            <div class="col-md-13 column">
+               {{ form_start(form, { 'style': 'horizontal' }) }}
+                <ul class="nav nav-tabs">
+                    <li role="presentation"class="active">
+                        <a href="#identificacaoPessoal"aria-controls="identificacaoPessoal"role="tab"data-toggle="tab">
+                            Identificação Pessoal</a >
+                    </li >
+                    <li role="presentation"class="active">
+                        <a href="#identificacaoAtividade"aria-controls="identificacaoAtividade"role="tab"data-toggle="tab">
+                            Identificação Atividade</a >
+                    </li >
+                </ul >
+                <div class="tab-content">
+                    <div class="tab-pane active"id="identificacaoPessoal">
+                        <br>
+                        {{ form_row(form.nomeautonomo) }} 
+                        {{ form_row(form.enderecoautonomo) }}
+                        {{ form_row(form.telefones) }}
+                        {{ form_row(form.idadeautonomo) }}
+                        {{ form_row(form.escolaridade) }}
+                        {{ form_row(form.expeprofissionalautonomo) }}
+                        {{ form_row(form.tempoexpeprofissionalautonomo) }}
+                        {{ form_row(form.outrarendaautonomo) }}
+                        {{ form_row(form.rendaFamiliar) }}
+                        {{ form_row(form.interessecursoprofautonomo) }}
+                    </div>    
+                    <div class="tab-pane active"id="identificacaoAtividade">
+                        {{ form_row(form.identificacaoAtividade.tipoatividadeautonomotipoatividadeautonomo) }} 
+                        {{ form_row(form.identificacaoAtividade.areaabrangenciaautonomoareaabrangenciaautonomo) }} 
+                        {{ form_row(form.identificacaoAtividade.tempoatividadeautonomo) }} 
+                        {{ form_row(form.identificacaoAtividade.qtdPessoasEnvolvidasAutonomo) }} 
+                        {{ form_row(form.identificacaoAtividade.observacoesidentificacaoatividadeautonomo) }} 
+                        {{ form_row(form.identificacaoAtividade.referenciasProfissionais) }} 
+                    </div>
+                </div>
+                    {{ form_row(form.actions) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+

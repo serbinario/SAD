@@ -4,8 +4,9 @@ namespace SerBinario\SAD\Bundle\SADBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use SerBinario\SAD\Bundle\SADBundle\Entity\TelefonesautonomoType;
+use SerBinario\SAD\Bundle\SADBundle\Form\TelefonesautonomoType;
 use SerBinario\SAD\Bundle\SADBundle\Form\IdentificacaoatividadeautonomoType;
+
 
 class AutonomoType extends AbstractType
 {
@@ -73,7 +74,7 @@ class AutonomoType extends AbstractType
                 ))) 
             ->add('rendaFamiliar', 'entity', array(
                 'label'        => 'Renda Familiar',   
-                'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Rendafamiliaraoutonomo',
+                'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Rendafamiliarautonomo',
                 'multiple' => false,
                 'expanded' => true,
                 'attr' => array(
