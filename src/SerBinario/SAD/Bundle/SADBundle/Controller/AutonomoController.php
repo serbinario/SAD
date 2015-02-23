@@ -67,7 +67,6 @@ class AutonomoController extends Controller
     
     /**
      * @Route("/gridAutonomo", name="gridAutonomo")
-     * @Method({"POST"})
      * @Template("SADBundle:Autonomo:gridAutonomo.html.twig")
      */
     public function gridAutonomoAction(Request $request) {
