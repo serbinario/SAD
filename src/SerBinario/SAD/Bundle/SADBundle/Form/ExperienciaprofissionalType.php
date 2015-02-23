@@ -40,6 +40,7 @@ class ExperienciaprofissionalType extends AbstractType
                 'attr' => array(
                     'placeholder' => 'Data Admissão',
                     'widget_col'=> '4',
+                    'class' => 'datepicker'
                 )
             ))
             ->add('datademissaoexperienciaprofissional', 'date', array(
@@ -49,6 +50,7 @@ class ExperienciaprofissionalType extends AbstractType
                 'attr' => array(
                     'placeholder' => 'Data da Demissão',
                     'widget_col'=> '4',
+                    'class' => 'datepicker'
                 )
             ))
             ->add('atribuicoesexperienciaprofissional', 'textarea', array(

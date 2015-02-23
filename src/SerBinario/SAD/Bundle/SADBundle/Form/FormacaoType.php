@@ -36,18 +36,20 @@ class FormacaoType extends AbstractType
             ->add('datainicioformacao', 'date', array(
                 'widget' => 'single_text',
                 'format' => 'dd/MM/yyyy',
-                'label' => 'Data Início',        
+                'label' => 'Data Início',
                 'attr' => array(
                     'placeholder' => 'Data de Início',
                     'widget_col'=> '4',
+                    'class' => ' datepicker '
                 )))
             ->add('dataconclusaoformacao', 'date', array(
                 'widget' => 'single_text',
                 'format' => 'dd/MM/yyyy',
-                'label' => 'Data Conclusão',        
+                'label' => 'Data Conclusão',
                 'attr' => array(
                     'placeholder' => 'Data Conclusão',
                     'widget_col'=> '4',
+                    'class' => ' datepicker '
                 )))
             ->add('anocursandoformacao', 'text', array(
                 'label' => 'Ano Cursando',           

@@ -7,6 +7,7 @@
         {% block stylesheets %}
             <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
             <link href="{{ asset('css/bootstrap.min.lumen.css') }}" rel="stylesheet" media="screen">
+            <link rel="stylesheet" href="{{asset('css/jquery.datetimepicker.css')}}" />
             <style type="text/css" rel="stylesheet">
                 .marginBottom-0 {margin-bottom:0;}
 
@@ -180,12 +181,14 @@
                 </div><!-- /.navbar-collapse -->
             </nav> <br /><br /><br />
         {% endblock %}
-        
+
         {% block javascripts %}            
-        <script src="{{ asset('js/jquery.js') }}"></script>
-        <!-- Include all JavaScripts, compiled by Assetic -->
-        <script src="{{ asset('js/bootstrap.js') }}"></script>
-        <script type="text/javascript">
+            <script src="{{ asset('js/jquery.js') }}"></script>
+            <!-- Include all JavaScripts, compiled by Assetic -->
+            <script src="{{ asset('js/bootstrap.js') }}"></script>
+            <script type="text/javascript" src="{{asset('js/javax_faces.js')}}"></script>
+            <script type="text/javascript" src="{{asset('js/jquery.datetimepicker.js')}}"></script>
+            <script type="text/javascript">
                 (function ($) {
                     $(document).ready(function () {
                         $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function (event) {
@@ -193,6 +196,28 @@
                             event.stopPropagation();
                             $(this).parent().siblings().removeClass('open');
                             $(this).parent().toggleClass('open');
+                        });
+
+                        $('.datepicker').datetimepicker({
+                            timepicker: false,
+                            format: 'd/m/Y',
+                            mask: true,
+                            lang: 'pt-BR'
+                        });
+
+                        $('a').on('click', function (event) {
+                            if ($(this).text() === "Adicionar") {
+                                $('.datepicker').on('click', function (event) {
+                                    $('.datepicker').datetimepicker({
+                                        timepicker: false,
+                                        format: 'd/m/Y',
+                                        mask: true,
+                                        lang: 'pt-BR'
+                                    });
+
+                                });
+                            }
+
                         });
                     });
                 })(jQuery);
