@@ -107,6 +107,16 @@ class Empreendedor
     private $indentificacaoNecessidade;
     
     /**
+     * @var \User
+     * 
+     * @ORM\ManyToOne(targetEntity="SerBinario\SAD\Bundle\UserBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id_user", referencedColumnName="id")
+     * })
+     */
+    private $user;
+    
+    /**
      * Método construtor
      */
     public function __construct() 
@@ -384,6 +394,21 @@ class Empreendedor
         $this->indentificacaoNecessidade = $indentificacaoNecessidade;
     }
 
+    /**
+     * 
+     * @return type
+     */
+    function getUser() {
+        return $this->user;
+    }
+    
+    /**
+     * 
+     * @param \SerBinario\SAD\Bundle\UserBundle\Entity\User $user
+     */
+    function setUser(\SerBinario\SAD\Bundle\UserBundle\Entity\User $user) {
+        $this->user = $user;
+    }
 
 
    

@@ -1,5 +1,10 @@
 {% extends '::base.html.twig' %}
 
+{% block stylesheets %}
+    {{parent()}}
+    <link href="{{ asset('css/icheck.css') }}" rel="stylesheet">
+{% endblock %}
+
 {% block body %}
     {{parent()}}
     <div class="container">
@@ -15,7 +20,7 @@
             <br />
             <legend>Cadastro de Emprego</legend>
             <div class="col-md-13 column">
-                {{ form_start(form, { 'style': 'horizontal' }) }}
+                {{ form_start(form, { 'style': 'horizontal', 'id' : 'formCandidato'}) }}
                 <ul class="nav nav-tabs">
                     <li role="presentation"class="active">
                         <a href="#dadosPessoais"aria-controls="dadosPessoais"role="tab"data-toggle="tab">
@@ -110,7 +115,17 @@
         </div>
     </div>
 {% endblock %}
-
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{asset('js/validacoes/icheck.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/validacoes/validationForm_Candidato.js')}}"></script>
+    <script type="text/javascript">
+        $(document).on('click', '#formeCadidato', function(event){
+            event.preventDefault();
+            console.log('asdasd');
+        });
+    </script>
+{% endblock %}
 
 
 

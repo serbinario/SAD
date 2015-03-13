@@ -23,7 +23,10 @@ class CandidatoController extends Controller
      * @Template()
      */
     public function saveAction(Request $request)
-    {               
+    {   
+        #Recupera o usuário da sessão
+        $usuario    = $this->get("security.context")->getToken()->getUser();
+        
         #Recuperando o serviço do modelo
         $candidatoRN = $this->get("candidato_rn");
         
@@ -39,7 +42,10 @@ class CandidatoController extends Controller
             if($form->isValid()) {
                 #Recuperando os dados
                 $candidato = $form->getData();
-                //var_dump($candidato);exit;
+                
+                #seta o usuário
+                $candidato->setUser($usuario);
+
                 #Resultado da operação
                 $result =  $candidatoRN->save($candidato);
                 

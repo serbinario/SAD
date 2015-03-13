@@ -145,6 +145,16 @@ class Candidato
     private $telefones;
     
     /**
+     * @var \User
+     * 
+     * @ORM\ManyToOne(targetEntity="SerBinario\SAD\Bundle\UserBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id_user", referencedColumnName="id")
+     * })
+     */
+    private $user;
+    
+    /**
      * Método construtor
      */
     public function __construct() 
@@ -558,6 +568,21 @@ class Candidato
         $this->telefones[] = $telefoneCandidato;
     }
 
-
+    /**
+     * 
+     * @return type
+     */
+    function getUser() {
+        return $this->user;
+    }
     
+    /**
+     * 
+     * @param \SerBinario\SAD\Bundle\UserBundle\Entity\User $user
+     */
+    function setUser(\SerBinario\SAD\Bundle\UserBundle\Entity\User $user) {
+        $this->user = $user;
+    }
+
+
 }

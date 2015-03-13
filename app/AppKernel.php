@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new SerBinario\SAD\Bundle\SADBundle\SADBundle(),
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
+            new SerBinario\SAD\Bundle\UserBundle\UserBundle(),
             
         );
 

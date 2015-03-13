@@ -23,7 +23,10 @@ class EmpreendedorController extends Controller
      * @Template()
      */
     public function saveAction(Request $request)
-    {               
+    {   
+        #Recupera o usuário da sessão
+        $usuario    = $this->get("security.context")->getToken()->getUser();
+        
         #Recuperando o serviço do modelo
         $empreendedorRN = $this->get("empreendedor_rn");
         
@@ -39,6 +42,9 @@ class EmpreendedorController extends Controller
             if($form->isValid()) {
                 #Recuperando os dados
                 $empreendedor = $form->getData();
+                
+                #seta o usuário
+                $empreendedor->setUser($usuario);
                 
                 #Alterando
                 $result = $empreendedorRN->save($empreendedor);

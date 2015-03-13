@@ -22,7 +22,10 @@ class AutonomoController extends Controller
      * @Template()
      */
     public function saveAction(Request $request)
-    {               
+    {   
+        #Recupera o usuário da sessão
+        $usuario    = $this->get("security.context")->getToken()->getUser();
+        
         #Recuperando o serviço do modelo
         $autonomoRN = $this->get("autonomo_rn");
         
@@ -38,6 +41,9 @@ class AutonomoController extends Controller
             if($form->isValid()) {
                 #Recuperando os dados
                 $autonomo = $form->getData();
+                
+                #seta o usuário
+                $autonomo->setUser($usuario);
                 
                 #Resultado da operação
                 $result =  $autonomoRN->save($autonomo);
