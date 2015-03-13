@@ -22,7 +22,8 @@ class InformacoesbuscaType extends AbstractType
                 'multiple' => false,
                 'expanded' => true,
                 'attr' => array(
-                     'widget_col'=> '3',
+                    'widget_col'=> '3',
+                    'inline' => true
                     )
                 ))
             ->add('tiponivelherarquicotiponivelherarquico','entity', array(
@@ -31,7 +32,8 @@ class InformacoesbuscaType extends AbstractType
                 'multiple' => false,
                 'expanded' => true,                
                 'attr' => array(
-                     'widget_col'=> '3',
+                    'widget_col'=> '3',
+                    'inline' => true
                     )
                 ))
             ->add('opcoesdesejadas','bootstrap_collection', array(

@@ -64,13 +64,6 @@ class Formacao
     private $anocursandoformacao;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="ultimaFormacao", type="boolean", nullable=true)
-     */
-    private $ultimaformacao;
-
-    /**
      * @var \Curriculo
      *
      * @ORM\ManyToOne(targetEntity="Curriculo", inversedBy="formacoes")
