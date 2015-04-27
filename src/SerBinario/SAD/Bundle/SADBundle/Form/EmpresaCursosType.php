@@ -29,6 +29,12 @@ class EmpresaCursosType extends AbstractType
                      'widget_col'=> '3',
                     )
             ))
+            ->add("quantidade", 'text', array(
+                'label' => 'Quantidade',           
+                'attr' => array(
+                    'placeholder' => 'Quantidade',
+                    'widget_col'=> '3',
+            ))) 
             ->add('actions', 'form_actions', [
                 'buttons' => [
                     'save' => ['type' => 'submit', 'options' => ['label' => 'Salvar']],

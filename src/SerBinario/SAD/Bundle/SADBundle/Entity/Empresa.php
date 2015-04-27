@@ -63,5 +63,12 @@ class Empresa
         $this->nomeEmpresa = $nomeEmpresa;
     }
 
-
+    /**
+     * 
+     * @return type
+     */
+    public function __toString() 
+    {
+        return $this->getNomeEmpresa();
+    }
 }

@@ -62,5 +62,14 @@ class Capacitacoes
     {
         $this->nomeCapacitacao = $nomeCapacitacao;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function __toString() 
+    {
+        return $this->getNomeCapacitacao();
+    }
 
 }

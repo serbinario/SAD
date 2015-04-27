@@ -19,7 +19,7 @@ class EmpresaType extends AbstractType
                 'label' => 'Nome',           
                 'attr' => array(
                     'placeholder' => 'Nome da Empresa',
-                    'widget_col'=> '8',
+                    'widget_col'=> '5',
                 )))
             ->add('actions', 'form_actions', [
                 'buttons' => [

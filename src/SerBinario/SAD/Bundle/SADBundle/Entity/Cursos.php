@@ -63,5 +63,11 @@ class Cursos
         $this->nomeCurso = $nomeCurso;
     }
 
-
+    /**
+     * 
+     */
+    public function __toString() 
+    {
+        return $this->getNomeCurso();
+    }
 }

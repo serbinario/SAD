@@ -19,7 +19,7 @@ class CapacitacoesType extends AbstractType
                 'label' => 'Nome',           
                 'attr' => array(
                     'placeholder' => 'Nome da Capacitação',
-                    'widget_col'=> '8',
+                    'widget_col'=> '5',
                 )))
             ->add('actions', 'form_actions', [
                 'buttons' => [

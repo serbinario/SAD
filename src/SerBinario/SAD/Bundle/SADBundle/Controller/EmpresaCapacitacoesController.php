@@ -6,18 +6,18 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use SerBinario\SAD\Bundle\SADBundle\Form\EmpresaCursosType;
+use SerBinario\SAD\Bundle\SADBundle\Form\EmpresaCapacitacoesType;
 use SerBinario\SAD\Bundle\SADBundle\Util\GridClass;
 
 /**
  * Capacitacoes controller.
  *
- * @Route("/empresacursos")
+ * @Route("/empresacapacitacoes")
  */
-class EmpresaCursosController extends Controller
+class EmpresaCapacitacoesController extends Controller
 {
-   /**
-     * @Route("/saveEmpresaCursos", name="saveEmpresaCursos")
+    /**
+     * @Route("/saveEmpresaCapacitacoes", name="saveEmpresaCapacitacoes")
      * @Template()
      */
     public function saveAction(Request $request)
@@ -26,10 +26,10 @@ class EmpresaCursosController extends Controller
         $usuario    = $this->get("security.context")->getToken()->getUser();
         
         #Recuperando o serviço do modelo
-        $empresaCursoRN = $this->get("empresaCurso_rn");
+        $empresaCapacitacoesRN = $this->get("empresaCapacitacoes_rn");
         
         #Criando o formulário
-        $form = $this->createForm(new EmpresaCursosType());
+        $form = $this->createForm(new EmpresaCapacitacoesType());
         
         #Verficando se é uma submissão
         if($request->getMethod() === "POST") {
@@ -39,10 +39,10 @@ class EmpresaCursosController extends Controller
             #Verifica se os dados são válidos
             if($form->isValid()) {
                 #Recuperando os dados
-                $empresaCurso = $form->getData();
+                $empresaCapacitacoes = $form->getData();
                                
                 #Resultado da operação
-                $result =  $empresaCursoRN->save($empresaCurso);
+                $result =  $empresaCapacitacoesRN->save($empresaCapacitacoes);
                 
                 if($result) {
                     #Messagem de retorno
@@ -54,7 +54,7 @@ class EmpresaCursosController extends Controller
                
                 
                 #Criando o formulário
-                $form = $this->createForm(new EmpresaCursosType());
+                $form = $this->createForm(new EmpresaCapacitacoesType());
                
                 #Retorno
                 return array("form" => $form->createView());
@@ -66,23 +66,23 @@ class EmpresaCursosController extends Controller
     }
     
     /**
-     * @Route("/gridEmpresaCursos", name="gridEmpresaCursos")
+     * @Route("/gridEmpresaCapacitacoes", name="gridEmpresaCapacitacoes")
      * @Template()
      */
-    public function gridEmpresaCursosAction(Request $request) {
+    public function gridEmpresaCapacitacoesAction(Request $request) {
         
         if(GridClass::isAjax()) {
             
             $columns = array(
-                "b.nomeCurso",
+                "b.nomeCapacitacao",
                 "c.nomeEmpresa",
                 "a.quantidade"
                 );
 
-            $entityJOIN = array("cursos", "empresa");             
+            $entityJOIN = array("capacitacoes", "empresa");             
             $eventosArray         = array();
             $parametros           = $request->request->all();       
-            $entity               = "SerBinario\SAD\Bundle\SADBundle\Entity\EmpresaCursos"; 
+            $entity               = "SerBinario\SAD\Bundle\SADBundle\Entity\EmpresaCapacitacoes"; 
             $columnWhereMain      = "";
             $whereValueMain       = "";
             
@@ -100,11 +100,11 @@ class EmpresaCursosController extends Controller
 
             for($i=0;$i < $countEventos; $i++)
             {
-                $eventosArray[$i]['DT_RowId']   =  "row_".$resultCliente[$i]->getIdEmpresaCursos();
-                $eventosArray[$i]['id']         =  $resultCliente[$i]->getIdEmpresaCursos();
-                $eventosArray[$i]['empresa']    =  $resultCliente[$i]->getEmpresa()->getNomeEmpresa();    
-                $eventosArray[$i]['curso']      =  $resultCliente[$i]->getCursos()->getNomeCurso();    
-                $eventosArray[$i]['quantidade'] =  $resultCliente[$i]->getQuantidade();    
+                $eventosArray[$i]['DT_RowId']    =  "row_".$resultCliente[$i]->getIdEmpresaCapacitacoes();
+                $eventosArray[$i]['id']          =  $resultCliente[$i]->getIdEmpresaCapacitacoes();
+                $eventosArray[$i]['empresa']     =  $resultCliente[$i]->getEmpresa()->getNomeEmpresa();    
+                $eventosArray[$i]['capacitacao'] =  $resultCliente[$i]->getCapacitacoes()->getNomeCapacitacao();    
+                $eventosArray[$i]['quantidade']  =  $resultCliente[$i]->getQuantidade();    
             }
 
             //Se a variável $sqlFilter estiver vazio
@@ -126,25 +126,25 @@ class EmpresaCursosController extends Controller
     }
     
     /**
-     * @Route("/editEmpresaCursos/id/{id}", name="editEmpresaCursos")
+     * @Route("/editEmpresaCapacitacoes/id/{id}", name="editEmpresaCapacitacoes")
      * @Template()
      */
     public function editAction(Request $request, $id)
     {   
         
         #Recuperando o serviço do modelo
-        $empresaCursoRN = $this->get("empresaCurso_rn");
+        $empresaCapacitacoesRN = $this->get("empresaCapacitacoes_rn");
         
         #Criando o formulário
-        $form = $this->createForm(new EmpresaCursosType());
+        $form = $this->createForm(new EmpresaCapacitacoesType());
         
         if($id) {
             #Recupera o empresa selecionado
-            $empresaCursoRecuperado = $empresaCursoRN->findById($id);
+            $empresaCapacitacoesRecuperado = $empresaCapacitacoesRN->findById($id);
         }
                
         #Preenche o formulário com os dados do empresa
-        $form->setData($empresaCursoRecuperado);
+        $form->setData($empresaCapacitacoesRecuperado);
         
         #Verficando se é uma submissão
         if($request->getMethod() === "POST") {
@@ -155,10 +155,10 @@ class EmpresaCursosController extends Controller
             #Verifica se os dados são válidos
             if($form->isValid()) {
                 #Recuperando os dados
-                $empresaCurso = $form->getData();               
+                $empresaCapacitacoes = $form->getData();               
                 
                 #Resultado da operação
-                $result =  $empresaCursoRN->edit($empresaCurso);
+                $result =  $empresaCapacitacoesRN->edit($empresaCapacitacoes);
                 
                 if($result) {
                     #Messagem de retorno

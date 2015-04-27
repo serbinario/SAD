@@ -19,7 +19,7 @@ class CursosType extends AbstractType
                 'label' => 'Nome',           
                 'attr' => array(
                     'placeholder' => 'Nome do Curso',
-                    'widget_col'=> '8',
+                    'widget_col'=> '5',
                 )))
             ->add('actions', 'form_actions', [
                 'buttons' => [

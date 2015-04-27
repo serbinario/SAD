@@ -33,6 +33,13 @@ class EmpresaCursos
     private $cursos;
     
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="quantidade", type="integer", nullable=false)
+     */
+    private $quantidade;
+    
+    /**
      * 
      * @return type
      */
@@ -85,6 +92,26 @@ class EmpresaCursos
     {
         $this->cursos = $cursos;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getQuantidade() 
+    {
+        return $this->quantidade;
+    }
+
+    /**
+     * 
+     * @param type $quantidade
+     */
+    public function setQuantidade($quantidade) 
+    {
+        $this->quantidade = $quantidade;
+    }
+
+
 
 
 }

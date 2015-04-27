@@ -176,6 +176,52 @@
                             </ul>
                         </li>
                     </ul>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastros <b class="caret"></b></a>
+                            <ul class="dropdown-menu">                                                               
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Empresa</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('saveEmpresa') }}">Cadastrar</a></li>
+                                        <li class="divider"></li>                                 
+                                        <li><a href="{{ path('gridEmpresa') }}">Abrir</a></li>
+                                    </ul>                                   
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Capacitação Escolar</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('saveCurso') }}">Novo</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="{{ path('gridCurso') }}">Abrir</a></li>                             
+                                    </ul>                                   
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Capacitação Profissional</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('saveCapacitacoes') }}">Novo</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="{{ path('gridCapacitacoes') }}">Abrir</a></li>                             
+                                    </ul>                                   
+                                </li>  
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Vínculo Empresa/Capacitação Escolar</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('saveEmpresaCursos') }}">Novo</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="{{ path('gridEmpresaCursos') }}">Abrir</a></li>                             
+                                    </ul>                                   
+                                </li>  
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Vínculo Empresa/Capacitação Profissional</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('saveEmpresaCapacitacoes') }}">Novo</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="{{ path('gridEmpresaCapacitacoes') }}">Abrir</a></li>                             
+                                    </ul>                                   
+                                </li>  
+                            </ul>
+                        </li>
+                    </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{{path('logout')}}">Sair</a></li>
                     </ul>
