@@ -18,13 +18,15 @@ class EmpresaCursosType extends AbstractType
             ->add('empresa', 'entity', array(
                 'label'        => 'Empresa',   
                 'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Empresa',
+                'empty_value' => "Selecione a empresa",
                 'attr' => array(
                      'widget_col'=> '3',
                     )
             ))
             ->add('cursos', 'entity', array(
-                'label'        => 'Empresa',   
+                'label'        => 'Curso',   
                 'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Cursos',
+                'empty_value' => "Selecione o curso",
                 'attr' => array(
                      'widget_col'=> '3',
                     )

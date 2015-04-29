@@ -15,17 +15,21 @@ class OpcoesareadesejadaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('opcaoareadesejada', 'text', array(
-                'label' => 'Área desejada',           
+            ->add('areaDesejada', 'entity', array(
+                'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\AreaDesejada',
+                'required' => false,
+                'empty_value' => "Selecione a área",
+                'label' => 'Área desejada',        
                 'attr' => array(
-                    'placeholder' => 'Área desejada',
-                    'widget_col'=> '8',
+                    'widget_col'=> '5',
                 ))) 
-            ->add('cagoopcaoareadesejada', 'text', array(
-                'label' => 'Cargo desejado',           
+            ->add('funcao', 'entity', array(
+                'required' => false,
+                'label' => 'Cargo desejado',
+                'empty_value' => "Selecione o cargo",
+                'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Funcao',
                 'attr' => array(
-                    'placeholder' => 'Cargo desejado',
-                    'widget_col'=> '8',
+                    'widget_col'=> '5',
                 )))             
         ;
     }

@@ -97,13 +97,15 @@ class CandidatoType extends AbstractType
                     )
                 ))
             ->add('sexosexo', 'entity', array(
-                'label'        => 'Sexo',   
+                'label'        => 'Sexo',
+                'empty_value' => "Selecione o sexo",
                 'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Sexo',
                 'attr' => array(
                      'widget_col'=> '3',
                     )
                 ))
             ->add('estadocivilestadocivil','entity', array(
+                'empty_value' => "Selecione o estado civil",
                 'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Estadocivil',
                 'label'        => 'Estado Civil',  
                 'attr' => array(

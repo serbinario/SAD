@@ -33,6 +33,7 @@ class IdentificacaonecessidadeType extends AbstractType
             
             ->add('capacitacaocapacitacao', 'entity', array(
                 'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Capacitacao',
+                'empty_value' => "Selecione o crédito",
                 'label' => 'Crédito', 
                 'multiple' => false,
                 'expanded' => false,          

@@ -16,7 +16,8 @@ class LinguaextrangeiraType extends AbstractType
     {
         $builder
              ->add('tipolinguaextrangeiralinguaextrangeira','entity', array(
-                'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Tipolinguaextrangeira',                  
+                'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Tipolinguaextrangeira',
+                 'empty_value' => "Selecione o idioma",
                 'label' => false,                
                 'attr' => array(
                      'widget_col'=> '3',

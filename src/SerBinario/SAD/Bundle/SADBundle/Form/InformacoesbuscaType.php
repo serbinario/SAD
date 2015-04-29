@@ -19,18 +19,8 @@ class InformacoesbuscaType extends AbstractType
             ->add('tipohorariotipohorario','entity', array(
                 'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Tipohorario',
                 'label' => 'Tipo Horário',  
-                'multiple' => false,
+                'multiple' => true,
                 'expanded' => true,
-                'attr' => array(
-                    'widget_col'=> '3',
-                    'inline' => true
-                    )
-                ))
-            ->add('tiponivelherarquicotiponivelherarquico','entity', array(
-                'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Tiponivelherarquico',
-                'label' => 'Nível Hierárquico',  
-                'multiple' => false,
-                'expanded' => true,                
                 'attr' => array(
                     'widget_col'=> '3',
                     'inline' => true
@@ -38,6 +28,7 @@ class InformacoesbuscaType extends AbstractType
                 ))
             ->add('opcoesdesejadas','bootstrap_collection', array(
                         'label'              => "Opções desejadas",
+                        'required'           => false,
                         'allow_add'          => true,
                         'allow_delete'       => true,
                         'add_button_text'    => 'Adicionar',

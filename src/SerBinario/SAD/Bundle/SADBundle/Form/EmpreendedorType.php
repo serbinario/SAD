@@ -72,6 +72,7 @@ class EmpreendedorType extends AbstractType
                 )
             ->add('escolaridade', 'entity', array(
                 'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Escolaridadeempreendedor',
+                'empty_value' => "Selecione a escolaridade",
                 'label'        => 'Escolaridade',  
                 'attr' => array(
                      'widget_col'=> '3',

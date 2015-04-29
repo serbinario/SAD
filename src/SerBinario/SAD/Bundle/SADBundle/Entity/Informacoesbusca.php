@@ -25,22 +25,13 @@ class Informacoesbusca
     /**
      * @var \Tipohorario
      *
-     * @ORM\ManyToOne(targetEntity="Tipohorario")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tipoHorario", referencedColumnName="idTipoHorario")
-     * })
+     * @ORM\ManyToMany(targetEntity="Tipohorario", inversedBy="informBusca", cascade={"persist"})
+     * @ORM\JoinTable(name="tipohorario_groups", 
+     *      joinColumns={@ORM\JoinColumn(name="inform_id", referencedColumnName="idInformacoesBusca")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="tipo_horario_id", referencedColumnName="idTipoHorario")}
+     * )
      */
     private $tipohorariotipohorario;
-
-    /**
-     * @var \Tiponivelherarquico
-     *
-     * @ORM\ManyToOne(targetEntity="Tiponivelherarquico")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tipoNivelHerarquico_idTipoNivelHerarquico", referencedColumnName="idTipoNivelHerarquico")
-     * })
-     */
-    private $tiponivelherarquicotiponivelherarquico;
 
     /**
      * @var \Curriculo
@@ -75,29 +66,6 @@ class Informacoesbusca
     public function getIdinformacoesbusca()
     {
         return $this->idinformacoesbusca;
-    }
-
-    /**
-     * Set tiponivelherarquicotiponivelherarquico
-     *
-     * @param \SerBinario\SAD\Bundle\SADBundle\Entity\Tiponivelherarquico $tiponivelherarquicotiponivelherarquico
-     * @return Informacoesbusca
-     */
-    public function setTiponivelherarquicotiponivelherarquico(\SerBinario\SAD\Bundle\SADBundle\Entity\Tiponivelherarquico $tiponivelherarquicotiponivelherarquico = null)
-    {
-        $this->tiponivelherarquicotiponivelherarquico = $tiponivelherarquicotiponivelherarquico;
-
-        return $this;
-    }
-
-    /**
-     * Get tiponivelherarquicotiponivelherarquico
-     *
-     * @return \SerBinario\SAD\Bundle\SADBundle\Entity\Tiponivelherarquico 
-     */
-    public function getTiponivelherarquicotiponivelherarquico()
-    {
-        return $this->tiponivelherarquicotiponivelherarquico;
     }
 
     /**
@@ -138,8 +106,10 @@ class Informacoesbusca
      */
     public function setOpcoesdesejadas($opcoesdesejadas) 
     {
-        foreach ($opcoesdesejadas as $opcao) {
-            $opcao->setInformacoesbuscainformacoesbusca($this);
+        if(count($opcoesdesejadas) > 0) {
+            foreach ($opcoesdesejadas as $opcao) {
+                $opcao->setInformacoesbuscainformacoesbusca($this);
+            }
         }
         
         $this->opcoesdesejadas = $opcoesdesejadas;
@@ -172,11 +142,8 @@ class Informacoesbusca
      * @param type $tipohorariotipohorario
      */
     public function setTipohorariotipohorario($tipohorariotipohorario) 
-    {
+    {           
         $this->tipohorariotipohorario = $tipohorariotipohorario;
     }
-
-
-
     
 }

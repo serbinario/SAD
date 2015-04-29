@@ -22,18 +22,18 @@ class Opcoesareadesejada
     private $idopcoesareadesejada;
 
     /**
-     * @var string
+     * @var \AreaDesejada
      *
-     * @ORM\Column(name="opcaoAreaDesejada", type="string", length=45, nullable=true)
+     * @ORM\OneToMany(targetEntity="AreaDesejada", mappedBy="opcaoDesejada", cascade={"all"})
      */
-    private $opcaoareadesejada;
+    private $areaDesejada;
 
     /**
-     * @var string
+     * @var \Funcao
      *
-     * @ORM\Column(name="cagoOpcaoAreaDesejada", type="string", length=45, nullable=true)
+     * @ORM\OneToMany(targetEntity="Funcao", mappedBy="opcaoDesejada", cascade={"all"})
      */
-    private $cagoopcaoareadesejada;
+    private $funcao;
 
     /**
      * @var \Informacoesbusca
@@ -45,62 +45,53 @@ class Opcoesareadesejada
      */
     private $informacoesbuscainformacoesbusca;
 
-
-
+    
     /**
-     * Get idopcoesareadesejada
-     *
-     * @return integer 
+     * 
+     * @return type
      */
-    public function getIdopcoesareadesejada()
-    {
+    function getIdopcoesareadesejada() {
         return $this->idopcoesareadesejada;
     }
-
+    
     /**
-     * Set opcaoareadesejada
-     *
-     * @param string $opcaoareadesejada
-     * @return Opcoesareadesejada
+     * 
+     * @return type
      */
-    public function setOpcaoareadesejada($opcaoareadesejada)
-    {
-        $this->opcaoareadesejada = $opcaoareadesejada;
-
-        return $this;
+    function getAreaDesejada() {
+        return $this->areaDesejada;
     }
-
+    
     /**
-     * Get opcaoareadesejada
-     *
-     * @return string 
+     * 
+     * @return type
      */
-    public function getOpcaoareadesejada()
-    {
-        return $this->opcaoareadesejada;
+    function getFuncao() {
+        return $this->funcao;
     }
-
+    
     /**
-     * Set cagoopcaoareadesejada
-     *
-     * @param string $cagoopcaoareadesejada
-     * @return Opcoesareadesejada
+     * 
+     * @param type $idopcoesareadesejada
      */
-    public function setCagoopcaoareadesejada($cagoopcaoareadesejada)
-    {
-        $this->cagoopcaoareadesejada = $cagoopcaoareadesejada;
-
-        return $this;
+    function setIdopcoesareadesejada($idopcoesareadesejada) {
+        $this->idopcoesareadesejada = $idopcoesareadesejada;
     }
-
+    
     /**
-     * Get cagoopcaoareadesejada
-     *
-     * @return string 
+     * 
+     * @param \SerBinario\SAD\Bundle\SADBundle\Entity\AreaDesejada $areaDesejada
      */
-    public function getCagoopcaoareadesejada()
-    {
-        return $this->cagoopcaoareadesejada;
+    function setAreaDesejada(AreaDesejada $areaDesejada) {
+        $this->areaDesejada = $areaDesejada;
+    }
+    
+    /**
+     * 
+     * @param \SerBinario\SAD\Bundle\SADBundle\Entity\Funcao $funcao
+     */
+    function setFuncao(Funcao $funcao) {
+        $this->funcao = $funcao;
     }
 
     /**

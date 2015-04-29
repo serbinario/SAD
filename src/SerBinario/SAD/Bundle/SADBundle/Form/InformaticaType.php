@@ -17,6 +17,7 @@ class InformaticaType extends AbstractType
     {
         $builder
              ->add('tiposinformaticatiposinformatica','entity', array(
+                 'empty_value' => "Selecione o especialidade",
                 'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Tiposinformatica',
                 'label' => false,                
                 'attr' => array(

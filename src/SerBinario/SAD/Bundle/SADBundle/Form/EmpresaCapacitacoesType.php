@@ -18,6 +18,7 @@ class EmpresaCapacitacoesType extends AbstractType
             ->add('empresa', 'entity', array(
                 'label'        => 'Empresa',   
                 'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Empresa',
+                'empty_value' => "Selecione a empresa",
                 'attr' => array(
                      'widget_col'=> '3',
                     )
@@ -25,6 +26,7 @@ class EmpresaCapacitacoesType extends AbstractType
             ->add('capacitacoes', 'entity', array(
                 'label'        => 'Curso',   
                 'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Capacitacoes',
+                'empty_value' => "Selecione a capacitação",
                 'attr' => array(
                      'widget_col'=> '3',
                     )

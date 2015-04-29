@@ -5,8 +5,7 @@
         <title>{% block title %}SAD!{% endblock %}</title>        
         {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}        
         {% block stylesheets %}
-            <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
-            <link href="{{ asset('css/bootstrap.min.lumen.css') }}" rel="stylesheet" media="screen">
+            <link href="{{ asset('css/bootstrap_paperv3.3.2.min.css') }}" rel="stylesheet" media="screen">
             <link rel="stylesheet" href="{{asset('css/bootstrapValidation.mim.css')}}" />  
             <link rel="stylesheet" href="{{asset('css/jquery.datetimepicker.css')}}" />
             <style type="text/css" rel="stylesheet">
@@ -236,6 +235,8 @@
             <script type="text/javascript" src="{{asset('js/javax_faces.js')}}"></script>
             <script type="text/javascript" src="{{asset('js/jquery.datetimepicker.js')}}"></script>
             <script type="text/javascript" src="{{asset('js/bootstrapvalidator.js')}}"></script>
+            <script type="text/javascript" src="{{asset('js/jquery.mask.js')}}"></script>
+            <script type="text/javascript" src="{{asset('js/mascara/mascaras.js')}}"></script>
             <script type="text/javascript">
                 (function ($) {
                     $(document).ready(function () {

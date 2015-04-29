@@ -37,7 +37,7 @@ class CandidatoController extends Controller
         if($request->getMethod() === "POST") {
             #Repasando a requisição
             $form->handleRequest($request);
-            
+            //var_dump($form->getData());exit();
             #Verifica se os dados são válidos
             if($form->isValid()) {
                 #Recuperando os dados
@@ -57,6 +57,8 @@ class CandidatoController extends Controller
                
                 #Retorno
                 return array("form" => $form->createView());
+            } else {
+                $this->get('session')->getFlashBag()->add('warning', 'Há campos obrigatório que ainda não foram preenchidos');
             }
         }
         

@@ -1,5 +1,6 @@
 <?php
 namespace SerBinario\SAD\Bundle\SADBundle\Entity;
+use \Doctrine\Common\Collections\ArrayCollection;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -26,6 +27,22 @@ class Tipohorario
      * @ORM\Column(name="tipoHorario", type="string", length=45, nullable=true)
      */
     private $tipohorario;
+    
+    /**
+     *
+     * @var type 
+     * 
+     * @ORM\ManyToMany(targetEntity="Informacoesbusca", mappedBy="tipohorariotipohorario", cascade={"persist"})
+     */
+    private $informBusca;
+    
+    /**
+     * 
+     */
+    public function __construct()
+    {
+        $this->informBusca = new ArrayCollection();
+    }
 
     /**
      * Get idtipohorario
@@ -35,6 +52,7 @@ class Tipohorario
     public function getIdtipohorario()
     {
         return $this->idtipohorario;
+        
     }
 
     /**
@@ -72,19 +90,22 @@ class Tipohorario
      * 
      * @return type
      */
-    public function getInformacaoBusca() 
+    public function getInformBusca() 
     {
-        return $this->informacaoBusca;
+        return $this->informBusca;
     }
 
     /**
      * 
      * @param type $informacaoBusca
      */
-    public function setInformacaoBusca($informacaoBusca) 
+    public function setInformBusca($informacaoBusca) 
     {
-        $this->informacaoBusca = $informacaoBusca;
+        foreach ($informacaoBusca as $opcao) {
+            $opcao->setTipohorariotipohorario($this);
+        }
+        
+        $this->informBusca = $informacaoBusca;
     }
-
     
 }

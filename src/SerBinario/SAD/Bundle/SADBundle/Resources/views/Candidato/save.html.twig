@@ -43,22 +43,20 @@
                             Cursos</a >
                     </li >
                     <li role="presentation">
-                        <a href="#informatica"aria-controls="informatica"role="tab"data-toggle="tab">
-                            Informática</a >
-                    </li >
-                    <li role="presentation">
                         <a href="#qualificacaoFutura"aria-controls="qualificacaoFutura"role="tab"data-toggle="tab">
                             Qualificação Furtura</a >
                     </li >
                     <li role="presentation">
                         <a href="#84"aria-controls="84"role="tab"data-toggle="tab">
-                            Aviso de Vagas</a >
+                            Pretensão de Vagas</a >
                     </li >
                 </ul >
                 <div class="tab-content">
                     <div class="tab-pane active"id="dadosPessoais">
                         <br />
                         {{ form_row(form.nomecandidato) }}
+                        {{ form_row(form.sexosexo) }}
+                        {{ form_row(form.estadocivilestadocivil) }}
                         {{ form_row(form.cpfcandidato) }}
                         {{ form_row(form.rgcandidato) }}
                         {{ form_row(form.enderecocadidato) }}
@@ -71,9 +69,7 @@
                         {{ form_row(form.cnhcandidato) }}
                         {{ form_row(form.objCnh.validadecnh) }}
                         {{ form_row(form.objCnh.categoriacnh) }}
-                        {{ form_row(form.outrasinformacoescandidato) }}
-                        {{ form_row(form.sexosexo) }}
-                        {{ form_row(form.estadocivilestadocivil) }}
+                        {{ form_row(form.outrasinformacoescandidato) }}                        
                         {{ form_row(form.telefones) }}                                                                                       
                     </div>
                     <div class="tab-pane"id="dadosCurriculo">
@@ -93,10 +89,7 @@
                     <div class="tab-pane"id="cursos">
                         <br />
                          {{ form_row(form.curriculo.linguasExtrangeiras) }}
-                    </div>
-                    <div class="tab-pane"id="informatica">
-                        <br />
-                        {{ form_row(form.curriculo.informatica) }}
+                         {{ form_row(form.curriculo.informatica) }}
                     </div>
                     <div class="tab-pane"id="qualificacaoFutura">
                         <br />
@@ -105,7 +98,6 @@
                     <div class="tab-pane"id="84">
                         <br />
                         {{ form_row(form.curriculo.informacaoBusca.tipohorariotipohorario) }}
-                        {{ form_row(form.curriculo.informacaoBusca.tiponivelherarquicotiponivelherarquico) }}
                         {{ form_row(form.curriculo.informacaoBusca.opcoesdesejadas) }}                      
                     </div>
                 </div>
