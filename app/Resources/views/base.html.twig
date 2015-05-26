@@ -8,9 +8,9 @@
             <link href="{{ asset('css/bootstrap_paperv3.3.2.min.css') }}" rel="stylesheet" media="screen">
             <link rel="stylesheet" href="{{asset('css/bootstrapValidation.mim.css')}}" />  
             <link rel="stylesheet" href="{{asset('css/jquery.datetimepicker.css')}}" />
-            <style type="text/css" rel="stylesheet">
+            <style type="text/css" rel="stylesheet">                   
                 .marginBottom-0 {margin-bottom:0;}
-
+                .navbar-default-bg {background: #2F527C;}              
                 .dropdown-submenu{position:relative;}
                 .dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:-1px;-webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;}
                 .dropdown-submenu>a:after{display:block;content:" ";float:right;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 0 5px 5px;border-left-color:#cccccc;margin-top:5px;margin-right:-10px;}
@@ -22,7 +22,7 @@
     </head>
     <body>
         {% block body %}
-            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <nav class="navbar  navbar-default-bg navbar-inverse navbar-fixed-top" role="navigation">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -38,55 +38,55 @@
                 <div class="collapse navbar-collapse" id="navbar-main">
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Emprego <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">EMPREGO <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastro</a>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">CADASTRO</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{path('saveCandidato')}}">Novo</a></li>
+                                        <li><a href="{{path('saveCandidato')}}">NOVO</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="{{path('viewListCandidato')}}">Abrir</a></li>
+                                        <li><a href="{{path('viewListCandidato')}}">ABRIR</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="">Imprimir</a></li>
+                                        <li><a href="">IMPRIMIR</a></li>
                                     </ul>                                   
                                 </li>
                                 <li class="divider"></li>
-                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Capacitação</a>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">CAPACITAÇÃO</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="">Novo</a></li>
+                                        <li><a href="">NOVO</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="">Abrir</a></li>
+                                        <li><a href="">ABRIR</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="">Demanda</a></li>
+                                        <li><a href="">DEMANDA</a></li>
                                     </ul>                                   
                                 </li>
                                 <li class="divider"></li>
-                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Vagas</a>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">VAGAS</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="">Disponível</a></li>
+                                        <li><a href="">DISPONÍVEL</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="">Preenchidas</a></li>
+                                        <li><a href="">PREENCHIDAS</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="">Demanda</a></li>
+                                        <li><a href="">DEMANDA</a></li>
                                     </ul>                                   
                                 </li>
                                 <li class="divider"></li>
-                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatório</a>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">RELATÓRIO</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="">Abrir</a></li>
+                                        <li><a href="">ABRIR</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="">Demanda</a></li>
+                                        <li><a href="">DEMANDA</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="">Imprimir</a></li>
+                                        <li><a href="">IMPRIMIR</a></li>
                                     </ul>                                   
                                 </li>
                                 <li class="divider"></li>
-                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Empresas</a>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">EMPRESAS</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="">Abrir</a></li>
+                                        <li><a href="">ABRIR</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="">Demanda</a></li>
+                                        <li><a href="">DEMANDA</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="">Imprimir</a></li>
+                                        <li><a href="">IMPRIMIR</a></li>
                                     </ul>                                   
                                 </li>
                             </ul>
@@ -94,46 +94,46 @@
                     </ul>
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Empreendedor <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">EMPREENDEDOR <b class="caret"></b></a>
 
                             <ul class="dropdown-menu">
-                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastro</a>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">CADASTRO</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href={{path('saveEmpreendedor')}}>Novo</a></li>
+                                        <li><a href={{path('saveEmpreendedor')}}>NOVO</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="{{path('viewListEmpreendedor')}}">Abrir</a></li>
+                                        <li><a href="{{path('viewListEmpreendedor')}}">ABRIR</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="">Imprimir</a></li>
+                                        <li><a href="">IMPRIMIR</a></li>
                                     </ul>                                   
                                 </li>
                                 <li class="divider"></li>
-                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Capacitação</a>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">CAPACITAÇÃO</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="">Novo</a></li>
+                                        <li><a href="">NOVO</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="">Abrir</a></li>
+                                        <li><a href="">ABRIR</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="">Demanda</a></li>
+                                        <li><a href="">DEMANDA</a></li>
                                     </ul>                                   
                                 </li>
                                 <li class="divider"></li>
-                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultoria</a>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">CONSULTORIA</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="">Novo</a></li>
+                                        <li><a href="">NOVO</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="">Abrir</a></li>
+                                        <li><a href="">ABRIR</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="">Demanda</a></li>
+                                        <li><a href="">DEMANDA</a></li>
                                     </ul>                                   
                                 </li>
                                 <li class="divider"></li>
-                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatório</a>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">RELATÓRIO</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="">Novo</a></li>
+                                        <li><a href="">NOVO</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="">Abrir</a></li>
+                                        <li><a href="">ABRIR</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="">Demanda</a></li>
+                                        <li><a href="">DEMANDA</a></li>
                                     </ul>                                   
                                 </li>
                             </ul>
@@ -141,35 +141,35 @@
                     </ul>
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Autônomo <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">AUTÔNOMO <b class="caret"></b></a>
                             <ul class="dropdown-menu">                                                               
-                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastro</a>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">CADASTRO</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{ path('saveAutonomo') }}">Novo</a></li>
+                                        <li><a href="{{ path('saveAutonomo') }}">NOVO</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="{{path('viewListAutonomo')}}">Abrir</a></li>
+                                        <li><a href="{{path('viewListAutonomo')}}">ABRIR</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="">Imprimir</a></li>
+                                        <li><a href="">IMPRIMIR</a></li>
                                     </ul>                                   
                                 </li>
                                 <li class="divider"></li>
-                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Capacitação</a>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">CAPACITAÇÃO</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="">Novo</a></li>
+                                        <li><a href="">NOVO</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="">Abrir</a></li>
+                                        <li><a href="">ABRIR</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="">Imprimir</a></li>
+                                        <li><a href="">IMPRIMIR</a></li>
                                     </ul>                                   
                                 </li>
                                 <li class="divider"></li>
-                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatório</a>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">RELATÓRIO</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="">Novo</a></li>
+                                        <li><a href="">NOVO</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="">Abrir</a></li>
+                                        <li><a href="">ABRIR</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="">Imprimir</a></li>
+                                        <li><a href="">IMPRIMIR</a></li>
                                     </ul>                                   
                                 </li>
                             </ul>
@@ -177,52 +177,52 @@
                     </ul>
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastros <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">CADASTROS <b class="caret"></b></a>
                             <ul class="dropdown-menu">                                                               
-                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Empresa</a>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">EMPRESA</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{ path('saveEmpresa') }}">Cadastrar</a></li>
+                                        <li><a href="{{ path('saveEmpresa') }}">CADASTRAR</a></li>
                                         <li class="divider"></li>                                 
-                                        <li><a href="{{ path('gridEmpresa') }}">Abrir</a></li>
+                                        <li><a href="{{ path('gridEmpresa') }}">ABRIR</a></li>
                                     </ul>                                   
                                 </li>
                                 <li class="divider"></li>
-                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Capacitação Escolar</a>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">CAPACITAÇÃO ESCOLAR</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{ path('saveCurso') }}">Novo</a></li>
+                                        <li><a href="{{ path('saveCurso') }}">NOVO</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="{{ path('gridCurso') }}">Abrir</a></li>                             
+                                        <li><a href="{{ path('gridCurso') }}">ABRIR</a></li>                             
                                     </ul>                                   
                                 </li>
                                 <li class="divider"></li>
-                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Capacitação Profissional</a>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">CAPACITAÇÃO PROFISSIONAL</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{ path('saveCapacitacoes') }}">Novo</a></li>
+                                        <li><a href="{{ path('saveCapacitacoes') }}">NOVO</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="{{ path('gridCapacitacoes') }}">Abrir</a></li>                             
+                                        <li><a href="{{ path('gridCapacitacoes') }}">ABRIR</a></li>                             
                                     </ul>                                   
                                 </li>  
                                 <li class="divider"></li>
-                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Vínculo Empresa/Capacitação Escolar</a>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">VÍNCULO EMPRESA/CAPACITAÇÃO ESCOLAR</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{ path('saveEmpresaCursos') }}">Novo</a></li>
+                                        <li><a href="{{ path('saveEmpresaCursos') }}">NOVO</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="{{ path('gridEmpresaCursos') }}">Abrir</a></li>                             
+                                        <li><a href="{{ path('gridEmpresaCursos') }}">ABRIR</a></li>                             
                                     </ul>                                   
                                 </li>  
                                 <li class="divider"></li>
-                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Vínculo Empresa/Capacitação Profissional</a>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">VÍNCULO EMPRESA/CAPACITAÇÃO PROFISSIONAL</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{ path('saveEmpresaCapacitacoes') }}">Novo</a></li>
+                                        <li><a href="{{ path('saveEmpresaCapacitacoes') }}">NOVO</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="{{ path('gridEmpresaCapacitacoes') }}">Abrir</a></li>                             
+                                        <li><a href="{{ path('gridEmpresaCapacitacoes') }}">ABRIR</a></li>                             
                                     </ul>                                   
                                 </li>  
                             </ul>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{path('logout')}}">Sair</a></li>
+                        <li><a href="{{path('logout')}}">SAIR</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </nav> <br /><br /><br />
