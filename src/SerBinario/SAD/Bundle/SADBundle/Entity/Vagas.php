@@ -21,23 +21,70 @@ class Vagas
     private $idVagas;
     
     /**
-     * @var float
+     * @var String
      *
-     * @ORM\Column(name="salario", type="float", nullable=false)
+     * @ORM\Column(name="nome_vaga", type="string", nullable=false)
      */
-    private $salario;
+    private $nomeVaga;
     
     /**
-     * @var integer
+     * @var \VagasDisponiveis
      *
-     * @ORM\Column(name="qtd", type="integer", nullable=false)
+     * @ORM\OneToMany(targetEntity="VagasDisponiveis", mappedBy="vagas", cascade={"all"})
      */
-    private $qtdVagas;
-    
+    private $vagasDisponiveis;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Empresa")
-     * @ORM\JoinColumn(name="empresa_id", referencedColumnName="id_empresa")
-     **/
-    private $empresa;
+     * 
+     * @return type
+     */
+    function getIdVagas() {
+        return $this->idVagas;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    function getNomeVaga() {
+        return $this->nomeVaga;
+    }
+    
+    /**
+     * 
+     * @param type $idVagas
+     */
+    function setIdVagas($idVagas) {
+        $this->idVagas = $idVagas;
+    }
+    
+    /**
+     * 
+     * @param \SerBinario\SAD\Bundle\SADBundle\Entity\String $nomeVaga
+     */
+    function setNomeVaga($nomeVaga) {
+        $this->nomeVaga = $nomeVaga;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    function getVagasDisponiveis() {
+        return $this->vagasDisponiveis;
+    }
+    
+    /**
+     * 
+     * @param \VagasDisponiveis $vagasDisponiveis
+     */
+    function setVagasDisponiveis(VagasDisponiveis $vagasDisponiveis) {
+        $this->vagasDisponiveis = $vagasDisponiveis;
+    }
+    
+    public function __toString()
+    {
+        return $this->nomeVaga;
+    }
+
 }

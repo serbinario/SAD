@@ -38,6 +38,13 @@ class AreaDesejada
      * })
      */
     private $opcaoDesejada;
+    
+    /**
+     * @var \VagasDisponiveis
+     *
+     * @ORM\OneToMany(targetEntity="VagasDisponiveis", mappedBy="areaDesejada", cascade={"all"})
+     */
+    private $vagasDisponiveis;
 
     /**
      * 
@@ -92,4 +99,21 @@ class AreaDesejada
         return $this->areaDesejada;
     }
     
+    /**
+     * 
+     * @return type
+     */
+    function getVagasDisponiveis() {
+        return $this->vagasDisponiveis;
+    }
+    
+    /**
+     * 
+     * @param \VagasDisponiveis $vagasDisponiveis
+     */
+    function setVagasDisponiveis(VagasDisponiveis $vagasDisponiveis) {
+        $this->vagasDisponiveis = $vagasDisponiveis;
+    }
+
+
 }

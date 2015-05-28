@@ -57,7 +57,7 @@
         <div class="row clearfix">
             <br />
             <fieldset>
-                <legend>Tabela de Dados das Empresas</legend>
+                <legend>Tabela de Dados das Vagas</legend>
                 <div class="col-md-12 column">
                     <section>
                         <table id="example" class="display" cellspacing="0" width="100%">
@@ -96,17 +96,17 @@
                 "serverSide": true,
                 "bFilter": true, //Ativa o Search global
                 "ajax": {
-                    "url": "{{ path('gridEmpresa') }}",
+                    "url": "{{ path('gridVagas') }}",
                     "type": "POST"
                 },
                 "columns": [                   
-                    {"data": "nomeEmpresa"},                   
+                    {"data": "nomeVaga"},                   
                     {
                         "class": "bt",
                         "orderable": false,
                         "data": null,
                         "render": function (data, type, row, full, meta) {
-                            return '<a href="editEmpresa/id/'+data.id +'" class="editar" title="Editar">'
+                            return '<a href="editVagas/id/'+data.id +'" class="editar" title="Editar">'
                         }
                     },
                 ],

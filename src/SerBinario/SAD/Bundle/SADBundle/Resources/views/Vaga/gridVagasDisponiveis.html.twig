@@ -57,20 +57,26 @@
         <div class="row clearfix">
             <br />
             <fieldset>
-                <legend>Tabela de Dados das Empresas</legend>
+                <legend>Tabela de Dados das Vagas</legend>
                 <div class="col-md-12 column">
                     <section>
                         <table id="example" class="display" cellspacing="0" width="100%">
                             <thead>
                                 <tr>                                   
-                                    <th>Nome</th>                                                                    
+                                    <th>Quantidade</th>
+                                    <th>Vaga</th> 
+                                    <th>Empresa</th> 
+                                    <th>Área Profissional</th> 
                                     <th>Acão</th>
                                 </tr>
                             </thead>
 
                             <tfoot>
                                 <tr>
-                                    <th>Nome</th>                                                                    
+                                    <th>Quantidade</th>
+                                    <th>Vaga</th> 
+                                    <th>Empresa</th> 
+                                    <th>Área Profissional</th>                                                                    
                                     <th>Acão</th>
                                 </tr>
                             </tfoot>
@@ -96,17 +102,20 @@
                 "serverSide": true,
                 "bFilter": true, //Ativa o Search global
                 "ajax": {
-                    "url": "{{ path('gridEmpresa') }}",
+                    "url": "{{ path('gridVagasDisponiveis') }}",
                     "type": "POST"
                 },
                 "columns": [                   
-                    {"data": "nomeEmpresa"},                   
+                    {"data": "quantidade"},
+                    {"data": "vaga"}, 
+                    {"data": "empresa"}, 
+                    {"data": "areaDesejada"}, 
                     {
                         "class": "bt",
                         "orderable": false,
                         "data": null,
                         "render": function (data, type, row, full, meta) {
-                            return '<a href="editEmpresa/id/'+data.id +'" class="editar" title="Editar">'
+                            return '<a href="editVagasDisponiveis/id/'+data.id +'" class="editar" title="Editar">'
                         }
                     },
                 ],

@@ -8,7 +8,7 @@
             <link href="{{ asset('css/bootstrap_paperv3.3.2.min.css') }}" rel="stylesheet" media="screen">
             <link rel="stylesheet" href="{{asset('css/bootstrapValidation.mim.css')}}" />  
             <link rel="stylesheet" href="{{asset('css/jquery.datetimepicker.css')}}" />
-            <style type="text/css" rel="stylesheet">                   
+            <style type="text/css" rel="stylesheet">
                 .marginBottom-0 {margin-bottom:0;}
                 .navbar-default-bg {background: #2F527C;}              
                 .dropdown-submenu{position:relative;}
@@ -187,6 +187,14 @@
                                     </ul>                                   
                                 </li>
                                 <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">VAGAS</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('saveVaga') }}">CADASTRAR</a></li>
+                                        <li class="divider"></li>                                 
+                                        <li><a href="{{ path('gridVagas') }}">ABRIR</a></li>
+                                    </ul>                                   
+                                </li>
+                                <li class="divider"></li>
                                 <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">CAPACITAÇÃO ESCOLAR</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="{{ path('saveCurso') }}">NOVO</a></li>
@@ -217,7 +225,15 @@
                                         <li class="divider"></li>
                                         <li><a href="{{ path('gridEmpresaCapacitacoes') }}">ABRIR</a></li>                             
                                     </ul>                                   
-                                </li>  
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">VAGAS DISPONÍVEIS</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('saveVagaDisponiveis') }}">CADASTRAR</a></li>
+                                        <li class="divider"></li>                                 
+                                        <li><a href="{{ path('gridVagasDisponiveis') }}">ABRIR</a></li>
+                                    </ul>                                   
+                                </li>
                             </ul>
                         </li>
                     </ul>
