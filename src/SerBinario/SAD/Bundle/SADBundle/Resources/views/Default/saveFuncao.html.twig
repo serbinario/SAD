@@ -13,17 +13,13 @@
         {% endfor %}
         <div class="row clearfix">
             <br />
-            <legend>Editar Empresa</legend>
+            <legend>Cadastro de Vagas</legend>
             <div class="col-md-13 column">
-                {{ form_start(form, { 'style': 'horizontal' }) }}
-                    {{ form_row(form.nomeVaga) }}                    
+                {{ form_start(form, { 'style': 'horizontal' }) }}                
+                    {{ form_row(form.funcao) }}                     
                     {{ form_row(form.actions) }}
-                {{ form_end(form) }}      
+                {{ form_end(form) }}
             </div>
         </div>
     </div>
 {% endblock %}
-
-
-
-

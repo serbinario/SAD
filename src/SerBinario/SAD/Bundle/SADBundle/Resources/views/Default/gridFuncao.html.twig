@@ -57,7 +57,7 @@
         <div class="row clearfix">
             <br />
             <fieldset>
-                <legend>Tabela de Dados dos Cursos</legend>
+                <legend>Tabela de Dados das Áreas Desejadas</legend>
                 <div class="col-md-12 column">
                     <section>
                         <table id="example" class="display" cellspacing="0" width="100%">
@@ -96,17 +96,17 @@
                 "serverSide": true,
                 "bFilter": true, //Ativa o Search global
                 "ajax": {
-                    "url": "{{ path('gridCurso') }}",
+                    "url": "{{ path('gridFuncao') }}",
                     "type": "POST"
                 },
                 "columns": [                   
-                    {"data": "nomeCurso"},                   
+                    {"data": "nomeFuncao"},                   
                     {
                         "class": "bt",
                         "orderable": false,
                         "data": null,
                         "render": function (data, type, row, full, meta) {
-                            return '<a href="editCurso/id/'+data.id +'" class="editar" title="Editar">'
+                            return '<a href="editFuncao/id/'+data.id +'" class="editar" title="Editar">'
                         }
                     },
                 ],
