@@ -116,6 +116,11 @@
             event.preventDefault();
             console.log('asdasd');
         });
+        
+        $(document).on('click', '#serbinario_sad_bundle_sadbundle_candidato_actions_cancel', function () {
+            console.log('sfdfd');
+            window.location.href = '{{path('viewListCandidato')}}';
+        });
     </script>
 {% endblock %}
 

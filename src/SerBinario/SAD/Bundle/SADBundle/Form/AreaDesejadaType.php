@@ -18,7 +18,7 @@ class AreaDesejadaType extends AbstractType
             ->add('areaDesejada', 'text', array(
             'label' => 'Nome',           
             'attr' => array(
-                'placeholder' => 'Nome da Área desejada',
+                'placeholder' => 'Nome da Área Profissional',
                 'widget_col'=> '5',
             )))
             ->add('actions', 'form_actions', [

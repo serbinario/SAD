@@ -13,7 +13,7 @@
         {% endfor %}
         <div class="row clearfix">
             <br />
-            <legend>Editar Empresa</legend>
+            <legend>Editar Vínculo de Empresas e Cursos</legend>
             <div class="col-md-13 column">
                 {{ form_start(form, { 'style': 'horizontal' }) }}
                     {{ form_row(form.empresa) }}    
@@ -24,6 +24,15 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript">
+        $(document).on('click', '#serbinario_sad_bundle_sadbundle_empresacursos_actions_cancel', function () {
+            console.log('sfdfd');
+            window.location.href = '{{path('gridEmpresaCursos')}}';
+        });
+    </script>
 {% endblock %}
 
 
