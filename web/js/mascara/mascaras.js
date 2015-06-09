@@ -21,5 +21,6 @@ $(document).ready(function(){
     //money
      $('#serbinario_sad_bundle_sadbundle_autonomo_outrarendaautonomo').mask('000.000.000,00', {reverse: true});
      
-     
+     //Vaga disponível
+     $('#serbinario_sad_bundle_sadbundle_vagasdisponiveis_qtdVagas').mask('0000000000000000000', {reverse: true});
 });

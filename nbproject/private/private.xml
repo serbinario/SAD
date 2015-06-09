@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Resources/config/services.yml</file>
-            <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Form/FuncaoType.php</file>
-            <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Entity/Funcao.php</file>
-            <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Entity/AreaDesejada.php</file>
-            <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Controller/DefaultController.php</file>
-            <file>file:/var/www/html/SAD/app/Resources/views/base.html.twig</file>
+            <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Vaga/editVagasDisponiveis.html.twig</file>
+            <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Vaga/saveVagaDisponiveis.html.twig</file>
+            <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Candidato/save.html.twig</file>
+            <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Form/OpcoesareadesejadaType.php</file>
         </group>
     </open-files>
 </project-private>

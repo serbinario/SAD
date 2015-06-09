@@ -45,6 +45,13 @@ class AreaDesejada
      * @ORM\OneToMany(targetEntity="VagasDisponiveis", mappedBy="areaDesejada", cascade={"all"})
      */
     private $vagasDisponiveis;
+    
+    /**
+     * @var \Vagas
+     *
+     * @ORM\OneToMany(targetEntity="Vagas", mappedBy="areaDesejada", cascade={"all"})
+     */
+    private $vagas;
 
     /**
      * 
@@ -114,6 +121,20 @@ class AreaDesejada
     function setVagasDisponiveis(VagasDisponiveis $vagasDisponiveis) {
         $this->vagasDisponiveis = $vagasDisponiveis;
     }
-
-
+    
+    /**
+     * 
+     * @return type
+     */
+    function getVagas() {
+        return $this->vagas;
+    }
+    
+    /**
+     * 
+     * @param \SerBinario\SAD\Bundle\SADBundle\Entity\Vagas $vagas
+     */
+    function setVagas(Vagas $vagas) {
+        $this->vagas = $vagas;
+    }
 }

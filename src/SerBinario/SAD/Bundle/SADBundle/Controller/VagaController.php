@@ -10,6 +10,8 @@ use SerBinario\SAD\Bundle\SADBundle\Form\VagasType;
 use SerBinario\SAD\Bundle\SADBundle\Form\VagasDisponiveisType;
 use SerBinario\SAD\Bundle\SADBundle\Util\GridClass;
 
+use SerBinario\SAD\Bundle\SADBundle\DAO\VagaDAO;
+
 /**
  * Empresa controller.
  *
@@ -336,4 +338,30 @@ class VagaController extends Controller
         #Retorno
         return array("form" => $form->createView());
     }
+    
+    /**
+     * @Route("/vagasAreaPro", name="vagasAreaPro")
+     * @Template()
+     */
+    public function vagasAreaProAction(Request $request) {
+        $dado = $request->request->all();
+        $msg = "";
+        
+        $vagasDAO = new VagaDAO($this->getDoctrine()->getManager());
+        $vagas    = $vagasDAO->findVagasAreaProAjax($dado['idAreaProfissional']);
+
+        if ($vagas) {
+            $msg = "sucesso";
+        } else {
+            $msg = "erro";
+        }
+        
+        $dados = array(
+            "msg" => $msg,
+            "vagas" => $vagas
+        );
+
+        return new JsonResponse($dados);
+    }
+    
 }

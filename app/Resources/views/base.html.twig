@@ -38,7 +38,7 @@
                 <div class="collapse navbar-collapse" id="navbar-main">
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">EMPREGO <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">EMPREGO <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">CADASTRO</a>
                                     <ul class="dropdown-menu">
@@ -94,7 +94,7 @@
                     </ul>
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">EMPREENDEDOR <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">EMPREENDEDOR <b class="caret"></b></a>
 
                             <ul class="dropdown-menu">
                                 <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">CADASTRO</a>
@@ -141,7 +141,7 @@
                     </ul>
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">AUTÔNOMO <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">AUTÔNOMO <b class="caret"></b></a>
                             <ul class="dropdown-menu">                                                               
                                 <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">CADASTRO</a>
                                     <ul class="dropdown-menu">
@@ -177,7 +177,7 @@
                     </ul>
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">CADASTROS <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">CADASTROS <b class="caret"></b></a>
                             <ul class="dropdown-menu">                                                               
                                 <li class="dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">EMPRESA</a>
                                     <ul class="dropdown-menu">
@@ -269,6 +269,7 @@
             <script type="text/javascript" src="{{asset('js/bootstrapvalidator.js')}}"></script>
             <script type="text/javascript" src="{{asset('js/jquery.mask.js')}}"></script>
             <script type="text/javascript" src="{{asset('js/mascara/mascaras.js')}}"></script>
+            <script type="text/javascript" src="{{asset('js/bootstrap-hover-dropdown.min.js')}}"></script>
             <script type="text/javascript">
                 (function ($) {
                     $(document).ready(function () {
@@ -302,6 +303,10 @@
                         });
                     });
                 })(jQuery);
+                
+                $(document).ready(function() {
+                    $('.js-activated').dropdownHover().dropdown();
+                });
             </script>
         {% endblock %}
     </body>

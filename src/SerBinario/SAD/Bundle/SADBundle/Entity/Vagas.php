@@ -28,6 +28,28 @@ class Vagas
     private $nomeVaga;
     
     /**
+     *
+     * @var \Opcoesareadesejada 
+     * 
+     * @ORM\ManyToOne(targetEntity="Opcoesareadesejada", inversedBy="vagas")
+     * @ORM\JoinColumns({
+     *      @ORM\JoinColumn(name="idOpcaoDesejada", referencedColumnName="idOpcoesAreaDesejada")
+     * })
+     */
+    private $opcaoDesejada;
+    
+    /**
+     *
+     * @var \AreaDesejada 
+     * 
+     * @ORM\ManyToOne(targetEntity="AreaDesejada", inversedBy="vagas")
+     * @ORM\JoinColumns({
+     *      @ORM\JoinColumn(name="idAreaDesejada", referencedColumnName="idAreaDesejada")
+     * })
+     */
+    private $areaDesejada;
+    
+    /**
      * @var \VagasDisponiveis
      *
      * @ORM\OneToMany(targetEntity="VagasDisponiveis", mappedBy="vagas", cascade={"all"})
@@ -80,6 +102,38 @@ class Vagas
      */
     function setVagasDisponiveis(VagasDisponiveis $vagasDisponiveis) {
         $this->vagasDisponiveis = $vagasDisponiveis;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    function getOpcaoDesejada() {
+        return $this->opcaoDesejada;
+    }
+    
+    /**
+     * 
+     * @param \Opcoesareadesejada $opcaoDesejada
+     */
+    function setOpcaoDesejada(Opcoesareadesejada $opcaoDesejada) {
+        $this->opcaoDesejada = $opcaoDesejada;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    function getAreaDesejada() {
+        return $this->areaDesejada;
+    }
+    
+    /**
+     * 
+     * @param \AreaDesejada $areaDesejada
+     */
+    function setAreaDesejada(AreaDesejada $areaDesejada) {
+        $this->areaDesejada = $areaDesejada;
     }
     
     public function __toString()

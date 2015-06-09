@@ -15,20 +15,6 @@ class VagasDisponiveisType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('qtdVagas', 'text', array(
-                'label' => 'Quantidade',           
-                'attr' => array(
-                    'placeholder' => 'Quantidade de vagas',
-                    'widget_col'=> '5',
-                )))
-            ->add('vagas','entity', array(
-                'empty_value' => "Selecione a vaga",
-                'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Vagas',
-                'label'        => 'Vagas',  
-                'attr' => array(
-                     'widget_col'=> '3',
-                    )
-                ))
             ->add('empresas','entity', array(
                 'empty_value' => "Selecione a empresa",
                 'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Empresa',
@@ -40,11 +26,25 @@ class VagasDisponiveisType extends AbstractType
             ->add('areaDesejada','entity', array(
                 'empty_value' => "Selecione a área desejada",
                 'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\AreaDesejada',
-                'label'        => 'Área Desejada',  
+                'label'        => 'Área Profissional',  
                 'attr' => array(
                      'widget_col'=> '3',
                     )
                 ))
+            ->add('vagas','entity', array(
+                'empty_value' => "Selecione a vaga",
+                'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Vagas',
+                'label'        => 'Vagas',  
+                'attr' => array(
+                     'widget_col'=> '3',
+                    )
+                )) 
+            ->add('qtdVagas', 'number', array(
+                'label' => 'Quantidade',           
+                'attr' => array(
+                    'placeholder' => 'Quantidade de vagas',
+                    'widget_col'=> '5',
+                )))           
             ->add('actions', 'form_actions', [
                 'buttons' => [
                     'save' => ['type' => 'submit', 'options' => ['label' => 'Salvar']],

@@ -29,11 +29,11 @@ class Opcoesareadesejada
     private $areaDesejada;
 
     /**
-     * @var \Funcao
+     * @var \Vagas
      *
-     * @ORM\OneToMany(targetEntity="Funcao", mappedBy="opcaoDesejada", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Vagas", mappedBy="opcaoDesejada", cascade={"all"})
      */
-    private $funcao;
+    private $vagas;
 
     /**
      * @var \Informacoesbusca
@@ -66,8 +66,8 @@ class Opcoesareadesejada
      * 
      * @return type
      */
-    function getFuncao() {
-        return $this->funcao;
+    function getVagas() {
+        return $this->vagas;
     }
     
     /**
@@ -88,10 +88,10 @@ class Opcoesareadesejada
     
     /**
      * 
-     * @param \SerBinario\SAD\Bundle\SADBundle\Entity\Funcao $funcao
+     * @param \SerBinario\SAD\Bundle\SADBundle\Entity\Vagas $vagas
      */
-    function setFuncao(Funcao $funcao) {
-        $this->funcao = $funcao;
+    function setVagas(Vagas $vagas) {
+        $this->vagas = $vagas;
     }
 
     /**

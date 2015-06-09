@@ -15,6 +15,14 @@ class VagasType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('areaDesejada', 'entity', array(
+                'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\AreaDesejada',
+                'required' => false,
+                'empty_value' => "Selecione a área profissional",
+                'label' => 'Área profissional',        
+                'attr' => array(
+                    'widget_col'=> '5',
+                ))) 
             ->add('nomeVaga', 'text', array(
             'label' => 'Nome',           
             'attr' => array(

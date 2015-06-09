@@ -93,6 +93,19 @@ class VagaDAO
        }
    }
    
+   public function findVagasAreaProAjax($id) {
+        try {
+            $query = $this->maneger->createQuery("SELECT v FROM SerBinario\SAD\Bundle\SADBundle\Entity\Vagas v "
+                    . "JOIN v.areaDesejada a "
+                    . "WHERE a.idAreaDesejada = :id")
+                    ->setParameter(":id", $id);
+            
+            return $query->getArrayResult();
+        } catch (Exception $ex) {
+            return null;
+        }
+   }
+   
    /**
     * 
     * @return type
