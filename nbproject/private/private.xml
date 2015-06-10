@@ -5,6 +5,7 @@
         <group>
             <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Vaga/editVagasDisponiveis.html.twig</file>
             <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Vaga/saveVagaDisponiveis.html.twig</file>
+            <file>file:/var/www/html/SAD/app/Resources/views/base.html.twig</file>
             <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Candidato/save.html.twig</file>
             <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Form/OpcoesareadesejadaType.php</file>
         </group>

@@ -73,9 +73,9 @@ class CandidatoType extends AbstractType
             ->add('nascimentocandidato', 'date', array(
                 'widget' => 'single_text',
                 'format' => 'dd/MM/yyyy',
-                'label' => 'Nasciemento',                
+                'label' => 'Nascimento',                
                 'attr' => array(
-                    'placeholder' => 'Nascimento do candidato',
+                    'placeholder' => 'Data de Nascimento do candidato',
                     'widget_col'=> '4',
                     'class' => 'datepicker'
                 )
