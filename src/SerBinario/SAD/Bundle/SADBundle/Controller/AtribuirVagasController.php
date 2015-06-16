@@ -104,7 +104,7 @@ class AtribuirVagasController extends Controller
         );
         
         $camposPesquisa = array(
-            "Vagas"       => "f.idVagas = ".$vaga,
+            "Vagas"       => "f.idVagas = ".$vagaD->getVagas()->getIdVagas(),
             "experiencia"  => "c.idcurriculo = ".$expProfissional,
             "informatica"  => "c.idcurriculo = ".$conInformatica,
             "linguas"      => "c.idcurriculo = ".$conLinguaEstrangeira
