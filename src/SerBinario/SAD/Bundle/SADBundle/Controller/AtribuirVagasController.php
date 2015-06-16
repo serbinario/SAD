@@ -104,10 +104,10 @@ class AtribuirVagasController extends Controller
         );
         
         $camposPesquisa = array(
-            "Vagas"       => "f.idVagas = ".$vaga,
-            "experiencia"  => "c.idcurriculo = ".$expProfissional,
-            "informatica"  => "c.idcurriculo = ".$conInformatica,
-            "linguas"      => "c.idcurriculo = ".$conLinguaEstrangeira
+            "f.idVagas"    => "f.idVagas = '".$vaga."'",
+            "experiencia"  => "c.idcurriculo = '".$expProfissional."'",
+            "informatica"  => "c.idcurriculo = '".$conInformatica."'",
+            "linguas"      => "c.idcurriculo = '".$conLinguaEstrangeira."'"
         );
         
 //        $camposPesquisa = array(
@@ -150,7 +150,7 @@ class AtribuirVagasController extends Controller
             if (!is_null($camposPesquisaCandidato)) {
                 foreach ($camposPesquisaCandidato as $chave => $valor) {
                      if (!empty($valor)) {
-                         $whereCamposPesquisa .= "'{$valor}'";       
+                         $whereCamposPesquisa .= "{$valor} AND ";       
                      }                    
                 }
             }

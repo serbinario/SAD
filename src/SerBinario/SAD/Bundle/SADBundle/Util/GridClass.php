@@ -249,8 +249,7 @@ class GridClass
                     $query->setParameter($index, strtoupper("%{$filterValue[$i]}%"));
                 }
             } 
-            
-            
+           
             $result = $query->getResult();
             //var_dump($result); exit();
             return $result;
