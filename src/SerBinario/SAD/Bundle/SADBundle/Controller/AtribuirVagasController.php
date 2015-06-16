@@ -103,16 +103,16 @@ class AtribuirVagasController extends Controller
             "vaga" => $vaga
         );
         
-//        $camposPesquisa = array(
-//            "Vagas" => "f.idVagas = ".$vaga,
-//            "experiencia" => "c.idcurriculo = ".$expProfissional,
-//            "informatica" => "c.idcurriculo = ".$conInformatica,
-//            "linguas"     => "c.idcurriculo = ".$conLinguaEstrangeira
-//        );
-        
         $camposPesquisa = array(
-            "f.idVagas" => $vagaD->getVagas()->getIdVagas(),
+            "Vagas"       => "f.idVagas = ".$vaga,
+            "experiencia"  => "c.idcurriculo = ".$expProfissional,
+            "informatica"  => "c.idcurriculo = ".$conInformatica,
+            "linguas"      => "c.idcurriculo = ".$conLinguaEstrangeira
         );
+        
+//        $camposPesquisa = array(
+//            "f.idVagas" => $vagaD->getVagas()->getIdVagas(),
+//        );
         
         $this->get("session")->set("camposComboBox", $camposComboBox);
         
@@ -139,10 +139,10 @@ class AtribuirVagasController extends Controller
             
             $camposPesquisaCandidato = $this->get("session")->get("camposPesquisaCandidato");
 
-//                $entityJOIN = array("sexosexo", "curriculo", "c.informacaoBusca", "d.opcoesdesejadas", 
-//                                    "e.vagas", "c.experienciasProfissionais", "c.informatica", "c.linguasExtrangeiras"); 
+                $entityJOIN = array("sexosexo", "curriculo", "c.informacaoBusca", "d.opcoesdesejadas", 
+                                    "e.vagas", "c.experienciasProfissionais", "c.informatica", "c.linguasExtrangeiras"); 
 
-            $entityJOIN = array("sexosexo", "curriculo", "c.informacaoBusca", "d.opcoesdesejadas", "e.vagas"); 
+//            $entityJOIN = array("sexosexo", "curriculo", "c.informacaoBusca", "d.opcoesdesejadas", "e.vagas"); 
             $eventosArray         = array();
             $parametros           = $request->request->all();
             $whereCamposPesquisa = "";
@@ -150,11 +150,11 @@ class AtribuirVagasController extends Controller
             if (!is_null($camposPesquisaCandidato)) {
                 foreach ($camposPesquisaCandidato as $chave => $valor) {
                      if (!empty($valor)) {
-                         $whereCamposPesquisa .= " {$chave} = '{$valor}' ";       
+                         $whereCamposPesquisa .= "'{$valor}'";       
                      }                    
                 }
             }
-            //$whereCamposPesquisa = substr($whereCamposPesquisa, 0, -4);
+            $whereCamposPesquisa = substr($whereCamposPesquisa, 0, -4);
             $entity               = "SerBinario\SAD\Bundle\SADBundle\Entity\Candidato"; 
             $columnWhereMain      = "";
             $whereValueMain       = "";
@@ -171,22 +171,6 @@ class AtribuirVagasController extends Controller
             
             $resultCliente  = $gridClass->builderQuery();
  
-//            if ($whereFull) {
-//                $countTotal = $gridClass->getCountByWhereFull(
-//                        array(
-//                    "b" => "sexosexo",
-//                    "c" => "curriculo" ), array(
-//                    "d" => "c.informacaoBusca",
-//                    "e" => "d.opcoesdesejadas",
-//                    "f" => "e.vagas",
-//                    "g" => "c.experienciasProfissionais", 
-//                    "h" => "c.informatica", 
-//                    "i" => "c.linguasExtrangeiras")
-//                        , $whereCamposPesquisa);
-//            } else {
-//                $countTotal = $gridClass->getCount();
-//            }
-            
             if ($whereFull) {
                 $countTotal = $gridClass->getCountByWhereFull(
                         array(
@@ -194,11 +178,27 @@ class AtribuirVagasController extends Controller
                     "c" => "curriculo" ), array(
                     "d" => "c.informacaoBusca",
                     "e" => "d.opcoesdesejadas",
-                    "f" => "e.vagas")
+                    "f" => "e.vagas",
+                    "g" => "c.experienciasProfissionais", 
+                    "h" => "c.informatica", 
+                    "i" => "c.linguasExtrangeiras")
                         , $whereCamposPesquisa);
             } else {
                 $countTotal = $gridClass->getCount();
             }
+            
+//            if ($whereFull) {
+//                $countTotal = $gridClass->getCountByWhereFull(
+//                        array(
+//                    "b" => "sexosexo",
+//                    "c" => "curriculo" ), array(
+//                    "d" => "c.informacaoBusca",
+//                    "e" => "d.opcoesdesejadas",
+//                    "f" => "e.vagas")
+//                        , $whereCamposPesquisa);
+//            } else {
+//                $countTotal = $gridClass->getCount();
+//            }
             
             $countEventos   = count($resultCliente);
 
