@@ -139,8 +139,8 @@ class AtribuirVagasController extends Controller
             
             $camposPesquisaCandidato = $this->get("session")->get("camposPesquisaCandidato");
 
-                $entityJOIN = array("sexosexo", "curriculo", "c.informacaoBusca", "d.opcoesdesejadas", 
-                                    "e.vagas", "c.experienciasProfissionais", "c.informatica", "c.linguasExtrangeiras"); 
+            $entityJOIN = array("sexosexo", "curriculo", "c.informacaoBusca", "d.opcoesdesejadas", 
+                                "e.vagas", "c.experienciasProfissionais", "c.informatica", "c.linguasExtrangeiras"); 
 
 //            $entityJOIN = array("sexosexo", "curriculo", "c.informacaoBusca", "d.opcoesdesejadas", "e.vagas"); 
             $eventosArray         = array();

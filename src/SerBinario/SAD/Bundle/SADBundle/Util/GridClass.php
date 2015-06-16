@@ -187,7 +187,7 @@ class GridClass
             }
             
             $dqlOrder       = $this->order($this->parametros, $dqlColumn);
-            $letras         = array('b', 'c', 'd', 'e', 'f', 'g', 'h');
+            $letras         = array('b', 'c', 'd', 'e', 'f', 'g', 'h', 'i');
             $entityJoin     = $this->entityJOIN;
             $sqlJoin        = "";
             //$entityJoinMain = $this->entityJOINWhereMain;
@@ -250,7 +250,7 @@ class GridClass
                 }
             } 
             
-            //var_dump($query); exit();
+            
             $result = $query->getResult();
             //var_dump($result); exit();
             return $result;
