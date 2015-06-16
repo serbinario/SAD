@@ -1,0 +1,73 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {{parent()}}
+    <div class="container">
+        {% for label, flashes in app.session.flashbag.all %}
+            {% for flash in flashes %}
+                <div class="alert alert-dismissable alert-{{ label }}">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    {{ flash }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        <div class="row clearfix">
+            <br />
+            <legend>Cadastro de Vagas Disponíveis</legend>
+            <div class="col-md-13 column">
+                {{ form_start(form, { 'style': 'horizontal' }) }}                
+                {{ form_row(form.empresas) }}
+                {{ form_row(form.areaDesejada) }}
+                {{ form_row(form.vagas) }}
+                {{ form_row(form.qtdVagas) }}
+                {{ form_row(form.perfil) }} 
+                {{ form_row(form.actions) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript">
+        $(document).on('click', '#serbinario_sad_bundle_sadbundle_vagasdisponiveis_actions_cancel', function () {
+            console.log('sfdfd');
+            window.location.href = '{{path('gridVagasDisponiveis')}}';
+        });
+
+        $(document).on('change', "#serbinario_sad_bundle_sadbundle_vagasdisponiveis_areaDesejada", function () {
+            var areaProfissional = $("#serbinario_sad_bundle_sadbundle_vagasdisponiveis_areaDesejada").val();
+
+            if (areaProfissional !== "") {
+                var dados = {
+                    idAreaProfissional: areaProfissional
+                }
+
+                jQuery.ajax({
+                    type: 'POST',
+                    url: '{{path('vagasAreaPro')}}',
+                    data: dados,
+                    datatype: 'json'
+                }).done(function (json) {
+                    var option = '';
+
+                    if (json['msg'] === "sucesso") {
+                        option += '<option value="">Selecione a vaga</option>';
+                        for (var i = 0; i < json['vagas'].length; i++) {
+                            option += '<option value="' + json['vagas'][i]['idVagas'] + '">' + json['vagas'][i]['nomeVaga'] + '</option>';
+                        }
+
+                        $('#serbinario_sad_bundle_sadbundle_vagasdisponiveis_vagas option').remove();
+                        $("#serbinario_sad_bundle_sadbundle_vagasdisponiveis_vagas").append(option);
+                    } else {
+                        $('#serbinario_sad_bundle_sadbundle_vagasdisponiveis_vagas option').remove();
+                        alert("Não há vagas para essa área profissional selecionada");
+                        //alert("Não há programa para essa emissora selecionada");
+                        //$('#cola_subcategoria option').remove();
+                    }
+
+                });
+            }
+        });
+    </script>
+{% endblock %}

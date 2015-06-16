@@ -26,18 +26,7 @@ class Funcao
      *
      * @ORM\Column(name="funcao", type="string", length=100, nullable=true)
      */
-    private $funcao;
-    
-    /**
-     *
-     * @var \Opcoesareadesejada 
-     * 
-     * @ORM\ManyToOne(targetEntity="Opcoesareadesejada", inversedBy="funcao")
-     * @ORM\JoinColumns({
-     *      @ORM\JoinColumn(name="idOpcaoDesejada", referencedColumnName="idOpcoesAreaDesejada")
-     * })
-     */
-    private $opcaoDesejada;
+    private $funcao;   
     
     /**
      * 
@@ -71,22 +60,7 @@ class Funcao
         $this->idFuncao = $idFuncao;
     }
     
-    /**
-     * 
-     * @param type $funcao
-     */
-    function setFuncao($funcao) {
-        $this->funcao = $funcao;
-    }
     
-    /**
-     * 
-     * @param \SerBinario\SAD\Bundle\SADBundle\Entity\Opcoesareadesejada $opcaoDesejada
-     */
-    function setOpcaoDesejada(Opcoesareadesejada $opcaoDesejada) {
-        $this->opcaoDesejada = $opcaoDesejada;
-    }
-
     public function __toString()
     {
         return $this->funcao;

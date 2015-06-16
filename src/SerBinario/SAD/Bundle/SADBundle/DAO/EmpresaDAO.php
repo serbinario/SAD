@@ -100,9 +100,27 @@ class EmpresaDAO
    public function findAll()
    {
        try {
+           
            $arrayObj = $this->maneger->getRepository("SerBinario\SAD\Bundle\SADBundle\Entity\Empresa")->findAll();
            
            return $arrayObj;
+       } catch (Exception $ex) {
+           return null;
+       }
+   }
+   
+   /**
+    * 
+    * @return type
+    */
+   public function findAllVagasDisponiveis()
+   {
+       try {
+           $arrayObj = $this->maneger->createQuery("SELECT e FROM SerBinario\SAD\Bundle\SADBundle\Entity\Empresa e "
+                   . "JOIN e.vagasDisponiveis v "
+                   . "WHERE e.idEmpresa = v.empresas");
+           
+           return $arrayObj->getResult();
        } catch (Exception $ex) {
            return null;
        }

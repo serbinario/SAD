@@ -1,0 +1,252 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {{parent()}}
+
+    <div class="container">
+        {% for label, flashes in app.session.flashbag.all %}
+            {% for flash in flashes %}
+                <div class="alert alert-dismissable alert-{{ label }}">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    {{ flash }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        <fieldset>
+            <legend>Atribuir Vaga</legend>
+            <div class="row">
+                <form class="form-horizontal" action="" method="POST" id="formPesquisaVagasDisp">
+
+                    <div class="col-md-6">
+                        <fieldset>
+                            <legend>Vaga</legend>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Empresa</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" name="empresa" id="empresa">
+                                        <option>Selecione</option>
+                                        {% for empresa in empresas %}
+                                            <option value="{{empresa.idEmpresa}}"
+                                                    {% if app.session.get('camposComboBox')["empresa"] is defined %}
+                                                        {% if app.session.get('camposComboBox')["empresa"] == empresa.idEmpresa %}
+                                                            selected="true"
+                                                        {% endif%}
+                                                    {% endif%}
+                                                    >{{empresa.nomeEmpresa}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Área Profissional</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" name="area_desejada" id="area_desejada">
+                                        {% if app.session.get('camposComboBox')["area"] is defined %}
+                                            {% for area in areas %}
+                                                <option value="{{area.idAreaDesejada}}"
+                                                        {% if app.session.get('camposComboBox')["area"] == area.idAreaDesejada %}
+                                                            selected="true"
+                                                        {% endif%}
+                                                        >{{area.areaDesejada}}</option>
+                                            {% endfor %}
+                                        {% else %}
+                                            <option>Selecione</option>
+                                        {% endif %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Vagas Disponíveis</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" name="vagas_disponivel" id="vagas_disponivel">
+                                        {% if app.session.get('camposComboBox')["vaga"] is defined %}
+                                            {% for vaga in vagas %}
+                                                <option value="{{vaga.idVagasDiponiveis}}"
+                                                        {% if app.session.get('camposComboBox')["vaga"] == vaga.idVagasDiponiveis %}
+                                                            selected="true"
+                                                        {% endif%}
+                                                        >{{vaga.vagas.nomeVaga}}</option>
+                                            {% endfor %}
+                                        {% else %}
+                                            <option>Selecione</option>
+                                        {% endif %}
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="col-md-6">
+                        <fieldset>
+                            <legend>Quantidade da Vaga</legend>
+                            <div class="col-sm-10">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><b>Tota de vagas: <span id="totalVaga">{{vagasD.qtdVagas}}</span></b></li>
+                                    <li class="list-group-item"><b>Vagas Disponíveis: <span id="totalDisponivl">{{vagasD.qtdVagas - vagasD.candidato|length}}</span></b></li>
+                                </ul>
+                            </div>
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <fieldset>
+                        <legend>Cadidato</legend>
+                        <section>
+                           <form action="{{path('saveAtribuicaoVaga')}}" method="POST">
+                            <table id="example" class="table table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Selecionar</th>
+                                        <th>Nome</th>
+                                        <th>CPF</th>
+                                        <th>RG</th>
+                                        <th>E-mail</th>
+                                        <th>Ação</th> 
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                           <input type="checkbox" name="id_candidato" value="{{candidato.idcandidato}}">
+                                           <input type="hidden" id="id_vaga" name="id_vaga" value="{{vagasD.idVagasDiponiveis}}">
+                                        </td>
+                                        <td>{{candidato.nomecandidato}}</td>
+                                        <td>{{candidato.cpfcandidato}}</td>
+                                        <td>{{candidato.rgcandidato}}</td>
+                                        <td>{{candidato.emailcandidato}}</td>
+                                        <td>
+                                            <center>
+                                                <button type="submit" class="btn btn-primary btn-sm">Atribuir Vaga</button>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Selecionar</th>
+                                        <th>Nome</th>
+                                        <th>CPF</th>
+                                        <th>RG</th>
+                                        <th>E-mail</th>
+                                        <th>Ação</th> 
+                                    </tr>
+                                </tfoot>
+                            </table>
+                           </form>
+                        </section>
+                    </fieldset>
+                </div>
+            </div>   
+    </div>
+</fieldset>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+
+    <script type="text/javascript" >
+        $(document).on('change', "#empresa", function () {
+            var empresa = $("#empresa").val();
+
+            if (empresa !== "") {
+                var dados = {
+                    idEmpresa: empresa
+                }
+
+                jQuery.ajax({
+                    type: 'POST',
+                    url: '{{path('pesquisarAreaDesejada')}}',
+                    data: dados,
+                    datatype: 'json'
+                }).done(function (json) {
+                    var option = '';
+
+                    if (json['msg'] === "sucesso") {
+                        option += '<option value="">Selecione a vaga</option>';
+                        for (var i = 0; i < json['areas'].length; i++) {
+                            option += '<option value="' + json['areas'][i]['idAreaDesejada'] + '">' + json['areas'][i]['areaDesejada'] + '</option>';
+                        }
+
+                        $('#area_desejada option').remove();
+                        $('#area_desejada').append(option);
+                    } else {
+                        $('#area_desejada option').remove();
+                        alert("Não há vagas para essa área profissional selecionada");
+                        //alert("Não há programa para essa emissora selecionada");
+                        //$('#cola_subcategoria option').remove();
+                    }
+
+                });
+            }
+        });
+
+        $(document).on('change', "#area_desejada", function () {
+            var area = $("#area_desejada").val();
+
+            if (area !== "") {
+                var dados = {
+                    idArea: area
+                }
+
+                jQuery.ajax({
+                    type: 'POST',
+                    url: '{{path('pesquisarVagas')}}',
+                    data: dados,
+                    datatype: 'json'
+                }).done(function (json) {
+                    var option = '';
+
+                    if (json['msg'] === "sucesso") {
+                        option += '<option value="">Selecione a vaga</option>';
+                        for (var i = 0; i < json['vagas'].length; i++) {
+                            option += '<option value="' + json['vagas'][i]['idVDisp'] + '">' + json['vagas'][i]['nomeVaga'] + '</option>';
+                        }
+
+                        $('#vagas_disponivel option').remove();
+                        $('#vagas_disponivel').append(option);
+                    } else {
+                        $('#vagas_disponivel option').remove();
+                        alert("Não há vagas para essa área profissional selecionada");
+                        //alert("Não há programa para essa emissora selecionada");
+                        //$('#cola_subcategoria option').remove();
+                    }
+
+                });
+            }
+        });
+        
+        $(document).on('change', "#vagas_disponivel", function () {
+            var vaga = $("#vagas_disponivel").val();
+
+            if (vaga !== "") {
+                var dados = {
+                    idVaga: vaga
+                }
+
+                jQuery.ajax({
+                    type: 'POST',
+                    url: '{{path('quantidadeVagas')}}',
+                    data: dados,
+                    datatype: 'json'
+                }).done(function (json) {
+                    var option = '';
+
+                    if (json['msg'] === "sucesso") {
+                        
+                        $('#totalVaga').text(json['vaga']['qtdVaga']);
+                        $('#totalDisponivl').text(json['vaga']['vagaDisponivel']);
+                        $('#id_vaga').val(json['vaga']['idVaga'])
+                    } else {
+                        
+                        alert("Não há vagas para essa área profissional selecionada");
+                    }
+
+                });
+            }
+        });
+    </script>
+    
+{% endblock%}

@@ -2,6 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+            <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Entity/Candidato.php</file>
+            <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Controller/AtribuirVagasController.php</file>
+            <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Entity/VagasDisponiveis.php</file>
+            <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/AtribuirVagas/atribuirVaga.html.twig</file>
+            <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/DAO/CandidatoDAO.php</file>
+        </group>
+>>>>>>> 00185809ab4a7e61ada688de0de5b4aabe23e4c0
     </open-files>
 </project-private>

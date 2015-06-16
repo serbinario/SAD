@@ -155,11 +155,20 @@ class Candidato
     private $user;
     
     /**
+     *
+     * @var type 
+     * 
+     * @ORM\ManyToMany(targetEntity="VagasDisponiveis", mappedBy="candidato", cascade={"persist"})
+     */
+    private $vagaDisponivel;
+    
+    /**
      * Método construtor
      */
     public function __construct() 
     {
-        $this->telefones = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->telefones      = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->vagaDisponivel = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -583,6 +592,20 @@ class Candidato
     function setUser(\SerBinario\SAD\Bundle\UserBundle\Entity\User $user) {
         $this->user = $user;
     }
+    
+    function getVagaDisponivel() {
+        return $this->vagaDisponivel->toArray();
+    }
+    
+    /**
+     * 
+     * @param \SerBinario\SAD\Bundle\SADBundle\Entity\VagasDisponiveis $vagaDisponiveis
+     */
+    public function addVagaDisponivel(\SerBinario\SAD\Bundle\SADBundle\Entity\VagasDisponiveis $vagaDisponiveis)
+    {
+        $vagaDisponiveis->setCandidato($this);
 
+        $this->vagaDisponivel[] = $vagaDisponiveis;
+    }
 
 }

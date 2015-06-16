@@ -27,7 +27,7 @@ class CurriculoType extends AbstractType
                     'placeholder' => 'Resumo do curículo',
                     )
                 ))
-            ->add('prentencaosalarialcurriculo', 'money', array(
+            ->add('prentencaosalarialcurriculo', 'text', array(
                 'label' => "Pretenção Salarial",                        
                 'attr' => array(                  
                     'widget_col'=> '4',

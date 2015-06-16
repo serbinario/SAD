@@ -7,6 +7,10 @@ parameters:
     dao.class.capacitacoes: SerBinario\SAD\Bundle\SADBundle\DAO\CapacitacoesDAO
     dao.class.empresaCurso: SerBinario\SAD\Bundle\SADBundle\DAO\EmpresaCursoDAO
     dao.class.empresaCapacitacoes: SerBinario\SAD\Bundle\SADBundle\DAO\EmpresaCapacitacoesDAO
+    dao.class.vagas: SerBinario\SAD\Bundle\SADBundle\DAO\VagaDAO
+    dao.class.vagaDisponivel: SerBinario\SAD\Bundle\SADBundle\DAO\VagaDisponivelDAO
+    dao.class.areaDesejadaDAO: SerBinario\SAD\Bundle\SADBundle\DAO\AreaDesejadaDAO
+    dao.class.funcaoDAO: SerBinario\SAD\Bundle\SADBundle\DAO\FuncaoDAO
     rn.class.autonomo:   SerBinario\SAD\Bundle\SADBundle\RN\AutonomoRN
     rn.class.candidato:   SerBinario\SAD\Bundle\SADBundle\RN\CandidatoRN
     rn.class.empreendedor: SerBinario\SAD\Bundle\SADBundle\RN\EmpreendedorRN
@@ -15,6 +19,10 @@ parameters:
     rn.class.capacitacoes: SerBinario\SAD\Bundle\SADBundle\RN\CapacitacoesRN
     rn.class.empresaCurso: SerBinario\SAD\Bundle\SADBundle\RN\EmpresaCursosRN
     rn.class.empresaCapacitacoes: SerBinario\SAD\Bundle\SADBundle\RN\EmpresaCapacitacoesRN
+    rn.class.vagas: SerBinario\SAD\Bundle\SADBundle\RN\VagaRN
+    rn.class.vagaDisponivel: SerBinario\SAD\Bundle\SADBundle\RN\VagaDisponivelRN
+    rn.class.areaDesejadaRN: SerBinario\SAD\Bundle\SADBundle\RN\AreaDesejadaRN
+    rn.class.funcaoRN: SerBinario\SAD\Bundle\SADBundle\RN\FuncaoRN
     
 
 services:
@@ -81,4 +89,32 @@ services:
     empresaCapacitacoes_rn:
         class:  %rn.class.empresaCapacitacoes%
         arguments:  [ @empresaCapacitacoes_dao ]
+    vagas_dao:
+        class:  %dao.class.vagas%
+        arguments:  [ @doctrine.orm.entity_manager ]
+        public: false
+    vagas_rn:
+        class:  %rn.class.vagas%
+        arguments:  [ @vagas_dao ]
+    vagaDisponivel_dao:
+        class:  %dao.class.vagaDisponivel%
+        arguments:  [ @doctrine.orm.entity_manager ]
+        public: false 
+    vagaDisponivel_rn:
+        class:  %rn.class.vagaDisponivel%
+        arguments:  [ @vagaDisponivel_dao ]
+    areaDesejada_dao:
+        class:  %dao.class.AreaDesejadaDAO%
+        arguments:  [ @doctrine.orm.entity_manager ]
+        public: false 
+    areaDesejada_rn:
+        class:  %rn.class.areaDesejadaRN%
+        arguments:  [ @areaDesejada_dao ]
+    funcao_dao:
+        class:  %dao.class.funcaoDAO%
+        arguments:  [ @doctrine.orm.entity_manager ]
+        public: false 
+    funcao_rn:
+        class:  %rn.class.funcaoRN%
+        arguments:  [ @funcao_dao ]
         

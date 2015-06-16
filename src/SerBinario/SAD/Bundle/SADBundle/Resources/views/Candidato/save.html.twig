@@ -88,8 +88,8 @@
                     </div>
                     <div class="tab-pane"id="cursos">
                         <br />
-                         {{ form_row(form.curriculo.linguasExtrangeiras) }}
-                         {{ form_row(form.curriculo.informatica) }}
+                        {{ form_row(form.curriculo.linguasExtrangeiras) }}
+                        {{ form_row(form.curriculo.informatica) }}
                     </div>
                     <div class="tab-pane"id="qualificacaoFutura">
                         <br />
@@ -101,7 +101,7 @@
                         {{ form_row(form.curriculo.informacaoBusca.opcoesdesejadas) }}                      
                     </div>
                 </div>
-                    {{ form_row(form.actions) }}
+                {{ form_row(form.actions) }}
                 {{ form_end(form) }}
             </div>
         </div>
@@ -112,10 +112,52 @@
     <script type="text/javascript" src="{{asset('js/validacoes/icheck.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/validacoes/validationForm_Candidato.js')}}"></script>
     <script type="text/javascript">
-        $(document).on('click', '#formeCadidato', function(event){
+        $(document).on('click', '#formeCadidato', function (event) {
             event.preventDefault();
-            console.log('asdasd');
         });
+
+        $(document).on('click', '#serbinario_sad_bundle_sadbundle_candidato_actions_cancel', function () {
+            window.location.href = '{{path('viewListCandidato')}}';
+        });
+
+
+        $(document).on('change', ".area_profissional", function () {
+            var areaProfissional = $(this).val();
+            var areaProfissionalId = $(this).attr("id");           
+            
+            if (areaProfissional !== "") {
+                var dados = {
+                    idAreaProfissional: areaProfissional
+                }
+
+                jQuery.ajax({
+                    type: 'POST',
+                    url: '{{path('vagasAreaPro')}}',
+                    data: dados,
+                    datatype: 'json'
+                }).done(function (json) {
+                    var option = '';
+                    var idAP = areaProfissionalId.split("_");
+                    
+                    if (json['msg'] === "sucesso") {
+                        option += '<option value="">Selecione a vaga</option>';
+                        for (var i = 0; i < json['vagas'].length; i++) {
+                            option += '<option value="' + json['vagas'][i]['idVagas'] + '">' + json['vagas'][i]['nomeVaga'] + '</option>';
+                        }
+                                    
+                        $('#serbinario_sad_bundle_sadbundle_candidato_curriculo_informacaoBusca_opcoesdesejadas_'+idAP[8]+'_vagas option').remove();
+                        $('#serbinario_sad_bundle_sadbundle_candidato_curriculo_informacaoBusca_opcoesdesejadas_'+idAP[8]+'_vagas').append(option);
+                    } else {
+                        $('#serbinario_sad_bundle_sadbundle_candidato_curriculo_informacaoBusca_opcoesdesejadas_'+idAP[8]+'_vagas option').remove();
+                        alert("Não há vagas para essa área profissional selecionada");
+                        //alert("Não há programa para essa emissora selecionada");
+                        //$('#cola_subcategoria option').remove();
+                    }
+
+                });
+            }
+        });
+
     </script>
 {% endblock %}
 

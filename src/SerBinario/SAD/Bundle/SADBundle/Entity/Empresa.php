@@ -28,6 +28,13 @@ class Empresa
     private $nomeEmpresa;
     
     /**
+     * @var \VagasDisponiveis
+     *
+     * @ORM\OneToMany(targetEntity="VagasDisponiveis", mappedBy="empresas", cascade={"all"})
+     */
+    private $vagasDisponiveis;
+    
+    /**
      * 
      * @return type
      */
@@ -62,13 +69,25 @@ class Empresa
     {
         $this->nomeEmpresa = $nomeEmpresa;
     }
-
+   
     /**
      * 
      * @return type
      */
-    public function __toString() 
+    function getVagasDisponiveis() {
+        return $this->vagasDisponiveis;
+    }
+    
+    /**
+     * 
+     * @param \VagasDisponiveis $vagasDisponiveis
+     */
+    function setVagasDisponiveis(VagasDisponiveis $vagasDisponiveis) {
+        $this->vagasDisponiveis = $vagasDisponiveis;
+    }
+    
+    public function __toString()
     {
-        return $this->getNomeEmpresa();
+        return $this->nomeEmpresa;
     }
 }

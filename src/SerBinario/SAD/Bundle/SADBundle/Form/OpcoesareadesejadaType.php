@@ -22,14 +22,16 @@ class OpcoesareadesejadaType extends AbstractType
                 'label' => 'Área desejada',        
                 'attr' => array(
                     'widget_col'=> '5',
+                    'class' => 'area_profissional'
                 ))) 
-            ->add('funcao', 'entity', array(
+            ->add('vagas', 'entity', array(
                 'required' => false,
                 'label' => 'Cargo desejado',
                 'empty_value' => "Selecione o cargo",
-                'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Funcao',
+                'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Vagas',
                 'attr' => array(
                     'widget_col'=> '5',
+                    'class' => 'vagas'
                 )))             
         ;
     }

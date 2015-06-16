@@ -38,6 +38,20 @@ class AreaDesejada
      * })
      */
     private $opcaoDesejada;
+    
+    /**
+     * @var \VagasDisponiveis
+     *
+     * @ORM\OneToMany(targetEntity="VagasDisponiveis", mappedBy="areaDesejada", cascade={"all"})
+     */
+    private $vagasDisponiveis;
+    
+    /**
+     * @var \Vagas
+     *
+     * @ORM\OneToMany(targetEntity="Vagas", mappedBy="areaDesejada", cascade={"all"})
+     */
+    private $vagas;
 
     /**
      * 
@@ -92,4 +106,35 @@ class AreaDesejada
         return $this->areaDesejada;
     }
     
+    /**
+     * 
+     * @return type
+     */
+    function getVagasDisponiveis() {
+        return $this->vagasDisponiveis;
+    }
+    
+    /**
+     * 
+     * @param \VagasDisponiveis $vagasDisponiveis
+     */
+    function setVagasDisponiveis(VagasDisponiveis $vagasDisponiveis) {
+        $this->vagasDisponiveis = $vagasDisponiveis;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    function getVagas() {
+        return $this->vagas;
+    }
+    
+    /**
+     * 
+     * @param \SerBinario\SAD\Bundle\SADBundle\Entity\Vagas $vagas
+     */
+    function setVagas(Vagas $vagas) {
+        $this->vagas = $vagas;
+    }
 }

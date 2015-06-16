@@ -56,6 +56,12 @@ class GridClass
       *
       * @var type 
       */
+     private $whereFull;
+     
+     /**
+      *
+      * @var type 
+      */
      private $columnWhereMain;
      
      /**
@@ -79,7 +85,8 @@ class GridClass
             $entity, 
             $entityJOIN,             
             $whereMain,
-            $whereValueMain) 
+            $whereValueMain,
+            $whereFull = "") 
     {
         $this->start               = $parametros['start'];
         $this->length              = $parametros['length'];
@@ -90,6 +97,7 @@ class GridClass
         $this->whereValueMain      = $whereValueMain;
         $this->parametros          = $parametros;
         $this->em                  = $em;
+        $this->whereFull           = $whereFull;
     }
     
     /**
@@ -159,6 +167,11 @@ class GridClass
             }else{
                 //$dqlWhere .= " WHERE ";
             }
+            
+            if(!empty($this->whereFull)) {
+                 $dqlWhere .= " WHERE {$this->whereFull}";
+            }
+            
             $whereGlobal    = false;
             $wherePerson    = false;
             $filterValue    = array();
@@ -174,15 +187,18 @@ class GridClass
             }
             
             $dqlOrder       = $this->order($this->parametros, $dqlColumn);
-            $letras         = array('b', 'c', 'd', 'e');
+            $letras         = array('b', 'c', 'd', 'e', 'f', 'g', 'h');
             $entityJoin     = $this->entityJOIN;
             $sqlJoin        = "";
             //$entityJoinMain = $this->entityJOINWhereMain;
 
             for($i = 0; $i < count($entityJoin); $i++) {
                 $verifyJoin = explode(".", $entityJoin[$i]);
-                //var_dump(count($verifyJoin));exit;
-                if(count($verifyJoin) == 2) {
+                $verifyLeft = explode(":", $entityJoin[$i]);
+                
+                if(count($verifyLeft) == 2) {
+                    $sqlJoin .= " LEFT JOIN {$verifyLeft[0]} {$letras[$i]} ";
+                } else if(count($verifyJoin) == 2) {
                     $sqlJoin .= " JOIN {$entityJoin[$i]} {$letras[$i]} ";
                 } else {
                     $sqlJoin .= " JOIN a.{$entityJoin[$i]} {$letras[$i]} ";
@@ -192,13 +208,11 @@ class GridClass
            
             if(!empty($dqlFilter)) {
                 
-                if(!empty($this->whereValueMain)){
+                if(!empty($this->whereValueMain) || !empty($this->whereFull)){
                     $dqlWhere .= " AND ("; 
                 }else{
                     $dqlWhere .= " WHERE ("; 
                 }
-            
-            
                              
                 if(is_array($dqlFilter)) {
                     $wherePerson = true;
@@ -219,13 +233,14 @@ class GridClass
                 $dqlWhere    = substr($dqlWhere, 0, -4) . ")";
             }            
             
-            $query  = $this->em->createQuery("SELECT a FROM {$this->entity} a"
+            
+            $query  = $this->em->createQuery("SELECT distinct a FROM {$this->entity} a"
                         . " {$sqlJoin} "
                         . " {$dqlWhere} "
                         . "ORDER BY {$dqlOrder}")
                         ->setFirstResult($dqlStart)
                         ->setMaxResults($dqlLength);
-            //print_r($dqlOrder); exit();            
+                     
             if($whereGlobal) {
                 $query->setParameter(1,strtoupper("%{$dqlFilter}%"));
             } else if($wherePerson) {
@@ -234,8 +249,10 @@ class GridClass
                     $query->setParameter($index, strtoupper("%{$filterValue[$i]}%"));
                 }
             } 
+            
+            //var_dump($query); exit();
             $result = $query->getResult();
-                  
+            //var_dump($result); exit();
             return $result;
         } catch (Exception $ex) {
             print_r($ex);
@@ -259,6 +276,53 @@ class GridClass
             $qb->where("b.{$columnWhereMain} = ?1");
             $qb->setParameter(1, $whereValueMain);
             
+            $result = $qb->getQuery()->getSingleScalarResult();
+            
+            return $result;
+        } catch (Exception $ex) {
+            return 0;
+        }
+    }
+    
+    /**
+     * 
+     * @param type $entityJOIN
+     * @param type $whereFull
+     * @return int
+     */
+     public function getCountByWhereFull($entityJOIN = array(),
+        $subEntityJOIN = array(),
+        $whereFull)
+    {
+        try {
+            $qb = $this->em->createQueryBuilder();
+            $qb->select("count(distinct a)");
+            $qb->from("{$this->entity}", "a");
+            
+            foreach($entityJOIN as $chave => $entity) {
+                $verifyLeft = explode(":", $entity);
+                
+                if(count($verifyLeft) == 2) {
+                    $qb->leftJoin("a.{$verifyLeft[0]}", "{$chave}");
+                } else {
+                    $qb->join("a.{$entity}", "{$chave}");
+                }
+                
+            }
+            
+            foreach($subEntityJOIN as $chave => $entity) {
+                $verifyLeft = explode(":", $entity);
+                
+                if(count($verifyLeft) == 2) {
+                    $qb->leftJoin("{$verifyLeft[0]}", "{$chave}");
+                } else {
+                   $qb->join("{$entity}", "{$chave}");
+                }
+                
+            }
+            
+            $qb->where("{$whereFull}");
+           //var_dump($qb->getQuery());exit();
             $result = $qb->getQuery()->getSingleScalarResult();
             
             return $result;
