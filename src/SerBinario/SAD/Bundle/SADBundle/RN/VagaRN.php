@@ -58,4 +58,26 @@ class VagaRN
         
         return $result;
     }
+    
+    /**
+     * 
+     * @param type $idAreaDesejada
+     */
+    public function findAllVagasDisp($idAreaDesejada)
+    {
+        $result = $this->vagaDAO->findAllVagasDisp($idAreaDesejada);
+        
+        return $result;
+    }
+    
+    /**
+     * 
+     * @param type
+     */
+    public function findAllVagasDisponiveis()
+    {
+        $result = $this->vagaDAO->findAllVagasDisponiveis();
+        
+        return $result;
+    }
 }

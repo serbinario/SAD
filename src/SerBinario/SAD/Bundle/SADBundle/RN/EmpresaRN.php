@@ -58,4 +58,26 @@ class EmpresaRN
         
         return $result;
     }
+    
+    /**
+     * 
+     * @param type $id
+     */
+    public function findAll()
+    {
+        $result = $this->empresaDAO->findAll();
+        
+        return $result;
+    }
+    
+    /**
+     * 
+     * @param type $id
+     */
+    public function findAllVagasDisponiveis()
+    {
+        $result = $this->empresaDAO->findAllVagasDisponiveis();
+        
+        return $result;
+    }
 }

@@ -120,4 +120,39 @@ class VagaDAO
            return null;
        }
    }
+   
+   /**
+    * 
+    * @return type
+    */
+   public function findAllVagasDisponiveis()
+   {
+       try {
+           $arrayObj = $this->maneger->createQuery("SELECT v FROM SerBinario\SAD\Bundle\SADBundle\Entity\Vagas v "
+                   . "JOIN v.vagasDisponiveis d "
+                   . "WHERE v.idVagas = d.vagas");
+           
+           return $arrayObj->getResult();
+       } catch (Exception $ex) {
+           return null;
+       }
+   }
+   
+   /**
+    * 
+    * @return type
+    */
+   public function findAllVagasDisp($idAreaDesejada)
+   {
+       try {
+           $arrayObj = $this->maneger->createQuery("SELECT v FROM SerBinario\SAD\Bundle\SADBundle\Entity\VagasDisponiveis v "
+                   . "JOIN v.areaDesejada d "
+                   . "WHERE d.idAreaDesejada = :id AND v.areaDesejada = d.idAreaDesejada")
+                   ->setParameter("id", $idAreaDesejada);
+           
+           return $arrayObj->getResult();
+       } catch (Exception $ex) {
+           return null;
+       }
+   }
 }

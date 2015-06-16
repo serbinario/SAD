@@ -24,14 +24,14 @@ class Opcoesareadesejada
     /**
      * @var \AreaDesejada
      *
-     * @ORM\OneToMany(targetEntity="AreaDesejada", mappedBy="opcaoDesejada", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="AreaDesejada", mappedBy="opcaoDesejada", cascade={"persist"})
      */
     private $areaDesejada;
 
     /**
      * @var \Vagas
      *
-     * @ORM\OneToMany(targetEntity="Vagas", mappedBy="opcaoDesejada", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Vagas", mappedBy="opcaoDesejada", cascade={"persist"})
      */
     private $vagas;
 

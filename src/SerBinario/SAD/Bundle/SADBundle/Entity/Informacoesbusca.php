@@ -97,7 +97,7 @@ class Informacoesbusca
      */
     public function getOpcoesdesejadas() 
     {
-        return $this->opcoesdesejadas;
+        return $this->opcoesdesejadas->toArray();
     }
 
     /**

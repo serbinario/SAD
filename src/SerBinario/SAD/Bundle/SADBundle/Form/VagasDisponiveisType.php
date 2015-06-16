@@ -14,6 +14,8 @@ class VagasDisponiveisType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $dataHoje =  new \DateTime("now");
+        
         $builder
             ->add('empresas','entity', array(
                 'empty_value' => "Selecione a empresa",
@@ -44,7 +46,23 @@ class VagasDisponiveisType extends AbstractType
                 'attr' => array(
                     'placeholder' => 'Quantidade de vagas',
                     'widget_col'=> '5',
-                )))           
+                )))
+                ->add('dataCadastro', 'datetime', array(
+                    'label' => false,
+                    'data'  => $dataHoje,                
+                    'attr'  => array(
+                        'widget_col'=> '2',
+                        'hidden' => true
+                    )
+                    ))
+            ->add('perfil', 'textarea', array(
+                'label' => "Descrição do perfil",                        
+                'attr' => array(                    
+                    'rows' => '6',
+                    'widget_col'=> '6',
+                    'placeholder' => 'Resumo do curículo',
+                    )
+                ))
             ->add('actions', 'form_actions', [
                 'buttons' => [
                     'save' => ['type' => 'submit', 'options' => ['label' => 'Salvar']],

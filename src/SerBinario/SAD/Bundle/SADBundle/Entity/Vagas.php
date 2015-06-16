@@ -116,7 +116,7 @@ class Vagas
      * 
      * @param \Opcoesareadesejada $opcaoDesejada
      */
-    function setOpcaoDesejada(Opcoesareadesejada $opcaoDesejada) {
+    function setOpcaoDesejada($opcaoDesejada) {
         $this->opcaoDesejada = $opcaoDesejada;
     }
     

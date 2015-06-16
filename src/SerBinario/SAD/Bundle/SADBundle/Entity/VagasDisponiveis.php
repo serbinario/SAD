@@ -28,6 +28,20 @@ class VagasDisponiveis
     private $qtdVagas;
     
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_cadastro", type="date", nullable=true)
+     */
+    private $dataCadastro;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="perfil", type="text", nullable=true)
+     */
+    private $perfil;
+    
+    /**
      *
      * @var \Vagas 
      * 
@@ -59,6 +73,22 @@ class VagasDisponiveis
      * })
      */
     private $areaDesejada;
+    
+    /**
+     * @var \Candidato
+     *
+     * @ORM\ManyToMany(targetEntity="Candidato", inversedBy="vagaDisponivel", cascade={"persist"})
+     * @ORM\JoinTable(name="vagas_disponivel_candidato", 
+     *      joinColumns={@ORM\JoinColumn(name="vaga_disponivel_id", referencedColumnName="id_vagasDisponiveis")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="cadidato_id", referencedColumnName="idCandidato")}
+     * )
+     */
+    private $candidato;
+    
+     public function __construct() 
+    {
+        $this->candidato      = new \Doctrine\Common\Collections\ArrayCollection();
+    }
     
     /**
      * 
@@ -138,6 +168,32 @@ class VagasDisponiveis
      */
     function setAreaDesejada(AreaDesejada $areaDesejada) {
         $this->areaDesejada = $areaDesejada;
+    }
+    
+    function getDataCadastro() {
+        return $this->dataCadastro;
+    }
+
+    function getPerfil() {
+        return $this->perfil;
+    }
+
+    function setDataCadastro(\DateTime $dataCadastro) {
+        $this->dataCadastro = $dataCadastro;
+    }
+
+    function setPerfil($perfil) {
+        $this->perfil = $perfil;
+    }
+    
+    function getCandidato() {
+        return $this->candidato;
+    }
+
+    function setCandidato(Candidato $candidato = null) {
+        
+        $this->candidato[] = $candidato;
+        
     }
 
 }

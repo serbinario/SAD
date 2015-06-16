@@ -107,4 +107,18 @@ class VagaDisponivelDAO
            return null;
        }
    }
+   
+   public function findAllCandidatos() {
+       
+       try {
+           
+           $query = $this->maneger->createQuery("SELECT * FROM SerBinario\SAD\Bundle\SADBundle\Entity\Candidato c "
+                   . "JOIN c.vagaDisponivel v "
+                   . "WHERE v.");
+           
+       } catch (Exception $ex) {
+           return null;
+       }
+       
+   }
 }

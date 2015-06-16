@@ -103,7 +103,8 @@ class VagaController extends Controller
             {
                 $eventosArray[$i]['DT_RowId']     =  "row_".$resultCliente[$i]->getIdVagas();
                 $eventosArray[$i]['id']           =  $resultCliente[$i]->getIdVagas();
-                $eventosArray[$i]['nomeVaga']     =  $resultCliente[$i]->getNomeVaga();                
+                $eventosArray[$i]['nomeVaga']     =  $resultCliente[$i]->getNomeVaga();
+                $eventosArray[$i]['areaVaga']     =  $resultCliente[$i]->getAreaDesejada()->getAreaDesejada(); 
             }
 
             //Se a variável $sqlFilter estiver vazio
@@ -267,6 +268,8 @@ class VagaController extends Controller
                 $eventosArray[$i]['vaga']           =  $resultCliente[$i]->getVagas()->getNomeVaga();
                 $eventosArray[$i]['empresa']        =  $resultCliente[$i]->getEmpresas()->getNomeEmpresa();
                 $eventosArray[$i]['areaDesejada']   =  $resultCliente[$i]->getAreaDesejada()->getAreaDesejada();
+                $eventosArray[$i]['perfil']         =  $resultCliente[$i]->getPerfil();
+                $eventosArray[$i]['data']           =  $resultCliente[$i]->getDataCadastro()->format("d/m/Y");
             }
 
             //Se a variável $sqlFilter estiver vazio

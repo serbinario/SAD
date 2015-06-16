@@ -58,4 +58,26 @@ class AreaDesejadaRN
         
         return $result;
     }
+    
+    /**
+     * 
+     * @param type $idEmpresa
+     */
+    public function findAllEmpresaDisp($idEmpresa)
+    {
+        $result = $this->areaDesejadaDAO->findAllEmpresaDisp($idEmpresa);
+        
+        return $result;
+    }
+    
+    /**
+     * 
+     * @param type
+     */
+    public function findAllVagasDisponiveis()
+    {
+        $result = $this->areaDesejadaDAO->findAllVagasDisponiveis();
+        
+        return $result;
+    }
 }

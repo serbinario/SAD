@@ -107,4 +107,40 @@ class AreaDesejadaDAO
            return null;
        }
    }
+   
+   /**
+    * 
+    * @return type
+    */
+   public function findAllEmpresaDisp($idEmpresa)
+   {
+       try {
+           $arrayObj = $this->maneger->createQuery("SELECT DISTINCT a FROM SerBinario\SAD\Bundle\SADBundle\Entity\AreaDesejada a "
+                   . "JOIN a.vagasDisponiveis v "
+                   . "JOIN v.empresas e "
+                   . "WHERE e.idEmpresa = :id")
+                   ->setParameter("id", $idEmpresa);
+           
+           return $arrayObj->getArrayResult();
+       } catch (Exception $ex) {
+           return null;
+       }
+   }
+   
+   /**
+    * 
+    * @return type
+    */
+   public function findAllVagasDisponiveis()
+   {
+       try {
+           $arrayObj = $this->maneger->createQuery("SELECT a FROM SerBinario\SAD\Bundle\SADBundle\Entity\AreaDesejada a "
+                   . "JOIN a.vagasDisponiveis v "
+                   . "WHERE a.idAreaDesejada = v.areaDesejada");
+           
+           return $arrayObj->getResult();
+       } catch (Exception $ex) {
+           return null;
+       }
+   }
 }

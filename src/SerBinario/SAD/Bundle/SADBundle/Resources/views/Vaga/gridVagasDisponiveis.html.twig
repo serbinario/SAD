@@ -64,21 +64,25 @@
                     <section>
                         <table id="example" class="display" cellspacing="0" width="100%">
                             <thead>
-                                <tr>                                   
+                                <tr>
+                                    <th>Detalhe</th>
                                     <th>Quantidade</th>
                                     <th>Vaga</th> 
                                     <th>Empresa</th> 
-                                    <th>Área Profissional</th> 
+                                    <th>Área Profissional</th>
+                                    <th>Data do Cadastro</th> 
                                     <th>Acão</th>
                                 </tr>
                             </thead>
 
                             <tfoot>
                                 <tr>
+                                    <th>Detalhe</th>
                                     <th>Quantidade</th>
                                     <th>Vaga</th> 
                                     <th>Empresa</th> 
-                                    <th>Área Profissional</th>                                                                    
+                                    <th>Área Profissional</th>
+                                    <th>Data do Cadastro</th> 
                                     <th>Acão</th>
                                 </tr>
                             </tfoot>
@@ -95,7 +99,11 @@
     {{parent()}}
     <script type="text/javascript" src="{{asset('js/jquery.dataTables.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/shCore.js')}}"></script>
-    <script type="text/javascript" language="javascript" class="init">        
+    <script type="text/javascript" language="javascript" class="init">
+        
+        function format(d) {
+            return  '<b>Perfil: </b>' + d.perfil + ' <br>';
+        }
 
         $(document).ready(function ()
         {
@@ -107,11 +115,18 @@
                     "url": "{{ path('gridVagasDisponiveis') }}",
                     "type": "POST"
                 },
-                "columns": [                   
+                "columns": [
+                    {
+                        "class": "details-control",
+                        "orderable": false,
+                        "data": null,
+                        "defaultContent": ""
+                    },
                     {"data": "quantidade"},
                     {"data": "vaga"}, 
                     {"data": "empresa"}, 
-                    {"data": "areaDesejada"}, 
+                    {"data": "areaDesejada"},
+                    {"data": "data"}, 
                     {
                         "class": "bt",
                         "orderable": false,
