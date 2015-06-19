@@ -173,7 +173,15 @@ class CandidatoController extends Controller
             if($form->isValid()) {
                 #Recuperando os dados
                 $candidato = $form->getData();               
-               // var_dump($candidato->getTelefones());exit();
+                
+                $idOpcoesDesejadas = array();
+
+                foreach ($candidato->getCurriculo()->getInformacaoBusca()->getOpcoesdesejadas() as $opcoesDesejadas) {
+                    $idOpcoesDesejadas[] = $opcoesDesejadas->getIdopcoesareadesejada();
+                    $opcoesDesejadas->setInformacoesbuscainformacoesbusca($candidato->getCurriculo()->getInformacaoBusca());
+                }
+                
+                
                 #Resultado da operação
                 $result =  $candidatoRN->edit($candidato);
                                       
