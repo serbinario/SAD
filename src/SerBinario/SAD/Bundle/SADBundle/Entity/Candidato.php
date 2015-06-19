@@ -549,7 +549,7 @@ class Candidato
      */
     public function getTelefones() 
     {
-        return $this->telefones->toArray();
+        return $this->telefones;
     }
     
     /**

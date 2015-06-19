@@ -250,7 +250,7 @@ class GridClass
                 }
             } 
             
-            var_dump($query); exit();
+            //var_dump($query); exit();
             $result = $query->getResult();
             //var_dump($result); exit();
             return $result;
@@ -320,6 +320,7 @@ class GridClass
                 }
                 
             }
+            
             
             $qb->where("{$whereFull}");
            //var_dump($qb->getQuery());exit();

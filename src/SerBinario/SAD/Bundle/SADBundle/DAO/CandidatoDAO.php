@@ -52,6 +52,7 @@ class CandidatoDAO
    {
        try {
            $this->maneger->merge($candidato);
+           //var_dump($candidato->getTelefones());exit();
            $this->maneger->flush();
            
            return $candidato;
@@ -103,6 +104,30 @@ class CandidatoDAO
            $arrayObj = $this->maneger->getRepository("SerBinario\SAD\Bundle\SADBundle\Entity\Candidato")->findAll();
            
            return $arrayObj;
+       } catch (Exception $ex) {
+           return null;
+       }
+   }
+   
+   /**
+    * 
+    * @return type
+    */
+   public function findAllTeste()
+   {
+       try {
+           $arrayObj = $this->maneger->createQuery("SELECT a FROM SerBinario\SAD\Bundle\SADBundle\Entity\Candidato a "
+                   . "JOIN a.sexosexo b "
+                   . "JOIN a.curriculo c "
+                   . "JOIN c.informacaoBusca d "
+                   . "JOIN c.experienciasProfissionais e "
+                   . "JOIN c.informatica f "
+                   . "JOIN c.linguasExtrangeiras g "
+                   . "JOIN d.opcoesdesejadas h "
+                   . "JOIN h.vagas i "
+                   . "WHERE i.idVagas = '1' AND c.idcurriculo = g.curriculocurriculo ORDER BY a.nomecandidato asc");
+           
+           return $arrayObj->getResult();
        } catch (Exception $ex) {
            return null;
        }

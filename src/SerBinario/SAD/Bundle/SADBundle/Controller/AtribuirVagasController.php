@@ -88,14 +88,48 @@ class AtribuirVagasController extends Controller
         $conInformatica     = empty($dados['con_informatica']) ? "" : $dados['con_informatica'];
         $conLinguaEstrangeira  = empty($dados['con_lingua_estrangeira']) ? "" : $dados['con_lingua_estrangeira'];
         
-        if($expProfissional == '1') {$expProfissional = "g.curriculocurriculo";} else {$expProfissional = "";}
+        if($expProfissional == '1') {
+            $expProfissional = "c.idcurriculo = g.curriculocurriculo";
+            $expProfissionalJOIN = "c.experienciasProfissionais";
+        } else {
+            $expProfissional = "";
+            $expProfissionalJOIN = "";
+        }
         
-        if($conInformatica == '2') {$conInformatica = "h.curriculocurriculo";} else {$conInformatica = "";}
+        if($conInformatica == '2') {
+            if($expProfissional) {
+                $conInformatica = "c.idcurriculo = h.curriculocurriculo";
+            } else {
+                $conInformatica = "c.idcurriculo = g.curriculocurriculo";
+            }
+            
+            $conInformaticaJOIN = "c.informatica";
+        } else {
+            $conInformatica = "";
+            $conInformaticaJOIN = "";
+        }
         
-        if($conLinguaEstrangeira == '3') {$conLinguaEstrangeira = "i.curriculocurriculo";} else {$conLinguaEstrangeira = "";}
+        if($conLinguaEstrangeira == '3') {
+            if(!$conInformatica && !$expProfissional) {
+                $conLinguaEstrangeira = "c.idcurriculo = g.curriculocurriculo";
+            } else if ($conInformatica && !$expProfissional) {
+                $conLinguaEstrangeira = "c.idcurriculo = h.curriculocurriculo";
+            } else if(!$conInformatica && $expProfissional) {
+                $conLinguaEstrangeira = "c.idcurriculo = h.curriculocurriculo";
+            } else {
+                $conLinguaEstrangeira = "c.idcurriculo = i.curriculocurriculo";
+            }
+            
+            $conLinguaEstrangeiraJOIN = "c.linguasExtrangeiras";
+        } else {
+            $conLinguaEstrangeira = "";
+            $conLinguaEstrangeiraJOIN = "";
+        }
         
         $vagasDRN  = $this->get("vagaDisponivel_rn");
         $vagaD     = $vagasDRN->findById($vaga);
+        
+        
         
         $camposComboBox = array(
             "empresa" => $empresa,
@@ -103,20 +137,27 @@ class AtribuirVagasController extends Controller
             "vaga" => $vaga
         );
         
+        $vagaId = "f.idVagas = '".$vagaD->getVagas()->getIdVagas()."'";
+        
         $camposPesquisa = array(
-            "Vagas"       => "f.idVagas = ".$vagaD->getVagas()->getIdVagas(),
-            "experiencia"  => "c.idcurriculo = ".$expProfissional,
-            "informatica"  => "c.idcurriculo = ".$conInformatica,
-            "linguas"      => "c.idcurriculo = ".$conLinguaEstrangeira
+            "f.idVagas"    => $vagaId,
+            "experiencia"  => $expProfissional,
+            "informatica"  => $conInformatica,
+            "linguas"      => $conLinguaEstrangeira
         );
         
-//        $camposPesquisa = array(
-//            "f.idVagas" => $vagaD->getVagas()->getIdVagas(),
-//        );
+        $camposPesquisaJOIN = array(
+            "experienciaJOIN"  => $expProfissionalJOIN,
+            "informaticaJOIN"  => $conInformaticaJOIN,
+            "linguasJOIN"      => $conLinguaEstrangeiraJOIN
+        );
+        
         
         $this->get("session")->set("camposComboBox", $camposComboBox);
         
         $this->get("session")->set("camposPesquisaCandidato", $camposPesquisa);
+        
+        $this->get("session")->set("camposPesquisaCandidatoJOIN", $camposPesquisaJOIN);
         
         return $this->redirect($this->generateUrl("viewPesquisaCadidato"));
         
@@ -136,13 +177,24 @@ class AtribuirVagasController extends Controller
                 "a.emailcandidato",
                 "b.descricao",
                 );
-            
+
             $camposPesquisaCandidato = $this->get("session")->get("camposPesquisaCandidato");
-
-            $entityJOIN = array("sexosexo", "curriculo", "c.informacaoBusca", "d.opcoesdesejadas", 
-                                "e.vagas", "c.experienciasProfissionais", "c.informatica", "c.linguasExtrangeiras"); 
-
-//            $entityJOIN = array("sexosexo", "curriculo", "c.informacaoBusca", "d.opcoesdesejadas", "e.vagas"); 
+            $camposPesquisaCandidatoJOIN = $this->get("session")->get("camposPesquisaCandidatoJOIN");
+            
+            $entityJOINAUX = array("sexosexo", "curriculo", "c.informacaoBusca", "d.opcoesdesejadas", 
+                                "e.vagas");
+            
+            if(!is_null($camposPesquisaCandidatoJOIN)) {
+                foreach ($camposPesquisaCandidatoJOIN as $valor) {
+                     if (!empty($valor)) {
+                         $entityJOINAUX[] = "{$valor}";       
+                     }                    
+                }
+                $entityJOIN = $entityJOINAUX; 
+            } else {
+                $entityJOIN = array("sexosexo", "curriculo", "c.informacaoBusca", "d.opcoesdesejadas", "e.vagas"); 
+            }
+             
             $eventosArray         = array();
             $parametros           = $request->request->all();
             $whereCamposPesquisa = "";
@@ -150,11 +202,12 @@ class AtribuirVagasController extends Controller
             if (!is_null($camposPesquisaCandidato)) {
                 foreach ($camposPesquisaCandidato as $chave => $valor) {
                      if (!empty($valor)) {
-                         $whereCamposPesquisa .= "'{$valor}'";       
+                         $whereCamposPesquisa .= "{$valor} AND ";       
                      }                    
                 }
+                $whereCamposPesquisa  = substr($whereCamposPesquisa, 0, -4);
             }
-            $whereCamposPesquisa = substr($whereCamposPesquisa, 0, -4);
+            
             $entity               = "SerBinario\SAD\Bundle\SADBundle\Entity\Candidato"; 
             $columnWhereMain      = "";
             $whereValueMain       = "";
@@ -186,20 +239,7 @@ class AtribuirVagasController extends Controller
             } else {
                 $countTotal = $gridClass->getCount();
             }
-            
-//            if ($whereFull) {
-//                $countTotal = $gridClass->getCountByWhereFull(
-//                        array(
-//                    "b" => "sexosexo",
-//                    "c" => "curriculo" ), array(
-//                    "d" => "c.informacaoBusca",
-//                    "e" => "d.opcoesdesejadas",
-//                    "f" => "e.vagas")
-//                        , $whereCamposPesquisa);
-//            } else {
-//                $countTotal = $gridClass->getCount();
-//            }
-            
+                   
             $countEventos   = count($resultCliente);
 
             for($i=0;$i < $countEventos; $i++)
@@ -217,7 +257,7 @@ class AtribuirVagasController extends Controller
             if(!$gridClass->isFilter()){
                 $countEventos = $countTotal;
             }
-
+                      
             $columns = array(               
                 'draw'              => $parametros['draw'],
                 'recordsTotal'      => "{$countTotal}",
@@ -229,16 +269,29 @@ class AtribuirVagasController extends Controller
         }else{
             
             $novoAcesso = $request->get('novo');
-
+            $areaDesejadaId = "";
+            
+            if(!is_null($this->get("session")->get('camposComboBox'))) {
+                $sessao         = $this->get("session")->get('camposComboBox');
+                $areaDesejadaId = $sessao['area'];
+            }
+            
             if(isset($novoAcesso) && $novoAcesso == '1') {
-                $this->get("session")->set("camposComboBox", null);
+                
+                $session = $this->get("session");
+                $session->remove('camposComboBox');
+                $session->remove('camposPesquisaCandidato');
+                $session->remove('camposPesquisaCandidatoJOIN');
+                $areaDesejadaId = "";
             }
             
             $empresaRN = $this->get("empresa_rn");
             $empresas  = $empresaRN->findAllVagasDisponiveis();
             
             $vagasRN = $this->get("vagas_rn");
-            $vagas   = $vagasRN->findAllVagasDisponiveis();
+            $vagas   = $vagasRN->findAllVagasDisponiveis($areaDesejadaId);
+            
+            //var_dump($vagas);exit();
             
             $areaRN  = $this->get("areaDesejada_rn");
             $area    = $areaRN->findAllVagasDisponiveis();
@@ -349,7 +402,7 @@ class AtribuirVagasController extends Controller
             }
         }
               
-        return $this->redirect($this->generateUrl("atribuirVaga", array("id" => $dado['id_candidato'])));
+        return $this->redirect($this->generateUrl("viewPesquisaCadidato", array("novo" => '1')));
         
     }
    

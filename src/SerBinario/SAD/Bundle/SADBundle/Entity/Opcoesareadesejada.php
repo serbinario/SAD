@@ -3,6 +3,7 @@
 namespace SerBinario\SAD\Bundle\SADBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use \Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Opcoesareadesejada
@@ -24,14 +25,14 @@ class Opcoesareadesejada
     /**
      * @var \AreaDesejada
      *
-     * @ORM\OneToMany(targetEntity="AreaDesejada", mappedBy="opcaoDesejada", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="AreaDesejada", mappedBy="opcaoDesejada", cascade={"all"})
      */
     private $areaDesejada;
 
     /**
      * @var \Vagas
      *
-     * @ORM\OneToMany(targetEntity="Vagas", mappedBy="opcaoDesejada", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="Vagas", mappedBy="opcaoDesejada", cascade={"all"})
      */
     private $vagas;
 
@@ -80,10 +81,14 @@ class Opcoesareadesejada
     
     /**
      * 
-     * @param \SerBinario\SAD\Bundle\SADBundle\Entity\AreaDesejada $areaDesejada
+     * @param \SerBinario\SAD\Bundle\SADBundle\Entity\AreaDesejada $areaDesejadas
      */
-    function setAreaDesejada(AreaDesejada $areaDesejada) {
-        $this->areaDesejada = $areaDesejada;
+    function setAreaDesejada(AreaDesejada $areaDesejadas) {
+        
+        $areaDesejadas->setOpcaoDesejada($this);
+        
+        $this->areaDesejada = $areaDesejadas;
+        
     }
     
     /**
@@ -91,7 +96,11 @@ class Opcoesareadesejada
      * @param \SerBinario\SAD\Bundle\SADBundle\Entity\Vagas $vagas
      */
     function setVagas(Vagas $vagas) {
+        
+        $vagas->setOpcaoDesejada($this);
+        
         $this->vagas = $vagas;
+        
     }
 
     /**

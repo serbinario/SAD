@@ -85,7 +85,8 @@ class VagasDisponiveis
      */
     private $candidato;
     
-     public function __construct() 
+    
+    public function __construct() 
     {
         $this->candidato      = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -170,26 +171,50 @@ class VagasDisponiveis
         $this->areaDesejada = $areaDesejada;
     }
     
+    /**
+     * 
+     * @return type
+     */
     function getDataCadastro() {
         return $this->dataCadastro;
     }
-
+    
+    /**
+     * 
+     * @return type
+     */
     function getPerfil() {
         return $this->perfil;
     }
-
+    
+    /**
+     * 
+     * @param \DateTime $dataCadastro
+     */
     function setDataCadastro(\DateTime $dataCadastro) {
         $this->dataCadastro = $dataCadastro;
     }
-
+    
+    /**
+     * 
+     * @param type $perfil
+     */
     function setPerfil($perfil) {
         $this->perfil = $perfil;
     }
     
+    /**
+     * 
+     * @return type
+     */
     function getCandidato() {
         return $this->candidato;
     }
-
+    
+    /**
+     * 
+     * @param \SerBinario\SAD\Bundle\SADBundle\Entity\Candidato $candidato
+     */
     function setCandidato(Candidato $candidato = null) {
         
         $this->candidato[] = $candidato;

@@ -31,7 +31,7 @@ class Vagas
      *
      * @var \Opcoesareadesejada 
      * 
-     * @ORM\ManyToOne(targetEntity="Opcoesareadesejada", inversedBy="vagas")
+     * @ORM\OneToOne(targetEntity="Opcoesareadesejada", inversedBy="vagas")
      * @ORM\JoinColumns({
      *      @ORM\JoinColumn(name="idOpcaoDesejada", referencedColumnName="idOpcoesAreaDesejada")
      * })

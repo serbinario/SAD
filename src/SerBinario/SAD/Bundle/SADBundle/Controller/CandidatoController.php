@@ -173,7 +173,7 @@ class CandidatoController extends Controller
             if($form->isValid()) {
                 #Recuperando os dados
                 $candidato = $form->getData();               
-                
+               // var_dump($candidato->getTelefones());exit();
                 #Resultado da operação
                 $result =  $candidatoRN->edit($candidato);
                                       

@@ -74,9 +74,9 @@ class VagaRN
      * 
      * @param type
      */
-    public function findAllVagasDisponiveis()
+    public function findAllVagasDisponiveis($id)
     {
-        $result = $this->vagaDAO->findAllVagasDisponiveis();
+        $result = $this->vagaDAO->findAllVagasDisponiveis($id);
         
         return $result;
     }

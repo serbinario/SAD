@@ -125,12 +125,14 @@ class VagaDAO
     * 
     * @return type
     */
-   public function findAllVagasDisponiveis()
+   public function findAllVagasDisponiveis($id)
    {
        try {
-           $arrayObj = $this->maneger->createQuery("SELECT v FROM SerBinario\SAD\Bundle\SADBundle\Entity\Vagas v "
-                   . "JOIN v.vagasDisponiveis d "
-                   . "WHERE v.idVagas = d.vagas");
+           $arrayObj = $this->maneger->createQuery("SELECT v FROM SerBinario\SAD\Bundle\SADBundle\Entity\VagasDisponiveis v "
+                   . "JOIN v.vagas d "
+                   . "JOIN v.areaDesejada a "
+                   . "WHERE v.vagas = d.idVagas AND v.areaDesejada = :id")
+                   ->setParameter("id", $id);
            
            return $arrayObj->getResult();
        } catch (Exception $ex) {
