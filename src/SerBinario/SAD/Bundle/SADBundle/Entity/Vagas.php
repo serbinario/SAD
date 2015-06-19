@@ -2,6 +2,7 @@
 namespace SerBinario\SAD\Bundle\SADBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use \Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Vagas
@@ -28,13 +29,9 @@ class Vagas
     private $nomeVaga;
     
     /**
+     * @var \Opcoesareadesejada
      *
-     * @var \Opcoesareadesejada 
-     * 
-     * @ORM\OneToOne(targetEntity="Opcoesareadesejada", inversedBy="vagas")
-     * @ORM\JoinColumns({
-     *      @ORM\JoinColumn(name="idOpcaoDesejada", referencedColumnName="idOpcoesAreaDesejada")
-     * })
+     * @ORM\OneToMany(targetEntity="Opcoesareadesejada", mappedBy="vagas", cascade={"all"})
      */
     private $opcaoDesejada;
     
@@ -55,6 +52,14 @@ class Vagas
      * @ORM\OneToMany(targetEntity="VagasDisponiveis", mappedBy="vagas", cascade={"all"})
      */
     private $vagasDisponiveis;
+    
+    /**
+     * 
+     */
+    public function __construct()
+    {
+        $this->opcaoDesejada = new ArrayCollection();
+    }
     
     /**
      * 
@@ -114,9 +119,16 @@ class Vagas
     
     /**
      * 
-     * @param \Opcoesareadesejada $opcaoDesejada
+     * @param \Opcoesareadesejada $opcaoDesejadas
      */
-    function setOpcaoDesejada($opcaoDesejada) {
+    function setOpcaoDesejada($opcaoDesejadas) {
+        
+        if(count($opcaoDesejadas) > 0) {
+            foreach ($opcaoDesejadas as $opcao) {
+                $opcao->setAreaDesejada($this);
+            }
+        }
+              
         $this->opcaoDesejada = $opcaoDesejada;
     }
     

@@ -27,12 +27,27 @@ class Opcoesareadesejada
      *
      * @ORM\OneToOne(targetEntity="AreaDesejada", mappedBy="opcaoDesejada", cascade={"all"})
      */
-    private $areaDesejada;
-
+    //private $areaDesejada;
+    
     /**
-     * @var \Vagas
      *
-     * @ORM\OneToOne(targetEntity="Vagas", mappedBy="opcaoDesejada", cascade={"all"})
+     * @var \AreaDesejada 
+     * 
+     * @ORM\ManyToOne(targetEntity="AreaDesejada", inversedBy="opcaoDesejada")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_area_desejada", referencedColumnName="idAreaDesejada")
+     * })
+     */
+    private $areaDesejada;
+    
+    /**
+     *
+     * @var \Vagas 
+     * 
+     * @ORM\ManyToOne(targetEntity="Vagas", inversedBy="opcaoDesejada", cascade={"all"})
+     * @ORM\JoinColumns({
+     *      @ORM\JoinColumn(name="id_vaga", referencedColumnName="id_vagas")
+     * })
      */
     private $vagas;
 
@@ -85,10 +100,9 @@ class Opcoesareadesejada
      */
     function setAreaDesejada(AreaDesejada $areaDesejadas) {
         
-        $areaDesejadas->setOpcaoDesejada($this);
-        
         $this->areaDesejada = $areaDesejadas;
         
+        return $this;
     }
     
     /**
@@ -96,10 +110,10 @@ class Opcoesareadesejada
      * @param \SerBinario\SAD\Bundle\SADBundle\Entity\Vagas $vagas
      */
     function setVagas(Vagas $vagas) {
-        
-        $vagas->setOpcaoDesejada($this);
-        
+               
         $this->vagas = $vagas;
+        
+        return $this;
         
     }
 

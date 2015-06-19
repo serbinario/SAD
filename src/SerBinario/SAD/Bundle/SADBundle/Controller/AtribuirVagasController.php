@@ -310,6 +310,7 @@ class AtribuirVagasController extends Controller
         $cadidatoRN = $this->get("candidato_rn");
         $cadidato   = $cadidatoRN->findById($id);
         
+        $this->get('session')->set('idCandidato', $id);
         
         $camposComboBox = $this->get('session')->get('camposComboBox');
         
@@ -380,15 +381,29 @@ class AtribuirVagasController extends Controller
         $vagasDRN  = $this->get("vagaDisponivel_rn");
         $vagaD     = $vagasDRN->findById($dado['id_vaga']);
         
+        $candidatoDRN  = $this->get("candidato_rn");
+        $candidatoVagaDisp = $candidatoDRN->findCandidatoVagaDisp($dado['id_vaga']);
+        
         $totalVagas       = $vagaD->getQtdVagas();
         $qtdCadidatosVaga = count($vagaD->getCandidato());
 
         $TotalDisponivel  = $totalVagas - $qtdCadidatosVaga;
         
+        if(!isset($dado['id_candidato'])) {
+            $idCandidato = $this->get('session')->get('idCandidato');
+            $this->addFlash("warning", "Você deve selecionar o candidato!");
+            return $this->redirect($this->generateUrl("atribuirVaga", array("id" => $idCandidato)));
+        }
+        
+        if($candidatoVagaDisp) {
+            $idCandidato = $this->get('session')->get('idCandidato');
+            $this->addFlash("warning", "Esta vaga já foi atribuida a este candidato!");
+            return $this->redirect($this->generateUrl("atribuirVaga", array("id" => $idCandidato)));
+        }
+        
         if($TotalDisponivel == 0) {
             $this->addFlash("warning", "Todas as vagas já foram preenchidas!");
         } else {
-            $candidatoDRN  = $this->get("candidato_rn");
             $candidato     = $candidatoDRN->findById($dado['id_candidato']);
 
             $candidato->addVagaDisponivel($vagaD);

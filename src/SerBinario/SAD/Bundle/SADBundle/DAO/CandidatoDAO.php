@@ -113,19 +113,13 @@ class CandidatoDAO
     * 
     * @return type
     */
-   public function findAllTeste()
+   public function findCandidatoVagaDisp($id)
    {
        try {
            $arrayObj = $this->maneger->createQuery("SELECT a FROM SerBinario\SAD\Bundle\SADBundle\Entity\Candidato a "
-                   . "JOIN a.sexosexo b "
-                   . "JOIN a.curriculo c "
-                   . "JOIN c.informacaoBusca d "
-                   . "JOIN c.experienciasProfissionais e "
-                   . "JOIN c.informatica f "
-                   . "JOIN c.linguasExtrangeiras g "
-                   . "JOIN d.opcoesdesejadas h "
-                   . "JOIN h.vagas i "
-                   . "WHERE i.idVagas = '1' AND c.idcurriculo = g.curriculocurriculo ORDER BY a.nomecandidato asc");
+                   . "JOIN a.vagaDisponivel v "
+                   . "WHERE v.idVagasDiponiveis = :id ")
+                   ->setParameter("id", $id);
            
            return $arrayObj->getResult();
        } catch (Exception $ex) {

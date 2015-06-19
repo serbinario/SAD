@@ -57,4 +57,15 @@ class CandidatoRN
         
         return $result;
     }
+    
+    /**
+     * 
+     * @param type $id
+     */
+    public function findCandidatoVagaDisp($id)
+    {
+        $result = $this->candidatoDAO->findCandidatoVagaDisp($id);
+        
+        return $result;
+    }
 }
