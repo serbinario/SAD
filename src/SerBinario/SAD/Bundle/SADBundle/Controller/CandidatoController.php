@@ -174,13 +174,73 @@ class CandidatoController extends Controller
                 #Recuperando os dados
                 $candidato = $form->getData();               
                 
+                //Adiciona as opções desejadas
                 $idOpcoesDesejadas = array();
-
                 foreach ($candidato->getCurriculo()->getInformacaoBusca()->getOpcoesdesejadas() as $opcoesDesejadas) {
                     $idOpcoesDesejadas[] = $opcoesDesejadas->getIdopcoesareadesejada();
                     $opcoesDesejadas->setInformacoesbuscainformacoesbusca($candidato->getCurriculo()->getInformacaoBusca());
                 }
                 
+                //Remove as opções desejadas
+                $countOpcoesDesejadas = count($idOpcoesDesejadas);
+                if ($countOpcoesDesejadas > 0) {
+                    $candidatoRN->removeOpcoesDesejadasByUpdate($idOpcoesDesejadas, $candidato->getCurriculo()->getInformacaoBusca()->getIdinformacoesbusca());
+                } else {
+                    $candidatoRN->removeOpcoesDesejadasByUpdateVazio($candidato->getCurriculo()->getInformacaoBusca()->getIdinformacoesbusca());
+                }
+                
+                
+                //Pegas os ids das linguas estrangeiras
+                $idLgEstrangeira = array();
+                foreach ($candidato->getCurriculo()->getLinguasExtrangeiras() as $lgEstrangeira) {
+                    $idLgEstrangeira[] = $lgEstrangeira->getIdlinguaextrangeira();
+                    $lgEstrangeira->setCurriculocurriculo($candidato->getCurriculo());
+                }
+                
+                //Remove as linguas estrangeiras
+                $countLgEstrangeira = count($idLgEstrangeira);
+                if ($countLgEstrangeira > 0) {
+                    $candidatoRN->removeLinguaEstrangeiraByUpdate($idLgEstrangeira, $candidato->getCurriculo()->getIdcurriculo());
+                } else {
+                    $candidatoRN->removeLinguaEstrangeiraByUpdateVazio($candidato->getCurriculo()->getIdcurriculo());
+                }
+                
+                //Pegas os ids dos cursos de informática
+                $idInformatica = array();
+                foreach ($candidato->getCurriculo()->getInformatica() as $informatica) {
+                    $idInformatica[] = $informatica->getIdinformatica();
+                    $informatica->setCurriculocurriculo($candidato->getCurriculo());
+                }
+                
+                //Remove os cursos de informática
+                $countInformatica = count($idInformatica);
+                if ($countInformatica > 0) {
+                    $candidatoRN->removeInformaticaByUpdate($idInformatica, $candidato->getCurriculo()->getIdcurriculo());
+                } else {
+                    $candidatoRN->removeInformaticaByUpdateVazio($candidato->getCurriculo()->getIdcurriculo());
+                }
+                
+                //Adiciona os ids das formações/escolaridade
+                $idFormacao = array();
+                foreach ($candidato->getCurriculo()->getFormacoes() as $formacao) {
+                    $idFormacao[] = $formacao->getIdformacao();
+                    $formacao->setCurriculocurriculo($candidato->getCurriculo());
+                }
+                
+                //Remove as formações escolaridades
+                $countFormacoes= count($idFormacao);
+                if ($countFormacoes > 0) {
+                    $candidatoRN->removeFormcaoByUpdate($idFormacao, $candidato->getCurriculo()->getIdcurriculo());
+                } else {
+                    $candidatoRN->removeFormacaoByUpdateVazio($candidato->getCurriculo()->getIdcurriculo());
+                }
+                
+                //Adiciona as expericência profissionais
+                $idExperiencia = array();
+                foreach ($candidato->getCurriculo()->getExperienciasProfissionais() as $experiencia) {
+                    $idExperiencia[] = $experiencia->getIdexperienciaprofissional();
+                    $formacao->setCurriculocurriculo($candidato->getCurriculo());
+                }
                 
                 #Resultado da operação
                 $result =  $candidatoRN->edit($candidato);

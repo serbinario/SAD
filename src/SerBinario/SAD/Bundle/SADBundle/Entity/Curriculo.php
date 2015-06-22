@@ -211,7 +211,7 @@ class Curriculo
      */
     public function getFormacoes() 
     {
-        return $this->formacoes->toArray();
+        return $this->formacoes;
     }
 
     /**
@@ -277,7 +277,7 @@ class Curriculo
      */
     public function getLinguasExtrangeiras() 
     {
-        return $this->linguasExtrangeiras->toArray();
+        return $this->linguasExtrangeiras;
     }
 
     /**
@@ -310,7 +310,7 @@ class Curriculo
      */
     public function getInformatica()
     {
-        return $this->informatica->toArray();
+        return $this->informatica;
     }
 
     /**

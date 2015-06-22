@@ -127,4 +127,227 @@ class CandidatoDAO
        }
    }
    
+   /**
+    * 
+    * @param type $idOpcao
+    * @param type $idInforBusca
+    * @return boolean
+    */
+   public function removeOpcoesDesejadasByUpdate($idOpcao, $idInforBusca)
+    {
+        try {
+            $qb = $this->maneger->createQueryBuilder();
+            $qb->select("o");
+            $qb->from("SerBinario\SAD\Bundle\SADBundle\Entity\Opcoesareadesejada", "o");
+            $qb->innerJoin("o.informacoesbuscainformacoesbusca", "i");
+            $qb->where("i.idinformacoesbusca =  ?1 AND o.idopcoesareadesejada NOT IN (?2)");
+            $qb->setParameter(1, $idInforBusca);
+            $qb->setParameter(2, $idOpcao);
+
+            $result = $qb->getQuery()->getResult();
+
+            foreach($result as $entity) {
+                $this->maneger->remove($entity);
+            }
+
+            return true;
+        } catch (Exception $ex) {
+            return false;
+        }  
+    }
+    
+    /**
+     * 
+     * @param type $idInforBusca
+     * @return boolean
+     */
+    public function removeOpcoesDesejadasByUpdateVazio($idInforBusca)
+    {
+        try {
+            $qb = $this->manager->createQueryBuilder();
+            $qb->select("o");
+            $qb->from("SerBinario\SAD\Bundle\SADBundle\Entity\Opcoesareadesejada", "o");
+            $qb->innerJoin("o.informacoesbuscainformacoesbusca", "i");
+            $qb->where("i.idinformacoesbusca =  ?1");
+            $qb->setParameter(1, $idInforBusca);
+
+            $result = $qb->getQuery()->getResult();
+
+            foreach($result as $entity) {
+                $this->manager->remove($entity);
+            }
+
+            return true;
+        } catch (Exception $ex) {
+            return false;
+        }
+    }
+   
+    /**
+     * 
+     * @param type $LgEst
+     * @param type $idCurriculo
+     * @return boolean
+     */
+    public function removeLinguaEstrangeiraByUpdate($LgEst, $idCurriculo)
+    {
+        try {
+            $qb = $this->maneger->createQueryBuilder();
+            $qb->select("l");
+            $qb->from("SerBinario\SAD\Bundle\SADBundle\Entity\Linguaextrangeira", "l");
+            $qb->innerJoin("l.curriculocurriculo", "c");
+            $qb->where("c.idcurriculo =  ?1 AND l.idlinguaextrangeira NOT IN (?2)");
+            $qb->setParameter(1, $idCurriculo);
+            $qb->setParameter(2, $LgEst);
+
+            $result = $qb->getQuery()->getResult();
+
+            foreach($result as $entity) {
+                $this->maneger->remove($entity);
+            }
+
+            return true;
+        } catch (Exception $ex) {
+            return false;
+        }  
+    }
+    
+    /**
+     * 
+     * @param type $idCurriculo
+     * @return boolean
+     */
+    public function removeLinguaEstrangeiraByUpdateVazio($idCurriculo)
+    {
+        try {
+            $qb = $this->manager->createQueryBuilder();
+            $qb->select("l");
+            $qb->from("SerBinario\SAD\Bundle\SADBundle\Entity\Linguaextrangeira", "l");
+            $qb->innerJoin("l.curriculocurriculo", "c");
+            $qb->where("c.idcurriculo =  ?1");
+            $qb->setParameter(1, $idCurriculo);
+
+            $result = $qb->getQuery()->getResult();
+
+            foreach($result as $entity) {
+                $this->manager->remove($entity);
+            }
+
+            return true;
+        } catch (Exception $ex) {
+            return false;
+        }
+    }
+    
+    /**
+     * 
+     * @param type $infor
+     * @param type $idCurriculo
+     * @return boolean
+     */
+    public function removeInformaticaByUpdate($infor, $idCurriculo)
+    {
+        try {
+            $qb = $this->maneger->createQueryBuilder();
+            $qb->select("i");
+            $qb->from("SerBinario\SAD\Bundle\SADBundle\Entity\Informatica", "i");
+            $qb->innerJoin("i.curriculocurriculo", "c");
+            $qb->where("c.idcurriculo =  ?1 AND i.idinformatica NOT IN (?2)");
+            $qb->setParameter(1, $idCurriculo);
+            $qb->setParameter(2, $infor);
+
+            $result = $qb->getQuery()->getResult();
+
+            foreach($result as $entity) {
+                $this->maneger->remove($entity);
+            }
+
+            return true;
+        } catch (Exception $ex) {
+            return false;
+        }  
+    }
+    
+    /**
+     * 
+     * @param type $idCurriculo
+     * @return boolean
+     */
+    public function removeInformaticaByUpdateVazio($idCurriculo)
+    {
+        try {
+            $qb = $this->manager->createQueryBuilder();
+            $qb->select("i");
+            $qb->from("SerBinario\SAD\Bundle\SADBundle\Entity\Informatica", "i");
+            $qb->innerJoin("i.curriculocurriculo", "c");
+            $qb->where("c.idcurriculo =  ?1");
+            $qb->setParameter(1, $idCurriculo);
+
+            $result = $qb->getQuery()->getResult();
+
+            foreach($result as $entity) {
+                $this->manager->remove($entity);
+            }
+
+            return true;
+        } catch (Exception $ex) {
+            return false;
+        }
+    }
+    
+    /**
+     * 
+     * @param type $formacao
+     * @param type $idCurriculo
+     * @return boolean
+     */
+    public function removeFormcaoByUpdate($formacao, $idCurriculo)
+    {
+        try {
+            $qb = $this->maneger->createQueryBuilder();
+            $qb->select("f");
+            $qb->from("SerBinario\SAD\Bundle\SADBundle\Entity\Formacao", "f");
+            $qb->innerJoin("f.curriculocurriculo", "c");
+            $qb->where("c.idcurriculo =  ?1 AND f.idformacao NOT IN (?2)");
+            $qb->setParameter(1, $idCurriculo);
+            $qb->setParameter(2, $formacao);
+
+            $result = $qb->getQuery()->getResult();
+
+            foreach($result as $entity) {
+                $this->maneger->remove($entity);
+            }
+
+            return true;
+        } catch (Exception $ex) {
+            return false;
+        }  
+    }
+    
+    /**
+     * 
+     * @param type $idCurriculo
+     * @return boolean
+     */
+    public function removeFormacaoByUpdateVazio($idCurriculo)
+    {
+        try {
+            $qb = $this->manager->createQueryBuilder();
+            $qb->select("f");
+            $qb->from("SerBinario\SAD\Bundle\SADBundle\Entity\Formacao", "f");
+            $qb->innerJoin("f.curriculocurriculo", "c");
+            $qb->where("c.idcurriculo =  ?1");
+            $qb->setParameter(1, $idCurriculo);
+
+            $result = $qb->getQuery()->getResult();
+
+            foreach($result as $entity) {
+                $this->manager->remove($entity);
+            }
+
+            return true;
+        } catch (Exception $ex) {
+            return false;
+        }
+    }
 }

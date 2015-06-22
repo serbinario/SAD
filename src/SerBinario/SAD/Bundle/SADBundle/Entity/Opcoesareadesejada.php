@@ -21,13 +21,6 @@ class Opcoesareadesejada
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idopcoesareadesejada;
-
-    /**
-     * @var \AreaDesejada
-     *
-     * @ORM\OneToOne(targetEntity="AreaDesejada", mappedBy="opcaoDesejada", cascade={"all"})
-     */
-    //private $areaDesejada;
     
     /**
      *
@@ -44,7 +37,7 @@ class Opcoesareadesejada
      *
      * @var \Vagas 
      * 
-     * @ORM\ManyToOne(targetEntity="Vagas", inversedBy="opcaoDesejada", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="Vagas", inversedBy="opcaoDesejada")
      * @ORM\JoinColumns({
      *      @ORM\JoinColumn(name="id_vaga", referencedColumnName="id_vagas")
      * })
