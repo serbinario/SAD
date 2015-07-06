@@ -81,12 +81,17 @@ class AtribuirVagasController extends Controller
         
         $dados = $request->request->all();
         
-        $empresa            = $dados['empresa'];
-        $area               = $dados['area_desejada'];
-        $vaga               = $dados['vagas_disponivel'];
+        $empresa            = !empty($dados['empresa']) ? $dados['empresa'] : "";
+        $area               = !empty($dados['area_desejada']) ? $dados['area_desejada'] : "";
+        $vaga               = !empty($dados['vagas_disponivel']) ? $dados['vagas_disponivel'] : "";
         $expProfissional    = empty($dados['exp_profissional']) ? "" : $dados['exp_profissional'];
         $conInformatica     = empty($dados['con_informatica']) ? "" : $dados['con_informatica'];
         $conLinguaEstrangeira  = empty($dados['con_lingua_estrangeira']) ? "" : $dados['con_lingua_estrangeira'];
+        
+        if(!$vaga || ($empresa && !$area)) {
+            $this->addFlash("warning", "Deve ser selecionada a vaga para consulta");
+            return $this->redirect($this->generateUrl("viewPesquisaCadidato"));
+        }
         
         if($expProfissional == '1') {
             $expProfissional = "c.idcurriculo = g.curriculocurriculo";
