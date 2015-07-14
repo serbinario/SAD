@@ -28,7 +28,6 @@ class InformacoesbuscaType extends AbstractType
                 ))
             ->add('opcoesdesejadas','bootstrap_collection', array(
                         'label'              => "Opções desejadas",
-                        'required'           => false,
                         'allow_add'          => true,
                         'allow_delete'       => true,
                         'add_button_text'    => 'Adicionar',

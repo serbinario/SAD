@@ -75,15 +75,12 @@ class VagasDisponiveis
     private $areaDesejada;
     
     /**
-     * @var \Candidato
      *
-     * @ORM\ManyToMany(targetEntity="Candidato", inversedBy="vagaDisponivel", cascade={"persist"})
-     * @ORM\JoinTable(name="vagas_disponivel_candidato", 
-     *      joinColumns={@ORM\JoinColumn(name="vaga_disponivel_id", referencedColumnName="id_vagasDisponiveis")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="cadidato_id", referencedColumnName="idCandidato")}
-     * )
+     * @var VagasDisponiveisCandidato 
+     * 
+     * @ORM\OneToMany(targetEntity="VagasDisponiveisCandidato", mappedBy="vagasDisponiveis", cascade={"persist"})
      */
-    private $candidato;
+    private $vagaDisponivelCand;
     
     
     public function __construct() 
@@ -220,5 +217,20 @@ class VagasDisponiveis
         $this->candidato[] = $candidato;
         
     }
-
+    
+    /**
+     * 
+     * @return type
+     */
+    function getVagaDisponivelCand() {
+        return $this->vagaDisponivelCand;
+    }
+    
+    /**
+     * 
+     * @param \SerBinario\SAD\Bundle\SADBundle\Entity\type $vagaDisponivelCand
+     */
+    function setVagaDisponivelCand($vagaDisponivelCand) {
+        $this->vagaDisponivelCand = $vagaDisponivelCand;
+    }
 }

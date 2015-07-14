@@ -1,0 +1,30 @@
+parameters:
+    dao.class.user:  SerBinario\SAD\Bundle\UserBundle\DAO\UserDAO   
+    rn.class.user:   SerBinario\SAD\Bundle\UserBundle\RN\UserRN
+    dao.class.role:  SerBinario\SAD\Bundle\UserBundle\DAO\RoleDAO   
+    rn.class.role:   SerBinario\SAD\Bundle\UserBundle\RN\RoleRN
+    user_security.authentication.handler.logout_success_handler.class: SerBinario\SAD\Bundle\UserBundle\Authentication\Handler\LogoutSuccessHandler
+    
+services:
+    user_dao:
+        class:  %dao.class.user%
+        arguments:  [ @doctrine.orm.entity_manager ]
+        public: false
+    user_rn:
+        class:  %rn.class.user%
+        arguments:  [ @user_dao ]
+        
+    role_dao:
+        class:  %dao.class.role%
+        arguments:  [ @doctrine.orm.entity_manager ]
+        public: false
+    role_rn:
+        class:  %rn.class.role%
+        arguments:  [ @role_dao ]
+    user_security.authentication.handler.logout_success_handler:
+        class:  %user_security.authentication.handler.logout_success_handler.class%
+        arguments:  [@service_container, @router]
+        tags:
+            - { name: 'monolog.logger', channel: 'security' }
+        
+    

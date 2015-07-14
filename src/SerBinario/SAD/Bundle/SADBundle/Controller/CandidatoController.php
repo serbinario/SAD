@@ -148,7 +148,9 @@ class CandidatoController extends Controller
      * @Template()
      */
     public function editAction(Request $request, $id)
-    {     
+    {   
+        $usuario    = $this->get("security.context")->getToken()->getUser();
+        
         #Recuperando o serviço do modelo
         $candidatoRN = $this->get("candidato_rn");
         
@@ -173,6 +175,7 @@ class CandidatoController extends Controller
             if($form->isValid()) {
                 #Recuperando os dados
                 $candidato = $form->getData();               
+                $candidato->setUsuario($usuario);
                 
                 //Adiciona as opções desejadas
                 $idOpcoesDesejadas = array();

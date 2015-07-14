@@ -79,6 +79,22 @@ class UserDAO
     
     /**
      * 
+     * @param type $id
+     * @return type
+     */
+    public function ultimoRegistro()
+    {
+        try {
+            $obj =  $this->manager->createQuery("SELECT MAX(u.codigo) FROM SerBinario\SAD\Bundle\UserBundle\Entity\User u ");
+            
+            return $obj->getResult();
+        } catch (Exception $ex) {
+            return null;
+        }
+    }
+    
+    /**
+     * 
      * @param type $param
      * @return type
      */

@@ -345,4 +345,148 @@ class DefaultController extends Controller
         #Retorno
         return array("form" => $form->createView());
     }
+    
+    /**
+     * @Route("/relatorioAtendimento", name="relatorioAtendimento")
+     * @Template()
+     */
+    public function relatorioAtendimentoAction() {
+        
+        return array();
+        
+    }
+    
+    /**
+     * @Route("/relatorioSupervisor", name="relatorioSupervisor")
+     * @Template()
+     */
+    public function relatorioSupervisorAction() {
+        
+        return array();
+        
+    }
+    
+    /**
+     * @Route("/processRelatorioAtendimento", name="processRelatorioAtendimento")
+     * @Template("SADBundle:Default:relatorioAtendimento.html.twig")
+     */
+    public function processRelatorioAtendimentoAction(Request $request) {
+        
+        $dados = $request->request->all();
+        $data  = isset($dados['dataCadastro']) ?  $dados['dataCadastro'] : "";
+         
+        if($data) {
+            $dataFormatada = \DateTime::createFromFormat("d/m/Y", $data);
+            $manager = $this->getDoctrine()->getManager();
+            $query   = $manager->createQuery("SELECT count(c) as cadastros, u.codigo FROM SerBinario\SAD\Bundle\SADBundle\Entity\Candidato c "
+                    . "JOIN c.user u "
+                    . "JOIN u.roles r "
+                    . "WHERE c.user = u.id and c.dataCadastro = '{$dataFormatada->format("Y-m-d")}' and r.id = 2 group by u.codigo ");
+            $result = $query->getResult();
+
+            return array("resultados" => $result);
+        } else {
+            $this->addFlash("warning", "É obrigatório informar a data");
+        }
+        
+        return array();
+    }
+    
+    /**
+     * @Route("/processRelatorioSupervisor", name="processRelatorioSupervisor")
+     * @Template("SADBundle:Default:relatorioSupervisor.html.twig")
+     */
+    public function processRelatorioSupervisorAction(Request $request) {
+        
+        $dados = $request->request->all();
+        $data  = isset($dados['dataCadastro']) ? $dados['dataCadastro'] : "";
+         
+        if($data) {
+            $dataFormatada = \DateTime::createFromFormat("d/m/Y", $data);
+            $manager = $this->getDoctrine()->getManager();
+            $query   = $manager->createQuery("SELECT count(c) as cadastros, u.codigo FROM SerBinario\SAD\Bundle\SADBundle\Entity\Candidato c "
+                    . "JOIN c.usuario u "
+                    . "JOIN u.roles r "
+                    . "WHERE c.usuario = u.id and c.dataCadastro = '{$dataFormatada->format("Y-m-d")}' and r.id = 3 group by u.codigo ");
+            $result = $query->getResult();
+
+            return array("resultados" => $result);
+        } else {
+            $this->addFlash("warning", "É obrigatório informar a data");
+        }
+        
+        return array();
+    }
+    
+    /**
+     * @Route("/relatorioEncaminhamento", name="relatorioEncaminhamento")
+     * @Template("")
+     */
+    public function relatorioEncaminhamentoAction(Request $request) {
+        
+       $dados = $request->request->all();
+        
+        $empresa                = !empty($dados['empresa']) ? $dados['empresa'] : "";
+        $area                   = !empty($dados['area_desejada']) ? $dados['area_desejada'] : "";
+        $vaga                   = !empty($dados['vagas_disponivel']) ? $dados['vagas_disponivel'] : "";
+        $candidatos  = "";
+        $vagaDID     = ""; 
+
+        if($request->getMethod() === "POST") {
+        
+        $vagasDRN   = $this->get("vagaDisponivel_rn");
+        $vagaD      = $vagasDRN->findById($vaga);
+        $vagaDID    = $vagaD->getIdVagasDiponiveis();
+        
+        $camposComboBox = array(
+            "empresa" => $empresa,
+            "area"    => $area,
+            "vaga" => $vaga
+        );   
+
+        $this->get("session")->set("camposComboBox3", $camposComboBox);
+        
+        $query = "SELECT a FROM SerBinario\SAD\Bundle\SADBundle\Entity\VagasDisponiveisCandidato a ";
+        $join  = "JOIN  a.vagasDisponiveis c "
+                . "JOIN c.vagas v "
+                . "JOIN c.empresas p "
+                . "JOIN c.areaDesejada d ";
+        $where = "WHERE v.idVagas = {$vagaD->getVagas()->getIdVagas()} AND p.idEmpresa = {$empresa} AND d.idAreaDesejada = {$area} "
+        . "AND a.encaminhado = true";
+
+        $query .= $join . $where;
+        
+        $maneger    = $this->getDoctrine()->getManager();
+        $querySQL   = $maneger->createQuery($query);
+        $candidatos = $querySQL->getResult();
+        
+        }
+             
+        $novoAcesso = $request->get('novo');
+        $areaDesejadaId = "";
+
+        if(!is_null($this->get("session")->get('camposComboBox3'))) {
+            $sessao         = $this->get("session")->get('camposComboBox3');
+            $areaDesejadaId = $sessao['area'];
+        }
+
+        if(isset($novoAcesso) && $novoAcesso == '1') {
+
+            $session = $this->get("session");
+            $session->remove('camposComboBox3');
+            $areaDesejadaId = "";
+        }
+
+        $empresaRN = $this->get("empresa_rn");
+        $empresas  = $empresaRN->findAllVagasDisponiveis();
+
+        $vagasRN = $this->get("vagas_rn");
+        $vagas   = $vagasRN->findAllVagasDisponiveis($areaDesejadaId);
+
+        $areaRN  = $this->get("areaDesejada_rn");
+        $areas    = $areaRN->findAllVagasDisponiveis();
+
+        return array('empresas' => $empresas, 'vagas' => $vagas, 'areas' => $areas,
+            "candidatos" => $candidatos, "vagaD" => $vagaDID); 
+    }
 }

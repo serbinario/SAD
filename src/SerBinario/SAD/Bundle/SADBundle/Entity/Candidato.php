@@ -93,6 +93,13 @@ class Candidato
      * @ORM\Column(name="nascimentoCandidato", type="date", nullable=true)
      */
     private $nascimentocandidato;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_cadastro", type="date", nullable=true)
+     */
+    private $dataCadastro;
 
     /**
      * @var boolean
@@ -158,9 +165,19 @@ class Candidato
      *
      * @var type 
      * 
-     * @ORM\ManyToMany(targetEntity="VagasDisponiveis", mappedBy="candidato", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="VagasDisponiveisCandidato", mappedBy="candidato", cascade={"all"})
      */
     private $vagaDisponivel;
+    
+    /**
+     * @var \SerBinario\SAD\Bundle\UserBundle\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="SerBinario\SAD\Bundle\UserBundle\Entity\User", inversedBy="candidato")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user_super", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
     
     /**
      * Método construtor
@@ -594,7 +611,7 @@ class Candidato
     }
     
     function getVagaDisponivel() {
-        return $this->vagaDisponivel->toArray();
+        return $this->vagaDisponivel;
     }
     
     /**
@@ -607,5 +624,36 @@ class Candidato
 
         $this->vagaDisponivel[] = $vagaDisponiveis;
     }
-
+    
+    /**
+     * 
+     * @return type
+     */
+    function getUsuario() {
+        return $this->usuario;
+    }
+    
+    /**
+     * 
+     * @param \SerBinario\SAD\Bundle\UserBundle\Entity\User $usuario
+     */
+    function setUsuario(\SerBinario\SAD\Bundle\UserBundle\Entity\User $usuario) {
+        $this->usuario = $usuario;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    function getDataCadastro() {
+        return $this->dataCadastro;
+    }
+    
+    /**
+     * 
+     * @param \DateTime $dataCadastro
+     */
+    function setDataCadastro(\DateTime $dataCadastro) {
+        $this->dataCadastro = $dataCadastro;
+    }
 }

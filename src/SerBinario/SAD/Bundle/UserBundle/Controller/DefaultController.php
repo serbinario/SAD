@@ -5,6 +5,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\SecurityContext;
 
 
@@ -43,26 +44,81 @@ class DefaultController extends Controller
     }
     
     /**
-     * @Route("/save", name="save")
+     * @Route("/viewSaveUser", name="viewSaveUser")
+     * @Template("")
      */
-    public function saveUserAction()
+    public function viewSaveUserAction()
     {
-        $user = new \SerBinario\SAD\Bundle\UserBundle\Entity\User();
-        $user->setUsername("andrey");
-        $user->setEmail("andrey@gmail.com");
+        $roleRN       = $this->get("role_rn");
+        $arrayObj     = $roleRN->getRoles();
+       // var_dump($arrayObj);exit();
+        return array("roles" => $arrayObj);
+    }
+    
+    /**
+     * @Route("/saveUser", name="saveUser")
+     */
+    public function saveUserAction(Request $request)
+    {
+        $dados = $request->request->all();
+        
+        $username     = $dados['username'];
+        $senha        = $dados['senha'];
+        $email        = $dados['email'];
+        $roleId       = $dados['perfil'];
+              
+        if(empty($roleId)) {
+            $this->get("session")->getFlashBag()->add('danger', "Você deve informar um perfil"); 
+            return $this->redirect($this->generateUrl("viewSaveUser"));
+        }     
+            
+        $user = new \SerBinario\SAD\Bundle\UserBundle\Entity\User;
+        $user->setUsername($username);
+        $user->setEmail($email);
         $user->setIsActive(true);
         
-        $factory = $this->get('security.encoder_factory');
+        $factory   = $this->get('security.encoder_factory');
+        $validator = $this->get('validator');
         
         $encoder  = $factory->getEncoder($user);
-        $password = $encoder->encodePassword('andrey', $user->getSalt());
-        $user->setPassword($password);        
-                
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($user);
-        $em->flush();
+        $password = $encoder->encodePassword($senha, $user->getSalt());
+        $user->setPassword($password);
         
-        echo "dsadsa";
+        $roleRN   = $this->get("role_rn");
+        $role     = $roleRN->getRole($roleId);
+        
+        $user->addRole($role);
+        
+        $userVal = $validator->validate($user);
+        
+        if( !count($userVal) > 0) {
+            $userRN   = $this->get("user_rn");
+            
+            $valUser  = $userRN->findByEmailOrUsename($user->getUsername());
+            $valEmail = $userRN->findByEmailOrUsename($user->getEmail());
+            
+            if($valUser ||  $valEmail) {              
+                $this->get("session")->getFlashBag()->add('danger', "Email ou Login já existentes!");
+            } else {
+               
+                $ultimoRegistro = $userRN->ultimoRegistro();
+                $codigo = $ultimoRegistro[0][1] + 1;
+                $user->setCodigo("00".$codigo);
+                
+                $result  = $userRN->save($user);
+                
+                if($result) {
+                    $this->get("session")->getFlashBag()->add('success', "Usuário cadastrado com sucesso!"); 
+                } else {
+                    $this->get("session")->getFlashBag()->add('danger', "Erro ao cadastrar o usuário"); 
+                }
+            }                
+ 
+        } else {
+            $this->get("session")->getFlashBag()->add('danger', (string) $userVal); 
+        }
+        
+        return $this->redirect($this->generateUrl("viewSaveUser"));
     }
     
      /**
@@ -93,12 +149,12 @@ class DefaultController extends Controller
      * @Route("/saveSexo", name="saveSexo")
      */
     public function saveSexoAction()
-    {      
+    {
         $dados = array(
             array('M', 'Masculino'),
             array('F', 'Feminino')
         );
-              
+        
         for($i = 0; $i < count($dados); $i++){
             $sexo = new \SerBinario\SAD\Bundle\UserBundle\Entity\Sexos();
             $sexo->setNomeAbreviaturaSexo($dados[$i][0]);
@@ -116,13 +172,13 @@ class DefaultController extends Controller
      * @Route("/login_check", name="login_check")
      */
     public function login_checkAction()
-    {        
+    {
     }
     
     /**
      * @Route("/logout", name="logout")
      */
     public function logoutAction()
-    {        
+    {
     }
 }

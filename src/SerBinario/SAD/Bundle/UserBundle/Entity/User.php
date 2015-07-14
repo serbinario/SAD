@@ -54,6 +54,19 @@ class User implements AdvancedUserInterface, \Serializable
      * @ORM\Column(type="string", length=255)
      */
     private $salt;
+    
+    /**
+     * @ORM\Column(name="codigo", type="string", length=30)
+     */
+    private $codigo;
+    
+    /**
+     *
+     * @var \SerBinario\SAD\Bundle\SADBundle\Entity\Candidato 
+     * 
+     * @ORM\OneToMany(targetEntity="\SerBinario\SAD\Bundle\SADBundle\Entity\Candidato", mappedBy="usuario", cascade={"all"})
+     */
+    private $candidato;
 
     
     public function __construct()
@@ -269,4 +282,37 @@ class User implements AdvancedUserInterface, \Serializable
     {
         $this->roles->clear();
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    function getCodigo() {
+        return $this->codigo;
+    }
+    
+    /**
+     * 
+     * @param type $codigo
+     */
+    function setCodigo($codigo) {
+        $this->codigo = $codigo;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    function getCandidato() {
+        return $this->candidato;
+    }
+    
+    /**
+     * 
+     * @param \SerBinario\SAD\Bundle\SADBundle\Entity\Candidato $candidato
+     */
+    function setCandidato(\SerBinario\SAD\Bundle\SADBundle\Entity\Candidato $candidato) {
+        $this->candidato = $candidato;
+    }
+
 }

@@ -16,13 +16,15 @@ class CnhType extends AbstractType
     {
         $builder
             ->add('validadecnh', 'text', array(
-                'label' => 'Validade CNH',              
+                'label' => 'Validade CNH',
+                'required' => false,
                 'attr' => array(
                     'widget_col'=> '4',
                     'placeholder' => 'Validade CNH',
                 )))
             ->add('categoriacnh', 'text', array(
-                'label' => 'Categoria CNH',              
+                'label' => 'Categoria CNH',
+                'required' => false,
                 'attr' => array(
                     'widget_col'=> '4',
                     'placeholder' => 'Categoria CNH',

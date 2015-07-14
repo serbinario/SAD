@@ -16,20 +16,6 @@ $(document).ready(function () {
                     },
                 },
             },
-            'serbinario_sad_bundle_sadbundle_candidato[cpfcandidato]': {
-                validators: {
-                    notEmpty: {
-                        message: "Este campo é obrigatório",
-                    },
-                },
-            },
-            'serbinario_sad_bundle_sadbundle_candidato[rgcandidato]': {
-                validators: {
-                    notEmpty: {
-                        message: "Este campo é obrigatório",
-                    },
-                },
-            },
             'serbinario_sad_bundle_sadbundle_candidato[enderecocadidato]': {
                 validators: {
                     notEmpty: {
@@ -38,13 +24,6 @@ $(document).ready(function () {
                 },
             },
             'serbinario_sad_bundle_sadbundle_candidato[bairrocandidato]': {
-                validators: {
-                    notEmpty: {
-                        message: "Este campo é obrigatório",
-                    },
-                },
-            },
-            'serbinario_sad_bundle_sadbundle_candidato[cepcandidato]': {
                 validators: {
                     notEmpty: {
                         message: "Este campo é obrigatório",
@@ -65,35 +44,7 @@ $(document).ready(function () {
                     },
                 },
             },
-            'serbinario_sad_bundle_sadbundle_candidato[emailcandidato]': {
-                validators: {
-                    notEmpty: {
-                        message: "Este campo é obrigatório",
-                    },
-                },
-            },
             'serbinario_sad_bundle_sadbundle_candidato[nascimentocandidato]': {
-                validators: {
-                    notEmpty: {
-                        message: "Este campo é obrigatório",
-                    },
-                },
-            },
-            'serbinario_sad_bundle_sadbundle_candidato[cnhcandidato]': {
-                validators: {
-                    notEmpty: {
-                        message: "Este campo é obrigatório",
-                    },
-                },
-            },
-            'serbinario_sad_bundle_sadbundle_candidato[objCnh][categoriacnh]': {
-                validators: {
-                    notEmpty: {
-                        message: "Este campo é obrigatório",
-                    },
-                },
-            },
-            'serbinario_sad_bundle_sadbundle_candidato[objCnh][validadecnh]': {
                 validators: {
                     notEmpty: {
                         message: "Este campo é obrigatório",

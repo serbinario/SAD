@@ -76,65 +76,50 @@ class AtribuirVagasController extends Controller
     
     /**
      * @Route("/processamentoPesquisaCadidatosVagasDisp", name="processamentoPesquisaCadidatosVagasDisp")
+     * @Template("SADBundle:AtribuirVagas:selecionarCandidatos.html.twig")
      */
     public function processamentoPesquisaCadidatosVagasDispAction(Request $request) {
         
         $dados = $request->request->all();
         
-        $empresa            = !empty($dados['empresa']) ? $dados['empresa'] : "";
-        $area               = !empty($dados['area_desejada']) ? $dados['area_desejada'] : "";
-        $vaga               = !empty($dados['vagas_disponivel']) ? $dados['vagas_disponivel'] : "";
-        $expProfissional    = empty($dados['exp_profissional']) ? "" : $dados['exp_profissional'];
-        $conInformatica     = empty($dados['con_informatica']) ? "" : $dados['con_informatica'];
-        $conLinguaEstrangeira  = empty($dados['con_lingua_estrangeira']) ? "" : $dados['con_lingua_estrangeira'];
-        
-        if(!$vaga || ($empresa && !$area)) {
-            $this->addFlash("warning", "Deve ser selecionada a vaga para consulta");
-            return $this->redirect($this->generateUrl("viewPesquisaCadidato"));
-        }
+        $empresa                = !empty($dados['empresa']) ? $dados['empresa'] : "";
+        $area                   = !empty($dados['area_desejada']) ? $dados['area_desejada'] : "";
+        $vaga                   = !empty($dados['vagas_disponivel']) ? $dados['vagas_disponivel'] : "";
+        $expProfissional        = empty($dados['exp_profissional']) ? "" : $dados['exp_profissional'];
+        $conInformatica         = empty($dados['con_informatica']) ? "" : $dados['con_informatica'];
+        $conLinguaEstrangeira   = empty($dados['con_lingua_estrangeira']) ? "" : $dados['con_lingua_estrangeira'];
+        $candidatos  = "";
+        $vagaDID     = ""; 
+
+        if($request->getMethod() === "POST") {
         
         if($expProfissional == '1') {
-            $expProfissional = "c.idcurriculo = g.curriculocurriculo";
-            $expProfissionalJOIN = "c.experienciasProfissionais";
+            $expProfissional     = " AND c.idcurriculo = x.curriculocurriculo ";
+            $expProfissionalJOIN = "JOIN c.experienciasProfissionais x ";
         } else {
-            $expProfissional = "";
+            $expProfissional     = "";
             $expProfissionalJOIN = "";
         }
         
         if($conInformatica == '2') {
-            if($expProfissional) {
-                $conInformatica = "c.idcurriculo = h.curriculocurriculo";
-            } else {
-                $conInformatica = "c.idcurriculo = g.curriculocurriculo";
-            }
-            
-            $conInformaticaJOIN = "c.informatica";
+            $conInformatica     = " AND c.idcurriculo = f.curriculocurriculo ";
+            $conInformaticaJOIN = "JOIN c.informatica f ";
         } else {
-            $conInformatica = "";
+            $conInformatica     = "";
             $conInformaticaJOIN = "";
         }
         
         if($conLinguaEstrangeira == '3') {
-            if(!$conInformatica && !$expProfissional) {
-                $conLinguaEstrangeira = "c.idcurriculo = g.curriculocurriculo";
-            } else if ($conInformatica && !$expProfissional) {
-                $conLinguaEstrangeira = "c.idcurriculo = h.curriculocurriculo";
-            } else if(!$conInformatica && $expProfissional) {
-                $conLinguaEstrangeira = "c.idcurriculo = h.curriculocurriculo";
-            } else {
-                $conLinguaEstrangeira = "c.idcurriculo = i.curriculocurriculo";
-            }
-            
-            $conLinguaEstrangeiraJOIN = "c.linguasExtrangeiras";
+            $conLinguaEstrangeira     = " AND c.idcurriculo = l.curriculocurriculo ";
+            $conLinguaEstrangeiraJOIN = "JOIN c.linguasExtrangeiras l ";
         } else {
-            $conLinguaEstrangeira = "";
+            $conLinguaEstrangeira     = "";
             $conLinguaEstrangeiraJOIN = "";
         }
         
-        $vagasDRN  = $this->get("vagaDisponivel_rn");
-        $vagaD     = $vagasDRN->findById($vaga);
-        
-        
+        $vagasDRN   = $this->get("vagaDisponivel_rn");
+        $vagaD      = $vagasDRN->findById($vaga);
+        $vagaDID    = $vagaD->getIdVagasDiponiveis();
         
         $camposComboBox = array(
             "empresa" => $empresa,
@@ -142,10 +127,7 @@ class AtribuirVagasController extends Controller
             "vaga" => $vaga
         );
         
-        $vagaId = "f.idVagas = '".$vagaD->getVagas()->getIdVagas()."'";
-        
         $camposPesquisa = array(
-            "f.idVagas"    => $vagaId,
             "experiencia"  => $expProfissional,
             "informatica"  => $conInformatica,
             "linguas"      => $conLinguaEstrangeira
@@ -157,185 +139,147 @@ class AtribuirVagasController extends Controller
             "linguasJOIN"      => $conLinguaEstrangeiraJOIN
         );
         
+        $joinExtra  = "";
+        $whereExtra = "";
         
-        $this->get("session")->set("camposComboBox", $camposComboBox);
-        
-        $this->get("session")->set("camposPesquisaCandidato", $camposPesquisa);
-        
-        $this->get("session")->set("camposPesquisaCandidatoJOIN", $camposPesquisaJOIN);
-        
-        return $this->redirect($this->generateUrl("viewPesquisaCadidato"));
-        
-    }
-    
-    /**
-     * @Route("/viewPesquisaCadidato", name="viewPesquisaCadidato")
-     * @Template() 
-     */
-    public function viewPesquisaCadidatoAction(Request $request) {
-        
-        if(GridClass::isAjax()) {
-            
-            $columns = array("a.nomecandidato",
-                "a.cpfcandidato",
-                "a.rgcandidato",
-                "a.emailcandidato",
-                "b.descricao",
-                );
-
-            $camposPesquisaCandidato = $this->get("session")->get("camposPesquisaCandidato");
-            $camposPesquisaCandidatoJOIN = $this->get("session")->get("camposPesquisaCandidatoJOIN");
-            
-            $entityJOINAUX = array("sexosexo", "curriculo", "c.informacaoBusca", "d.opcoesdesejadas", 
-                                "e.vagas");
-            
-            if(!is_null($camposPesquisaCandidatoJOIN)) {
-                foreach ($camposPesquisaCandidatoJOIN as $valor) {
-                     if (!empty($valor)) {
-                         $entityJOINAUX[] = "{$valor}";       
-                     }                    
-                }
-                $entityJOIN = $entityJOINAUX; 
-            } else {
-                $entityJOIN = array("sexosexo", "curriculo", "c.informacaoBusca", "d.opcoesdesejadas", "e.vagas"); 
+        foreach ($camposPesquisaJOIN as $join) {
+            if($join) {
+                $joinExtra .= $join;
             }
-             
-            $eventosArray         = array();
-            $parametros           = $request->request->all();
-            $whereCamposPesquisa = "";
-            
-            if (!is_null($camposPesquisaCandidato)) {
-                foreach ($camposPesquisaCandidato as $chave => $valor) {
-                     if (!empty($valor)) {
-                         $whereCamposPesquisa .= "{$valor} AND ";       
-                     }                    
-                }
-                $whereCamposPesquisa  = substr($whereCamposPesquisa, 0, -4);
-            }
-            
-            $entity               = "SerBinario\SAD\Bundle\SADBundle\Entity\Candidato"; 
-            $columnWhereMain      = "";
-            $whereValueMain       = "";
-            $whereFull            = $whereCamposPesquisa;
-            
-            $gridClass = new GridClass($this->getDoctrine()->getManager(), 
-                    $parametros,
-                    $columns,
-                    $entity,
-                    $entityJOIN,           
-                    $columnWhereMain,
-                    $whereValueMain, 
-                    $whereFull);
-            
-            $resultCliente  = $gridClass->builderQuery();
- 
-            if ($whereFull) {
-                $countTotal = $gridClass->getCountByWhereFull(
-                        array(
-                    "b" => "sexosexo",
-                    "c" => "curriculo" ), array(
-                    "d" => "c.informacaoBusca",
-                    "e" => "d.opcoesdesejadas",
-                    "f" => "e.vagas",
-                    "g" => "c.experienciasProfissionais", 
-                    "h" => "c.informatica", 
-                    "i" => "c.linguasExtrangeiras")
-                        , $whereCamposPesquisa);
-            } else {
-                $countTotal = $gridClass->getCount();
-            }
-                   
-            $countEventos   = count($resultCliente);
-
-            for($i=0;$i < $countEventos; $i++)
-            {
-                $eventosArray[$i]['DT_RowId']                   =  "row_".$resultCliente[$i]->getIdcandidato();
-                $eventosArray[$i]['id']                         =  $resultCliente[$i]->getIdcandidato();
-                $eventosArray[$i]['nomeCandidato']              =  $resultCliente[$i]->getNomecandidato();
-                $eventosArray[$i]['cpfCandidato']               =  $resultCliente[$i]->getCpfcandidato();
-                $eventosArray[$i]['rgCandidato']                =  $resultCliente[$i]->getRgcandidato();
-                $eventosArray[$i]['emailCandidato']             =  $resultCliente[$i]->getEmailcandidato();
-                $eventosArray[$i]['sexo']                       =  $resultCliente[$i]->getSexosexo()->getDescricao();
-            }
-
-            //Se a variável $sqlFilter estiver vazio
-            if(!$gridClass->isFilter()){
-                $countEventos = $countTotal;
-            }
-                      
-            $columns = array(               
-                'draw'              => $parametros['draw'],
-                'recordsTotal'      => "{$countTotal}",
-                'recordsFiltered'   => "{$countEventos}",
-                'data'              => $eventosArray               
-            );
-
-            return new JsonResponse($columns);
-        }else{
-            
-            $novoAcesso = $request->get('novo');
-            $areaDesejadaId = "";
-            
-            if(!is_null($this->get("session")->get('camposComboBox'))) {
-                $sessao         = $this->get("session")->get('camposComboBox');
-                $areaDesejadaId = $sessao['area'];
-            }
-            
-            if(isset($novoAcesso) && $novoAcesso == '1') {
-                
-                $session = $this->get("session");
-                $session->remove('camposComboBox');
-                $session->remove('camposPesquisaCandidato');
-                $session->remove('camposPesquisaCandidatoJOIN');
-                $areaDesejadaId = "";
-            }
-            
-            $empresaRN = $this->get("empresa_rn");
-            $empresas  = $empresaRN->findAllVagasDisponiveis();
-            
-            $vagasRN = $this->get("vagas_rn");
-            $vagas   = $vagasRN->findAllVagasDisponiveis($areaDesejadaId);
-            
-            //var_dump($vagas);exit();
-            
-            $areaRN  = $this->get("areaDesejada_rn");
-            $area    = $areaRN->findAllVagasDisponiveis();
-        
-            return array('empresas' => $empresas, 'vagas' => $vagas, 'areas' => $area);         
         }
         
+        foreach ($camposPesquisa as $where) {
+            if($where) {
+                $whereExtra .= $where;
+            }
+        }
+
+        $this->get("session")->set("camposComboBox", $camposComboBox);
+        
+        $query = "SELECT a FROM SerBinario\SAD\Bundle\SADBundle\Entity\Candidato a ";
+        $join  = "JOIN  a.sexosexo s "
+                . "JOIN a.curriculo c "
+                . "JOIN c.informacaoBusca i "
+                . "JOIN i.opcoesdesejadas o "
+                . "JOIN o.vagas e ";
+        $where = "WHERE e.idVagas = {$vagaD->getVagas()->getIdVagas()}";
+         
+        if($joinExtra) {
+            $join .= $joinExtra;
+        }
+        if($whereExtra) {
+            $where .= $whereExtra;
+        }
+        
+        $query .= $join . $where;
+        
+        $maneger    = $this->getDoctrine()->getManager();
+        $querySQL   = $maneger->createQuery($query);
+        $candidatos = $querySQL->getResult();
+        
+        
+        }
+             
+        $novoAcesso = $request->get('novo');
+        $areaDesejadaId = "";
+
+        if(!is_null($this->get("session")->get('camposComboBox'))) {
+            $sessao         = $this->get("session")->get('camposComboBox');
+            $areaDesejadaId = $sessao['area'];
+        }
+
+        if(isset($novoAcesso) && $novoAcesso == '1') {
+
+            $session = $this->get("session");
+            $session->remove('camposComboBox');
+            $session->remove('camposPesquisaCandidato');
+            $session->remove('camposPesquisaCandidatoJOIN');
+            $areaDesejadaId = "";
+        }
+
+        $empresaRN = $this->get("empresa_rn");
+        $empresas  = $empresaRN->findAllVagasDisponiveis();
+
+        $vagasRN = $this->get("vagas_rn");
+        $vagas   = $vagasRN->findAllVagasDisponiveis($areaDesejadaId);
+
+        $areaRN  = $this->get("areaDesejada_rn");
+        $areas    = $areaRN->findAllVagasDisponiveis();
+
+        return array('empresas' => $empresas, 'vagas' => $vagas, 'areas' => $areas,
+            "candidatos" => $candidatos, "vagaD" => $vagaDID); 
     }
     
     /**
-     * @Route("/atribuirVaga/id/{id}", name="atribuirVaga")
-     * @Template() 
+     * @Route("/negarAprovarCandidatos", name="negarAprovarCandidatos")
+     * @Template("")
      */
-    public function atribuirVagaAction($id)
-    {
-        $cadidatoRN = $this->get("candidato_rn");
-        $cadidato   = $cadidatoRN->findById($id);
+    public function negarAprovarCandidatosAction(Request $request) {
         
-        $this->get('session')->set('idCandidato', $id);
+       $dados = $request->request->all();
         
-        $camposComboBox = $this->get('session')->get('camposComboBox');
+        $empresa                = !empty($dados['empresa']) ? $dados['empresa'] : "";
+        $area                   = !empty($dados['area_desejada']) ? $dados['area_desejada'] : "";
+        $vaga                   = !empty($dados['vagas_disponivel']) ? $dados['vagas_disponivel'] : "";
+        $candidatos  = "";
+        $vagaDID     = ""; 
+
+        if($request->getMethod() === "POST") {
         
-        $vagasDRN  = $this->get("vagaDisponivel_rn");
-        $vagaD     = $vagasDRN->findById($camposComboBox['vaga']);
+        $vagasDRN   = $this->get("vagaDisponivel_rn");
+        $vagaD      = $vagasDRN->findById($vaga);
+        $vagaDID    = $vagaD->getIdVagasDiponiveis();
         
-        //var_dump($vagaD->getQtdVagas());exit();
+        $camposComboBox = array(
+            "empresa" => $empresa,
+            "area"    => $area,
+            "vaga" => $vaga
+        );   
+
+        $this->get("session")->set("camposComboBox2", $camposComboBox);
         
+        $query = "SELECT a FROM SerBinario\SAD\Bundle\SADBundle\Entity\VagasDisponiveisCandidato a ";
+        $join  = "JOIN  a.vagasDisponiveis c "
+                . "JOIN c.vagas v "
+                . "JOIN c.empresas p "
+                . "JOIN c.areaDesejada d ";
+        $where = "WHERE v.idVagas = {$vagaD->getVagas()->getIdVagas()} AND p.idEmpresa = {$empresa} AND d.idAreaDesejada = {$area} "
+        . "AND a.encaminhado = true AND a.negado = false";
+
+        $query .= $join . $where;
+        
+        $maneger    = $this->getDoctrine()->getManager();
+        $querySQL   = $maneger->createQuery($query);
+        $candidatos = $querySQL->getResult();
+        
+        }
+             
+        $novoAcesso = $request->get('novo');
+        $areaDesejadaId = "";
+
+        if(!is_null($this->get("session")->get('camposComboBox2'))) {
+            $sessao         = $this->get("session")->get('camposComboBox2');
+            $areaDesejadaId = $sessao['area'];
+        }
+
+        if(isset($novoAcesso) && $novoAcesso == '1') {
+
+            $session = $this->get("session");
+            $session->remove('camposComboBox2');
+            $areaDesejadaId = "";
+        }
+
         $empresaRN = $this->get("empresa_rn");
         $empresas  = $empresaRN->findAllVagasDisponiveis();
-        
+
         $vagasRN = $this->get("vagas_rn");
-        $vagas    = $vagasRN->findAllVagasDisp($camposComboBox['area']);
+        $vagas   = $vagasRN->findAllVagasDisponiveis($areaDesejadaId);
 
         $areaRN  = $this->get("areaDesejada_rn");
-        $area    = $areaRN->findAllVagasDisponiveis();
+        $areas    = $areaRN->findAllVagasDisponiveis();
 
-        return array('empresas' => $empresas, 'vagas' => $vagas,
-            'areas' => $area, 'candidato' => $cadidato, 'vagasD' => $vagaD);
-        
+        return array('empresas' => $empresas, 'vagas' => $vagas, 'areas' => $areas,
+            "candidatos" => $candidatos, "vagaD" => $vagaDID); 
     }
     
     /**
@@ -376,53 +320,88 @@ class AtribuirVagasController extends Controller
     }
     
     /**
-     * @Route("/saveAtribuicaoVaga", name="saveAtribuicaoVaga")
+     * @Route("/encaminharCandidatos", name="encaminharCandidatos")
      * @Template("")
      */
-    public function saveAtribuicaoVagaAction(Request $request) {
+    public function encaminharCandidatosAction(Request $request) {
         
         $dado = $request->request->all();
+        $candidatos = isset($dado['id_candidato']) ? $dado['id_candidato'] : "";
+        $vagaDisp   = isset($dado['id_vaga']) ? $dado['id_vaga'] : "";
         
-        $vagasDRN  = $this->get("vagaDisponivel_rn");
-        $vagaD     = $vagasDRN->findById($dado['id_vaga']);
-        
+        $vagasDRN      = $this->get("vagaDisponivel_rn");
         $candidatoDRN  = $this->get("candidato_rn");
-        $candidatoVagaDisp = $candidatoDRN->findCandidatoVagaDisp($dado['id_vaga']);
+        $vDispCandDAO  = new \SerBinario\SAD\Bundle\SADBundle\DAO\VagasDisponiveisCandidatoDAO($this->getDoctrine()->getManager());
         
-        $totalVagas       = $vagaD->getQtdVagas();
-        $qtdCadidatosVaga = count($vagaD->getCandidato());
-
-        $TotalDisponivel  = $totalVagas - $qtdCadidatosVaga;
-        
-        if(!isset($dado['id_candidato'])) {
-            $idCandidato = $this->get('session')->get('idCandidato');
-            $this->addFlash("warning", "Você deve selecionar o candidato!");
-            return $this->redirect($this->generateUrl("atribuirVaga", array("id" => $idCandidato)));
-        }
-        
-        if($candidatoVagaDisp) {
-            $idCandidato = $this->get('session')->get('idCandidato');
-            $this->addFlash("warning", "Esta vaga já foi atribuida a este candidato!");
-            return $this->redirect($this->generateUrl("atribuirVaga", array("id" => $idCandidato)));
-        }
-        
-        if($TotalDisponivel == 0) {
-            $this->addFlash("warning", "Todas as vagas já foram preenchidas!");
-        } else {
-            $candidato     = $candidatoDRN->findById($dado['id_candidato']);
-
-            $candidato->addVagaDisponivel($vagaD);
-
-            $result = $candidatoDRN->edit($candidato);
-
-            if($result) {
-                $this->addFlash("success", "Vaga atribuida com sucesso!");
-            } else {
-                $this->addFlash("danger", "Erro ao atribuir a vaga!");
+        if ($candidatos) {
+            
+            $vagaD  = $vagasDRN->findById($vagaDisp);
+            
+            foreach ($candidatos as $cand) {
+                
+                $vDispCand = new \SerBinario\SAD\Bundle\SADBundle\Entity\VagasDisponiveisCandidato();
+                $candidato = $candidatoDRN->findById($cand);
+                $vDispCand->setCandidato($candidato);
+                $vDispCand->setVagasDisponiveis($vagaD);
+                $vDispCand->setEncaminhado(true);
+                
+                $vDispCandDAO->save($vDispCand);
+                
+                $this->addFlash("success", "Candidatos encaminhados com sucesso!");
             }
+       
+        } else {
+            $this->addFlash("warning", "Você precisa selecionar ao menos um candidato!");
         }
-              
-        return $this->redirect($this->generateUrl("viewPesquisaCadidato", array("novo" => '1')));
+        
+        return $this->redirect($this->generateUrl("processamentoPesquisaCadidatosVagasDisp"));
+        
+    }
+    
+    /**
+     * @Route("/saveNegarAprovarCandidato", name="saveNegarAprovarCandidato")
+     * @Template("")
+     */
+    public function saveNegarAprovarCandidatoAction(Request $request) {
+        
+        $dado = $request->request->all();
+        $candidatos = isset($dado['id_candidato_negado']) ? $dado['id_candidato_negado'] : "";
+        $vagaDisp   = isset($dado['id_vaga']) ? $dado['id_vaga'] : "";
+        
+        //var_dump($vagaDisp);exit();
+        
+        $vDispCandDAO  = new \SerBinario\SAD\Bundle\SADBundle\DAO\VagasDisponiveisCandidatoDAO($this->getDoctrine()->getManager());
+        
+        if ($candidatos) {
+            
+            $confi = false;
+            
+            foreach ($candidatos as $cand) {
+                
+                $vDispCand = $vDispCandDAO->findById($cand);
+                $vDispCand->setNegado(true);
+                
+                $result = $vDispCandDAO->update($vDispCand);
+                
+                if($result) {
+                    $confi = true;
+                }
+                
+            }
+            
+            $updateAprovado = $vDispCandDAO->vagasDipsCandAprovadasByUpdate($vagaDisp, $candidatos);
+            
+            if($updateAprovado && $confi) {
+                $this->addFlash("success", "Candidatos negados com sucesso!");
+            } else {
+                 $this->addFlash("danger", "Erro ao negar os candidatos!");
+            }
+       
+        } else {
+            $this->addFlash("warning", "Você precisa selecionar ao menos um candidato!");
+        }
+        
+        return $this->redirect($this->generateUrl("negarAprovarCandidatos"));
         
     }
    

@@ -111,7 +111,9 @@
                         "orderable": false,
                         "data": null,
                         "render": function (data, type, row, full, meta) {
-                            return '<a href="editVagas/id/'+data.id +'" class="editar" title="Editar">'
+                            {% if is_granted('ROLE_SUPERVISOR') %}
+                                return '<a href="editVagas/id/'+data.id +'" class="editar" title="Editar">' 
+                            {% endif %}
                         }
                     },
                 ],

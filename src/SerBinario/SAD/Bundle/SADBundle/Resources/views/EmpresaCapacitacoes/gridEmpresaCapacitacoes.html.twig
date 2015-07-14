@@ -114,7 +114,9 @@
                         "orderable": false,
                         "data": null,
                         "render": function (data, type, row, full, meta) {
-                            return '<a href="editEmpresaCapacitacoes/id/'+data.id +'" class="editar" title="Editar">'
+                            {% if is_granted('ROLE_ADMIN') %}
+                                return '<a href="editEmpresaCapacitacoes/id/'+data.id +'" class="editar" title="Editar">' 
+                            {% endif %}
                         }
                     },
                 ],

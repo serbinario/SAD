@@ -28,14 +28,16 @@ class CurriculoType extends AbstractType
                     )
                 ))
             ->add('prentencaosalarialcurriculo', 'text', array(
-                'label' => "Pretenção Salarial",                        
+                'label' => "Pretenção Salarial",
+                'required' => false,
                 'attr' => array(                  
                     'widget_col'=> '4',
                     'placeholder' => 'Pretenção Salarial',
                     )
                 ))
             ->add('atualmenteempregadocurriculo', 'checkbox', array( 
-                'label' => 'Atualmente Trabalhando ?',                
+                'label' => 'Atualmente Trabalhando ?',
+                'required' => false,
                 'attr'    => array(
                     'inline' => true,
                     'align_with_widget'=> true 
@@ -52,6 +54,7 @@ class CurriculoType extends AbstractType
                     )
                 )
             ->add('experienciasProfissionais', 'bootstrap_collection', array(
+                        'required' => false,
                         'allow_add'          => true,
                         'allow_delete'       => true,
                         'add_button_text'    => 'Adicionar',
@@ -62,6 +65,7 @@ class CurriculoType extends AbstractType
                     )
                 )
             ->add('informatica', 'bootstrap_collection', array(
+                        'required' => false,
                         'allow_add'          => true,
                         'allow_delete'       => true,
                         'add_button_text'    => 'Adicionar',
@@ -72,6 +76,7 @@ class CurriculoType extends AbstractType
                     )
                 )  
             ->add('linguasExtrangeiras', 'bootstrap_collection', array(
+                        'required' => false,
                         'allow_add'          => true,
                         'allow_delete'       => true,
                         'add_button_text'    => 'Adicionar',
@@ -82,6 +87,7 @@ class CurriculoType extends AbstractType
                     )
                 )  
             ->add('qualificacoesFuturas','bootstrap_collection', array(
+                        'required' => false,
                         'allow_add'          => true,
                         'allow_delete'       => true,
                         'add_button_text'    => 'Adicionar',

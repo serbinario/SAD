@@ -15,6 +15,8 @@ class CandidatoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $dataHoje =  new \DateTime("now");
+        
         $builder                
             ->add('nomecandidato', 'text', array(
                 'label' => 'Nome',           
@@ -23,13 +25,23 @@ class CandidatoType extends AbstractType
                     'widget_col'=> '8',
                 ))) 
             ->add('cpfcandidato', 'text', array(
-                'label' => 'CPF',             
+                'label' => 'CPF',
+                'required' => false,
                 'attr' => array(
                     'placeholder' => 'CPF do candidato',
                     'widget_col'=> '4',
-                ))) 
+                )))
+            ->add('dataCadastro', 'datetime', array(
+                'label' => false,
+                'data'  => $dataHoje,                
+                'attr'  => array(
+                    'widget_col'=> '2',
+                    'hidden' => true
+                )
+                ))  
             ->add('rgcandidato', 'text', array(
-                'label' => 'RG',             
+                'label' => 'RG',
+                'required' => false,
                 'attr' => array(
                     'placeholder' => 'RG do candidato',
                     'widget_col'=> '4',
@@ -47,7 +59,8 @@ class CandidatoType extends AbstractType
                     'widget_col'=> '4',
                 ))) 
             ->add('cepcandidato', 'text', array(
-                'label' => 'CEP',             
+                'label' => 'CEP',
+                'required' => false,
                 'attr' => array(
                     'placeholder' => 'CEP do candidato',
                     'widget_col'=> '4',
@@ -65,7 +78,8 @@ class CandidatoType extends AbstractType
                     'widget_col'=> '1',
                 ))) 
             ->add('emailcandidato', 'email', array(
-                'label' => 'Email',         
+                'label' => 'Email',
+                'required' => false,
                 'attr' => array(
                     'placeholder' => 'Email do candidato',
                      'widget_col'=> '8',
@@ -81,7 +95,8 @@ class CandidatoType extends AbstractType
                 )
             ))
             ->add('cnhcandidato', 'checkbox', array( 
-                'label' => 'CNH',                
+                'label' => 'CNH',
+                'required' => false,
                 'attr'    => array(
                     'inline' => true,
                     'align_with_widget'=> true 
