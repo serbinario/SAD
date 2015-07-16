@@ -57,13 +57,6 @@ class Formacao
     private $dataconclusaoformacao;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="anoCursandoFormacao", type="integer", nullable=true)
-     */
-    private $anocursandoformacao;
-
-    /**
      * @var \Curriculo
      *
      * @ORM\ManyToOne(targetEntity="Curriculo", inversedBy="formacoes")

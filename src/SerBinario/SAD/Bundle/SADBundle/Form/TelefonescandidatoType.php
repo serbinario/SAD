@@ -19,6 +19,7 @@ class TelefonescandidatoType extends AbstractType
                 'label' => false,
                 'attr' => array(
                     'widget_col'=> '10',
+                    'class'     => 'telefoneCandidato'
                 )))
         ;
     }

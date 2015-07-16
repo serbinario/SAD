@@ -20,7 +20,8 @@ class CurriculoType extends AbstractType
     {
         $builder
             ->add('resumocurriculo', 'textarea', array(
-                'label' => "Resumo Currículo",                        
+                'label' => "Resumo Currículo",
+                'required' => false,
                 'attr' => array(                    
                     'rows' => '6',
                     'widget_col'=> '6',
@@ -44,6 +45,7 @@ class CurriculoType extends AbstractType
                     )
                 ))
             ->add('formacoes', 'bootstrap_collection', array(
+                        'label' => 'Formações',
                         'allow_add'          => true,
                         'allow_delete'       => true,
                         'add_button_text'    => 'Adicionar',
@@ -55,6 +57,7 @@ class CurriculoType extends AbstractType
                 )
             ->add('experienciasProfissionais', 'bootstrap_collection', array(
                         'required' => false,
+                        'label' => 'Experiências Profissionais',
                         'allow_add'          => true,
                         'allow_delete'       => true,
                         'add_button_text'    => 'Adicionar',
@@ -67,6 +70,7 @@ class CurriculoType extends AbstractType
             ->add('informatica', 'bootstrap_collection', array(
                         'required' => false,
                         'allow_add'          => true,
+                        'label' => 'Informática',
                         'allow_delete'       => true,
                         'add_button_text'    => 'Adicionar',
                         'delete_button_text' => 'Remover',
@@ -74,10 +78,23 @@ class CurriculoType extends AbstractType
                         'button_col'         => 3,                                   
                         'type'  => new InformaticaType()                        
                     )
-                )  
+                )
+            ->add('outrosCursos', 'bootstrap_collection', array(
+                        'required' => false,
+                        'allow_add'          => true,
+                        'label' => 'Outros Cursos',
+                        'allow_delete'       => true,
+                        'add_button_text'    => 'Adicionar',
+                        'delete_button_text' => 'Remover',
+                        'sub_widget_col'     => 10,
+                        'button_col'         => 3,                                   
+                        'type'  => new OutrosCursosType()                        
+                    )
+                )
             ->add('linguasExtrangeiras', 'bootstrap_collection', array(
                         'required' => false,
                         'allow_add'          => true,
+                        'label' => 'Línguas Estrangeiras',
                         'allow_delete'       => true,
                         'add_button_text'    => 'Adicionar',
                         'delete_button_text' => 'Remover',

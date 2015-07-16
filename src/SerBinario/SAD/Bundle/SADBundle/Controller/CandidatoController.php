@@ -245,6 +245,13 @@ class CandidatoController extends Controller
                     $formacao->setCurriculocurriculo($candidato->getCurriculo());
                 }
                 
+                //Pegas os ids dos cursos de outrosCursos
+                $idOutrosCursos = array();
+                foreach ($candidato->getCurriculo()->getOutrosCursos() as $outroCurso) {
+                    $idOutrosCursos[] = $outroCurso->getIdOutrosCursos();
+                    $outroCurso->setCurriculocurriculo($candidato->getCurriculo());
+                }
+                
                 #Resultado da operação
                 $result =  $candidatoRN->edit($candidato);
                                       

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class FormacaoType extends AbstractType
+class OutrosCursosType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,44 +15,40 @@ class FormacaoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('grauformacao', 'text', array(
-                'label' => 'Grau da Formação',           
+            ->add('instituicao', 'text', array(
+                'label' => 'Nome da Instituição',           
                 'attr' => array(
-                    'placeholder' => 'Grau da Formação',
+                    'placeholder' => 'Nome da Instituição',
                     'widget_col'=> '6',
-                ))) 
-            ->add('nomecursoformacao', 'text', array(
-                'label' => 'Nome do Curso',           
+                )))
+            ->add('curso', 'text', array(
+                'label' => 'Curso',           
                 'attr' => array(
-                    'placeholder' => 'Nome do Curso',
+                    'placeholder' => 'Curso',
                     'widget_col'=> '6',
-                ))) 
-            ->add('instituicaoformacao', 'text', array(
-                'label' => 'Instituição',           
-                'attr' => array(
-                    'placeholder' => 'Instituição de ensino',
-                    'widget_col'=> '8',
-                ))) 
-            ->add('datainicioformacao', 'date', array(
+                )))
+            ->add('periodoInicial', 'date', array(
                 'widget' => 'single_text',
                 'format' => 'dd/MM/yyyy',
                 'label' => 'Período Inicial',
                 'attr' => array(
                     'placeholder' => 'Período Inicial',
                     'widget_col'=> '4',
-                    'class' => ' datepicker data ',
+                    'class' => 'datepicker data ',
                     'help_text' => 'Click 2 vezes no campo para exibir o calendário'
-                )))
-            ->add('dataconclusaoformacao', 'date', array(
+                )
+            ))
+            ->add('periodoFinal', 'date', array(
                 'widget' => 'single_text',
                 'format' => 'dd/MM/yyyy',
-                'label' => 'Perído Final',
+                'label' => 'Período Final',                
                 'attr' => array(
-                    'placeholder' => 'Perído Final',
+                    'placeholder' => 'Período Final',
                     'widget_col'=> '4',
-                    'class' => ' datepicker data ',
+                    'class' => 'datepicker data ',
                     'help_text' => 'Click 2 vezes no campo para exibir o calendário'
-                )))
+                )
+            ))
         ;
     }
     
@@ -62,7 +58,7 @@ class FormacaoType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Formacao'
+            'data_class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\OutrosCursos'
         ));
     }
 
@@ -71,6 +67,6 @@ class FormacaoType extends AbstractType
      */
     public function getName()
     {
-        return 'serbinario_sad_bundle_sadbundle_formacao';
+        return 'serbinario_sad_bundle_sadbundle_outroscursos';
     }
 }

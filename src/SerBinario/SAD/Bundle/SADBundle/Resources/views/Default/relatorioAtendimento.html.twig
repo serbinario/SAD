@@ -65,9 +65,15 @@
                         <div class="col-md-6">
                             <fieldset>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Data</label>
+                                    <label class="col-sm-2 control-label">Data Inicial</label>
                                     <div class="col-sm-4">
-                                        <input type="text" name="dataCadastro" class="form-control datepicker">
+                                        <input type="text" name="dataInicial" class="form-control datepicker">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Data Final</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" name="dataFinal" class="form-control datepicker">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -104,8 +110,8 @@
                                         </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>Número do Operador</th>
-                                            <th>Quantidade de cadastros</th>
+                                            <th>Total de cadastros</th>
+                                            <th>{% if quantidadeTotal is defined %}{{quantidadeTotal.0.totalCadastro}}{% endif %}</th>
                                         </tr>
                                     </tfoot>
                                 </table>

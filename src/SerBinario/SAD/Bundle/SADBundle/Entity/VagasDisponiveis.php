@@ -42,6 +42,13 @@ class VagasDisponiveis
     private $perfil;
     
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="status", type="boolean", nullable=true)
+     */
+    private $status = false;
+    
+    /**
      *
      * @var \Vagas 
      * 
@@ -232,5 +239,21 @@ class VagasDisponiveis
      */
     function setVagaDisponivelCand($vagaDisponivelCand) {
         $this->vagaDisponivelCand = $vagaDisponivelCand;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    function getStatus() {
+        return $this->status;
+    }
+    
+    /**
+     * 
+     * @param type $status
+     */
+    function setStatus($status) {
+        $this->status = $status;
     }
 }

@@ -276,7 +276,7 @@ class CandidatoDAO
     public function removeInformaticaByUpdateVazio($idCurriculo)
     {
         try {
-            $qb = $this->manager->createQueryBuilder();
+            $qb = $this->maneger->createQueryBuilder();
             $qb->select("i");
             $qb->from("SerBinario\SAD\Bundle\SADBundle\Entity\Informatica", "i");
             $qb->innerJoin("i.curriculocurriculo", "c");
@@ -286,7 +286,7 @@ class CandidatoDAO
             $result = $qb->getQuery()->getResult();
 
             foreach($result as $entity) {
-                $this->manager->remove($entity);
+                $this->maneger->remove($entity);
             }
 
             return true;

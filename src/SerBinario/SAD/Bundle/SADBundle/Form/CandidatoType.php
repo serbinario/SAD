@@ -104,7 +104,8 @@ class CandidatoType extends AbstractType
                 ))
             ->add('objCnh',  new CnhType())
             ->add('outrasinformacoescandidato', 'textarea', array(
-                'label' => "Outras Informações",                        
+                'label' => "Outras Informações",
+                'required' => false,
                 'attr' => array(                    
                     'rows' => '3',
                     'widget_col'=> '4',

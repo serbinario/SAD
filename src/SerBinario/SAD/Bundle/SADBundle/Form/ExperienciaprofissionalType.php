@@ -16,21 +16,21 @@ class ExperienciaprofissionalType extends AbstractType
     {
         $builder
             ->add('nomedaempresaexperienciaprofissional', 'text', array(
-                'label' => 'Experiência Profissional',           
+                'label' => 'Nome da Empresa',           
                 'attr' => array(
-                    'placeholder' => 'Experiência Profissional',
+                    'placeholder' => 'Nome da Empresa',
                     'widget_col'=> '4',
                 ))) 
             ->add('ultimocargoexperienciaprofissional', 'text', array(
-                'label' => 'Ultima cargo',           
+                'label' => 'Cargo/Função',           
                 'attr' => array(
-                    'placeholder' => 'Ultima cargo',
+                    'placeholder' => 'Cargo/Função',
                     'widget_col'=> '4',
                 ))) 
             ->add('ultimosalarioexperienciaprofissional', 'text', array(
-                'label' => 'Ultima salário',           
+                'label' => 'Salário',           
                 'attr' => array(
-                    'placeholder' => 'Ultima salário',
+                    'placeholder' => 'Salário',
                     'widget_col'=> '4',
                 ))) 
             ->add('dataadmissaoexperienciaprofissional', 'date', array(
@@ -40,7 +40,8 @@ class ExperienciaprofissionalType extends AbstractType
                 'attr' => array(
                     'placeholder' => 'Data Admissão',
                     'widget_col'=> '4',
-                    'class' => 'datepicker'
+                    'class' => 'datepicker data ',
+                    'help_text' => 'Click 2 vezes no campo para exibir o calendário'
                 )
             ))
             ->add('datademissaoexperienciaprofissional', 'date', array(
@@ -50,7 +51,8 @@ class ExperienciaprofissionalType extends AbstractType
                 'attr' => array(
                     'placeholder' => 'Data da Demissão',
                     'widget_col'=> '4',
-                    'class' => 'datepicker'
+                    'class' => 'datepicker data ',
+                    'help_text' => 'Click 2 vezes no campo para exibir o calendário'
                 )
             ))
             ->add('atribuicoesexperienciaprofissional', 'textarea', array(

@@ -69,8 +69,8 @@
                         {{ form_row(form.cnhcandidato) }}
                         {{ form_row(form.objCnh.validadecnh) }}
                         {{ form_row(form.objCnh.categoriacnh) }}
-                        {{ form_row(form.outrasinformacoescandidato) }}                        
-                        {{ form_row(form.telefones) }}                                                                                       
+                        {{ form_row(form.outrasinformacoescandidato) }}
+                        {{ form_row(form.telefones) }}
                     </div>
                     <div class="tab-pane"id="dadosCurriculo">
                         <br />
@@ -90,6 +90,7 @@
                         <br />
                         {{ form_row(form.curriculo.linguasExtrangeiras) }}
                         {{ form_row(form.curriculo.informatica) }}
+                        {{ form_row(form.curriculo.outrosCursos) }}
                     </div>
                     <div class="tab-pane"id="qualificacaoFutura">
                         <br />
@@ -98,7 +99,7 @@
                     <div class="tab-pane"id="84">
                         <br />
                         {{ form_row(form.curriculo.informacaoBusca.tipohorariotipohorario) }}
-                        {{ form_row(form.curriculo.informacaoBusca.opcoesdesejadas) }}                      
+                        {{ form_row(form.curriculo.informacaoBusca.opcoesdesejadas) }}
                     </div>
                 </div>
                 {{ form_row(form.actions) }}
@@ -109,7 +110,6 @@
 {% endblock %}
 {% block javascripts %}
     {{parent()}}
-    <script type="text/javascript" src="{{asset('js/validacoes/icheck.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/validacoes/validationForm_Candidato.js')}}"></script>
     <script type="text/javascript">
         $(document).on('click', '#formeCadidato', function (event) {
@@ -123,8 +123,8 @@
 
         $(document).on('change', ".area_profissional", function () {
             var areaProfissional = $(this).val();
-            var areaProfissionalId = $(this).attr("id");           
-            
+            var areaProfissionalId = $(this).attr("id");
+
             if (areaProfissional !== "") {
                 var dados = {
                     idAreaProfissional: areaProfissional
@@ -138,17 +138,17 @@
                 }).done(function (json) {
                     var option = '';
                     var idAP = areaProfissionalId.split("_");
-                    
+
                     if (json['msg'] === "sucesso") {
                         option += '<option value="">Selecione a vaga</option>';
                         for (var i = 0; i < json['vagas'].length; i++) {
                             option += '<option value="' + json['vagas'][i]['idVagas'] + '">' + json['vagas'][i]['nomeVaga'] + '</option>';
                         }
-                                    
-                        $('#serbinario_sad_bundle_sadbundle_candidato_curriculo_informacaoBusca_opcoesdesejadas_'+idAP[8]+'_vagas option').remove();
-                        $('#serbinario_sad_bundle_sadbundle_candidato_curriculo_informacaoBusca_opcoesdesejadas_'+idAP[8]+'_vagas').append(option);
+
+                        $('#serbinario_sad_bundle_sadbundle_candidato_curriculo_informacaoBusca_opcoesdesejadas_' + idAP[8] + '_vagas option').remove();
+                        $('#serbinario_sad_bundle_sadbundle_candidato_curriculo_informacaoBusca_opcoesdesejadas_' + idAP[8] + '_vagas').append(option);
                     } else {
-                        $('#serbinario_sad_bundle_sadbundle_candidato_curriculo_informacaoBusca_opcoesdesejadas_'+idAP[8]+'_vagas option').remove();
+                        $('#serbinario_sad_bundle_sadbundle_candidato_curriculo_informacaoBusca_opcoesdesejadas_' + idAP[8] + '_vagas option').remove();
                         alert("Não há vagas para essa área profissional selecionada");
                         //alert("Não há programa para essa emissora selecionada");
                         //$('#cola_subcategoria option').remove();
@@ -158,8 +158,59 @@
             }
         });
 
+        $(document).on('focus', ".telefoneCandidato", function () {
+
+            var maskBehavior = function (val) {
+                return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+            },
+                    options = {onKeyPress: function (val, e, field, options) {
+                            field.mask(maskBehavior.apply({}, arguments), options);
+                        }
+                    };
+
+            $('.telefoneCandidato').mask(maskBehavior, options);
+
+        });
+
+        $(document).on('focus', ".data", function () {
+
+            console.log('dd');
+            $(this).datetimepicker({
+                timepicker: false,
+                format: 'd/m/Y',
+                mask: false,
+                lang: 'pt-BR'
+            });
+
+        });
+
+        $(document).ready(function ($) {
+            // Chamada da funcao upperText(); ao carregar a pagina
+            upperText();
+            // Funcao que faz o texto ficar em uppercase
+            function upperText() {
+
+                // Para tratar o colar
+                $("#serbinario_sad_bundle_sadbundle_candidato_ufcandidato").bind('paste', function (e) {
+                    var el = $(this);
+                    setTimeout(function () {
+                        var text = $(el).val();
+                        el.val(text.toUpperCase());
+                    }, 100);
+                });
+
+                // Para tratar quando é digitado
+                $("#serbinario_sad_bundle_sadbundle_candidato_ufcandidato").keypress(function () {
+                    var el = $(this);
+                    console.log('asdas');
+                    setTimeout(function () {
+                        var text = $(el).val();
+                        el.val(text.toUpperCase());
+                    }, 100);
+                });
+            }
+        });
     </script>
 {% endblock %}
-
 
 

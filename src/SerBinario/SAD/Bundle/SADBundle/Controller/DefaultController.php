@@ -373,20 +373,31 @@ class DefaultController extends Controller
     public function processRelatorioAtendimentoAction(Request $request) {
         
         $dados = $request->request->all();
-        $data  = isset($dados['dataCadastro']) ?  $dados['dataCadastro'] : "";
+        $dataInicial  = isset($dados['dataInicial']) ?  $dados['dataInicial'] : "";
+        $dataFinal    = isset($dados['dataFinal']) ?  $dados['dataFinal'] : "";
          
-        if($data) {
-            $dataFormatada = \DateTime::createFromFormat("d/m/Y", $data);
+        if($dataInicial && $dataFinal) {
+            $dataFormatadaIni = \DateTime::createFromFormat("d/m/Y", $dataInicial);
+            $dataFormatadaFin = \DateTime::createFromFormat("d/m/Y", $dataFinal);
             $manager = $this->getDoctrine()->getManager();
-            $query   = $manager->createQuery("SELECT count(c) as cadastros, u.codigo FROM SerBinario\SAD\Bundle\SADBundle\Entity\Candidato c "
+            
+            $query1   = $manager->createQuery("SELECT count(c) as cadastros, u.codigo FROM SerBinario\SAD\Bundle\SADBundle\Entity\Candidato c "
                     . "JOIN c.user u "
                     . "JOIN u.roles r "
-                    . "WHERE c.user = u.id and c.dataCadastro = '{$dataFormatada->format("Y-m-d")}' and r.id = 2 group by u.codigo ");
-            $result = $query->getResult();
+                    . "WHERE c.user = u.id and c.dataCadastro"
+                    . " BETWEEN '{$dataFormatadaIni->format("Y-m-d")}' AND '{$dataFormatadaFin->format("Y-m-d")}' AND r.id = 2 group by u.codigo ");
+            $result1 = $query1->getResult();
+            
+            $query2   = $manager->createQuery("SELECT count(c) as totalCadastro FROM SerBinario\SAD\Bundle\SADBundle\Entity\Candidato c "
+                    . "JOIN c.user u "
+                    . "JOIN u.roles r "
+                    . "WHERE c.user = u.id and c.dataCadastro"
+                    . " BETWEEN '{$dataFormatadaIni->format("Y-m-d")}' AND '{$dataFormatadaFin->format("Y-m-d")}' AND r.id = 2");
+            $quantidade = $query2->getResult();
 
-            return array("resultados" => $result);
+            return array("resultados" => $result1, "quantidadeTotal" => $quantidade);
         } else {
-            $this->addFlash("warning", "É obrigatório informar a data");
+            $this->addFlash("warning", "É obrigatório informar as datas");
         }
         
         return array();
@@ -399,20 +410,31 @@ class DefaultController extends Controller
     public function processRelatorioSupervisorAction(Request $request) {
         
         $dados = $request->request->all();
-        $data  = isset($dados['dataCadastro']) ? $dados['dataCadastro'] : "";
+        $dataInicial  = isset($dados['dataInicial']) ?  $dados['dataInicial'] : "";
+        $dataFinal    = isset($dados['dataFinal']) ?  $dados['dataFinal'] : "";
          
-        if($data) {
-            $dataFormatada = \DateTime::createFromFormat("d/m/Y", $data);
+        if($dataInicial && $dataFinal) {
+            $dataFormatadaIni = \DateTime::createFromFormat("d/m/Y", $dataInicial);
+            $dataFormatadaFin = \DateTime::createFromFormat("d/m/Y", $dataFinal);
             $manager = $this->getDoctrine()->getManager();
-            $query   = $manager->createQuery("SELECT count(c) as cadastros, u.codigo FROM SerBinario\SAD\Bundle\SADBundle\Entity\Candidato c "
+            
+            $query1   = $manager->createQuery("SELECT count(c) as cadastros, u.codigo FROM SerBinario\SAD\Bundle\SADBundle\Entity\Candidato c "
                     . "JOIN c.usuario u "
                     . "JOIN u.roles r "
-                    . "WHERE c.usuario = u.id and c.dataCadastro = '{$dataFormatada->format("Y-m-d")}' and r.id = 3 group by u.codigo ");
-            $result = $query->getResult();
+                    . "WHERE c.usuario = u.id and c.dataCadastro "
+                    . "BETWEEN '{$dataFormatadaIni->format("Y-m-d")}' AND '{$dataFormatadaFin->format("Y-m-d")}' AND r.id = 3 group by u.codigo ");
+            $result1 = $query1->getResult();
+            
+            $query2   = $manager->createQuery("SELECT count(c) as totalCadastro FROM SerBinario\SAD\Bundle\SADBundle\Entity\Candidato c "
+                    . "JOIN c.usuario u "
+                    . "JOIN u.roles r "
+                    . "WHERE c.usuario = u.id and c.dataCadastro "
+                    . "BETWEEN '{$dataFormatadaIni->format("Y-m-d")}' AND '{$dataFormatadaFin->format("Y-m-d")}' AND r.id = 3");
+            $quantidade = $query2->getResult();
 
-            return array("resultados" => $result);
+            return array("resultados" => $result1, "quantidadeTotal" => $quantidade);
         } else {
-            $this->addFlash("warning", "É obrigatório informar a data");
+            $this->addFlash("warning", "É obrigatório informar as datas");
         }
         
         return array();
@@ -431,6 +453,7 @@ class DefaultController extends Controller
         $vaga                   = !empty($dados['vagas_disponivel']) ? $dados['vagas_disponivel'] : "";
         $candidatos  = "";
         $vagaDID     = ""; 
+        $quantidadeAprovados = "";
 
         if($request->getMethod() === "POST") {
         
@@ -460,6 +483,19 @@ class DefaultController extends Controller
         $querySQL   = $maneger->createQuery($query);
         $candidatos = $querySQL->getResult();
         
+        //Pega a quantidade
+        $query2 = "SELECT count(a) as quantidadeAprovados FROM SerBinario\SAD\Bundle\SADBundle\Entity\VagasDisponiveisCandidato a ";
+        $join2  = "JOIN  a.vagasDisponiveis c "
+                . "JOIN c.vagas v "
+                . "JOIN c.empresas p "
+                . "JOIN c.areaDesejada d ";
+        $where2 = "WHERE v.idVagas = {$vagaD->getVagas()->getIdVagas()} AND p.idEmpresa = {$empresa} AND d.idAreaDesejada = {$area} "
+        . "AND a.aprovado = true";
+
+        $query2 .= $join2 . $where2;
+        $querySQL2              = $maneger->createQuery($query2);
+        $quantidadeAprovados    = $querySQL2->getResult();
+        
         }
              
         $novoAcesso = $request->get('novo');
@@ -487,6 +523,6 @@ class DefaultController extends Controller
         $areas    = $areaRN->findAllVagasDisponiveis();
 
         return array('empresas' => $empresas, 'vagas' => $vagas, 'areas' => $areas,
-            "candidatos" => $candidatos, "vagaD" => $vagaDID); 
+            "candidatos" => $candidatos, "vagaD" => $vagaDID, "quantidadeAprovados" => $quantidadeAprovados); 
     }
 }

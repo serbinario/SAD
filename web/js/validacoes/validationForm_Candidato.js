@@ -64,14 +64,7 @@ $(document).ready(function () {
                         message: "Este campo é obrigatório",
                     },
                 },
-            },
-            'serbinario_sad_bundle_sadbundle_candidato[outrasinformacoescandidato]': {
-                validators: {
-                    notEmpty: {
-                        message: "Este campo é obrigatório",
-                    },
-                },
-            },   
+            }, 
         }
     });
 });

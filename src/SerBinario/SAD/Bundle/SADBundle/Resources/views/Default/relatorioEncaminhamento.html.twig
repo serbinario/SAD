@@ -58,13 +58,13 @@
         <div id="container">
             <br />
             <fieldset>
-                <legend>Pesquisar Cadidato</legend>
+                <legend>Relatório de Encaminhamento</legend>
                 <div class="row">
                     <form class="form-horizontal" action="{{path('relatorioEncaminhamento')}}" method="POST" id="formPesquisaVagasDisp">
 
                         <div class="col-md-6">
                             <fieldset>
-                                <legend>Filtro por vagas</legend>
+                                <legend>Pesquisar</legend>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Empresa</label>
                                     <div class="col-sm-10">
@@ -166,11 +166,8 @@
                                         {% endif %}
                                         <tfoot>
                                             <tr>
-                                                <th>Situação</th>
-                                                <th>Nome</th>
-                                                <th>CPF</th>
-                                                <th>RG</th>
-                                                <th>E-mail</th>
+                                                <th colspan="2">Total de candidatos aprovados</th>
+                                                <th colspan="3">{% if quantidadeAprovados.0.quantidadeAprovados is defined %}{{quantidadeAprovados.0.quantidadeAprovados}}{% endif %}</th>
                                             </tr>
                                         </tfoot>
                                     </table>

@@ -234,21 +234,6 @@
                             mask: false,
                             lang: 'pt-BR'
                         });
-
-                        $('a').on('click', function (event) {
-                            if ($(this).text() === "Adicionar") {
-                                $('.datepicker').on('click', function (event) {
-                                    $('.datepicker').datetimepicker({
-                                        timepicker: false,
-                                        format: 'd/m/Y',
-                                        mask: false,
-                                        lang: 'pt-BR'
-                                    });
-
-                                });
-                            }
-
-                        });
                     });
                 })(jQuery);
 

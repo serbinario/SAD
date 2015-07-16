@@ -81,6 +81,12 @@ class Curriculo
     
     /**
      *
+     * @ORM\OneToMany(targetEntity="OutrosCursos", mappedBy="curriculocurriculo", cascade={"persist"})
+     */
+    private $outrosCursos;
+    
+    /**
+     *
      * @ORM\OneToMany(targetEntity="Qualificacaofutura", mappedBy="curriculocurriculo", cascade={"persist"})
      */
     private $qualificacoesFuturas;
@@ -101,6 +107,7 @@ class Curriculo
         $this->formacoes                 = new \Doctrine\Common\Collections\ArrayCollection();
         $this->informatica               = new \Doctrine\Common\Collections\ArrayCollection();
         $this->qualificacoesFuturas      = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->outrosCursos              = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -324,6 +331,28 @@ class Curriculo
         }
         
         $this->informatica = $informatica;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getOutrosCursos()
+    {
+        return $this->outrosCursos;
+    }
+    
+    /**
+     * 
+     * @param type $outrosCursos
+     */
+    public function setOutrosCursos($outrosCursos) 
+    {
+        foreach ($outrosCursos as $curso) {
+            $curso->setCurriculocurriculo($this);
+        }
+        
+        $this->outrosCursos = $outrosCursos;
     }
 
     /**
