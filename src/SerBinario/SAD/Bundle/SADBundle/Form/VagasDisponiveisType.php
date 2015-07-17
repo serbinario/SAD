@@ -55,6 +55,14 @@ class VagasDisponiveisType extends AbstractType
                         'hidden' => true
                     )
                     ))
+            ->add('status', 'checkbox', array( 
+                'label' => 'Finalizar Vaga',
+                'required' => false,
+                'attr'    => array(
+                    'inline' => true,
+                    'align_with_widget'=> true 
+                    )
+                ))
             ->add('perfil', 'textarea', array(
                 'label' => "Descrição do perfil",                        
                 'attr' => array(                    

@@ -270,6 +270,12 @@ class VagaController extends Controller
                 $eventosArray[$i]['areaDesejada']   =  $resultCliente[$i]->getAreaDesejada()->getAreaDesejada();
                 $eventosArray[$i]['perfil']         =  $resultCliente[$i]->getPerfil();
                 $eventosArray[$i]['data']           =  $resultCliente[$i]->getDataCadastro()->format("d/m/Y");
+                
+                if($resultCliente[$i]->getStatus() == '1') {
+                    $eventosArray[$i]['status'] = "Fechada";
+                } else {
+                    $eventosArray[$i]['status'] = "Aberta";
+                }
             }
 
             //Se a variável $sqlFilter estiver vazio

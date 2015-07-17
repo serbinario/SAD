@@ -136,7 +136,7 @@ class AreaDesejadaDAO
        try {
            $arrayObj = $this->maneger->createQuery("SELECT a FROM SerBinario\SAD\Bundle\SADBundle\Entity\AreaDesejada a "
                    . "JOIN a.vagasDisponiveis v "
-                   . "WHERE a.idAreaDesejada = v.areaDesejada");
+                   . "WHERE a.idAreaDesejada = v.areaDesejada AND v.status = false");
            
            return $arrayObj->getResult();
        } catch (Exception $ex) {

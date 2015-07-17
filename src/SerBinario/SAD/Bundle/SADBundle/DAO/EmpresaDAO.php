@@ -118,7 +118,7 @@ class EmpresaDAO
        try {
            $arrayObj = $this->maneger->createQuery("SELECT e FROM SerBinario\SAD\Bundle\SADBundle\Entity\Empresa e "
                    . "JOIN e.vagasDisponiveis v "
-                   . "WHERE e.idEmpresa = v.empresas");
+                   . "WHERE e.idEmpresa = v.empresas AND v.status = false");
            
            return $arrayObj->getResult();
        } catch (Exception $ex) {

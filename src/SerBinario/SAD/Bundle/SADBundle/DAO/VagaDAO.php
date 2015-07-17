@@ -131,7 +131,7 @@ class VagaDAO
            $arrayObj = $this->maneger->createQuery("SELECT v FROM SerBinario\SAD\Bundle\SADBundle\Entity\VagasDisponiveis v "
                    . "JOIN v.vagas d "
                    . "JOIN v.areaDesejada a "
-                   . "WHERE v.vagas = d.idVagas AND v.areaDesejada = :id")
+                   . "WHERE v.vagas = d.idVagas AND v.areaDesejada = :id AND v.status = false")
                    ->setParameter("id", $id);
            
            return $arrayObj->getResult();
@@ -149,7 +149,7 @@ class VagaDAO
        try {
            $arrayObj = $this->maneger->createQuery("SELECT v FROM SerBinario\SAD\Bundle\SADBundle\Entity\VagasDisponiveis v "
                    . "JOIN v.areaDesejada d "
-                   . "WHERE d.idAreaDesejada = :id AND v.areaDesejada = d.idAreaDesejada")
+                   . "WHERE d.idAreaDesejada = :id AND v.areaDesejada = d.idAreaDesejada AND v.status = false")
                    ->setParameter("id", $idAreaDesejada);
            
            return $arrayObj->getResult();
