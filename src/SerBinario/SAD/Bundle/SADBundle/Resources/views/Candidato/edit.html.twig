@@ -122,6 +122,47 @@
             });
 
         });
+        
+        $(document).on('focus', ".telefoneCandidato", function () {
+
+            var maskBehavior = function (val) {
+                return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+            },
+                    options = {onKeyPress: function (val, e, field, options) {
+                            field.mask(maskBehavior.apply({}, arguments), options);
+                        }
+                    };
+
+            $('.telefoneCandidato').mask(maskBehavior, options);
+
+        });
+        
+        $(document).ready(function ($) {
+            // Chamada da funcao upperText(); ao carregar a pagina
+            upperText();
+            // Funcao que faz o texto ficar em uppercase
+            function upperText() {
+
+                // Para tratar o colar
+                $("#serbinario_sad_bundle_sadbundle_candidato_ufcandidato").bind('paste', function (e) {
+                    var el = $(this);
+                    setTimeout(function () {
+                        var text = $(el).val();
+                        el.val(text.toUpperCase());
+                    }, 100);
+                });
+
+                // Para tratar quando é digitado
+                $("#serbinario_sad_bundle_sadbundle_candidato_ufcandidato").keypress(function () {
+                    var el = $(this);
+                    console.log('asdas');
+                    setTimeout(function () {
+                        var text = $(el).val();
+                        el.val(text.toUpperCase());
+                    }, 100);
+                });
+            }
+        });
 
         $(document).on('change', ".area_profissional", function () {
             var areaProfissional = $(this).val();
