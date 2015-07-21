@@ -156,4 +156,70 @@ class CandidatoRN
         
         return $result;
     }
+    
+    /**
+     * 
+     * @param type $id
+     */
+    public function removeExperienciaByUpdate($experiencia, $idCurriculo)
+    {
+        $result = $this->candidatoDAO->removeExperienciaByUpdate($experiencia, $idCurriculo);
+        
+        return $result;
+    }
+    
+    /**
+     * 
+     * @param type $idCurriculo
+     */
+    public function removeExperienciaByUpdateVazio($idCurriculo)
+    {
+        $result = $this->candidatoDAO->removeExperienciaByUpdateVazio($idCurriculo);
+        
+        return $result;
+    }
+    
+    /**
+     * 
+     * @param type $id
+     */
+    public function removeOutrosCursosByUpdate($outrosCursos, $idCurriculo)
+    {
+        $result = $this->candidatoDAO->removeOutrosCursosByUpdate($outrosCursos, $idCurriculo);
+        
+        return $result;
+    }
+    
+    /**
+     * 
+     * @param type $idCurriculo
+     */
+    public function removeOutrosCursosByUpdateVazio($idCurriculo)
+    {
+        $result = $this->candidatoDAO->removeOutrosCursosByUpdateVazio($idCurriculo);
+        
+        return $result;
+    }
+    
+    /**
+     * 
+     * @param type $id
+     */
+    public function removeQualificacoesByUpdate($qualificacoes, $idCurriculo)
+    {
+        $result = $this->candidatoDAO->removeQualificacoesByUpdate($qualificacoes, $idCurriculo);
+        
+        return $result;
+    }
+    
+    /**
+     * 
+     * @param type $idCurriculo
+     */
+    public function removeQualificacoesByUpdateVazio($idCurriculo)
+    {
+        $result = $this->candidatoDAO->removeQualificacoesByUpdateVazio($idCurriculo);
+        
+        return $result;
+    }
 }

@@ -2,6 +2,7 @@
 namespace SerBinario\SAD\Bundle\SADBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -242,14 +243,45 @@ class CandidatoController extends Controller
                 $idExperiencia = array();
                 foreach ($candidato->getCurriculo()->getExperienciasProfissionais() as $experiencia) {
                     $idExperiencia[] = $experiencia->getIdexperienciaprofissional();
-                    $formacao->setCurriculocurriculo($candidato->getCurriculo());
+                    $experiencia->setCurriculocurriculo($candidato->getCurriculo());
                 }
                 
-                //Pegas os ids dos cursos de outrosCursos
+                //Remove as formações expericencia
+                $countExperiencia = count($idExperiencia);
+                if ($countExperiencia > 0) {
+                    $candidatoRN->removeExperienciaByUpdate($idExperiencia, $candidato->getCurriculo()->getIdcurriculo());
+                } else {
+                    $candidatoRN->removeExperienciaByUpdateVazio($candidato->getCurriculo()->getIdcurriculo());
+                }
+                
+                //Adiciona os ids dos cursos de outrosCursos
                 $idOutrosCursos = array();
                 foreach ($candidato->getCurriculo()->getOutrosCursos() as $outroCurso) {
                     $idOutrosCursos[] = $outroCurso->getIdOutrosCursos();
                     $outroCurso->setCurriculocurriculo($candidato->getCurriculo());
+                }
+                
+                //Remove as formações outrosCursos
+                $countOutrosCursos = count($idOutrosCursos);
+                if ($countOutrosCursos > 0) {
+                    $candidatoRN->removeOutrosCursosByUpdate($idOutrosCursos, $candidato->getCurriculo()->getIdcurriculo());
+                } else {
+                    $candidatoRN->removeOutrosCursosByUpdateVazio($candidato->getCurriculo()->getIdcurriculo());
+                }
+                
+                //Adiciona os ids dos cursos de qualificação futura
+                $idQualificacao = array();
+                foreach ($candidato->getCurriculo()->getQualificacoesFuturas() as $Qualificacoes) {
+                    $idQualificacao[] = $Qualificacoes->getIdqualificacaofutura();
+                    $Qualificacoes->setCurriculocurriculo($candidato->getCurriculo());
+                }
+                
+                //Remove as formações qualificação futura
+                $countQualificacoes = count($idQualificacao);
+                if ($countQualificacoes > 0) {
+                    $candidatoRN->removeQualificacoesByUpdate($idQualificacao, $candidato->getCurriculo()->getIdcurriculo());
+                } else {
+                    $candidatoRN->removeQualificacoesByUpdateVazio($candidato->getCurriculo()->getIdcurriculo());
                 }
                 
                 #Resultado da operação
@@ -265,6 +297,27 @@ class CandidatoController extends Controller
         
         #Retorno
         return array("form" => $form->createView());
+    }
+    
+    /**
+     * @Route("/curriculo/id/{id}", name="curriculo")
+     * @Template("")
+     */
+    public function curriculoAction($id) {
+        
+        $html = $this->renderView('SADBundle:Candidato:curriculo.html.twig', array('teste' => "teste"));
+        
+        return new Response(
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($html, array(
+                'page-size'     => 'A4',
+                'margin-top'    => '5mm',
+                'images'        => true)),
+            200,
+            array(
+                'Content-Type'          => 'application/pdf',
+            )
+        );
+        
     }
    
 }

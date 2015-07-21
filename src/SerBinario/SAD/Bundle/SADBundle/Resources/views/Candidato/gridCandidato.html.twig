@@ -129,9 +129,10 @@
                         "data": null,
                         "render": function (data, type, row, full, meta) {
                             {% if is_granted('ROLE_SUPERVISOR') %}
-                                return '<a href="editCandidato/id/'+data.id +'" class="editar" title="Editar">' 
+                                return '<a href="editCandidato/id/'+data.id +'" class="editar" title="Editar">\n\
+                                        <a href="curriculo/id/'+data.id +'" class="visualizar" target="_blanck" title="Imprimir">' 
                             {% else %}
-                                return ""
+                                return '<a href="curriculo/id/'+data.id +'" class="visualizar" title="Imprimir">'
                             {% endif %}
                         }
                     },

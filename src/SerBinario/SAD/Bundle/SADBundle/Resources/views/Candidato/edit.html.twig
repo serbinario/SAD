@@ -110,6 +110,18 @@
             console.log('sfdfd');
             window.location.href = '{{path('viewListCandidato')}}';
         });
+        
+         $(document).on('focus', ".data", function () {
+
+            console.log('dd');
+            $(this).datetimepicker({
+                timepicker: false,
+                format: 'd/m/Y',
+                mask: false,
+                lang: 'pt-BR'
+            });
+
+        });
 
         $(document).on('change', ".area_profissional", function () {
             var areaProfissional = $(this).val();

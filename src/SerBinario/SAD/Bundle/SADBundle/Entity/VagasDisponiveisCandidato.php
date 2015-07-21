@@ -44,6 +44,13 @@ class VagasDisponiveisCandidato
     private $vagasDisponiveis;
     
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_cadastro", type="date", nullable=true)
+     */
+    private $dataCadastro;
+    
+    /**
      * @var boolean
      *
      * @ORM\Column(name="encaminhado", type="boolean", nullable=true)
@@ -159,5 +166,22 @@ class VagasDisponiveisCandidato
     function setAprovado($aprovado) {
         $this->aprovado = $aprovado;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    function getDataCadastro() {
+        return $this->dataCadastro;
+    }
+    
+    /**
+     * 
+     * @param \DateTime $dataCadastro
+     */
+    function setDataCadastro($dataCadastro) {
+        $this->dataCadastro = $dataCadastro;
+    }
+
 
 }

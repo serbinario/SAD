@@ -3,10 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Form/FormacaoType.php</file>
-            <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Form/CandidatoType.php</file>
-            <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Entity/VagasDisponiveis.php</file>
-            <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/AtribuirVagas/selecionarCandidatos.html.twig</file>
+            <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Candidato/curriculo.html.twig</file>
+            <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Candidato/gridCandidato.html.twig</file>
+            <file>file:/var/www/html/SAD/src/SerBinario/SAD/Bundle/SADBundle/Controller/CandidatoController.php</file>
         </group>
     </open-files>
 </project-private>

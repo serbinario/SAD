@@ -367,6 +367,16 @@ class DefaultController extends Controller
     }
     
     /**
+     * @Route("/relatorioEmpregados", name="relatorioEmpregados")
+     * @Template()
+     */
+    public function relatorioEmpregadosAction() {
+        
+        return array();
+        
+    }
+    
+    /**
      * @Route("/processRelatorioAtendimento", name="processRelatorioAtendimento")
      * @Template("SADBundle:Default:relatorioAtendimento.html.twig")
      */
@@ -430,6 +440,43 @@ class DefaultController extends Controller
                     . "JOIN u.roles r "
                     . "WHERE c.usuario = u.id and c.dataCadastro "
                     . "BETWEEN '{$dataFormatadaIni->format("Y-m-d")}' AND '{$dataFormatadaFin->format("Y-m-d")}' AND r.id = 3");
+            $quantidade = $query2->getResult();
+
+            return array("resultados" => $result1, "quantidadeTotal" => $quantidade);
+        } else {
+            $this->addFlash("warning", "É obrigatório informar as datas");
+        }
+        
+        return array();
+    }
+    
+    /**
+     * @Route("/processRelatorioEmpregados", name="processRelatorioEmpregados")
+     * @Template("SADBundle:Default:relatorioEmpregados.html.twig")
+     */
+    public function processRelatorioEmpregadosAction(Request $request) {
+        
+        $dados = $request->request->all();
+        $dataInicial  = isset($dados['dataInicial']) ?  $dados['dataInicial'] : "";
+        $dataFinal    = isset($dados['dataFinal']) ?  $dados['dataFinal'] : "";
+         
+        if($dataInicial && $dataFinal) {
+            $dataFormatadaIni = \DateTime::createFromFormat("d/m/Y", $dataInicial);
+            $dataFormatadaFin = \DateTime::createFromFormat("d/m/Y", $dataFinal);
+            $manager = $this->getDoctrine()->getManager();
+            
+            $query1   = $manager->createQuery("SELECT count(c) as empregados, e.nomeEmpresa FROM SerBinario\SAD\Bundle\SADBundle\Entity\VagasDisponiveisCandidato c "
+                    . "JOIN c.vagasDisponiveis v "
+                    . "JOIN v.empresas e "
+                    . "WHERE c.aprovado = true AND c.dataCadastro "
+                    . "BETWEEN '{$dataFormatadaIni->format("Y-m-d")}' AND '{$dataFormatadaFin->format("Y-m-d")}' group by e.nomeEmpresa ");
+            $result1 = $query1->getResult();
+            
+            $query2   = $manager->createQuery("SELECT count(c) as totalEmpregados FROM SerBinario\SAD\Bundle\SADBundle\Entity\VagasDisponiveisCandidato c "
+                    . "JOIN c.vagasDisponiveis v "
+                    . "JOIN v.empresas e "
+                    . "WHERE c.aprovado = true AND c.dataCadastro "
+                    . "BETWEEN '{$dataFormatadaIni->format("Y-m-d")}' AND '{$dataFormatadaFin->format("Y-m-d")}'");
             $quantidade = $query2->getResult();
 
             return array("resultados" => $result1, "quantidadeTotal" => $quantidade);
@@ -525,4 +572,5 @@ class DefaultController extends Controller
         return array('empresas' => $empresas, 'vagas' => $vagas, 'areas' => $areas,
             "candidatos" => $candidatos, "vagaD" => $vagaDID, "quantidadeAprovados" => $quantidadeAprovados); 
     }
+
 }

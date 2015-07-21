@@ -372,7 +372,7 @@ class Curriculo
      */
     public function getQualificacoesFuturas() 
     {
-        return $this->qualificacoesFuturas->toArray();
+        return $this->qualificacoesFuturas;
     }
     
     /**

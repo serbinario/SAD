@@ -328,6 +328,7 @@ class AtribuirVagasController extends Controller
         $dado = $request->request->all();
         $candidatos = isset($dado['id_candidato']) ? $dado['id_candidato'] : "";
         $vagaDisp   = isset($dado['id_vaga']) ? $dado['id_vaga'] : "";
+        $dataAtual  = new \DateTime("now");
         
         $vagasDRN      = $this->get("vagaDisponivel_rn");
         $candidatoDRN  = $this->get("candidato_rn");
@@ -343,6 +344,7 @@ class AtribuirVagasController extends Controller
                 $candidato = $candidatoDRN->findById($cand);
                 $vDispCand->setCandidato($candidato);
                 $vDispCand->setVagasDisponiveis($vagaD);
+                $vDispCand->setDataCadastro($dataAtual);
                 $vDispCand->setEncaminhado(true);
                 
                 $vDispCandDAO->save($vDispCand);

@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new SerBinario\SAD\Bundle\SADBundle\SADBundle(),
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new SerBinario\SAD\Bundle\UserBundle\UserBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             
         );
 
