@@ -24,7 +24,7 @@ class Telefonescandidato
     /**
      * @var string
      *
-     * @ORM\Column(name="telefone", type="string", length=10, nullable=true)
+     * @ORM\Column(name="telefone", type="string", length=25, nullable=true)
      */
     private $telefone;
 
