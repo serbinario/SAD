@@ -16,7 +16,8 @@ class QualificacaofuturaType extends AbstractType
     {
         $builder
             ->add('descricaoqualificacaofutura', 'textarea', array(
-                'label' => "Descrição da Qualificação",                        
+                'label' => "Descrição da Qualificação",
+                'required' => false,
                 'attr' => array(                    
                     'rows' => '6',
                     'widget_col'=> '6',
@@ -26,7 +27,8 @@ class QualificacaofuturaType extends AbstractType
             ->add('tipoqualificacaofuturatipoqualificacaofutura','entity', array(
                 'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Tipoqualificacaofutura',
                 'empty_value' => "Selecione o tipo",
-                'label' => 'Tipo qualificação',                
+                'label' => 'Tipo qualificação',
+                'required' => false,
                 'attr' => array(
                      'widget_col'=> '3',
                     )

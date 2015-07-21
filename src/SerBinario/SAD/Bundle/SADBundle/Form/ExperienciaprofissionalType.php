@@ -16,25 +16,29 @@ class ExperienciaprofissionalType extends AbstractType
     {
         $builder
             ->add('nomedaempresaexperienciaprofissional', 'text', array(
-                'label' => 'Nome da Empresa',           
+                'label' => 'Nome da Empresa',
+                'required' => false,
                 'attr' => array(
                     'placeholder' => 'Nome da Empresa',
                     'widget_col'=> '4',
                 ))) 
             ->add('ultimocargoexperienciaprofissional', 'text', array(
-                'label' => 'Cargo/Função',           
+                'label' => 'Cargo/Função',
+                'required' => false,
                 'attr' => array(
                     'placeholder' => 'Cargo/Função',
                     'widget_col'=> '4',
                 ))) 
             ->add('ultimosalarioexperienciaprofissional', 'text', array(
-                'label' => 'Salário',           
+                'label' => 'Salário',
+                'required' => false,
                 'attr' => array(
                     'placeholder' => 'Salário',
                     'widget_col'=> '4',
                 ))) 
             ->add('dataadmissaoexperienciaprofissional', 'date', array(
                 'widget' => 'single_text',
+                'required' => false,
                 'format' => 'dd/MM/yyyy',
                 'label' => 'Data de Admissão',        
                 'attr' => array(
@@ -46,6 +50,7 @@ class ExperienciaprofissionalType extends AbstractType
             ))
             ->add('datademissaoexperienciaprofissional', 'date', array(
                 'widget' => 'single_text',
+                'required' => false,
                 'format' => 'dd/MM/yyyy',
                 'label' => 'Data da Demissão',        
                 'attr' => array(
@@ -56,7 +61,8 @@ class ExperienciaprofissionalType extends AbstractType
                 )
             ))
             ->add('atribuicoesexperienciaprofissional', 'textarea', array(
-                'label' => "Atribuições/Realizações",                        
+                'label' => "Atribuições/Realizações",
+                'required' => false,
                 'attr' => array(                    
                     'rows' => '6',
                     'widget_col'=> '6',

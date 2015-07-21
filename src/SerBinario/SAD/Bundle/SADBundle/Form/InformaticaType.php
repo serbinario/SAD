@@ -19,13 +19,15 @@ class InformaticaType extends AbstractType
              ->add('tiposinformaticatiposinformatica','entity', array(
                  'empty_value' => "Selecione o especialidade",
                 'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\Tiposinformatica',
-                'label' => false,                
+                'label' => false,
+                 'required' => false,
                 'attr' => array(
                      'widget_col'=> '3',
                     )
                 ))
             ->add('tipoNivelInformatica','entity', array(
                 'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\TipoNivelInformatica',
+                'required' => false,
                 'label' => false,
                 'multiple' => false,
                 'expanded' => true,  

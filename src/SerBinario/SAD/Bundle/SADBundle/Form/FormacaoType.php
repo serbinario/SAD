@@ -16,25 +16,29 @@ class FormacaoType extends AbstractType
     {
         $builder
             ->add('grauformacao', 'text', array(
-                'label' => 'Grau da Formação',           
+                'label' => 'Grau da Formação',
+                'required' => false,
                 'attr' => array(
                     'placeholder' => 'Grau da Formação',
                     'widget_col'=> '6',
                 ))) 
             ->add('nomecursoformacao', 'text', array(
-                'label' => 'Nome do Curso',           
+                'label' => 'Nome do Curso',
+                'required' => false,
                 'attr' => array(
                     'placeholder' => 'Nome do Curso',
                     'widget_col'=> '6',
                 ))) 
             ->add('instituicaoformacao', 'text', array(
-                'label' => 'Instituição',           
+                'label' => 'Instituição',
+                'required' => false,
                 'attr' => array(
                     'placeholder' => 'Instituição de ensino',
                     'widget_col'=> '8',
                 ))) 
             ->add('datainicioformacao', 'date', array(
                 'widget' => 'single_text',
+                'required' => false,
                 'format' => 'dd/MM/yyyy',
                 'label' => 'Período Inicial',
                 'attr' => array(
@@ -45,6 +49,7 @@ class FormacaoType extends AbstractType
                 )))
             ->add('dataconclusaoformacao', 'date', array(
                 'widget' => 'single_text',
+                'required' => false,
                 'format' => 'dd/MM/yyyy',
                 'label' => 'Perído Final',
                 'attr' => array(

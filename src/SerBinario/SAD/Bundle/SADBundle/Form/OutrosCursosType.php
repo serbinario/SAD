@@ -16,19 +16,22 @@ class OutrosCursosType extends AbstractType
     {
         $builder
             ->add('instituicao', 'text', array(
-                'label' => 'Nome da Instituição',           
+                'label' => 'Nome da Instituição',
+                'required' => false,
                 'attr' => array(
                     'placeholder' => 'Nome da Instituição',
                     'widget_col'=> '6',
                 )))
             ->add('curso', 'text', array(
-                'label' => 'Curso',           
+                'label' => 'Curso',
+                'required' => false,
                 'attr' => array(
                     'placeholder' => 'Curso',
                     'widget_col'=> '6',
                 )))
             ->add('periodoInicial', 'date', array(
                 'widget' => 'single_text',
+                'required' => false,
                 'format' => 'dd/MM/yyyy',
                 'label' => 'Período Inicial',
                 'attr' => array(
@@ -40,6 +43,7 @@ class OutrosCursosType extends AbstractType
             ))
             ->add('periodoFinal', 'date', array(
                 'widget' => 'single_text',
+                'required' => false,
                 'format' => 'dd/MM/yyyy',
                 'label' => 'Período Final',                
                 'attr' => array(
