@@ -4,9 +4,12 @@ namespace SerBinario\SAD\Bundle\UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\SecurityContext;
+use SerBinario\SAD\Bundle\SADBundle\Util\GridClass;
 
 
 class DefaultController extends Controller
@@ -121,10 +124,159 @@ class DefaultController extends Controller
         return $this->redirect($this->generateUrl("viewSaveUser"));
     }
     
-     /**
-     * 
-     * @Route("/savePerfil", name="savePerfil")
+    /**
+     * @Route("/gridUsuario", name="gridUsuario")
+     * @Template()
      */
+    public function gridUsuarioAction(Request $request) {
+        
+        if(GridClass::isAjax()) {
+            
+            $columns = array("a.id",
+                "a.username",
+                "a.email",
+                "a.codigo",
+                "b.name"
+                );
+
+            $entityJOIN           = array("roles");             
+            $eventosArray         = array();
+            $parametros           = $request->request->all();
+            
+            $entity               = "SerBinario\SAD\Bundle\UserBundle\Entity\User"; 
+            $columnWhereMain      = "";
+            $whereValueMain       = "";
+            
+            $gridClass = new GridClass($this->getDoctrine()->getManager(), 
+                    $parametros,
+                    $columns,
+                    $entity,
+                    $entityJOIN,           
+                    $columnWhereMain,
+                    $whereValueMain);
+
+            $resultCliente  = $gridClass->builderQuery();    
+            $countTotal     = $gridClass->getCount();
+            $countEventos   = count($resultCliente);
+
+            for($i=0;$i < $countEventos; $i++)
+            {
+                $eventosArray[$i]['DT_RowId']           =  "row_".$resultCliente[$i]->getId();
+                $eventosArray[$i]['id']                 =  $resultCliente[$i]->getId();
+                $eventosArray[$i]['nome']               =  $resultCliente[$i]->getUsername();
+                $eventosArray[$i]['email']              =  $resultCliente[$i]->getEmail();
+                $eventosArray[$i]['codigo']             =  $resultCliente[$i]->getCodigo();
+                
+                $countRoles = count($resultCliente[$i]->getRoles());
+
+                for($j = 0; $j < $countRoles; $j++){
+                    $eventosArray[$i]['roles'] = $resultCliente[$i]->getRoles()[$j]->getName();
+                }
+            }
+
+            //Se a variável $sqlFilter estiver vazio
+            if(!$gridClass->isFilter()){
+                $countEventos = $countTotal;
+            }
+
+            $columns = array(               
+                'draw'              => $parametros['draw'],
+                'recordsTotal'      => "{$countTotal}",
+                'recordsFiltered'   => "{$countEventos}",
+                'data'              => $eventosArray               
+            );
+
+            return new JsonResponse($columns);
+        } else {            
+            return array();            
+        }
+        
+    }
+    
+    /**
+     * @Route("/viewEditUser/id/{id}", name="viewEditUser")
+     * @Template()
+     */
+    public function viewEditUserAction($id)
+    {
+        $roleRN   = $this->get("role_rn");
+        $arrayObj = $roleRN->getRoles();
+        
+        $userRN   = $this->get("user_rn");
+        $user     = $userRN->findById($id);
+
+        return array("roles" => $arrayObj, "user" => $user);
+    }
+    
+    /**
+     * @Route("/editUser", name="editUser")
+     */
+    public function editUserAction(Request $request)
+    {
+        $dados = $request->request->all();
+        
+        $username = $dados['username'];
+        $senha    = $dados['senha'];
+        $email    = $dados['email'];
+        $roleId   = $dados['perfil'];
+        $idUser   = $dados['userid'];
+               
+        $userRN   = $this->get("user_rn");
+        $user     = $userRN->findById($idUser);
+        
+        if($user->getUsername() !== $username) {
+            $valUser  = $userRN->findByEmailOrUsename($username);
+            
+            if($valUser) {           
+                $this->get("session")->getFlashBag()->add('danger', "Login já existentes!");
+
+                return $this->redirect($this->generateUrl("gridUsuario"));
+            }    
+        }
+        
+        if($user->getEmail() !== $email) {
+            $valEmail = $userRN->findByEmailOrUsename($email);
+            
+            if($valEmail) {
+                $this->get("session")->getFlashBag()->add('danger', "Email existentes!");
+
+                return $this->redirect($this->generateUrl("gridUsuario"));
+            }    
+        }   
+        
+        $user->setUsername($username);
+        $user->setEmail($email);
+        $user->setIsActive(true);
+        
+        if(!empty($senha)) {
+            $factory  = $this->get('security.encoder_factory');
+        
+            $encoder  = $factory->getEncoder($user);
+            $password = $encoder->encodePassword($senha, $user->getSalt());
+            $user->setPassword($password);   
+        }                  
+        
+        $roleRN   = $this->get("role_rn");       
+        $role     = $roleRN->getRole($roleId);
+        
+        $user->removeAllRole();
+        $user->addRole($role);
+    
+        $result  = $userRN->update($user);
+        
+        if($result) {
+            $this->get("session")->getFlashBag()->add('success', "Usuário editado com sucesso!"); 
+        } else {             
+            $this->get("session")->getFlashBag()->add('danger', "Erro ao cadastrar o usuário"); 
+        }        
+        
+        return $this->redirect($this->generateUrl("gridUsuario"));
+    }
+    
+    /**
+    * @Route("/savePerfil", name="savePerfil")
+    * @Template()
+    */
     public function savePerfilAction()
     {      
         $dados = array(
