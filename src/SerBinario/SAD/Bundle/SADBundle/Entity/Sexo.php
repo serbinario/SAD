@@ -36,7 +36,6 @@ class Sexo
     private $descricao;
 
 
-
     /**
      * Get idsexo
      *

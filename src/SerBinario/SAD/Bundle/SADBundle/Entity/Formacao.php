@@ -20,11 +20,14 @@ class Formacao
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idformacao;
-
+    
     /**
-     * @var string
+     * @var \GrauDeFormacao
      *
-     * @ORM\Column(name="grauFormacao", type="string", length=45, nullable=true)
+     * @ORM\ManyToOne(targetEntity="GrauDeFormacao")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_grau_formacao", referencedColumnName="id_grau_formacao")
+     * })
      */
     private $grauformacao;
 
@@ -41,6 +44,13 @@ class Formacao
      * @ORM\Column(name="instituicaoFormacao", type="string", length=45, nullable=true)
      */
     private $instituicaoformacao;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="período", type="string", length=100, nullable=true)
+     */
+    private $periodo;
 
     /**
      * @var \DateTime
@@ -67,7 +77,6 @@ class Formacao
     private $curriculocurriculo;
 
 
-
     /**
      * Get idformacao
      *
@@ -77,28 +86,21 @@ class Formacao
     {
         return $this->idformacao;
     }
-
+    
     /**
-     * Set grauformacao
-     *
-     * @param string $grauformacao
-     * @return Formacao
+     * 
+     * @return type
      */
-    public function setGrauformacao($grauformacao)
-    {
-        $this->grauformacao = $grauformacao;
-
-        return $this;
-    }
-
-    /**
-     * Get grauformacao
-     *
-     * @return string 
-     */
-    public function getGrauformacao()
-    {
+    function getGrauformacao() {
         return $this->grauformacao;
+    }
+    
+    /**
+     * 
+     * @param \GrauDeFormacao $grauformacao
+     */
+    function setGrauformacao($grauformacao) {
+        $this->grauformacao = $grauformacao;
     }
 
     /**
@@ -261,4 +263,21 @@ class Formacao
     {
         return $this->curriculocurriculo;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    function getPeriodo() {
+        return $this->periodo;
+    }
+    
+    /**
+     * 
+     * @param type $periodo
+     */
+    function setPeriodo($periodo) {
+        $this->periodo = $periodo;
+    }
+
 }

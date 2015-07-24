@@ -36,7 +36,7 @@ class OutrosCursosType extends AbstractType
                 'label' => 'Período Inicial',
                 'attr' => array(
                     'placeholder' => 'Período Inicial',
-                    'widget_col'=> '4',
+                    'widget_col'=> '2',
                     'class' => 'datepicker data ',
                     'help_text' => 'Click 2 vezes no campo para exibir o calendário'
                 )
@@ -48,7 +48,7 @@ class OutrosCursosType extends AbstractType
                 'label' => 'Período Final',                
                 'attr' => array(
                     'placeholder' => 'Período Final',
-                    'widget_col'=> '4',
+                    'widget_col'=> '2',
                     'class' => 'datepicker data ',
                     'help_text' => 'Click 2 vezes no campo para exibir o calendário'
                 )

@@ -43,7 +43,7 @@ class ExperienciaprofissionalType extends AbstractType
                 'label' => 'Data de Admissão',        
                 'attr' => array(
                     'placeholder' => 'Data Admissão',
-                    'widget_col'=> '4',
+                    'widget_col'=> '2',
                     'class' => 'datepicker data ',
                     'help_text' => 'Click 2 vezes no campo para exibir o calendário'
                 )
@@ -55,7 +55,7 @@ class ExperienciaprofissionalType extends AbstractType
                 'label' => 'Data da Demissão',        
                 'attr' => array(
                     'placeholder' => 'Data da Demissão',
-                    'widget_col'=> '4',
+                    'widget_col'=> '2',
                     'class' => 'datepicker data ',
                     'help_text' => 'Click 2 vezes no campo para exibir o calendário'
                 )

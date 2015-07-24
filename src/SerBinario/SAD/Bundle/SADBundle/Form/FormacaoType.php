@@ -15,13 +15,14 @@ class FormacaoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('grauformacao', 'text', array(
-                'label' => 'Grau da Formação',
-                'required' => false,
+            ->add('grauformacao', 'entity', array(
+                'label'        => 'Grau de Formação',
+                'empty_value' => "Selecione a grau",
+                'class' => 'SerBinario\SAD\Bundle\SADBundle\Entity\GrauDeFormacao',
                 'attr' => array(
-                    'placeholder' => 'Grau da Formação',
-                    'widget_col'=> '6',
-                ))) 
+                     'widget_col'=> '4',
+                    )
+                ))
             ->add('nomecursoformacao', 'text', array(
                 'label' => 'Nome do Curso',
                 'required' => false,
@@ -43,7 +44,7 @@ class FormacaoType extends AbstractType
                 'label' => 'Período Inicial',
                 'attr' => array(
                     'placeholder' => 'Período Inicial',
-                    'widget_col'=> '4',
+                    'widget_col'=> '2',
                     'class' => ' datepicker data ',
                     'help_text' => 'Click 2 vezes no campo para exibir o calendário'
                 )))
@@ -54,9 +55,16 @@ class FormacaoType extends AbstractType
                 'label' => 'Perído Final',
                 'attr' => array(
                     'placeholder' => 'Perído Final',
-                    'widget_col'=> '4',
+                    'widget_col'=> '2',
                     'class' => ' datepicker data ',
                     'help_text' => 'Click 2 vezes no campo para exibir o calendário'
+                )))
+            ->add('periodo', 'text', array(
+                'label' => 'Período',
+                'required' => false,
+                'attr' => array(
+                    'placeholder' => 'Período',
+                    'widget_col'=> '6',
                 )))
         ;
     }

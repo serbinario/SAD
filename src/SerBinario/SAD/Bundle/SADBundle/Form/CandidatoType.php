@@ -90,7 +90,7 @@ class CandidatoType extends AbstractType
                 'label' => 'Nascimento',                
                 'attr' => array(
                     'placeholder' => 'Data de Nascimento do candidato',
-                    'widget_col'=> '4',
+                    'widget_col'=> '2',
                     'class' => 'datepicker'
                 )
             ))
