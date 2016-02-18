@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-9">
                 <h3>{{candidato.nomecandidato}}</h3>
                 <span>{{candidato.enderecocadidato}} - {{candidato.bairrocandidato}} - {{candidato.cidadecandidato}} - {{candidato.ufcandidato}}</span><br />
                 <span>
@@ -32,7 +32,7 @@
                 {% endif %}
                 <h4>Formação/Escolaridade</h4>
                 {% for formacao in candidato.curriculo.formacoes %}
-                    <span>{{formacao.grauformacao.grauFormacao}}</span><br />
+                    {% if formacao.grauformacao.grauFormacao is defined %}<span>{{formacao.grauformacao.grauFormacao}}</span><br />{% endif %}
                     {% if formacao.nomecursoformacao != null %}<span>Curso: {{formacao.nomecursoformacao}}</span><br />{% endif %}
                     {% if formacao.instituicaoformacao != null %}<span>Instituição: {{formacao.instituicaoformacao}}</span><br />{% endif %}
                     {% if formacao.datainicioformacao != null and formacao.dataconclusaoformacao != null %}

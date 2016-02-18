@@ -19,7 +19,7 @@
 
         a.visualizar {
             background: url({{asset("imagens/icone-visualizar.png")}}) no-repeat 0 0;
-            width: 23px;
+            width: 20px;
         }
 
         a.excluir {
@@ -161,7 +161,7 @@
                                 <form id="formPesCand" action="{{path('encaminharCandidatos')}}" method="POST">
                                     <input type="hidden" id="id_vaga" name="id_vaga" value="{% if vagaD is defined %}{{vagaD}}{% endif %}">
                                     <button style="margin-bottom: 10px;" type="submit" class="btn btn-primary btn-sm">Encaminhar</button>
-                                    <table id="example" class="table table-bordered" cellspacing="0" width="100%">
+                                    <table id="example" class="display table table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
                                                 <th>Selecionar</th>
@@ -169,6 +169,7 @@
                                                 <th>CPF</th>
                                                 <th>RG</th>
                                                 <th>E-mail</th>
+                                                <th>Ação</th>
                                             </tr>
                                         </thead>
                                         {% if candidatos != null %}
@@ -177,13 +178,13 @@
                                                     <tr>
                                                         <td>
                                                             {% if candidato.vagaDisponivel|length > 0 %}
-                                                            {% for vagaDisp in candidato.vagaDisponivel %}
-                                                                {% if vagaDisp.vagasDisponiveis.idVagasDiponiveis == vagaD and vagaDisp.encaminhado == true %}
-                                                                    <span style="color: red">Candidato já encaminhado para esta vaga</span>
-                                                                {% else %}
-                                                                    <input type="checkbox" name="id_candidato[]" value="{{candidato.idcandidato}}">
-                                                                {% endif %}
-                                                            {% endfor %}
+                                                                {% for vagaDisp in candidato.vagaDisponivel %}
+                                                                    {% if vagaDisp.vagasDisponiveis.idVagasDiponiveis == vagaD and vagaDisp.encaminhado == true %}
+                                                                        <span style="color: red">Candidato já encaminhado para esta vaga</span>
+                                                                    {% else %}
+                                                                        <input type="checkbox" name="id_candidato[]" value="{{candidato.idcandidato}}">
+                                                                    {% endif %}
+                                                                {% endfor %}
                                                             {% else %}
                                                                 <input type="checkbox" name="id_candidato[]" value="{{candidato.idcandidato}}">
                                                             {% endif %}
@@ -191,7 +192,8 @@
                                                         <td>{{candidato.nomecandidato}}</td>
                                                         <td>{{candidato.cpfcandidato}}</td>
                                                         <td>{{candidato.rgcandidato}}</td>
-                                                        <td>{{candidato.emailcandidato}}</td>   
+                                                        <td>{{candidato.emailcandidato}}</td>
+                                                        <td><a href="{{path('curriculoPage', {'id' : candidato.idcandidato})}}" target="_blanck" class="" title="visualizar">Visualizar</a></td>
                                                     </tr>
                                                 {% endfor %}
                                             </tbody>
@@ -203,6 +205,7 @@
                                                 <th>CPF</th>
                                                 <th>RG</th>
                                                 <th>E-mail</th>
+                                                <th>Ação</th>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -289,27 +292,27 @@
             }
         });
 
-        
-$(document).ready(function () {
 
-    $('.form-horizontal').bootstrapValidator({
-        excluded: [':disabled'],
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            vagas_disponivel: {
-                validators: {
-                    notEmpty: {
-                        message: "Este campo é obrigatório",
-                    },
+        $(document).ready(function () {
+
+            $('.form-horizontal').bootstrapValidator({
+                excluded: [':disabled'],
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
                 },
-            }, 
-        }
-    });
-});
-        
+                fields: {
+                    vagas_disponivel: {
+                        validators: {
+                            notEmpty: {
+                                message: "Este campo é obrigatório",
+                            },
+                        },
+                    },
+                }
+            });
+        });
+
     </script>
 {% endblock %}

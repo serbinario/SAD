@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="902c66ca-546f-4312-ab0a-098fdc0645c7" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/imagens/logo igarassu.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Candidato/curriculoPage.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/imagens/impressao.png" afterPath="$PROJECT_DIR$/web/imagens/impressao.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/imagens/logoabreulimasad.png" afterPath="$PROJECT_DIR$/web/imagens/logoabreulimasad.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/AreaDesejada.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/AreaDesejada.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/DAO/AreaDesejadaDAO.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/DAO/AreaDesejadaDAO.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/RN/AreaDesejadaRN.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/RN/AreaDesejadaRN.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/AreaDesejadaType.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/AreaDesejadaType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Controller/AtribuirVagasController.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Controller/AtribuirVagasController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Controller/CandidatoController.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Controller/CandidatoController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/Capacitacoes.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/Capacitacoes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Controller/CapacitacoesController.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Controller/CapacitacoesController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/DAO/CapacitacoesDAO.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/DAO/CapacitacoesDAO.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/RN/CapacitacoesRN.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/RN/CapacitacoesRN.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/CapacitacoesType.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/CapacitacoesType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/DAO/CursoDAO.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/DAO/CursoDAO.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/Cursos.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/Cursos.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Controller/CursosController.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Controller/CursosController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/RN/CursosRN.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/RN/CursosRN.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/CursosType.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/CursosType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/Empresa.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/Empresa.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/EmpresaCapacitacoes.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/EmpresaCapacitacoes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Controller/EmpresaCapacitacoesController.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Controller/EmpresaCapacitacoesController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/DAO/EmpresaCapacitacoesDAO.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/DAO/EmpresaCapacitacoesDAO.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/RN/EmpresaCapacitacoesRN.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/RN/EmpresaCapacitacoesRN.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/EmpresaCapacitacoesType.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/EmpresaCapacitacoesType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Controller/EmpresaController.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Controller/EmpresaController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/DAO/EmpresaCursoDAO.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/DAO/EmpresaCursoDAO.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/EmpresaCursos.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/EmpresaCursos.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Controller/EmpresaCursosController.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Controller/EmpresaCursosController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/RN/EmpresaCursosRN.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/RN/EmpresaCursosRN.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/EmpresaCursosType.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/EmpresaCursosType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/DAO/EmpresaDAO.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/DAO/EmpresaDAO.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/RN/EmpresaRN.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/RN/EmpresaRN.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/EmpresaType.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/EmpresaType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/Funcao.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/Funcao.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/DAO/FuncaoDAO.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/DAO/FuncaoDAO.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/RN/FuncaoRN.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/RN/FuncaoRN.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/FuncaoType.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/FuncaoType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/GrauDeFormacao.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/GrauDeFormacao.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Util/GridClass.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Util/GridClass.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/OutrosCursos.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/OutrosCursos.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/OutrosCursosType.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/OutrosCursosType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/UserBundle/RN/RoleRN.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/UserBundle/RN/RoleRN.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/UserBundle/RN/UserRN.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/UserBundle/RN/UserRN.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Controller/VagaController.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Controller/VagaController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/DAO/VagaDAO.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/DAO/VagaDAO.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/DAO/VagaDisponivelDAO.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/DAO/VagaDisponivelDAO.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/RN/VagaDisponivelRN.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/RN/VagaDisponivelRN.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/RN/VagaRN.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/RN/VagaRN.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/Vagas.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/Vagas.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/VagasDisponiveis.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/VagasDisponiveis.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/VagasDisponiveisCandidato.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Entity/VagasDisponiveisCandidato.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/DAO/VagasDisponiveisCandidatoDAO.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/DAO/VagasDisponiveisCandidatoDAO.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/VagasDisponiveisType.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/VagasDisponiveisType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/VagasType.php" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/VagasType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/AtribuirVagas/atribuirVaga.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/AtribuirVagas/atribuirVaga.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/bootstrap-hover-dropdown.min.js" afterPath="$PROJECT_DIR$/web/js/bootstrap-hover-dropdown.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/bootstrap_paperv3.3.2.min.css" afterPath="$PROJECT_DIR$/web/css/bootstrap_paperv3.3.2.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Candidato/curriculo.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Candidato/curriculo.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/editAreaDesejada.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/editAreaDesejada.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/editFuncao.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/editFuncao.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/gridAreaDesejada.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/gridAreaDesejada.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/gridFuncao.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/gridFuncao.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/UserBundle/Resources/views/Default/gridUsuario.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/UserBundle/Resources/views/Default/gridUsuario.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/index.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/index.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/jquery.mask.js" afterPath="$PROJECT_DIR$/web/js/jquery.mask.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/UserBundle/Resources/views/Default/login.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/UserBundle/Resources/views/Default/login.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/mascara/mascaras.js" afterPath="$PROJECT_DIR$/web/js/mascara/mascaras.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/AtribuirVagas/negarAprovarCandidatos.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/AtribuirVagas/negarAprovarCandidatos.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nbproject/private/private.properties" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nbproject/private/private.xml" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nbproject/project.properties" afterPath="$PROJECT_DIR$/nbproject/project.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nbproject/project.xml" afterPath="$PROJECT_DIR$/nbproject/project.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/relatorioAtendimento.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/relatorioAtendimento.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/relatorioEmpregados.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/relatorioEmpregados.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/relatorioEncaminhamento.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/relatorioEncaminhamento.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/relatorioSupervisor.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/relatorioSupervisor.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/saveAreaDesejada.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/saveAreaDesejada.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/saveFuncao.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/saveFuncao.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/AtribuirVagas/selecionarCandidatos.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/AtribuirVagas/selecionarCandidatos.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/UserBundle/Resources/config/services.yml" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/UserBundle/Resources/config/services.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/UserBundle/Resources/views/Default/viewEditUser.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/UserBundle/Resources/views/Default/viewEditUser.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/AtribuirVagas/viewPesquisaCadidato.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/AtribuirVagas/viewPesquisaCadidato.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/UserBundle/Resources/views/Default/viewSaveUser.html.twig" afterPath="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/UserBundle/Resources/views/Default/viewSaveUser.html.twig" />
+    </list>
+    <ignored path="SAD.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="SAD" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="gridCandidato.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Candidato/gridCandidato.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="67" column="36" selection-start-line="67" selection-start-column="36" selection-end-line="67" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="220" column="12" selection-start-line="220" selection-start-column="12" selection-end-line="220" selection-end-column="96" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="validationForm_Candidato.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/js/validacoes/validationForm_Candidato.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.0">
+              <caret line="12" column="55" selection-start-line="12" selection-start-column="55" selection-end-line="12" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SerBinario/SAD/Bundle/UserBundle/Resources/views/Default/login.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.34920636">
+              <caret line="17" column="72" selection-start-line="17" selection-start-column="72" selection-end-line="17" selection-end-column="72" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/SerBinario/SAD/Bundle/UserBundle/Resources/views/Default/login.html.twig" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="width" value="1366" />
+    <option name="height" value="723" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SerBinario" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SerBinario" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Default" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SerBinario" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SerBinario" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SADBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SerBinario" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SADBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SerBinario" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SADBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Default" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SerBinario" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SADBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web/imagens" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="902c66ca-546f-4312-ab0a-098fdc0645c7" name="Default" comment="" />
+      <created>1455196282388</created>
+      <option name="number" value="Default" />
+      <updated>1455196282388</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1366" height="723" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Candidato/gridCandidato.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="67" column="36" selection-start-line="67" selection-start-column="36" selection-end-line="67" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="220" column="12" selection-start-line="220" selection-start-column="12" selection-end-line="220" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/validacoes/validationForm_Candidato.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Candidato/gridCandidato.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Candidato/save.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="125" column="55" selection-start-line="125" selection-start-column="55" selection-end-line="125" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/CandidatoType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Candidato/save.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Autonomo/save.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.04409171">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Form/CandidatoType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="95" column="14" selection-start-line="86" selection-start-column="12" selection-end-line="95" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Candidato/save.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="125" column="55" selection-start-line="125" selection-start-column="55" selection-end-line="125" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Controller/CandidatoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.698413">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Controller/AtribuirVagasController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.206349">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Controller/AutonomoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.9365077">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Controller/VagaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.809524">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="100" column="35" selection-start-line="100" selection-start-column="20" selection-end-line="100" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Candidato/gridCandidato.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="67" column="36" selection-start-line="67" selection-start-column="36" selection-end-line="67" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="220" column="12" selection-start-line="220" selection-start-column="12" selection-end-line="220" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/validacoes/validationForm_Candidato.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.0">
+          <caret line="12" column="55" selection-start-line="12" selection-start-column="55" selection-end-line="12" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SerBinario/SAD/Bundle/SADBundle/Resources/views/Default/editFuncao.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.2857143">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SerBinario/SAD/Bundle/UserBundle/Resources/views/Default/login.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34920636">
+          <caret line="17" column="72" selection-start-line="17" selection-start-column="72" selection-end-line="17" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

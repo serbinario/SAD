@@ -139,7 +139,8 @@
                                     <table id="example" class="table table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>Negar</th>
+                                                <th>Aprovar</th>
+                                                <th>Nome</th>
                                                 <th>CPF</th>
                                                 <th>RG</th>
                                                 <th>E-mail</th>
@@ -153,7 +154,7 @@
                                                             {% if candidato.aprovado == true %}
                                                                 <span style="color: #00CC00">Cadidato aprovado</span>
                                                             {% else %}
-                                                                <input type="checkbox" name="id_candidato_negado[]" value="{{candidato.idVagasDisponiveisCandidato}}">
+                                                                <input type="checkbox" name="id_candidato_aprovado[]" value="{{candidato.idVagasDisponiveisCandidato}}">
                                                             {% endif %}
                                                         </td>
                                                         <td>{{candidato.candidato.nomecandidato}}</td>
@@ -166,7 +167,7 @@
                                         {% endif %}
                                         <tfoot>
                                             <tr>
-                                                <th>Selecionar</th>
+                                                <th>Aprovar</th>
                                                 <th>Nome</th>
                                                 <th>CPF</th>
                                                 <th>RG</th>

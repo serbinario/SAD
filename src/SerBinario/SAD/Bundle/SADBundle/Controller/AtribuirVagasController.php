@@ -367,7 +367,7 @@ class AtribuirVagasController extends Controller
     public function saveNegarAprovarCandidatoAction(Request $request) {
         
         $dado = $request->request->all();
-        $candidatos = isset($dado['id_candidato_negado']) ? $dado['id_candidato_negado'] : "";
+        $candidatos = isset($dado['id_candidato_aprovado']) ? $dado['id_candidato_aprovado'] : "";
         $vagaDisp   = isset($dado['id_vaga']) ? $dado['id_vaga'] : "";
         
         //var_dump($vagaDisp);exit();
@@ -381,7 +381,7 @@ class AtribuirVagasController extends Controller
             foreach ($candidatos as $cand) {
                 
                 $vDispCand = $vDispCandDAO->findById($cand);
-                $vDispCand->setNegado(true);
+                $vDispCand->setAprovado(true);
                 
                 $result = $vDispCandDAO->update($vDispCand);
                 
@@ -391,16 +391,22 @@ class AtribuirVagasController extends Controller
                 
             }
             
-            $updateAprovado = $vDispCandDAO->vagasDipsCandAprovadasByUpdate($vagaDisp, $candidatos);
+            $updateNegado = $vDispCandDAO->vagasDipsCandAprovadasByUpdate($vagaDisp, $candidatos);
             
-            if($updateAprovado && $confi) {
-                $this->addFlash("success", "Candidatos negados com sucesso!");
+            if($updateNegado && $confi) {
+                $this->addFlash("success", "Candidatos aprovados com sucesso, os não selecionados foram negados automaticamente pelo sistema!");
             } else {
-                 $this->addFlash("danger", "Erro ao negar os candidatos!");
+                 $this->addFlash("danger", "Erro ao aprovar os candidatos!");
             }
        
         } else {
-            $this->addFlash("warning", "Você precisa selecionar ao menos um candidato!");
+            $updateNegado = $vDispCandDAO->vagasDipsCandAprovadasByUpdate($vagaDisp, $candidatos);
+            
+            if($updateNegado) {
+                $this->addFlash("success", "Todos os candidatos foram negados!");
+            } else {
+                 $this->addFlash("danger", "Erro ao negar os candidatos!");
+            }
         }
         
         return $this->redirect($this->generateUrl("negarAprovarCandidatos"));

@@ -305,7 +305,10 @@ class CandidatoController extends Controller
      */
     public function curriculoAction($id) {
         
-        $html = $this->renderView('SADBundle:Candidato:curriculo.html.twig', array('teste' => "teste"));
+        $candidatoRN = $this->get('candidato_rn');
+        $candidato   = $candidatoRN->findById($id);
+        
+        $html = $this->renderView('SADBundle:Candidato:curriculo.html.twig', array('candidato' => $candidato));
         
         return new Response(
             $this->get('knp_snappy.pdf')->getOutputFromHtml($html, array(
@@ -317,6 +320,19 @@ class CandidatoController extends Controller
                 'Content-Type'          => 'application/pdf',
             )
         );
+        
+    }
+    
+    /**
+     * @Route("/curriculoPage/id/{id}", name="curriculoPage")
+     * @Template("")
+     */
+    public function curriculoPageAction($id) {
+        
+        $candidatoRN = $this->get('candidato_rn');
+        $candidato   = $candidatoRN->findById($id);
+        
+        return array('candidato' => $candidato);
         
     }
    

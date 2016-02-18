@@ -111,8 +111,8 @@ class VagasDisponiveisCandidatoDAO
    
    /**
      * 
-     * @param type $LgEst
-     * @param type $idCurriculo
+     * @param type $idVD
+     * @param type $idVDC
      * @return boolean
      */
     public function vagasDipsCandAprovadasByUpdate($idVD, $idVDC)
@@ -131,7 +131,38 @@ class VagasDisponiveisCandidatoDAO
             //var_dump($result);exit();
             
             foreach($result as $entity) {
-                $entity->setAprovado(true);
+                $entity->setNegado(true);
+                $this->maneger->merge($entity);
+                $this->maneger->flush();
+            }
+
+            return true;
+        } catch (Exception $ex) {
+            return false;
+        }  
+    }
+    
+    /**
+     * 
+     * @param type $idVD
+     * @return boolean
+     */
+    public function vagasDipsCandAprovadasByVazio($idVD)
+    {
+        try {
+            $qb = $this->maneger->createQueryBuilder();
+            $qb->select("v");
+            $qb->from("SerBinario\SAD\Bundle\SADBundle\Entity\VagasDisponiveisCandidato", "v");
+            $qb->innerJoin("v.vagasDisponiveis", "c");
+            $qb->where("c.idVagasDiponiveis = ?1");
+            $qb->setParameter(1, $idVD);
+
+            $result = $qb->getQuery()->getResult();
+            
+            //var_dump($result);exit();
+            
+            foreach($result as $entity) {
+                $entity->setNegado(true);
                 $this->maneger->merge($entity);
                 $this->maneger->flush();
             }
