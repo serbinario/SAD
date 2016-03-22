@@ -36,6 +36,9 @@
                     {% if candidato.curriculo.atualmenteempregadocurriculo == true %}<span class="text-small">Atualmente Trabalhando</span><br />{% endif %}
                 {% endif %}
                 <h4>Formação/Escolaridade</h4>
+                {% if candidato.curriculo.formacoes|length <= 0 %}
+                    <span class="text-small">Nenhuma</span>
+                {% endif %}
                 {% set countFE = 0 %}
                 {% for formacao in candidato.curriculo.formacoes %}
                     {% set countFE = countFE + 1 %}
@@ -47,7 +50,10 @@
                     {% elseif formacao.periodo != null  %}<span class="text-small">Período: {{formacao.periodo}}</span><br />{% endif %}
                     {% if countFE < candidato.curriculo.formacoes|length%}<br />{% endif %}
                 {% endfor %}
-                <h4>Experiência Profissional</h4>
+                    <h4>Experiência Profissional</h4>
+                {% if candidato.curriculo.experienciasProfissionais|length <= 0 %}
+                    <span class="text-small">Nenhuma</span>
+                {% endif %}
                 {% set countEX = 0 %}
                 {% for experiencia in candidato.curriculo.experienciasProfissionais %}
                     {% set countEX = countEX + 1 %}
@@ -60,8 +66,8 @@
                     {% if experiencia.atribuicoesexperienciaprofissional != null %}<span class="text-small">Atribuições/Realizações: {{experiencia.atribuicoesexperienciaprofissional}}</span><br />{% endif %}
                     {% if countEX < candidato.curriculo.experienciasProfissionais|length%}<br />{% endif %}
                 {% endfor %}
-                {% if candidato.curriculo.linguasExtrangeiras != null or candidato.curriculo.informatica != null
-                or candidato.curriculo.outrosCursos != null  %}
+                {% if candidato.curriculo.linguasExtrangeiras|length > 0 or candidato.curriculo.informatica|length > 0
+                or candidato.curriculo.outrosCursos|length > 0 %}
                     <h4>Cursos</h4>
                     {% for informatica in candidato.curriculo.informatica %}
                         {% if informatica.tiposinformaticatiposinformatica.tipoinformatica != null %}
