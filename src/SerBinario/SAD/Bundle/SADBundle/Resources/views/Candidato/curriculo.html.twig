@@ -1,6 +1,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <style>
+        .text-small{
+            font-size: 13px
+        }
+    </style>
 </head>
 
 {% block body %}
@@ -11,66 +16,72 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-9">
                 <h3>{{candidato.nomecandidato}}</h3>
-                <span>{{candidato.enderecocadidato}} - {{candidato.bairrocandidato}} - {{candidato.cidadecandidato}} - {{candidato.ufcandidato}}</span><br />
-                <span>
+                <span class="text-small">{{candidato.enderecocadidato}} - {{candidato.bairrocandidato}} - {{candidato.cidadecandidato}} - {{candidato.ufcandidato}}</span><br />
+                <span class="text-small">
                     {% for telefone in candidato.telefones %}
-                        Telefone: {{telefone.telefone}} /
+                        Telefone: {{telefone.telefone}} /<br />
                     {% endfor %}
-                </span><br />
-                <span>E-mail: {{candidato.emailcandidato}}</span><br />
-                <span>Data de Nascimento: {{candidato.nascimentocandidato|date('d/m/Y')}}</span><br />
-                <span>Estado Civil: {{candidato.estadocivilestadocivil.estadocivil}}</span><br />
-                {% if candidato.cpfcandidato != null %}<span>CPF: {{candidato.cpfcandidato}}</span><br />{% endif %}
-                {% if candidato.rgcandidato != null %}<span>RG: {{candidato.rgcandidato}}</span><br />{% endif %}
+                </span>
+                <span class="text-small">E-mail: {{candidato.emailcandidato}}</span><br />
+                <span class="text-small">Data de Nascimento: {{candidato.nascimentocandidato|date('d/m/Y')}}</span><br />
+                <span class="text-small">Estado Civil: {{candidato.estadocivilestadocivil.estadocivil}}</span><br />
+                {% if candidato.cpfcandidato != null %}<span class="text-small">CPF: {{candidato.cpfcandidato}}</span><br />{% endif %}
+                {% if candidato.rgcandidato != null %}<span class="text-small">RG: {{candidato.rgcandidato}}</span><br />{% endif %}
                 {% if candidato.curriculo.resumocurriculo != null %}
                     <h4>Objetivo</h4>
-                    <span>{{candidato.curriculo.resumocurriculo}}</span><br />
-                    {% if candidato.curriculo.prentencaosalarialcurriculo != null %}<span>Pretenção Salarial: {{candidato.curriculo.prentencaosalarialcurriculo}}</span><br />{% endif %}
-                    {% if candidato.curriculo.atualmenteempregadocurriculo == true %}<span>Atualmente Trabalhando</span><br />{% endif %}
+                    <span class="text-small">{{candidato.curriculo.resumocurriculo}}</span><br />
+                    {% if candidato.curriculo.prentencaosalarialcurriculo != null %}<span class="text-small">Pretenção Salarial: {{candidato.curriculo.prentencaosalarialcurriculo}}</span><br />{% endif %}
+                    {% if candidato.curriculo.atualmenteempregadocurriculo == true %}<span class="text-small">Atualmente Trabalhando</span><br />{% endif %}
                 {% endif %}
                 <h4>Formação/Escolaridade</h4>
+                {% set countFE = 0 %}
                 {% for formacao in candidato.curriculo.formacoes %}
-                    <span>{{formacao.grauformacao.grauFormacao}}</span><br />
-                    {% if formacao.nomecursoformacao != null %}<span>Curso: {{formacao.nomecursoformacao}}</span><br />{% endif %}
-                    {% if formacao.instituicaoformacao != null %}<span>Instituição: {{formacao.instituicaoformacao}}</span><br />{% endif %}
+                    {% set countFE = countFE + 1 %}
+                    {% if formacao.grauformacao.grauFormacao is defined %}<span class="text-small">{{formacao.grauformacao.grauFormacao}}</span><br />{% endif %}
+                    {% if formacao.nomecursoformacao != null %}<span class="text-small">Curso: {{formacao.nomecursoformacao}}</span><br />{% endif %}
+                    {% if formacao.instituicaoformacao != null %}<span class="text-small">Instituição: {{formacao.instituicaoformacao}}</span><br />{% endif %}
                     {% if formacao.datainicioformacao != null and formacao.dataconclusaoformacao != null %}
-                        <span>Período: {{formacao.datainicioformacao|date('d/m/Y')}} a {{formacao.dataconclusaoformacao|date('d/m/Y')}}</span><br />
-                    {% elseif formacao.periodo != null  %}<span>Período: {{formacao.periodo}}</span><br />{% endif %}
+                        <span class="text-small">Período: {{formacao.datainicioformacao|date('d/m/Y')}} a {{formacao.dataconclusaoformacao|date('d/m/Y')}}</span><br />
+                    {% elseif formacao.periodo != null  %}<span class="text-small">Período: {{formacao.periodo}}</span><br />{% endif %}
+                    {% if countFE < candidato.curriculo.formacoes|length%}<br />{% endif %}
                 {% endfor %}
+                <h4>Experiência Profissional</h4>
+                {% set countEX = 0 %}
                 {% for experiencia in candidato.curriculo.experienciasProfissionais %}
-                    <h4>Experiência Profissional</h4>
-                    {% if experiencia.nomedaempresaexperienciaprofissional != null %}<span>Empresa: {{experiencia.nomedaempresaexperienciaprofissional}}</span><br />{% endif %}
-                    {% if experiencia.ultimocargoexperienciaprofissional != null %}<span>Cargo: {{experiencia.ultimocargoexperienciaprofissional}}</span><br />{% endif %}
-                    {% if experiencia.ultimosalarioexperienciaprofissional != null %}<span>Salário: {{experiencia.ultimosalarioexperienciaprofissional}}</span><br />{% endif %}
+                    {% set countEX = countEX + 1 %}
+                    {% if experiencia.nomedaempresaexperienciaprofissional != null %}<span class="text-small">Empresa: {{experiencia.nomedaempresaexperienciaprofissional}}</span><br />{% endif %}
+                    {% if experiencia.ultimocargoexperienciaprofissional != null %}<span class="text-small">Cargo: {{experiencia.ultimocargoexperienciaprofissional}}</span><br />{% endif %}
+                    {% if experiencia.ultimosalarioexperienciaprofissional != null %}<span class="text-small">Salário: {{experiencia.ultimosalarioexperienciaprofissional}}</span><br />{% endif %}
                     {% if experiencia.dataadmissaoexperienciaprofissional != null and experiencia.datademissaoexperienciaprofissional != null %}
-                        <span>Período: {{experiencia.dataadmissaoexperienciaprofissional|date('d/m/Y')}} a {{experiencia.datademissaoexperienciaprofissional|date('d/m/Y')}}</span><br />
+                        <span class="text-small">Período: {{experiencia.dataadmissaoexperienciaprofissional|date('d/m/Y')}} a {{experiencia.datademissaoexperienciaprofissional|date('d/m/Y')}}</span><br />
                     {% endif %}
-                    {% if experiencia.atribuicoesexperienciaprofissional != null %}<span>Atribuições/Realizações: {{experiencia.atribuicoesexperienciaprofissional}}</span><br /><br />{% endif %}
+                    {% if experiencia.atribuicoesexperienciaprofissional != null %}<span class="text-small">Atribuições/Realizações: {{experiencia.atribuicoesexperienciaprofissional}}</span><br />{% endif %}
+                    {% if countEX < candidato.curriculo.experienciasProfissionais|length%}<br />{% endif %}
                 {% endfor %}
                 {% if candidato.curriculo.linguasExtrangeiras != null or candidato.curriculo.informatica != null
-                     or candidato.curriculo.outrosCursos != null  %}
-                     <h4>Cursos</h4>
-                    {% for informatica in candidato.curriculo.informatica %} 
+                or candidato.curriculo.outrosCursos != null  %}
+                    <h4>Cursos</h4>
+                    {% for informatica in candidato.curriculo.informatica %}
                         {% if informatica.tiposinformaticatiposinformatica.tipoinformatica != null %}
-                            <span>Curso: {{informatica.tiposinformaticatiposinformatica.tipoinformatica}}</span><br />{% endif %}
+                            <span class="text-small">Curso: {{informatica.tiposinformaticatiposinformatica.tipoinformatica}}</span><br />{% endif %}
                         {% if informatica.tipoNivelInformatica.tipoNivelInformatica != null %}
-                            <span>Nível: {{informatica.tipoNivelInformatica.tipoNivelInformatica}}</span><br /><br />{% endif %}
+                            <span class="text-small">Nível: {{informatica.tipoNivelInformatica.tipoNivelInformatica}}</span><br /><br />{% endif %}
                     {% endfor %}
                     {% for linguas in candidato.curriculo.linguasExtrangeiras %}
                         {% if linguas.tipolinguaextrangeiralinguaextrangeira.tipolinguaextrangeira != null %}
-                            <span>Curso: {{linguas.tipolinguaextrangeiralinguaextrangeira.tipolinguaextrangeira}}</span><br />{% endif %}
+                            <span class="text-small">Curso: {{linguas.tipolinguaextrangeiralinguaextrangeira.tipolinguaextrangeira}}</span><br />{% endif %}
                         {% if linguas.tipoQualifLingExtrangeira.tipoQualifLingExtrangeira != null %}
-                            <span>Nível: {{linguas.tipoQualifLingExtrangeira.tipoQualifLingExtrangeira}}</span><br /><br />{% endif %}
+                            <span class="text-small">Nível: {{linguas.tipoQualifLingExtrangeira.tipoQualifLingExtrangeira}}</span><br /><br />{% endif %}
                     {% endfor %}
                     {% for outros in candidato.curriculo.outrosCursos %}
                         {% if outros.curso != null %}
-                            <span>Curso: {{outros.curso}}</span><br />{% endif %}
+                            <span class="text-small">Curso: {{outros.curso}}</span><br />{% endif %}
                         {% if outros.instituicao != null %}
-                            <span>Instituição: {{outros.instituicao}}</span><br />{% endif %}
+                            <span class="text-small">Instituição: {{outros.instituicao}}</span><br />{% endif %}
                         {% if outros.periodoInicial != null and outros.periodoFinal %}
-                            <span>Período: {{outros.periodoInicial|date('d/m/Y')}} a {{outros.periodoFinal|date('d/m/Y')}}</span><br /><br />{% endif %}
+                            <span class="text-small">Período: {{outros.periodoInicial|date('d/m/Y')}} a {{outros.periodoFinal|date('d/m/Y')}}</span><br /><br />{% endif %}
                     {% endfor %}
                 {% endif %}
             </div>

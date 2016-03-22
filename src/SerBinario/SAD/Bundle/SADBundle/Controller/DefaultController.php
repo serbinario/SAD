@@ -2,6 +2,7 @@
 
 namespace SerBinario\SAD\Bundle\SADBundle\Controller;
 
+use SerBinario\SAD\Bundle\SADBundle\Entity\Chamada;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -571,6 +572,122 @@ class DefaultController extends Controller
 
         return array('empresas' => $empresas, 'vagas' => $vagas, 'areas' => $areas,
             "candidatos" => $candidatos, "vagaD" => $vagaDID, "quantidadeAprovados" => $quantidadeAprovados); 
+    }
+
+
+    //Chamada ______________________________________________________________
+
+    /**
+     * @Route("/chamadaView", name="chamadaView")
+     * @Template()
+     */
+    public function chamadaViewAction() {
+
+        $chamadaRN = $this->get('chamada_rn');
+
+        $data = new \DateTime('now');
+
+        $dados = $chamadaRN->getChamada($data->format('y-m-d'));
+
+        //var_dump($dados);exit();
+
+        return array('chamadas' => $dados);
+
+    }
+
+    /**
+     * @Route("/chamadaViewUser", name="chamadaViewUser")
+     * @Template()
+     */
+    public function chamadaViewUserAction() {
+
+        $chamadaRN = $this->get('chamada_rn');
+
+        $data = new \DateTime('now');
+
+        $dados = $chamadaRN->getChamada($data->format('y-m-d'));
+
+        //var_dump($dados);exit();
+
+        return array('chamadas' => $dados);
+
+    }
+
+    /**
+     * @Route("/saveChamada", name="saveChamada")
+     * @Template()
+     */
+    public function saveChamadaAction() {
+
+        $mesa  = $this->get("session")->get('mesa');
+        $data = new \DateTime('now');
+        $chamada = new Chamada();
+        $senha = 0;
+
+        $senhaRedefinida = $this->get("session")->get('SenhaInicial');
+
+        //var_dump($senhaRedefinida);exit();
+
+        $chamadaRN = $this->get('chamada_rn');
+
+        $ultChamada = $chamadaRN->getChamadaOne($data->format('y-m-d'));
+
+        if($ultChamada){
+            $senha = $ultChamada[0]->getSenha() + 1;
+        } else if($senhaRedefinida && !$ultChamada) {
+            $senha = $senhaRedefinida;
+        } else {
+            $senha = 1;
+        }
+
+        $chamada->setData($data);
+        $chamada->setMesa($mesa);
+        $chamada->setSenha($senha);
+
+        $retorno = $chamadaRN->save($chamada);
+
+        $this->get("session")->set('senha', $retorno->getSenha());
+
+        return $this->redirect($this->generateUrl('homepage'));
+
+    }
+
+    /**
+     * @Route("/getMesa", name="getMesa")
+     * @Template()
+     */
+    public function getMesaAction(Request $request) {
+
+        $mesa = $request->request->get('mesa');
+
+        $this->get("session")->set('mesa', $mesa);
+
+        return $this->redirect($this->generateUrl('homepage'));
+
+    }
+
+    /**
+     * @Route("/dfSenhaInicial", name="dfSenhaInicial")
+     * @Template()
+     */
+    public function dfSenhaInicialAction(Request $request) {
+
+        return array();
+
+    }
+
+    /**
+     * @Route("/senhaDf", name="senhaDf")
+     * @Template()
+     */
+    public function senhaDfAction(Request $request) {
+
+        $senha = $request->request->get('senha');
+
+        $this->get("session")->set('SenhaInicial', $senha);
+
+        return $this->redirect($this->generateUrl('dfSenhaInicial'));
+
     }
 
 }

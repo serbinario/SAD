@@ -1,18 +1,56 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
-    {{parent()}}   
+    {{ parent() }}
 {% endblock %}
 
 {% block body %}
-    {{parent()}}
-    
-   <div class="container">
-       <div class="row">
-           <div id="conteudo" class="col-xs-4 col-sm-8 col-md-9 col-md-offset-4" style="margin-top: 80px;">
-               <img src="{{asset('imagens/logo igarassu.png')}}" class="img-responsive" alt="Conxole Admin"/>
-           </div>
-       </div>
-   </div>
-    
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            <div id="conteudo" class="col-xs-4 col-sm-8 col-md-9 col-md-offset-4" style="margin-top: 80px;">
+                <img src="{{ asset('imagens/logo abreu lima - sad.png') }}" class="img-responsive" alt="Conxole Admin"/>
+            </div>
+        </div>
+
+        {% if app.session.get('mesa') == null and not is_granted('ROLE_ADMIN') and not is_granted('ROLE_SUPERVISOR')%}
+        <div>
+            <div class="modal fade" data-backdrop="static" id="myModal" tabindex="-1" role="dialog"
+                 aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="myModalLabel">Selecione a MESA</h5>
+                        </div>
+                        <form accept-charset="UTF-8" role="form" class="form-signin" method="post"
+                              action="{{ path('getMesa') }}">
+                            <div class="modal-body">
+                                <select class="form-control" name="mesa">
+                                    <option value="01">MESA 01</option>
+                                    <option value="02">MESA 02</option>
+                                    <option value="03">MESA 03</option>
+                                    <option value="04">MESA 04</option>
+                                    <option value="05">MESA 05</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <input class="btn btn-primary" type="submit" id="Logar" value="Selecionar">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#myModal").modal("show");
+        });
+    </script>
 {% endblock %}

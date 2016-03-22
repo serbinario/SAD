@@ -11,6 +11,7 @@ parameters:
     dao.class.vagaDisponivel: SerBinario\SAD\Bundle\SADBundle\DAO\VagaDisponivelDAO
     dao.class.areaDesejadaDAO: SerBinario\SAD\Bundle\SADBundle\DAO\AreaDesejadaDAO
     dao.class.funcaoDAO: SerBinario\SAD\Bundle\SADBundle\DAO\FuncaoDAO
+    dao.class.chamadaDAO: SerBinario\SAD\Bundle\SADBundle\DAO\ChamadaDAO
     rn.class.autonomo:   SerBinario\SAD\Bundle\SADBundle\RN\AutonomoRN
     rn.class.candidato:   SerBinario\SAD\Bundle\SADBundle\RN\CandidatoRN
     rn.class.empreendedor: SerBinario\SAD\Bundle\SADBundle\RN\EmpreendedorRN
@@ -23,6 +24,7 @@ parameters:
     rn.class.vagaDisponivel: SerBinario\SAD\Bundle\SADBundle\RN\VagaDisponivelRN
     rn.class.areaDesejadaRN: SerBinario\SAD\Bundle\SADBundle\RN\AreaDesejadaRN
     rn.class.funcaoRN: SerBinario\SAD\Bundle\SADBundle\RN\FuncaoRN
+    rn.class.chamadaRN: SerBinario\SAD\Bundle\SADBundle\RN\ChamadaRN
     
 
 services:
@@ -117,4 +119,11 @@ services:
     funcao_rn:
         class:  %rn.class.funcaoRN%
         arguments:  [ @funcao_dao ]
+    chamada_dao:
+        class:  %dao.class.chamadaDAO%
+        arguments:  [ @doctrine.orm.entity_manager ]
+        public: false
+    chamada_rn:
+        class:  %rn.class.chamadaRN%
+        arguments:  [ @chamada_dao ]
         

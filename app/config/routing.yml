@@ -15,4 +15,8 @@ user:
     type:     annotation
     prefix:   /user
 
+chamada:
+    resource: "@SADBundle/Controller/ChamadaController.php"
+    type:     annotation
+    prefix:   /chamada
 
