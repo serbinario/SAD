@@ -116,7 +116,7 @@ class ChamadaDAO
     {
         try {
             $arrayObj = $this->maneger->createQuery("SELECT c FROM SerBinario\SAD\Bundle\SADBundle\Entity\Chamada c "
-                . "WHERE c.data = :data ORDER BY c.id DESC")
+                . "WHERE c.data = :data and c.status = true ORDER BY c.id DESC")
                 ->setMaxResults(2)
                 ->setParameter("data", $data);
 

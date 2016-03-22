@@ -52,7 +52,7 @@
     <div class="container">
         <center>
             <div class="row">
-                {% if chamadas[0] is defined %}
+                {% if chamadas[0] is defined and chamadas[0].status == true %}
                     <button href="#"  class="btn btn-xlarge-1" />
                     <span style="font-size: 40px; color: #000">
                         Mesa: {{ chamadas[0].mesa }}<br/>
@@ -64,7 +64,7 @@
         </center>
         <center>
             <div class="row">
-                {% if chamadas[1] is defined %}
+                {% if chamadas[1] is defined and chamadas[1].status == true %}
                     <button href="#"  class="btn btn-xlarge-2" />
                     <span style="font-size: 40px; color: #fff">
                         Mesa: {{ chamadas[1].mesa }}<br/>

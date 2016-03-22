@@ -42,6 +42,13 @@ class Chamada
     private $senha;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="status", type="boolean", nullable=true)
+     */
+    private $status = true;
+
+    /**
      * @return int
      */
     public function getId()
@@ -103,6 +110,22 @@ class Chamada
     public function setSenha($senha)
     {
         $this->senha = $senha;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param boolean $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
     }
 
 }

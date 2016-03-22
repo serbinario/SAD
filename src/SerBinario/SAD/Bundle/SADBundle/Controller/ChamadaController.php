@@ -65,18 +65,12 @@ class ChamadaController extends Controller
         $chamada = new Chamada();
         $senha = 0;
 
-        $senhaRedefinida = $this->get("session")->get('SenhaInicial');
-
-        //var_dump($senhaRedefinida);exit();
-
         $chamadaRN = $this->get('chamada_rn');
 
         $ultChamada = $chamadaRN->getChamadaOne($data->format('y-m-d'));
 
         if($ultChamada){
             $senha = $ultChamada[0]->getSenha() + 1;
-        } else if($senhaRedefinida && !$ultChamada) {
-            $senha = $senhaRedefinida;
         } else {
             $senha = 1;
         }
@@ -127,7 +121,17 @@ class ChamadaController extends Controller
 
         $senha = $request->request->get('senha');
 
-        $this->get("session")->set('SenhaInicial', $senha);
+        $data = new \DateTime('now');
+        $chamada = new Chamada();
+
+        $chamadaRN = $this->get('chamada_rn');
+
+        $chamada->setData($data);
+        $chamada->setMesa('Redefinição de senha');
+        $chamada->setSenha($senha);
+        $chamada->setStatus(false);
+
+        $retorno = $chamadaRN->save($chamada);
 
         return $this->redirect($this->generateUrl('dfSenhaInicial'));
 
